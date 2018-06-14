@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/14 10:00:12 by msicot           ###   ########.fr       */
+/*   Updated: 2018/06/14 14:14:33 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
+# include "../../libft/inc/libft.h"
+# include "../../libft/inc/libftprintf.h"
+# include "../../libft/inc/get_next_line.h"
 void	ft_error(int a);
+void	ft_gnl(int fp);
 /*
 typedef struct s_label
 {

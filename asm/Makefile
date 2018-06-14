@@ -6,16 +6,16 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/14 09:58:03 by msicot           ###   ########.fr        #
+#    Updated: 2018/06/14 14:13:40 by msicot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c ft_error.c
+SRC_NAME = main.c ft_error.c ft_parsing.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-SRC_PATH = ./src/
-OBJ_PATH = ./obj/
+SRC_PATH = ./srcs/
+OBJ_PATH = ./objs/
 INC_PATH = ./includes/
 
 MN_NAME = asm

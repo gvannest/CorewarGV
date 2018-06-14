@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2018/06/14 13:54:26 by msicot            #+#    #+#             */
+/*   Updated: 2018/06/14 14:59:05 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_error(int a)
+void	ft_gnl(int fp)
 {
-	if (a == 1)
+	char	*line;
+	//read
+	line = 0;
+	while (get_next_line(fp, & line) > 0)
 	{
-		perror("Error");
-//		exit(0);
+		ft_printf("%s\n", line);
 	}
-	else
-		return ;
+	//save
+	//parse
 }
-
