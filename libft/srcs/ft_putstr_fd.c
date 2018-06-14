@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/15 08:46:26 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 09:34:34 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
+	if (s == NULL)
 		return ;
+	write(fd, s, ft_strlen(s));
 }
-

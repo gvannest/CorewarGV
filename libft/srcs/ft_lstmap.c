@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/15 16:43:59 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 18:59:25 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	t_list	*new;
+	t_list	*start;
+	t_list	*tmp;
 
+	if (lst == NULL)
+		return (NULL);
+	new = f(lst);
+	start = new;
+	tmp = new;
+	lst = lst->next;
+	while (lst)
+	{
+		new = f(lst);
+		tmp->next = new;
+		tmp = new;
+		lst = lst->next;
+	}
+	tmp = NULL;
+	new = start;
+	return (new);
+}

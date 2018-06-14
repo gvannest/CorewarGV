@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/10 10:22:43 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/10 10:36:29 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	size_t	i;
+	char	*cdst;
+	char	*csrc;
 
+	i = 0;
+	cdst = (char*)dst;
+	csrc = (char*)src;
+	while (i < n)
+	{
+		cdst[i] = csrc[i];
+		i++;
+	}
+	return (dst);
+}

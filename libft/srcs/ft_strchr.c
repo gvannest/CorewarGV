@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/09 14:43:49 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/13 11:04:55 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+char	*ft_strchr(const char *s, int c)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	int i;
 
+	i = 0;
+	c = (char)c;
+	while (s[i] != c)
+	{
+		if (s[i] == '\0' && c != 0)
+			return (0);
+		i++;
+	}
+	return ((char*)(s + i));
+}

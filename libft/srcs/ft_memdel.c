@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/13 16:56:47 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/14 15:55:00 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+void	ft_memdel(void **ap)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
+	if (ap == NULL)
 		return ;
+	if (*ap)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }
-

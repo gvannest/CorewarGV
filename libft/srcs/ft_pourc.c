@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_pourc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2018/01/16 09:38:47 by msicot            #+#    #+#             */
+/*   Updated: 2018/02/14 15:42:40 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libftprintf.h"
 
-void	ft_error(int a)
+char		*ft_pourc(t_arg *l)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	char	*s;
+	int		k;
+	char	*tmp;
 
+	l->preci = 0;
+	l->point = 0;
+	l->plus = 0;
+	l->sign = 0;
+	l->blank = 0;
+	l->zero = l->bkzero;
+	if (!(s = ft_strnew(1)))
+		return (NULL);
+	s[0] = '%';
+	k = ft_champs(s, l);
+	if (!(tmp = ft_strnew(k)))
+		return (NULL);
+	ft_fill_it_d(&tmp, s, l, k);
+	ft_strdel(&s);
+	return (tmp);
+}

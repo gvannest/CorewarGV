@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/14 09:59:59 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/17 08:52:44 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+char	*ft_strtrim(char const *s)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	int		i;
+	int		j;
+	char	*t;
 
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	j = ft_strlen(s) - 1;
+	while (s[i] == 32 || s[i] == '\n' || s[i] == '\t')
+		i += 1;
+	while ((s[j] == 32 || s[j] == '\n' || s[j] == '\t') && j > i)
+		j -= 1;
+	if (!(t = ft_strsub(s, i, (j - i + 1))))
+		return (NULL);
+	return (t);
+}

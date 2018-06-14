@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/14 09:08:59 by msicot            #+#    #+#             */
+/*   Updated: 2018/02/14 13:34:13 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	char	*t;
+	size_t	i;
 
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	if (!(t = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (i < len)
+	{
+		t[i] = s[start + i];
+		i++;
+	}
+	t[i] = 0;
+	return (t);
+}

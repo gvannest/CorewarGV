@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/30 18:41:38 by msicot            #+#    #+#             */
+/*   Updated: 2018/04/27 11:39:03 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#ifndef _GET_NEXT_LINE_H
 
-void	ft_error(int a)
-{
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+# define _GET_NEXT_LINE_H
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include "./libft.h"
+# include <limits.h>
+# define BUFF_SIZ 100
 
+int					get_next_line(const int fd, char **line);
+#endif

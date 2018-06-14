@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/13 18:55:28 by srossi           ###   ########.fr       */
+/*   Created: 2017/11/13 18:37:03 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 11:38:26 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_H
-# define ASM_H
+#include "libft.h"
 
-typedef struct s_asm
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char 	*tab;
-	struct 	*label;
-}			  t_asm;
+	unsigned int i;
 
-typedef struct s_label
-{
-	char 	*name;
-	struct	*s_instruction;
-	int		address;
-
+	if (s == NULL || f == NULL)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, (s + i));
+		i++;
+	}
 }

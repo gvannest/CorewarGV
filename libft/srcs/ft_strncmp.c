@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/09 20:56:39 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 11:26:21 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	size_t	i;
+	int		nb;
 
+	i = 0;
+	nb = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && i < n)
+		i++;
+	if (s1[i] != s2[i] && i < n)
+		nb = (unsigned char)s1[i] - (unsigned char)s2[i];
+	return (nb);
+}

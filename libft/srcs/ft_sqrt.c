@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/06 17:39:49 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 20:38:29 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+int	ft_sqrt(int nb)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	int i;
 
+	i = 1;
+	if (nb == 0)
+		return (0);
+	if (nb > 46340 * 46340)
+		return (0);
+	while (i <= 46340 && i <= (nb / 2))
+	{
+		if (i * i == nb)
+			return (i);
+		else
+			i++;
+	}
+	return (0);
+}

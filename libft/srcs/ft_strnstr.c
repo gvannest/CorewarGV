@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/09 20:11:20 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 20:23:20 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	size_t	i;
+	size_t	j;
 
+	i = 0;
+	if (needle[0] == 0)
+		return ((char*)(haystack));
+	while (i < len && haystack[i])
+	{
+		j = 0;
+		while (needle[j] == haystack[i + j] && haystack[i + j] && (i + j) < len)
+			j++;
+		if (needle[j] == 0)
+			return ((char*)(haystack + i));
+		i++;
+	}
+	return (NULL);
+}

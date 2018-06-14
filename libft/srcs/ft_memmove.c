@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/10 10:56:05 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/13 15:36:08 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	size_t	i;
 
+	i = 0;
+	if (dst < src)
+		while (i < len)
+		{
+			*(char*)(dst + i) = *(char*)(src + i);
+			i++;
+		}
+	else
+		while (len--)
+			*(char*)(dst + len) = *(char*)(src + len);
+	return (dst);
+}

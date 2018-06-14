@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/13 19:37:37 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 12:54:38 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	if (ft_strcmp(s1, s2) == 0)
+		return (1);
 	else
-		return ;
+		return (0);
 }
-

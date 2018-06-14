@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/09 09:26:54 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/16 13:44:23 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	size_t len;
+	size_t j;
 
+	len = 0;
+	j = 0;
+	len = ft_strlen(dst);
+	if (len >= size)
+		return (ft_strlen(src) + size);
+	while (src[j] && j < (size - len - 1))
+	{
+		dst[len + j] = src[j];
+		j += 1;
+	}
+	dst[len + j] = '\0';
+	return (ft_strlen(src) + len);
+}

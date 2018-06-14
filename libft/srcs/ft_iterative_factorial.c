@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/06 16:37:11 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 20:38:09 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+int	ft_iterative_factorial(int nb)
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	int i;
 
+	i = 1;
+	if (nb == 0 || nb == 1)
+		return (1);
+	if (nb > 12)
+		return (0);
+	if (nb > 1 && nb <= 12)
+	{
+		while (nb > 1)
+		{
+			i = i * nb;
+			nb--;
+		}
+		return (i);
+	}
+	return (0);
+}

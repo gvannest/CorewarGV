@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/15 15:46:53 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/15 20:04:11 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	t_list *tmp;
+	t_list *next;
 
+	if (!(*alst) || !(del))
+		return ;
+	tmp = *alst;
+	while (tmp)
+	{
+		next = tmp->next;
+		ft_lstdelone(&tmp, del);
+		tmp = next;
+	}
+	*alst = NULL;
+}

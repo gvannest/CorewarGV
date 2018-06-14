@@ -3,45 +3,39 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: srossi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/14 16:34:36 by srossi           ###   ########.fr        #
+#    Created: 2018/06/14 16:02:59 by srossi            #+#    #+#              #
+#    Updated: 2018/06/14 16:03:35 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c ft_error.c ft_parsing.c
-
 ROOT = $(shell pwd)/
 
-PRGS = $(ROOT)/asm/
+.PHONY: all clean fclean re
+
+ifeq ($(LIB_NEED),)
+	LIB_NEED = './libft'
+endif
 
 all :
-	@sh init.sh
-	@for dir in $(PRGS) ; \
+	@for dir in $(LIB_NEED) ; \
 		do \
-		$(MAKE) -C $$dir; \
+		$(MAKE) -C $(ROOT)$$dir; \
 		done
-SRC_PATH = ./srcs/
-OBJ_PATH = ./objs/
-INC_PATH = ./includes/
 
 clean :
-	@for dir in $(PRGS) ; \
+	@for dir in $(LIB_NEED) ; \
 		do \
-		$(MAKE) $@ -C $$dir; \
+		$(MAKE) $@ -C $(ROOT)$$dir; \
 		done
 
 fclean :
-	@for dir in $(PRGS) ; \
+	@for dir in $(LIB_NEED) ; \
 		do \
-		$(MAKE) $@ -C $$dir; \
+		$(MAKE) $@ -C $(ROOT)$$dir; \
 		done
-	@sh uninit.sh
 
 re :
-	@$(MAKE) fclean
-	@$(MAKE) all
-
-prog :
-	@$(MAKE) $(ROOT)/asm
+	$(MAKE) fclean
+	$(MAKE) all

@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 14:59:08 by msicot           ###   ########.fr       */
+/*   Created: 2017/12/18 07:13:57 by msicot            #+#    #+#             */
+/*   Updated: 2018/02/13 11:27:38 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libftprintf.h"
+#include <stdio.h>
 
-int		ft_open(char *str)
+int	ft_printf(const char *format, ...)
 {
-	int fp;
+	va_list	ap;
+	t_arg	l;
+	int		i;
 
-	fp = 0;
-	fp = open(str, O_RDONLY);
-	if (fp < 0)
-	{
-		perror("Error");
-		return(0);
-	}
-	return (fp);
-}
-
-
-int	main(int argc, char **argv)
-{
-	int fp;
-
-	if (argc < 2 || argc > 2 || argv[1] == NULL)
-		perror("Error");
-	else if ((fp = ft_open(argv[1])) == 0)
+	if (!(l.str = ft_strnew(0)))
 		return (0);
-	else
-		ft_gnl(fp);
-	return (0);
+	l.flen = 0;
+	l.len = 0;
+	l.add = 0;
+	l.loop = 0;
+	l.exit = 0;
+	va_start(ap, format);
+	ft_gnf(&l, format, ap);
+	va_end(ap);
+	if (l.exit != 3)
+		write(1, l.str, ft_strlen(l.str));
+	i = (l.exit > 1) ? -1 : (ft_strlen(l.str));
+	ft_strdel(&l.str);
+	return (i + l.add + l.flen);
 }

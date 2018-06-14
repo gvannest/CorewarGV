@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:45 by msicot           ###   ########.fr       */
+/*   Created: 2017/11/13 18:38:28 by msicot            #+#    #+#             */
+/*   Updated: 2017/11/14 16:01:35 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	ft_error(int a)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (a == 1)
-	{
-		perror("Error");
-//		exit(0);
-	}
-	else
-		return ;
-}
+	long i;
+	char *t;
 
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+		i++;
+	if (!(t = malloc(i + 1)))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		t[i] = f(s[i]);
+		i++;
+	}
+	t[i] = 0;
+	return (t);
+}
