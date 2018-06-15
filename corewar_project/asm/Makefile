@@ -1,4 +1,4 @@
-# **************************************************************************** #
+
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/15 16:35:51 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/15 17:36:11 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ DST = ../../
 # OPTIONS
 DEBUG = no
 ifeq ($(DEBUG), yes)
-	FLAGS += -g -fsanitize=adress
+	FLAGS += -g -fsanitize=address
 endif
 
 NOFLAGS = no
@@ -31,7 +31,7 @@ endif
 
 # PATHS
 LIBS = ./libs/libft.a
-LIB_PATH = ../libs
+LIB_PATH = ../libs/
 export LIB_NEED = ./libft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
@@ -75,7 +75,7 @@ LOG_ORANGE= \033[1;38;5;208m
 # RULES
 
 .PHONY: all
-all : libftcomp $(OBJ_PATH) $(NAME)
+all : libftcomp $(OBJ_PATH) $(NAME) Makefile
 
 libftcomp:
 	@$(MAKE) -C $(LIB_PATH)
