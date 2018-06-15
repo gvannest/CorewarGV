@@ -6,7 +6,7 @@
 #    By: srossi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 14:59:54 by srossi            #+#    #+#              #
-#    Updated: 2018/06/14 17:24:00 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/15 11:39:48 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,23 @@ new_link()
 	fi
 }
 
+new_link_dir()
+{
+	if [ ! -f $2 ];
+	then
+		ln -s $1 $2
+	fi
+}
+
 root=`pwd`
 echo "Initialisation des liens..."
 
 new_link $root/libs/libft/libft.h $root/asm/includes/libft.h
 new_link $root/libs/libft/libft.h $root/vm/includes/libft.h
+new_dir $root/libs
 new_dir $root/asm/libs
 new_dir $root/vm/libs
+new_link_dir $root/../libft/ $root/libs/libft
 new_link $root/libs/libft/libft.a $root/asm/libs/libft.a
 new_link $root/libs/libft/libft.a $root/vm/libs/libft.a
 

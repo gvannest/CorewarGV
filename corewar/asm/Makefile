@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/14 18:25:07 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/15 15:37:35 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,48 +14,45 @@
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
-# DEFAULT RULE
+#DEFAULT RULE
 DEFRULE = all
 
-# BINARY
+#BINARY
 NAME = asm
+DST = ../../
 
-# PATHS
-ROOT = $(shell pwd)/
-PRGS = $(ROOT)/asm/
-SRC_PATH = ./srcs/
-OBJ_PATH = ./objs/
-INC_PATH = ./includes/
-LIB_PATH = ../libs
-export LIB_NEED = ./libft
-LIBS = ./libs/libft.a
-
-INCLUDES = -I./includes/
-
+# OPTIONS
 DEBUG = no
 ifeq ($(DEBUG), yes)
-	FLAGS += -g -fsanitize=address
+	FLAGS += -g -fsanitize=adress
 endif
 
 NOFLAGS = no
 ifeq ($(NOFLAGS), yes)
-	FLAGS += -g -w
+	FLAGS = -g -w
 endif
 
+# PATHS
+LIBS = ./libs/libft.a
+LIB_PATH = ../libs
+export LIB_NEED = ./libft
+SRC_PATH = ./srcs/
+OBJ_PATH = ./objs/
+
 # SOURCES
-SRC_NAME = main.c ft_error.c ft_parsing.c
+SRC_NAME = main.c \
+		   ft_error.c \
+		   ft_parsing.c
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
-
 
 # PREFIXES
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-DEPS = includes/*.h Makefile
-DEPS += $(shell find -E . -regex ".*\.[ch]")
-
+# FLAGS
+CPPFLAGS = -I./includes/ -I../libs/libft/includes
 
 # **************************************************************************** #
 # SPECIAL CHARS
@@ -81,46 +78,48 @@ LOG_ORANGE= \033[1;38;5;208m
 # RULES
 
 # MAIN RULES
-#default:
-#	@$(MAKE) $(DEFULE)
+default:
+	@$(MAKE) $(DEFRULE)
 
 .PHONY: all
-all : $(NAME) $(OBJ_PATH) Makefile
+all : libftcomp $(OBJ_PATH) $(NAME)
 
+libftcomp:
+	@$(MAKE) -C $(LIB_PATH)
 
-$(NAME) : $(OBJ)
-		@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-		@$(MAKE) -C $(LIB_PATH)
-		@$(CC) $^ -o $@ $(LIBS) $(FLAGS)
-		@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-		@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-		@$(CC) $(CFLAGS) $(CPPFLAGS) $(ADDFLAGS) -c -o $@ $^
+$(NAME): $(OBJ)
+	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
+	@$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS)
+	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
 
 $(OBJ_PATH):
-		@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
-		@mkdir -p $(OBJ_PATH)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
+	@mkdir -p $(OBJ_PATH)
 
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
+	@$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
 
 .PHONY: clean
-clean :
-		@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-		@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
-		@rm -f $(OBJ)
-		@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-		@$(MAKE) clean -C $(LIB_PATH)
-		@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
+clean:
+	@$(MAKE) clean -C $(LIB_PATH)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
+	@rm -f $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
 
 .PHONY: fclean
 fclean :
-		@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
-		@$(MAKE) fclean -C $(LIB_PATH)
-		@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
-		@rm -f $(OBJ) $(NAME)
-#		@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Binary$(LOG_NOCOLOR) deleted............... $(LOG_RED)×$(LOG_NOCOLOR)"
+	@$(MAKE) fclean -C $(LIB_PATH)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
+	@rm -f $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
+	@rm -f $(DST)$(NAME)
+	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Binary$(LOG_NOCOLOR) deleted............... $(LOG_RED)×$(LOG_NOCOLOR)"
 
 .PHONY: re
 re :
-		@$(MAKE) fclean
-		@$(MAKE) all
+	@$(MAKE) fclean
+	@$(MAKE) all
