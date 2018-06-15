@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 14:13:34 by msicot            #+#    #+#              #
-#    Updated: 2018/06/14 17:16:08 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/15 17:53:45 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,20 +29,20 @@ INC_PATH = ./includes/
 
 # SOURCES
 SRC_NAME = ft_strlen.c	ft_strdup.c	ft_strcpy.c	ft_strncpy.c ft_strcat.c	ft_strncat.c	ft_strlcat.c	ft_strchr.c	ft_strrchr.c	\
-		ft_strstr.c	ft_strnstr.c	ft_strcmp.c	ft_strncmp.c	ft_memset.c	ft_bzero.c	ft_memcpy.c	ft_memccpy.c ft_memmove.c	ft_memchr.c	\
-		ft_memcmp.c	ft_atoi.c	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	ft_isprint.c ft_toupper.c	ft_tolower.c	\
-		ft_memalloc.c ft_memdel.c	ft_strnew.c	ft_strdel.c	ft_strclr.c	ft_striter.c ft_striteri.c	ft_strmap.c	ft_strmapi.c ft_strequ.c \
-		ft_strnequ.c ft_strsub.c	ft_strjoin.c	ft_strtrim.c	ft_strsplit.c	ft_putchar.c	ft_putstr.c	ft_putendl.c	ft_putnbr.c	\
-		ft_putchar_fd.c		ft_putstr_fd.c ft_putendl_fd.c	ft_putnbr_fd.c	ft_itoa.c	ft_lstnew.c	ft_lstdel.c	ft_lstdelone.c	ft_lstadd.c	\
-		ft_lstiter.c	ft_lstmap.c	ft_is_negative.c ft_strlowcase.c	ft_strupcase.c	ft_iterative_factorial.c ft_sqrt.c ft_printf.c \
-		ft_error.c ft_flags.c	ft_format.c	ft_integer.c	ft_is_type.c	ft_itoa_max.c	ft_options.c	ft_printf.c	ft_read.c \
-		ft_is_num.c ft_is_c.c ft_is_p.c	ft_is_unic.c ft_is_unis.c ft_string.c ft_octal.c ft_octal2.c	ft_itoa_base.c	ft_itoa_base_u.c \
-		ft_width.c ft_sign.c ft_precision.c ft_is_u.c ft_itoa_usigned.c ft_width_o.c ft_width_x.c ft_hexa.c ft_hexa2.c ft_null.c ft_pourc.c \
-		ft_width_p.c ft_wipre_unis.c get_next_line.c ft_int_len.c
+		   ft_strstr.c	ft_strnstr.c	ft_strcmp.c	ft_strncmp.c	ft_memset.c	ft_bzero.c	ft_memcpy.c	ft_memccpy.c ft_memmove.c	ft_memchr.c	\
+		   ft_memcmp.c	ft_atoi.c	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	ft_isprint.c ft_toupper.c	ft_tolower.c	\
+		   ft_memalloc.c ft_memdel.c	ft_strnew.c	ft_strdel.c	ft_strclr.c	ft_striter.c ft_striteri.c	ft_strmap.c	ft_strmapi.c ft_strequ.c \
+		   ft_strnequ.c ft_strsub.c	ft_strjoin.c	ft_strtrim.c	ft_strsplit.c	ft_putchar.c	ft_putstr.c	ft_putendl.c	ft_putnbr.c	\
+		   ft_putchar_fd.c		ft_putstr_fd.c ft_putendl_fd.c	ft_putnbr_fd.c	ft_itoa.c	ft_lstnew.c	ft_lstdel.c	ft_lstdelone.c	ft_lstadd.c	\
+		   ft_lstiter.c	ft_lstmap.c	ft_is_negative.c ft_strlowcase.c	ft_strupcase.c	ft_iterative_factorial.c ft_sqrt.c ft_printf.c \
+		   ft_error.c ft_flags.c	ft_format.c	ft_integer.c	ft_is_type.c	ft_itoa_max.c	ft_options.c	ft_printf.c	ft_read.c \
+		   ft_is_num.c ft_is_c.c ft_is_p.c	ft_is_unic.c ft_is_unis.c ft_string.c ft_octal.c ft_octal2.c	ft_itoa_base.c	ft_itoa_base_u.c \
+		   ft_width.c ft_sign.c ft_precision.c ft_is_u.c ft_itoa_usigned.c ft_width_o.c ft_width_x.c ft_hexa.c ft_hexa2.c ft_null.c ft_pourc.c \
+		   ft_width_p.c ft_wipre_unis.c get_next_line.c ft_int_len.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-DEPS = includes/*.h Makefile
-DEPS = $(shell find . -regex ".*\.[ch]")
+	DEPS = includes/*.h Makefile
+	DEPS = $(shell find . -regex ".*\.[ch]")
 
 
 # PREFIXES		
@@ -116,5 +116,5 @@ re:
 	@$(MAKE) all
 
 norme:
-		norminette $(SRC)
-		norminette ./includes/*.h
+	norminette $(SRC)
+	norminette ./includes/*.h
