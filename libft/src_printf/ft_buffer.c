@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   ft_lecture.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 19:21:54 by gvannest          #+#    #+#             */
-/*   Updated: 2017/12/18 11:22:53 by gvannest         ###   ########.fr       */
+/*   Created: 2017/12/22 13:13:36 by gvannest          #+#    #+#             */
+/*   Updated: 2018/02/01 15:42:42 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "get_next_line.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include "libft.h"
-# define BUFF_SIZE 10
+#include "ft_printf.h"
 
-typedef struct		s_gnl
+void	ft_buffer(const char c, t_lst *p)
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
-
-int					get_next_line(const int fd, char **line);
-
-#endif
+	if ((INDEX_BUF != 0) && (INDEX_BUF % BUF_SIZE == 0))
+	{
+		write(1, BUF, BUF_SIZE);
+		ft_bzero(BUF, BUF_SIZE);
+	}
+	BUF[INDEX_BUF % BUF_SIZE] = c;
+	INDEX_BUF++;
+}

@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 19:21:54 by gvannest          #+#    #+#             */
-/*   Updated: 2017/12/18 11:22:53 by gvannest         ###   ########.fr       */
+/*   Created: 2017/11/13 13:37:43 by gvannest          #+#    #+#             */
+/*   Updated: 2017/11/16 14:59:07 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "get_next_line.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include "libft.h"
-# define BUFF_SIZE 10
+#include "libft.h"
 
-typedef struct		s_gnl
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
+	size_t			i;
+	unsigned char	*dst1;
+	unsigned char	*src1;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	dst1 = (unsigned char*)dst;
+	src1 = (unsigned char*)src;
+	i = 0;
+	if (dst1 < src1)
+		while (i < len)
+		{
+			dst1[i] = src1[i];
+			i++;
+		}
+	else
+	{
+		i = len - 1;
+		while (len)
+		{
+			dst1[i] = src1[i];
+			i--;
+			len--;
+		}
+	}
+	return ((void*)dst1);
+}

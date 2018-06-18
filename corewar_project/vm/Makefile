@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/18 11:38:49 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/18 15:35:30 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 #BINARY
-NAME = asm
+NAME = corewar
 DST = ../../
 
 # OPTIONS
@@ -31,15 +31,14 @@ endif
 
 # PATHS
 LIBS = ./libs/libft.a
-LIB_PATH = ../libs/
+LIB_PATH = ../libs/libft
 export LIB_NEED = ./libft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 
 # SOURCES
-SRC_NAME = main.c \
-		   ft_error.c \
-		   ft_parsing.c
+SRC_NAME = main_test.c \
+		   main_corewar.c
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -49,7 +48,7 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 # FLAGS
-CPPFLAGS = -I./includes/ -I../libs/libft/includes
+CPPFLAGS = -I./includes/ -I../libs/libft/includes -I../../includes
 
 # **************************************************************************** #
 # SPECIAL CHARS

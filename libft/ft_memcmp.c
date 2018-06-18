@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 19:21:54 by gvannest          #+#    #+#             */
-/*   Updated: 2017/12/18 11:22:53 by gvannest         ###   ########.fr       */
+/*   Created: 2017/11/14 08:48:20 by gvannest          #+#    #+#             */
+/*   Updated: 2017/11/16 15:45:42 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "get_next_line.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include "libft.h"
-# define BUFF_SIZE 10
+#include "libft.h"
 
-typedef struct		s_gnl
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
+	size_t			i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	ptr1 = (unsigned char*)s1;
+	ptr2 = (unsigned char*)s2;
+	i = 0;
+	if (ptr1 == ptr2 || n == 0)
+		return (0);
+	while (i < n)
+	{
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
+		i++;
+	}
+	return (0);
+}

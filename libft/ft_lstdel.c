@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 19:21:54 by gvannest          #+#    #+#             */
-/*   Updated: 2017/12/18 11:22:53 by gvannest         ###   ########.fr       */
+/*   Created: 2017/11/22 13:08:59 by gvannest          #+#    #+#             */
+/*   Updated: 2017/11/22 13:26:26 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "get_next_line.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include "libft.h"
-# define BUFF_SIZE 10
+#include "libft.h"
 
-typedef struct		s_gnl
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
+	t_list *list1;
+	t_list *list2;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	list1 = *alst;
+	if (alst == 0)
+		return ;
+	while (list1)
+	{
+		list2 = list1;
+		(*del)(list1->content, list1->content_size);
+		list1 = list1->next;
+		free(list2);
+	}
+	*alst = NULL;
+}

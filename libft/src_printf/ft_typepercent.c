@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   ft_typed.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 19:21:54 by gvannest          #+#    #+#             */
-/*   Updated: 2017/12/18 11:22:53 by gvannest         ###   ########.fr       */
+/*   Created: 2018/01/17 16:27:41 by gvannest          #+#    #+#             */
+/*   Updated: 2018/02/10 13:51:48 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "get_next_line.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include "libft.h"
-# define BUFF_SIZE 10
+#include "ft_printf.h"
 
-typedef struct		s_gnl
+static void		ft_width(t_lst *p)
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
+	int		i;
+	char	t;
 
-int					get_next_line(const int fd, char **line);
+	t = ' ';
+	(FLAGS & ZERO ? t = '0' : t);
+	i = WIDTH - 1;
+	while (i > 0)
+	{
+		ft_buffer(t, p);
+		i--;
+	}
+}
 
-#endif
+int				ft_type_percent(t_lst *p, va_list ap)
+{
+	size_t		i;
+
+	ap = 0;
+	i = 0;
+	if (!(FLAGS & MINUS))
+		ft_width(p);
+	ft_buffer(TYPE, p);
+	if (FLAGS & MINUS)
+		ft_width(p);
+	return (0);
+}

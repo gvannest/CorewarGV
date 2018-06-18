@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getnextline.h                                      :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 19:21:54 by gvannest          #+#    #+#             */
-/*   Updated: 2017/12/18 11:22:53 by gvannest         ###   ########.fr       */
+/*   Created: 2017/11/10 11:33:40 by gvannest          #+#    #+#             */
+/*   Updated: 2017/11/23 12:06:16 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "get_next_line.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
-# include "libft.h"
-# define BUFF_SIZE 10
+#include "libft.h"
 
-typedef struct		s_gnl
+char	*ft_strnstr(const char *hay, const char *needle, size_t len)
 {
-	int				ret;
-	char			buf[BUFF_SIZE + 1];
-}					t_gnl;
+	size_t i;
+	size_t j;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	if (needle[0] == '\0')
+		return ((char*)hay);
+	while (hay[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (hay[i + j] == needle[j] && (i + j) < len && needle[j])
+			j++;
+		if (needle[j] == '\0')
+			return ((char*)(hay + i));
+		i++;
+	}
+	return (0);
+}

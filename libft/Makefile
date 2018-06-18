@@ -3,122 +3,64 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: gvannest <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/08 14:13:34 by msicot            #+#    #+#              #
-#    Updated: 2018/06/18 11:43:19 by srossi           ###   ########.fr        #
+#    Created: 2017/11/09 13:22:43 by gvannest          #+#    #+#              #
+#    Updated: 2018/06/18 15:24:14 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# COMPILATION
-CC = ar
-CFLAGS = -Werror -Wextra -Wall
+.PHONY: all, clean, fclean, re
 
-# DEFAULT RULE
-DEFRULE = all
-
-# BINARY
 NAME = libft.a
 
-# PATHS
-ROOT = $(shell dirname `pwd`)
-SRC_PATH = ./srcs/
-OBJ_PATH = ./objs/
-INC_PATH = ./includes/
+VPATH = . src_printf
 
+SRC_NAME = ft_putnbr.c ft_putchar.c ft_strlen.c ft_putstr.c ft_strdup.c ft_strcpy.c \
+		   ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
+		   ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_atoi.c \
+		   ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c \
+		   ft_tolower.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
+		   ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c \
+		   ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c \
+		   ft_strtrim.c ft_strsplit.c ft_itoa.c ft_memccpy.c ft_putendl.c ft_putchar_fd.c \
+		   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
+		   ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_power.c \
+		   ft_sqrt.c ft_isprime.c ft_lstpushback.c ft_lstlen.c ft_nextsqrt.c ft_lstrev.c \
+		   ft_strndup.c get_next_line.c ft_strrev.c ft_itoabase_u.c ft_itoabase_s.c\
+		   ft_printf.c ft_buffer.c ft_control_flags.c \
+		   ft_clean_flags.c ft_cast_arg.c ft_typed.c ft_typeu.c \
+		   ft_types.c ft_typec.c ft_reinit_struct.c ft_typeo.c ft_typex.c \
+		   ft_typep.c ft_typepercent.c ft_type_unicodec.c ft_wcharconv.c \
+		   ft_type_unicodes.c ft_typeb.c ft_couleur.c ft_sqrt_heron.c \
+		   ft_max.c
 
-# SOURCES
-SRC_NAME = ft_strlen.c	ft_strdup.c	ft_strcpy.c	ft_strncpy.c ft_strcat.c	ft_strncat.c	ft_strlcat.c	ft_strchr.c	ft_strrchr.c	\
-		   ft_strstr.c	ft_strnstr.c	ft_strcmp.c	ft_strncmp.c	ft_memset.c	ft_bzero.c	ft_memcpy.c	ft_memccpy.c ft_memmove.c	ft_memchr.c	\
-		   ft_memcmp.c	ft_atoi.c	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	ft_isprint.c ft_toupper.c	ft_tolower.c	\
-		   ft_memalloc.c ft_memdel.c	ft_strnew.c	ft_strdel.c	ft_strclr.c	ft_striter.c ft_striteri.c	ft_strmap.c	ft_strmapi.c ft_strequ.c \
-		   ft_strnequ.c ft_strsub.c	ft_strjoin.c	ft_strtrim.c	ft_strsplit.c	ft_putchar.c	ft_putstr.c	ft_putendl.c	ft_putnbr.c	\
-		   ft_putchar_fd.c		ft_putstr_fd.c ft_putendl_fd.c	ft_putnbr_fd.c	ft_itoa.c	ft_lstnew.c	ft_lstdel.c	ft_lstdelone.c	ft_lstadd.c	\
-		   ft_lstiter.c	ft_lstmap.c	ft_is_negative.c ft_strlowcase.c	ft_strupcase.c	ft_iterative_factorial.c ft_sqrt.c ft_printf.c \
-		   ft_error.c ft_flags.c	ft_format.c	ft_integer.c	ft_is_type.c	ft_itoa_max.c	ft_options.c	ft_printf.c	ft_read.c \
-		   ft_is_num.c ft_is_c.c ft_is_p.c	ft_is_unic.c ft_is_unis.c ft_string.c ft_octal.c ft_octal2.c	ft_itoa_base.c	ft_itoa_base_u.c \
-		   ft_width.c ft_sign.c ft_precision.c ft_is_u.c ft_itoa_usigned.c ft_width_o.c ft_width_x.c ft_hexa.c ft_hexa2.c ft_null.c ft_pourc.c \
-		   ft_width_p.c ft_wipre_unis.c get_next_line.c ft_int_len.c
-
+OBJ_PATH = objs
 OBJ_NAME = $(SRC_NAME:.c=.o)
-	DEPS = includes/*.h Makefile
-	DEPS = $(shell find . -regex ".*\.[ch]")
 
+CFLAGS = -Wall -Wextra -Werror
 
-# PREFIXES		
-SRC = $(addprefix $(SRC_PATH), $(SRC_NAME)) 
-OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
-INC = $(addprefix -I,$(INC_PATH))
+CPPFLAGS = -I./includes
 
-DEBUG = no
-ifeq ($(DEBUG), yes)
-	FLAGS = -g -w
-endif
+SRC = $(addprefix $(VPATH)/,$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-# **************************************************************************** #
-# SPECIAL CHARS
+all: $(NAME)
 
-LOG_CLEAR= \033[2K
-LOG_UP= \033[A
-LOG_NOCOLOR= \033[0m
-LOG_BOLD= \033[1m
-LOG_UNDERLINE= \033[4m
-LOG_BLINKING= \033[5m
-LOG_BLACK= \033[1;30m
-LOG_RED= \033[1;31m
-LOG_GREEN= \033[1;32m
-LOG_YELLOW= \033[1;33m
-LOG_BLUE= \033[1;34m
-LOG_MAGENTA= \033[1;35m
-LOG_CYAN= \033[1;36m
-LOG_WHITE= \033[1;37m
-LOG_ORANGE= \033[1;38;5;208m
+$(NAME): $(OBJ)
+	ar rc $@ $^
+	ranlib $@
 
-# **************************************************************************** #
+$(OBJ_PATH)/%.o: %.c | $(OBJ_PATH)
+	gcc $(FLAGS) $(CPPFLAGS) -o $@ -c $<
 
-# RULES 
+$(OBJ_PATH):
+	mkdir $@
 
-# MAIN RULES
-default:
-	@$(MAKE) $(DEFRULE)
-
-.PHONY: all
-all: building $(NAME)
-
-building:
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
-
-
-$(NAME): $(OBJ) $(DEPS)
-	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) -rc $@ $(OBJ);
-	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@gcc $(CFLAGS) $(INC) -c $< -o $@
-
-.PHONY: clean
 clean:
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
-	@$(RM) -f $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
+	rm -rf $(OBJ_PATH)
 
-.PHONY: fclean
 fclean: clean
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
-	@$(RM) -f $(NAME)
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
+	rm -rf $(NAME)
 
-.PHONY:re
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
-
-norme:
-	norminette $(SRC)
-	norminette ./includes/*.h
+re: fclean all
