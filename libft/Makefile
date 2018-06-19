@@ -6,7 +6,7 @@
 #    By: srossi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/18 15:41:35 by srossi            #+#    #+#              #
-#    Updated: 2018/06/18 18:00:28 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/19 12:45:08 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,17 +114,15 @@ $(OBJ_PATH)%.o: $(V_PATH)%.c
 .PHONY: clean
 clean:
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
 	@$(RM) -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
 	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
 
 .PHONY: fclean
 fclean: clean
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
 	@$(RM) -f $(NAME)
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
+	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Binary$(LOG_NOCOLOR) deleted............... $(LOG_RED)×$(LOG_NOCOLOR)"
 
 .PHONY:re
 re:
