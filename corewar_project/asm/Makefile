@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/18 11:38:49 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/19 12:15:47 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ OBJ_PATH = ./objs/
 # SOURCES
 SRC_NAME = main.c \
 		   ft_error.c \
+		   ft_display.c \
 		   ft_parsing.c
 
 # OBJECTS
@@ -49,7 +50,7 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 # FLAGS
-CPPFLAGS = -I./includes/ -I../libs/libft/includes
+CPPFLAGS = -I./includes/ -I../libs/libft/includes -I../../includes
 
 # **************************************************************************** #
 # SPECIAL CHARS
