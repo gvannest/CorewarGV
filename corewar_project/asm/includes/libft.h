@@ -1,1 +1,0 @@
-/Users/srossi/projects/corewar/corewar_project/libs/libft/libft.h

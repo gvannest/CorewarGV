@@ -3,19 +3,34 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gvannest <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: srossi <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/09 13:22:43 by gvannest          #+#    #+#              #
-#    Updated: 2018/06/18 15:24:14 by gvannest         ###   ########.fr        #
+#    Created: 2018/06/18 15:41:35 by srossi            #+#    #+#              #
+#    Updated: 2018/06/19 12:45:08 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, clean, fclean, re
+# COMPILATION
+CC = ar
+CFLAGS = -Werror -Wextra -Wall
 
+# DEFAULT RULE
+DEFRULE = all
+
+# BINARY
 NAME = libft.a
 
-VPATH = . src_printf
+# PATHS
+ROOT = $(shell dirname `pwd`)
+VPATH = ./srcs/ \
+		 ./srcs/src_printf
 
+
+OBJ_PATH = ./objs/
+INC_PATH = ./includes/
+
+
+# SOURCES
 SRC_NAME = ft_putnbr.c ft_putchar.c ft_strlen.c ft_putstr.c ft_strdup.c ft_strcpy.c \
 		   ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
 		   ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_atoi.c \
@@ -35,32 +50,85 @@ SRC_NAME = ft_putnbr.c ft_putchar.c ft_strlen.c ft_putstr.c ft_strdup.c ft_strcp
 		   ft_type_unicodes.c ft_typeb.c ft_couleur.c ft_sqrt_heron.c \
 		   ft_max.c
 
-OBJ_PATH = objs
+# OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
+DEPS = includes/*.h Makefile
+DEPS = $(shell find . -regex ".*\.[ch]")
 
-CFLAGS = -Wall -Wextra -Werror
 
-CPPFLAGS = -I./includes
+# PREFIXES
+SRC = $(addprefix $(V_PATH), $(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
 
-SRC = $(addprefix $(VPATH)/,$(SRC_NAME))
-OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+DEBUG = no
+ifeq ($(DEBUG), yes)
+	FLAGS = -g -w
+endif
 
-all: $(NAME)
+# **************************************************************************** #
+# SPECIAL CHARS
 
-$(NAME): $(OBJ)
-	ar rc $@ $^
-	ranlib $@
+LOG_CLEAR= \033[2K
+LOG_UP= \033[A
+LOG_NOCOLOR= \033[0m
+LOG_BOLD= \033[1m
+LOG_UNDERLINE= \033[4m
+LOG_BLINKING= \033[5m
+LOG_BLACK= \033[1;30m
+LOG_RED= \033[1;31m
+LOG_GREEN= \033[1;32m
+LOG_YELLOW= \033[1;33m
+LOG_BLUE= \033[1;34m
+LOG_MAGENTA= \033[1;35m
+LOG_CYAN= \033[1;36m
+LOG_WHITE= \033[1;37m
+LOG_ORANGE= \033[1;38;5;208m
 
-$(OBJ_PATH)/%.o: %.c | $(OBJ_PATH)
-	gcc $(FLAGS) $(CPPFLAGS) -o $@ -c $<
+# **************************************************************************** #
+
+# RULES
+
+# MAIN RULES
+default:
+	@$(MAKE) $(DEFRULE)
+
+.PHONY: all
+all: building $(OBJ_PATH) $(NAME) Makefile
+
+building:
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
+
+$(NAME): $(OBJ) $(DEPS)
+	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
+	@$(CC) -rc $@ $(OBJ)
+	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
 
 $(OBJ_PATH):
-	mkdir $@
+	@mkdir -p $(OBJ_PATH) 2> /dev/null || true
 
+$(OBJ_PATH)%.o: $(V_PATH)%.c
+	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
+	@gcc $(CFLAGS) $(INC) -c $< -o $@
+
+.PHONY: clean
 clean:
-	rm -rf $(OBJ_PATH)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
+	@$(RM) -f $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
 
+.PHONY: fclean
 fclean: clean
-	rm -rf $(NAME)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
+	@$(RM) -f $(NAME)
+	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Binary$(LOG_NOCOLOR) deleted............... $(LOG_RED)×$(LOG_NOCOLOR)"
 
-re: fclean all
+.PHONY:re
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
+
+norme:
+	norminette $(SRC)
+	norminette ./includes/*.h
