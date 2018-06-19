@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/18 18:31:27 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/19 10:52:34 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ typedef struct s_asm
 
 void	ft_error(int a);
 void	ft_gnl(int fp);
-void	ft_display_param(t_param param, int param_id);
-void	ft_display_instruction(t_instruction instruction);
-void	ft_display_label(t_label label);
-void	ft_display_asm(t_asm asm);
+void	ft_display_param(t_param *param, int param_id);
+void	ft_display_instruction(t_instruction *instruction);
+void	ft_display_label(t_label *label);
+void	ft_display_asm(t_asm *sasm);
 
 #endif
