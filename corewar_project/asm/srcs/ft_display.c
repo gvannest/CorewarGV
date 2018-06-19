@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:30:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/19 14:18:53 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/19 14:23:48 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,17 @@ void	ft_display_label(t_label *label)
 void	ft_display_asm(t_asm *sasm)
 {
 	int i;
+
 	i = 0;
-	ft_printf("ASM :\n");
-	while (sasm->tab[i])
+	if (sasm != NULL)
 	{
-		ft_printf("$c ", sasm->tab[i]);
-		i++;
+		ft_printf("ASM :\n");
+		while (sasm->tab && sasm->tab[i])
+		{
+			ft_printf("$c ", sasm->tab[i]);
+			i++;
+		}
+		if (sasm->label != NULL)
+			ft_display_label(sasm->label);
 	}
-	ft_display_label(sasm->label);
 }
