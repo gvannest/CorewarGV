@@ -6,13 +6,13 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/18 15:35:30 by gvannest         ###   ########.fr        #
+#    Updated: 2018/06/19 18:02:27 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 #BINARY
 NAME = corewar
@@ -38,7 +38,12 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main_test.c \
-		   main_corewar.c
+		   main_corewar.c \
+		   ft_parse_vm.c \
+		   ft_error_vm.c \
+		   ft_tools.c \
+		   ft_option.c
+
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -84,7 +89,7 @@ libftcomp:
 
 $(NAME): $(OBJ)
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS)
+	$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS)
 	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
 
 $(OBJ_PATH):
@@ -92,7 +97,7 @@ $(OBJ_PATH):
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
+	$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
 
 .PHONY: clean
 clean:

@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/06/18 14:18:51 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/19 17:04:28 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define IND_CODE				3
 
 
-#define MAX_ARGS_NUMBER			4
+#define MAX_ARG				MAX_PLAYERS * 3 + 4
 #define MAX_PLAYERS				4
 #define MEM_SIZE				(4*1024)
 #define IDX_MOD					(MEM_SIZE / 8)
@@ -69,6 +69,8 @@ typedef char	t_arg_type;
 
 # define HEADER_SIZE			4 + PROG_NAME_LENGTH + 2 * 4 + COMMENT_LENGTH
 # define COR_SIZE_MAX			HEADER_SIZE + 4 + CHAMP_MAX_SIZE
+
+# define MAX_ARG				MAX_PLAYERS * 3 + 4
 
 typedef struct		header_s
 {

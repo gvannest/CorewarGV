@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   ft_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 12:43:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/19 14:18:02 by gvannest         ###   ########.fr       */
+/*   Created: 2018/06/18 19:02:34 by gvannest          #+#    #+#             */
+/*   Updated: 2018/06/19 14:21:01 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	ft_print_test(char *line)
+unsigned long long		ft_convert_nbr(char *str, size_t k)
 {
-	int i = 0;
+	unsigned short		i;
+	unsigned long long	res;
 
-	printf(" ");
-	while (i < COR_SIZE_MAX + 5)
+	i = 0;
+	res = 0;
+	while (i < k)
 	{
-		printf("%.2hhx", line[i]);
+		res = res | (str[i] & 0xff) << 8 * (k - 1 - i);
 		i++;
-		if (i % 16 == 0 & i != 0)
-			printf("\n");
-		if (i % 2 == 0)
-			printf(" ");
 	}
-	putchar('\n');
-	putchar('\n');
+	return (res);
 }
-
-
-
-/*int main()
-{
-	return (0);
-}*/

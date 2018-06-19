@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:54:27 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/18 15:06:21 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/19 18:15:10 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,35 @@ static int		ft_open_cor(t_arena *arena, char **argv, int i)
 	char	line[COR_SIZE_MAX + 5];
 	int		ret;
 
-	(void)arena;
 	ft_bzero(line, sizeof(char) * COR_SIZE_MAX + 5);
 	if ((fd = open(argv[i], O_RDONLY)) < 0)
-		return (-1);
+		ft_error_vm(0, "Error : File opening failed\n", argv[i], 0);
 	if ((ret = read(fd, line, COR_SIZE_MAX + 4)) < 0)
-		return (-1);
-	ft_print_test(line);
+		ft_error_vm(0, "Error : File reading failed\n", argv[i], 0);
 	if (close(fd) < 0)
-		return (-1);
-	//ft_parse(line, arena);
+		ft_error_vm(0, "Error : File closing failed\n", argv[i], 0);
+	ft_parse_vm(line, arena, i);
+	//ft_print_test(line);
 	return (0);
 }
-
-//int				ft_fill_arena(
-
 
 int				main(int argc, char **argv)
 {
 	t_arena	arena;
+	int		i;
 
-	if (argc == 3)
+	i = 0;
+	ft_bzero(&arena, sizeof(arena));
+	if (argc == 1 || argc > MAX_ARG)
+		ft_error_vm(1, "Wrong number of arguments\n", "", 0);
+	ft_param(argc, argv, &arena);
+	while (i < argc)
 	{
-		ft_open_cor(&arena, argv, 1);
-		ft_open_cor(&arena, argv, 2);
-		//ft_fill_arena(&arena);
+		if (ft_strstr(argv[i], ".cor"))
+			ft_open_cor(&arena, argv, i);
+		i++;
 	}
+	//ft_fill_arena(&arena);
 	return (0);
 }
 
