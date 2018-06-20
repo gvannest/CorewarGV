@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/19 17:56:04 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/20 18:11:44 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	ft_label_add_instruction(t_label *label, t_instruction *new_instruction);
 void	ft_instruction_new(t_label *label, char *label_name);
 void	ft_instruction_free(t_instruction *instruction);
 void	ft_instruction_free_all(t_label *label);
+void	ft_param_free(t_param *param);
+void	ft_split_line(t_asm *sasm, char *line);
 
 
 #endif
