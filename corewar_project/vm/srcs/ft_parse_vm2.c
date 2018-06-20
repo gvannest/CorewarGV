@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_vm.c                                      :+:      :+:    :+:   */
+/*   ft_parse_vm2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 17:55:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/19 17:08:34 by gvannest         ###   ########.fr       */
+/*   Created: 2018/06/20 17:56:31 by gvannest          #+#    #+#             */
+/*   Updated: 2018/06/20 18:12:00 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void			ft_check_magic(char *line)
+static void		ft_get_comment(char *line, t_arena *arena, char *cor, int i)
 {
-	int magic;
+	int a;
 
-	magic = (int)(ft_convert_nbr(line, 4));
-	if (magic != COREWAR_EXEC_MAGIC)
-		ft_error_vm(1, "Error : Wrong magic number : ", "", magic);
+	a = 0;
+	while (a < COMMENT_LENGTH + 1)
+	{
+		arena->tab_pyr[i].comment[a] = line[a];
+		a++;
+	}
+	if (line[a])
+		ft_error_vm(4, "Error : comment is too long\n", cor, 2);
 }
 
-int				ft_parse_vm(char *line, t_arena *arena, int pyr_nbr)
+void			ft_parse_vm2(char *line, t_arena *arena, char *cor, int i)
 {
-	(void)pyr_nbr;
-	(void)arena;
-	//ft_pyr_name(arena);
-	ft_check_magic(line);
-	return (0);
+	ft_get_comment(line + 3 * 4 + PROG_NAME_LENGTH, arena, cor, i);
 }
-

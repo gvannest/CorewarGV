@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/19 18:02:27 by gvannest         ###   ########.fr        #
+#    Updated: 2018/06/20 18:04:24 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ OBJ_PATH = ./objs/
 # SOURCES
 SRC_NAME = main_test.c \
 		   main_corewar.c \
-		   ft_parse_vm.c \
+		   ft_parse_vm1.c \
+		   ft_parse_vm2.c \
 		   ft_error_vm.c \
 		   ft_tools.c \
 		   ft_option.c

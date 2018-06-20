@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/19 18:15:12 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/20 18:18:31 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 typedef struct		s_player // Structure d'un joueur
 {
 	char			pyr_name[PROG_NAME_LENGTH + 1]; // nom du joueur
-	unsigned short	arg_num; // l'indice de l'argument correspondant a ce joueur
 	int				pyr_nbr;	// numero du joueur
-	int				nb_instruction; // nombre d'instructions envoyees par le joueur
+	int				nb_instructions; // nombre d'instructions envoyees par le joueur
+	char			comment[COMMENT_LENGTH + 1];
 	unsigned int	pyr_nb_live; // Nombre de "live" execute sur ce numero de joueur
 }					t_player;
 
@@ -42,8 +42,7 @@ typedef struct		s_arena // Structure de l'arene = structure principale
 	unsigned int	nb_processus; // nombre de processus en vie
 	unsigned short	nb_pyrs; // nb de joueurs
 	int				last_live_pyr; // dernier joueur a avoir dit "live"
-	t_player		tab_pyr[MAX_PLAYERS]; // structure du joueur 1
-	t_player		player2; // structure du joueur 2
+	t_player		tab_pyr[MAX_PLAYERS]; // tableau de structures de joueur a trier en fonction des -n
 	struct s_proc	*list_proc; // pointeur vers debut liste chainee des processus
 }					t_arena;
 
@@ -64,8 +63,10 @@ typedef struct		s_proc
 
 void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
 unsigned long long	ft_convert_nbr(char *str, size_t k);
-int					ft_parse_vm(char *line, t_arena *arena, int pyr_nbr);
+void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
+void				ft_parse_vm2(char *line, t_arena *arena, char *cor, int i);
 void				ft_param(int argc, char **argv, t_arena *arena);
+void				ft_assert(char *line, t_arena *arena);
 
 #endif
 
