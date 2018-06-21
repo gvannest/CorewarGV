@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/20 18:18:31 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/21 15:29:44 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_player // Structure d'un joueur
 	char			pyr_name[PROG_NAME_LENGTH + 1]; // nom du joueur
 	int				pyr_nbr;	// numero du joueur
 	int				nb_instructions; // nombre d'instructions envoyees par le joueur
+	char			champ[CHAMP_MAX_SIZE + 1];
 	char			comment[COMMENT_LENGTH + 1];
 	unsigned int	pyr_nb_live; // Nombre de "live" execute sur ce numero de joueur
 }					t_player;

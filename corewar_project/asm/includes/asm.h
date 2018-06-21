@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/20 18:11:44 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/21 16:32:01 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 #include "../../includes/op.h"
+# include "op.h"
 
 typedef struct	s_param
 {
@@ -62,12 +63,23 @@ typedef struct s_asm
 	struct 	s_label *label;
 }			  t_asm;
 
+typedef struct s_op
+{  
+	char	*name;
+	int		nb_params;
+	char	param_type[MAX_ARG];
+	int 	opcode;
+	int		nb_cycles;
+	char	*description;
+	int 	mod_carry;
+	int		dir_oct_size; //0 = 4 octets et 1 = 2 octets
+}				t_op;
+
 /*
  * parsing
  */
 void	ft_parse_name(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
-
 /*
  * Error
  */
@@ -87,5 +99,10 @@ void	ft_instruction_free(t_instruction *instruction);
 void	ft_instruction_free_all(t_label *label);
 void	ft_param_free(t_param *param);
 void	ft_split_line(t_asm *sasm, char *line);
+void	ft_load_asm_instruction(t_asm *sasm, char **tab);
+void	ft_load_instruction_params(t_instruction *instruction, char **tab);
+int		ft_is_valid_line(char **tab, char **tab_params);
+int		ft_load_asm(t_asm *sasm, char **tab);
+int		ft_strtab_nblines(char **tab);
 
 #endif

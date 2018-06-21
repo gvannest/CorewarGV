@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/19 14:07:43 by msicot           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:08:11 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int	main(int argc, char **argv)
 		return (0);
 	else
 		ft_gnl(&info);
+	(void) argc;
+	(void) argv;
+	char *line = ft_strdup("tird:    sti    r10,%:fin,r3");
+	ft_split_line(line);
+	free(line);
 	return (0);
 }
 
