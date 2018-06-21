@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 18:30:00 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/20 18:09:28 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/21 15:29:37 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,79 +18,39 @@
 void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 {
 	if (error_code == 0)
-	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("Source file : ", 2);
-		ft_putstr_fd(msg2, 2);
-		ft_putchar_fd('\n', 2);
-		ft_putstr_fd(strerror(errno), 2);
-	}
+		ft_dprintf(2, "%s\nSource file : %s\n%s\n", msg1, msg2,
+				strerror(errno));
 	else if (error_code == 1)
 	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("Usage : ./corewar -visual [-dump nbr_cycles] ", 2);
-		ft_putstr_fd("[[-n number] champion1.cor]...\n", 2);
-		ft_putstr_fd("[number] must be different than 0\n", 2);
+		ft_dprintf(2, "%s\nUsage : ./corewar -visual [-dump nbr_cycles]", msg1);
+		ft_dprintf(2, " [[-n number] champion1.cor]...\n");
+		ft_dprintf(2, "Note : [number] must be different than 0\n");
 	}
 	else if (error_code == 2)
-	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("From file : ", 2);
-		ft_putstr_fd(msg2, 2);
-		ft_putchar_fd('\n', 2);
-		ft_putnbr_fd(v1, 2);
-		ft_putstr_fd(" != ", 2);
-		ft_putnbr_fd(COREWAR_EXEC_MAGIC, 2);
-	}
+		ft_dprintf(2, "%s\nSource file : %s\n%#x != %#x", msg1, msg2, v1,
+				COREWAR_EXEC_MAGIC);
 	else if (error_code == 3)
-	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("Minimum number of players : 1\n", 2);
-		ft_putstr_fd("Maximum number of players : ", 2);
-		ft_putnbr_fd(MAX_PLAYERS, 2);
-		ft_putchar_fd('\n', 2);
-	}
+		ft_dprintf(2, "%s\nNumber of players must be between 1 and %d\n", msg1,
+				MAX_PLAYERS);
 	else if (error_code == 4)
 	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("From file : ", 2);
-		ft_putstr_fd(msg2, 2);
-		ft_putchar_fd('\n', 2);
+		ft_dprintf(2, "%s\nFrom file : %s\n", msg1, msg2);
 		if (v1 == 1)
-		{
-			ft_putstr_fd("Maximum champion's name size : ", 2);
-			ft_putnbr_fd(PROG_NAME_LENGTH, 2);
-		}
+			ft_dprintf(2, "Maximum champion's name size : %d bytes\n",
+					PROG_NAME_LENGTH);
 		else
-		{
-			ft_putstr_fd("Maximum comment size : ", 2);
-			ft_putnbr_fd(COMMENT_LENGTH, 2);
-		}
-		ft_putstr_fd(" bytes\n", 2);
+			ft_dprintf(2, "Maximum comment size : %d bytes\n", COMMENT_LENGTH);
 	}
 	else if (error_code == 5)
-	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("From file : ", 2);
-		ft_putstr_fd(msg2, 2);
-		ft_putchar_fd('\n', 2);
-		ft_putnbr_fd(v1, 2);
-		ft_putstr_fd(" bytes vs. [1, ", 2);
-		ft_putnbr_fd(CHAMP_MAX_SIZE, 2);
-		ft_putstr_fd("] bytes\n", 2);
-	}
+		ft_dprintf(2, "%s\nFrom file : %s\n%d bytes vs. [1, %d] bytes\n",
+				msg1, msg2, v1, CHAMP_MAX_SIZE);
 	else if (error_code == 6)
 	{
-		ft_putstr_fd(msg1, 2);
-		ft_putstr_fd("From file : ", 2);
-		ft_putstr_fd(msg2, 2);
-		ft_putchar_fd('\n', 2);
+		ft_dprintf(2, "%s\nFrom file : %s\n", msg1, msg2);
 		if (v1 == 1)
-			ft_putstr_fd("between name and number of instructions - ", 2);
+			ft_dprintf(2, "between name and number of instructions\n", 2);
 		else
-			ft_putstr_fd("between comment and instructions - ", 2);
-		ft_putstr_fd(msg2, 2);
-		ft_putchar_fd('\n', 2);
+			ft_putstr_fd("between comment and instructions\n", 2);
 	}
 	exit(EXIT_FAILURE);
 }

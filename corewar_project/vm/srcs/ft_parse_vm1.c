@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 17:55:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/20 18:19:05 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/21 14:27:38 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		ft_check_magic(char *line, char *cor)
 
 	magic = (int)(ft_convert_nbr(line, 4));
 	if (magic != COREWAR_EXEC_MAGIC)
-		ft_error_vm(2, "Error : Wrong magic number\n", cor, magic);
+		ft_error_vm(2, "Error : Wrong magic number", cor, magic);
 }
 
 static void		ft_get_name(char *line, t_arena *arena, char *cor, int i)
@@ -32,7 +32,7 @@ static void		ft_get_name(char *line, t_arena *arena, char *cor, int i)
 		j++;
 	}
 	if (line[j])
-		ft_error_vm(4, "Error : champion's name is too long\n", cor, 1);
+		ft_error_vm(4, "Error : champion's name is too long", cor, 1);
 }
 
 static void		ft_nb_instruct(char *line, t_arena *arena, int i, char *cor)
@@ -41,7 +41,7 @@ static void		ft_nb_instruct(char *line, t_arena *arena, int i, char *cor)
 
 	nb = (int)(ft_convert_nbr(line, 4));
 	if (nb > CHAMP_MAX_SIZE || nb < 1)
-		ft_error_vm(5, "Error : Wrong champion size\n", cor, nb);
+		ft_error_vm(5, "Error : Wrong champion size", cor, nb);
 	arena->tab_pyr[i].nb_instructions = nb;
 }
 
@@ -53,7 +53,7 @@ static void		ft_check_transition(char *line, char *cor, int p)
 	while (a < 4)
 	{
 		if (line[a])
-			ft_error_vm(6, "Error : wrong transition format\n", cor, p);
+			ft_error_vm(6, "Error : wrong transition format", cor, p);
 		a++;
 	}
 }
