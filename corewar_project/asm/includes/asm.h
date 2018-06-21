@@ -19,6 +19,7 @@
 #include <stdio.h>
 # include "libft.h"
 # include "get_next_line.h"
+#include "../../includes/op.h"
 
 typedef struct	s_param
 {
@@ -52,12 +53,27 @@ typedef struct s_label
 typedef struct s_asm
 {
 	char 	*tab;
+	int	name_f;
+	int	comment_f;
+	int	fp;
+	int	line_nb;
+	int	error;
+	int	err_pos;
 	struct 	s_label *label;
 }			  t_asm;
 
+/*
+ * parsing
+ */
+void	ft_parse_name(t_asm *info, char *line);
+void	ft_gnl(t_asm *info);
 
+/*
+ * Error
+ */
 void	ft_error(int a);
-void	ft_gnl(int fp);
+void	parsing_error(t_asm *info, int pos, char *line);
+
 void	ft_display_param(t_param *param, int param_id);
 void	ft_display_instruction(t_instruction *instruction);
 void	ft_display_label(t_label *label);
@@ -71,6 +87,5 @@ void	ft_instruction_free(t_instruction *instruction);
 void	ft_instruction_free_all(t_label *label);
 void	ft_param_free(t_param *param);
 void	ft_split_line(t_asm *sasm, char *line);
-
 
 #endif

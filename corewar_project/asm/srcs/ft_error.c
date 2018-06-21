@@ -11,6 +11,13 @@
 /* ************************************************************************** */
 
 #include "asm.h"
+void	parsing_error(t_asm *info, int pos, char *line)
+{
+	if (info->error == 1)
+	{
+	ft_printf("Syntax error at token [TOKEN][%0d:00]\n", info->line_nb);
+	}
+}
 
 void	ft_error(int a)
 {
