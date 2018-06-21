@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:30:07 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/20 13:46:26 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/21 15:24:27 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,15 @@ static void			ft_upload_num_player(char **argv, int i, t_arena *arena)
 	p = 0;
 	n = ft_atoi(argv[i + 1]);
 	if (n == 0)
-		ft_error_vm(1, "Error : Player cannot get the number 0\n", "", 0);
+		ft_error_vm(1, "Error : Player cannot get the number 0", "", 0);
 	while (p < k)
 	{
 		if (arena->tab_pyr[p].pyr_nbr == n)
-			ft_error_vm(1, "Error : two players with same number\n", "", 0);
+			ft_error_vm(1, "Error : two players with same number", "", 0);
 		p++;
 	}
 	if (k == MAX_PLAYERS)
-		ft_error_vm(3, "Error : wrong number of players\n", "", arena->nb_pyrs);
+		ft_error_vm(3, "Error : wrong number of players", "", arena->nb_pyrs);
 	arena->tab_pyr[k].pyr_nbr = n;
 	k++;
 }
@@ -86,16 +86,16 @@ void			ft_param(int argc, char **argv, t_arena *arena)
 
 	i = 1;
 	if (argc == 1 || argc > MAX_ARG)
-		ft_error_vm(1, "Wrong number of arguments\n", "", 0);
+		ft_error_vm(1, "Wrong number of arguments", "", 0);
 	while (i < argc)
 	{
 		if (!ft_check_param(argv, argc, i, arena))
-			ft_error_vm(1, "Error usage : wrong arguments\n", "", 0);
+			ft_error_vm(1, "Error usage : wrong arguments", "", 0);
 		if (ft_strcmp(argv[i], "-n") == 0)
 			ft_upload_num_player(argv, i, arena);
 		i++;
 	}
 	if (arena->nb_pyrs < 1 || arena->nb_pyrs > 4)
-		ft_error_vm(3, "Error : wrong number of players\n", "", arena->nb_pyrs);
+		ft_error_vm(3, "Error : wrong number of players", "", arena->nb_pyrs);
 }
 
