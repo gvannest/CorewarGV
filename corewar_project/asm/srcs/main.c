@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 15:09:26 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/28 15:11:35 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_info(&info)
 {
+	//coucou gautier
 	info->name_f = 0;
 	info->comment_f = 0;
 	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );
