@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/27 16:09:47 by msicot           ###   ########.fr       */
+/*   Updated: 2018/06/28 13:30:40 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ typedef struct s_label
 typedef struct s_asm
 {
 	char 	*tab;
-	char	comment[COMMENT_LENGTH];
-	char	name[PROG_NAME_LENGTH];
+	char	comment[COMMENT_LENGTH + 1];
+	char	name[PROG_NAME_LENGTH + 1];
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
 	int	quote;

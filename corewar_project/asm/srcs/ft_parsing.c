@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:54:26 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/27 17:11:39 by msicot           ###   ########.fr       */
+/*   Updated: 2018/06/28 13:23:19 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ void		ft_gnl(t_asm *info)
 	while ((info->gnl = get_next_line(info->fp, &line)) > 0 && info->error == 0
 			&& info->stop == 0)
 	{
+			++info->line_nb;
 //			printf("%s\n", line);
 			check_line(&(*info), line, ft_strlen(line));
 			if (info->error != -1)
 				parsing_error(info, line);
 			ft_strdel(&line);
-			++info->line_nb;
 	}
 	ft_check_data(&(*info));
 	free(line);
+	printf("Name =%s\nComment=%s\n", info->name, info->comment);
 }
