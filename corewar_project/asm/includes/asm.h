@@ -6,7 +6,11 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/06/27 18:17:15 by srossi           ###   ########.fr       */
+=======
+/*   Updated: 2018/06/28 13:30:40 by msicot           ###   ########.fr       */
+>>>>>>> a0d1df6e752f4c0c3e326091c54ae37c342a6383
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +76,27 @@ typedef struct s_asm
 	int				error;
 	int				err_pos;
 	struct 	s_token *atoken;
-}			  t_asm;
+	char 	*tab;
+	char	comment[COMMENT_LENGTH + 1];
+	char	name[PROG_NAME_LENGTH + 1];
+	char	*code;
+	char	err_content[COMMENT_LENGTH];
+	int	quote;
+	int	start;
+	int	end;
+	int nb;
+	int	name_f;
+	int	comment_f;
+	int	fp;
+	int	line_nb;
+	int	error;
+	int	err_pos;
+	int	stop;
+	int	gnl;
+	int	eof;
+	struct s_nb		*nb_s;
+	struct s_label	*label;
+}				t_asm;
 
 typedef struct s_op
 {  
@@ -92,12 +116,14 @@ extern t_op op_tab[NB_INSTR + 1];
  * parsing
  */
 void	ft_parse_name(t_asm *info, char *line);
+void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 /*
  * Error
  */
 void	ft_error(int a);
-void	parsing_error(t_asm *info, int pos, char *line);
+void	parsing_error(t_asm *info, char *line);
+void	ft_syntax_err(t_asm *info, int i, char *line);
 
 /*
  * Lexical analysis

@@ -6,25 +6,21 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 11:12:34 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/28 15:09:26 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	main(int argc, char **argv)
+void	init_info(&info)
 {
-	(void) argc;
-	(void) argv;
-	ft_test_is_reg();
-	ft_printf("\n");
-	ft_test_is_dir();
-	ft_printf("\n");
-	ft_test_is_ind();
-	ft_printf("\n");
-	ft_test_is_op();
-	ft_printf("\n");
-	ft_test_is_label();
+	info->name_f = 0;
+	info->comment_f = 0;
+	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );
+	ft_bzero(info->comment, COMMENT_LENGTH + 1);
+	info->line_nb = 0;
+	info->error = 0;
+	info->err_pos = -1;
 	return (0);
 }
 
@@ -110,4 +106,31 @@ void	ft_test_is_op()
 	printf("is '%s' an operation ? => %d \n", "zjmpt", ft_is_op("zjmpt"));
 	printf("is '%s' an operation ? => %d \n", "tzjmpt", ft_is_op("tzjmpt"));
 	printf("is '%s' an operation ? => %d \n", "tzjmp", ft_is_op("tzjmp"));
+}
+
+int	main(int argc, char **argv)
+{
+	(void) argc;
+	t_asm	info;
+	(void) argv;
+
+	init_info(&info);
+	ft_test_is_reg();
+	ft_printf("\n");
+	ft_test_is_dir();
+	ft_printf("\n");
+	ft_test_is_ind();
+	ft_printf("\n");
+	ft_test_is_op();
+	ft_printf("\n");
+	ft_test_is_label();
+	if (argc < 2 || argc > 2 || argv[1] == NULL)
+		perror("Error");
+	else if ((info.fp = ft_open(argv[1])) == 0)
+		return (0);
+	else
+		ft_gnl(&info);
+	//char *line = ft_strdup("tird:    sti    r10,%:fin,r3");
+//	ft_split_line(line);
+	return (0);
 }
