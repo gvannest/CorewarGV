@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 15:09:26 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/28 15:14:37 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_info(&info)
 
 void	ft_test_is_reg()
 {
+	//Gautier est lourd dans leau
 	printf("is '%s' a reg ? => %d \n", "r10", ft_is_reg("r10"));
 	printf("is '%s' a reg ? => %d \n", "r0", ft_is_reg("r0"));
 	printf("is '%s' a reg ? => %d \n", "r15", ft_is_reg("r15"));
