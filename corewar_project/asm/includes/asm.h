@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/21 16:32:01 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/27 16:09:47 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdio.h>
 # include "libft.h"
 # include "get_next_line.h"
-#include "../../includes/op.h"
+//#include "../../includes/op.h"
 # include "op.h"
 
 typedef struct	s_param
@@ -54,14 +54,26 @@ typedef struct s_label
 typedef struct s_asm
 {
 	char 	*tab;
+	char	comment[COMMENT_LENGTH];
+	char	name[PROG_NAME_LENGTH];
+	char	*code;
+	char	err_content[COMMENT_LENGTH];
+	int	quote;
+	int	start;
+	int	end;
+	int nb;
 	int	name_f;
 	int	comment_f;
 	int	fp;
 	int	line_nb;
 	int	error;
 	int	err_pos;
-	struct 	s_label *label;
-}			  t_asm;
+	int	stop;
+	int	gnl;
+	int	eof;
+	struct s_nb		*nb_s;
+	struct s_label	*label;
+}				t_asm;
 
 typedef struct s_op
 {  
@@ -79,12 +91,14 @@ typedef struct s_op
  * parsing
  */
 void	ft_parse_name(t_asm *info, char *line);
+void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 /*
  * Error
  */
 void	ft_error(int a);
-void	parsing_error(t_asm *info, int pos, char *line);
+void	parsing_error(t_asm *info, char *line);
+void	ft_syntax_err(t_asm *info, int i, char *line);
 
 void	ft_display_param(t_param *param, int param_id);
 void	ft_display_instruction(t_instruction *instruction);
