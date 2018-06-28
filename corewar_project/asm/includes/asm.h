@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/21 16:32:01 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/27 18:17:15 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 #include <stdio.h>
 # include "libft.h"
 # include "get_next_line.h"
-#include "../../includes/op.h"
 # include "op.h"
 
-typedef struct	s_param
+/*typedef struct	s_param
 {
 	char	type;
 	char	*type_name;
@@ -50,17 +49,29 @@ typedef struct s_label
 	struct	s_label	*next_label; 
 
 }			t_label;
+*/
+
+typedef struct	s_token
+{
+	char			*type;
+	char			*s_val;
+	int				i_val;
+	int				pos;
+	int				line;
+	int				cl;
+	struct	s_token	*next;
+}				t_token;
 
 typedef struct s_asm
 {
-	char 	*tab;
-	int	name_f;
-	int	comment_f;
-	int	fp;
-	int	line_nb;
-	int	error;
-	int	err_pos;
-	struct 	s_label *label;
+	char			*tab;
+	int				name_f;
+	int				comment_f;
+	int				fp;
+	int				line_nb;
+	int				error;
+	int				err_pos;
+	struct 	s_token *atoken;
 }			  t_asm;
 
 typedef struct s_op
@@ -75,6 +86,8 @@ typedef struct s_op
 	int		dir_oct_size; //0 = 4 octets et 1 = 2 octets
 }				t_op;
 
+extern t_op op_tab[NB_INSTR + 1];
+
 /*
  * parsing
  */
@@ -86,6 +99,40 @@ void	ft_gnl(t_asm *info);
 void	ft_error(int a);
 void	parsing_error(t_asm *info, int pos, char *line);
 
+/*
+ * Lexical analysis
+*/
+
+t_token *ft_token_new();
+void	ft_token_free(t_token *token);
+void	ft_token_add_tail(t_token *token, t_token *new_token);
+void	ft_line_split(char *line);
+void	ft_token_load(t_asm *sasm, char* arg, t_token *token);
+void	ft_display_token(t_token *token);
+int		ft_is_reg(char *arg);
+int		ft_is_label(char *arg);
+int		ft_is_dir(char *arg);
+int		ft_is_ind(char *arg);
+int		ft_get_ival(char *arg);
+int		ft_get_type(char *arg);
+int		ft_get_opcode(char *arg);
+int		ft_is_op(char *arg);
+void	ft_token_init(t_token *new_token);
+t_token	*ft_token_new();
+
+
+/*
+** FONCTIONS DE TESTS
+*/
+
+void	ft_test_is_reg();
+void	ft_test_is_dir();
+void	ft_test_is_ind();
+void	ft_test_is_op();
+void	ft_test_is_label();
+
+
+/*
 void	ft_display_param(t_param *param, int param_id);
 void	ft_display_instruction(t_instruction *instruction);
 void	ft_display_label(t_label *label);
@@ -104,5 +151,5 @@ void	ft_load_instruction_params(t_instruction *instruction, char **tab);
 int		ft_is_valid_line(char **tab, char **tab_params);
 int		ft_load_asm(t_asm *sasm, char **tab);
 int		ft_strtab_nblines(char **tab);
-
+*/
 #endif

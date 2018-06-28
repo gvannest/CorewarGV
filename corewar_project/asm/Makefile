@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/21 15:30:30 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/27 18:17:29 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,16 +38,9 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main.c \
-		   ft_error.c \
-		   ft_display.c \
-		   ft_label.c \
-		   ft_instruction.c \
-		   ft_param.c \
-		   ft_split_line.c \
-		   ft_valid.c \
-		   ft_tab_nb_lines.c \
-		   op.c \
-		   ft_parsing.c
+		   ft_token_type.c \
+		   ft_token.c \
+		   op.c
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
