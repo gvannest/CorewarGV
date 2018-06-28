@@ -6,11 +6,12 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 13:07:37 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/27 17:17:33 by msicot           ###   ########.fr       */
+/*   Updated: 2018/06/27 17:32:50 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
 /*
  * Comment
  */ 
@@ -52,6 +53,7 @@ void	ft_comment(t_asm *info, char *line)
 		}
 	}
 }
+
 /*
  * Name
  */
@@ -113,4 +115,3 @@ void	ft_parse_cmd(t_asm *info, char *line)
 			info->name[ft_strlen(info->name)] = '\n';
 	}
 }
-
