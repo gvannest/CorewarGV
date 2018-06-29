@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/27 18:53:52 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/28 16:56:57 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,40 +42,37 @@ void	ft_token_init(t_token *new_token)
 	new_token->next = NULL;
 }
 
-void	ft_token_load(t_asm *sasm, char *arg, t_token *token)
+void	ft_token_load(t_asm *sasm, t_token *token, char *arg, int arg_type)
 {
 	int pos;
 	int arg_ln;
-	int arg_type;
 
-	arg_type = ft_get_type(arg);
 	arg_ln = ft_strlen(arg);
 	if (ft_is_label(arg))
 		token->s_val = ft_strndup(arg, arg_ln - 1);
 	else
 		token->s_val = ft_strdup(arg);
-	token->i_val = ft_get_ival(arg); // recuperer l'opcode si operation dans tableau sinon valeur registre/dir/label/indirect
+	if (arg_type == T_OP)
+		token->i_val = ft_get_ival(arg); // recuperer l'opcode si operation dans tableau sinon valeur registre/dir/label/indirect
+	token->type = arg_type;
 	token->line = sasm->line_nb;
 	token->cl = sasm->err_pos;
 	pos = sasm->err_pos;
 	sasm->err_pos += arg_ln;
 }
 
+
 int ft_get_ival(char *arg)
 {
 	int ival;
+	int index;
 
 	ival = 0;
-	if (ft_is_label(arg))
-		ival = T_LAB;
-	else if (ft_is_reg(arg))
-		ival = T_REG;
-	else if (ft_is_dir(arg))
-		ival = T_DIR;
-	else if (ft_is_ind(arg))
-		ival = T_IND;
-	else if (ft_is_op(arg))
-		ival = T_OP;
+	index = 0;
+	while (op_tab[index] && ft_strcmp(op_tab[index].name, arg) != 0)
+		index++;
+	if (index < NB_INSTR)
+		ival = op_tab[index].opcode;
 	return (ival);
 }
 
@@ -123,27 +120,27 @@ void	ft_token_list_free(t_token *a_token)
 
 int	ft_get_type(char *arg)
 {
+	int	type;
 
-	if (ft_is_label(arg))
-	{
-		ft_printf("%s \n", "LABEL");
-		return (8);
-	}
-	else if (ft_is_reg(arg))
-	{
-		ft_printf("%s \n", "REG");
-		return (1);
-	}
-	else if (ft_is_dir(arg))
-	{
-		ft_printf("%s \n", "DIR");
-		return (2);
-	}
-	else if (ft_is_ind(arg))
-	{
-		ft_printf("%s \n", "IND");
-		return (4);
-	}
-	return (0);
+	type = 0;
+	if (ft_is_reg(arg) > 0)
+		type = T_REG;
+	else if (ft_is_dir(arg) > 0)
+		type = T_DIR;
+	else if (ft_is_ind(arg) > 0)
+		type = T_IND;
+	else if (ft_is_op(arg) > 0)
+		type = T_OP;
+	else
+		type = ft_is_label(arg);
+	return (type);
+}
 
+void	ft_token_add(t_asm *sasm, char *arg, int arg_type)
+{
+	t_token *new_token;
+	
+	new_token = ft_token_new();
+	ft_token_load(sasm, new_token, arg, arg_type);
+	ft_token_add_tail(sasm->token, new_token); 
 }

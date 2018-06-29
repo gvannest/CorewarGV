@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/27 18:17:29 by srossi           ###   ########.fr        #
+#    Updated: 2018/06/28 15:24:06 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,11 @@ OBJ_PATH = ./objs/
 SRC_NAME = main.c \
 		   ft_token_type.c \
 		   ft_token.c \
-		   op.c
+		   op.c \
+		   ft_parsing.c \
+		   parse_cmd2.c \
+		   ft_error.c
+
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)

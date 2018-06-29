@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 13:47:31 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/28 14:54:11 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/28 16:56:58 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_is_reg(char *arg)
 			return (0);
 		index++;
 	}
-	return (1);
+	return (T_REG);
 }
 
 int	ft_is_label(char *arg)
@@ -46,7 +46,7 @@ int	ft_is_label(char *arg)
 			while (index < arg_ln - 1 && ft_strchr(LABEL_CHARS, arg[index]) != 0)
 				index++;
 			if (index == arg_ln - 1)
-				is_label = 1;
+				is_label = T_LAB;
 		}
 		else if (arg[0] == DIRECT_CHAR && arg[1] == LABEL_CHAR && arg_ln > 2)
 		{
@@ -54,7 +54,7 @@ int	ft_is_label(char *arg)
 			while (index < arg_ln && ft_strchr(LABEL_CHARS, arg[index]) != 0)
 				index++;
 			if (index == arg_ln)
-				is_label = 2;
+				is_label = T_DIR_LAB;
 		}
 		else if (arg[0] == LABEL_CHAR)
 		{
@@ -62,7 +62,7 @@ int	ft_is_label(char *arg)
 			while (index < arg_ln && ft_strchr(LABEL_CHARS, arg[index]) != 0)
 				index++;
 			if (index == arg_ln)
-				is_label = 3;
+				is_label = T_IND_LAB;
 		}
 	}
 	return (is_label);
@@ -84,7 +84,7 @@ int	ft_is_dir(char *arg)
 		while (index < arg_ln && ft_isdigit(arg[index]))
 			index++;
 		if (index == arg_ln)
-			is_dir = 1;
+			is_dir = T_DIR;
 	}
 	return (is_dir);
 }
@@ -105,7 +105,7 @@ int	ft_is_ind(char *arg)
 		while (index < arg_ln && ft_isdigit(arg[index]))
 			index++;
 		if (index == arg_ln)
-			is_ind = 1;
+			is_ind = T_IND;
 	}
 	return (is_ind);
 }
@@ -122,7 +122,7 @@ int	ft_is_op(char *arg)
 		while (index < NB_INSTR && ft_strcmp(op_tab[index].name, arg) != 0)
 			index++;
 		if (index < NB_INSTR)
-			is_op = 1;
+			is_op = T_OP;
 	}
 	return (is_op);
 }

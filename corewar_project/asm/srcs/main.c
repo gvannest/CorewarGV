@@ -6,13 +6,13 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 15:15:34 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/28 15:21:56 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	init_info(&info)
+void	init_info(t_asm *info)
 {
 	//coucou gautier
 	info->name_f = 0;
@@ -22,7 +22,6 @@ void	init_info(&info)
 	info->line_nb = 0;
 	info->error = 0;
 	info->err_pos = -1;
-	return (0);
 }
 
 
@@ -128,8 +127,8 @@ int	main(int argc, char **argv)
 	ft_test_is_label();
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
 		perror("Error");
-	else if ((info.fp = ft_open(argv[1])) == 0)
-		return (0);
+//	else if ((info.fp = ft_open(argv[1])) == 0)
+//		return (0);
 	else
 		ft_gnl(&info);
 	//char *line = ft_strdup("tird:    sti    r10,%:fin,r3");
