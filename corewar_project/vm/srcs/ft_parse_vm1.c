@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 17:55:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/21 14:27:38 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/29 15:05:17 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		ft_nb_instruct(char *line, t_arena *arena, int i, char *cor)
 	nb = (int)(ft_convert_nbr(line, 4));
 	if (nb > CHAMP_MAX_SIZE || nb < 1)
 		ft_error_vm(5, "Error : Wrong champion size", cor, nb);
-	arena->tab_pyr[i].nb_instructions = nb;
+	arena->tab_pyr[i].nb_inst = nb;
 }
 
 static void		ft_check_transition(char *line, char *cor, int p)

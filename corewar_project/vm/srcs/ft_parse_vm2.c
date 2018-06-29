@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 17:56:31 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/21 15:29:36 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/26 11:25:40 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		ft_get_champ(char *line, t_arena *arena, int i)
 	int n;
 
 	k = 0;
-	n = arena->tab_pyr[i].nb_instructions;
+	n = arena->tab_pyr[i].nb_inst;
 	while (k < n)
 	{
 		arena->tab_pyr[i].champ[k] = line[k];

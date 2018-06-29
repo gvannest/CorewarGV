@@ -6,19 +6,16 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 18:30:00 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/21 15:29:37 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/29 14:48:42 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-// code == 0 : erreur de open / read / close / malloc. erreur systeme
-// code == 1 : Erreur de magic number
-
 void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 {
 	if (error_code == 0)
-		ft_dprintf(2, "%s\nSource file : %s\n%s\n", msg1, msg2,
+		ft_dprintf(2, "%s\nSource : %s\n%s\n", msg1, msg2,
 				strerror(errno));
 	else if (error_code == 1)
 	{

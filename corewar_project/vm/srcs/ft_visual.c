@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tools.c                                         :+:      :+:    :+:   */
+/*   ft_visual.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 19:02:34 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/26 10:37:36 by gvannest         ###   ########.fr       */
+/*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
+/*   Updated: 2018/06/29 17:16:16 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-unsigned long long		ft_convert_nbr(char *str, size_t k)
-{
-	unsigned short		i;
-	unsigned long long	res;
+/*void		ft_init_visual(t_arena *arena)
+{*/
+	
 
-	i = 0;
-	res = 0;
-	while (i < k)
-	{
-		res = res | (str[i] & 0xff) << 8 * (k - 1 - i);
-		i++;
-	}
-	return (res);
+void		ft_visual(t_arena *arena)
+{
+	initscr();
+	raw();
+	noecho();
+	keypad(stdscr, TRUE);
+	printw("%s", arena->map);
+	refresh();
+	getch();
+	endwin();
 }
 
-int						ft_isnum(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str[0] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}

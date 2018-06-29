@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_corewar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:54:27 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/21 15:29:40 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/06/29 17:16:13 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static void		ft_open_cor(t_arena *arena, char **argv, int i)
 
 	ft_bzero(line, sizeof(char) * COR_SIZE_MAX + 5);
 	if ((fd = open(argv[i], O_RDONLY)) < 0)
-		ft_error_vm(0, "Error : File opening failed\n", argv[i], 0);
+		ft_error_vm(0, "Error : File opening failed", argv[i], 0);
 	if ((ret = read(fd, line, COR_SIZE_MAX)) < 0)
-		ft_error_vm(0, "Error : File reading failed\n", argv[i], 0);
+		ft_error_vm(0, "Error : File reading failed", argv[i], 0);
 	line[COR_SIZE_MAX] = '\0';
 	if (close(fd) < 0)
-		ft_error_vm(0, "Error : File closing failed\n", argv[i], 0);
+		ft_error_vm(0, "Error : File closing failed", argv[i], 0);
 	ft_parse_vm1(line, arena, argv[i], tab_pyr_i);
 	tab_pyr_i++;
 }
@@ -45,8 +45,8 @@ int				main(int argc, char **argv)
 			ft_open_cor(&arena, argv, i);
 		i++;
 	}
+	ft_fill_game(&arena);
 	ft_assert("", &arena);
-	//ft_fill_arena(&arena);
 	return (0);
 }
 

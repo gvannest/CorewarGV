@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/20 18:04:24 by gvannest         ###   ########.fr        #
+#    Updated: 2018/06/29 15:19:20 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ LIB_PATH = ../libs/libft
 export LIB_NEED = ./libft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
+LIB_NCURSES = -lncurses
 
 # SOURCES
 SRC_NAME = main_test.c \
@@ -43,7 +44,10 @@ SRC_NAME = main_test.c \
 		   ft_parse_vm2.c \
 		   ft_error_vm.c \
 		   ft_tools.c \
-		   ft_option.c
+		   ft_option.c \
+		   ft_fill_game.c \
+		   ft_visual.c \
+		   ft_processus.c
 
 
 # OBJECTS
@@ -90,7 +94,7 @@ libftcomp:
 
 $(NAME): $(OBJ)
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-	$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS)
+	$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS) $(LIB_NCURSES)
 	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
 
 $(OBJ_PATH):
