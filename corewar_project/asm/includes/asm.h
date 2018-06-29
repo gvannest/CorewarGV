@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/29 13:11:14 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/29 14:21:46 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	ft_token_init(t_token *new_token);
 void	ft_token_free(t_token *token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg, int arg_type);
 t_token	*ft_token_new();
+void	ft_token_display(t_token *token);
 
 /*
 ** FONCTIONS DE TESTS

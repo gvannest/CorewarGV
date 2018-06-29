@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 15:21:56 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/29 14:54:11 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,9 @@ void	ft_test_is_op()
 	printf("is '%s' an operation ? => %d \n", "tzjmp", ft_is_op("tzjmp"));
 }
 
-int	main(int argc, char **argv)
+/*static	void	ft_test_params()
 {
-	(void) argc;
-	t_asm	info;
-	(void) argv;
 
-	init_info(&info);
 	ft_test_is_reg();
 	ft_printf("\n");
 	ft_test_is_dir();
@@ -125,6 +121,18 @@ int	main(int argc, char **argv)
 	ft_test_is_op();
 	ft_printf("\n");
 	ft_test_is_label();
+}*/
+
+int	main(int argc, char **argv)
+{
+	(void) argc;
+	t_asm	info;
+	(void) argv;
+
+	init_info(&info);
+//	ft_test_params();
+	ft_token_add(&info, "%:live", 1);
+//	ft_token_display(info.atoken);
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
 		perror("Error");
 //	else if ((info.fp = ft_open(argv[1])) == 0)
