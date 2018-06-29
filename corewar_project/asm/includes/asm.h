@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/28 16:57:02 by srossi           ###   ########.fr       */
+/*   Updated: 2018/06/29 13:11:14 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,26 @@ typedef struct	s_token
 typedef struct s_asm
 {
 	char			*tab;
-	int				name_f;
-	int				comment_f;
-	int				fp;
-	int				line_nb;
-	int				error;
-	int				err_pos;
 	struct 	s_token *atoken;
-}			  t_asm;
+	char	comment[COMMENT_LENGTH + 1];
+	char	name[PROG_NAME_LENGTH + 1];
+	char	*code;
+	char	err_content[COMMENT_LENGTH];
+	int	quote;
+	int	start;
+	int	end;
+	int nb;
+	int	name_f;
+	int	comment_f;
+	int	fp;
+	int	line_nb;
+	int	error;
+	int	err_pos;
+	int	stop;
+	int	gnl;
+	int	eof;
+	struct s_label	*label;
+}				t_asm;
 
 typedef struct s_op
 {  
