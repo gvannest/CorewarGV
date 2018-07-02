@@ -43,6 +43,8 @@ SRC_NAME = main.c \
 		   op.c \
 		   ft_parsing.c \
 		   parse_cmd2.c \
+		   parse_cmd.c	\
+		   parse_operator.c \
 		   ft_tests.c \
 		   ft_error.c
 
