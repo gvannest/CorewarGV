@@ -39,6 +39,8 @@ void	ft_token_init(t_token *new_token)
 	new_token->type = -1;
 	new_token->s_val = NULL;
 	new_token->i_val = -1;
+	new_token->opcode = -1;
+	new_token->ocp = -1;
 	new_token->pos = -1;
 	new_token->line = -1;
 	new_token->cl = -1;
@@ -51,13 +53,15 @@ void	ft_token_load(t_asm *sasm, t_token *token, char *arg, int arg_type)
 	int arg_ln;
 
 	arg_ln = ft_strlen(arg);
+	token->type = arg_type;
 	if (ft_is_label(arg))
 		token->s_val = ft_strndup(arg, arg_ln - 1);
 	else
 		token->s_val = ft_strdup(arg);
 	if (arg_type == T_OP)
 		token->i_val = ft_get_ival(arg); // recuperer l'opcode si operation dans tableau sinon valeur registre/dir/label/indirect
-	token->type = arg_type;
+	else if (arg_type == T_REG)
+		token->i_val = ft_atoi(&token->s_val[1]);
 	token->line = sasm->line_nb;
 	token->cl = sasm->err_pos;
 	pos = sasm->err_pos;
@@ -75,8 +79,6 @@ int ft_get_ival(char *arg)
 		index++;
 	if (index < NB_INSTR)
 		ival = op_tab[index].opcode;
-	else
-		ival = 
 	return (ival);
 }
 
@@ -158,6 +160,8 @@ void	ft_token_display(t_token *token)
 		else
 			ft_printf("    S_val : NULL\n");
 		ft_printf("    I_val : %d\n", token->i_val);
+		ft_printf("    opcode : %d\n", token->opcode);
+		ft_printf("    ocp : %d\n", token->ocp);
 		ft_printf("    Pos : %d\n", token->pos);
 		ft_printf("    Line : %d\n", token->line);
 		ft_printf("    Cl : %d\n", token->cl);
@@ -179,10 +183,12 @@ void	ft_token_display_all(t_token *atoken)
 	}
 }
 
-void	ft_token_add(t_asm *sasm, char *arg, int arg_type)
+void	ft_token_add(t_asm *sasm, char *arg)
 {
 	t_token *new_token;
-	
+	int arg_type;
+
+	arg_type = ft_get_ival(arg);
 	new_token = ft_token_new();
 	ft_token_init(new_token);
 	ft_token_load(sasm, new_token, arg, arg_type);
