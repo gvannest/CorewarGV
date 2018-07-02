@@ -105,6 +105,11 @@ extern t_op op_tab[NB_INSTR + 1];
  */
 void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
+void	ft_name(t_asm *info, char *line);
+void	ft_comment(t_asm *info, char *line);
+
+
+
 /*
  * Error
  */
