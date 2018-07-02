@@ -15,7 +15,6 @@ int		ft_is_sep(char c)
 	return (0);
 }
 
-
 static void	ft_split_word(t_asm *info, char *line, int i)
 {
 	char	*arg;
@@ -32,6 +31,7 @@ static void	ft_split_word(t_asm *info, char *line, int i)
 		info->end = i;
 		arg = ft_strsub(line, info->start, info->end - info->start);
 		//ft_token_add(&(*info), &(*arg));
+	
 		ft_printf("arg=%s\n", arg);
 	}
 }
@@ -39,21 +39,17 @@ static void	ft_split_word(t_asm *info, char *line, int i)
 void	ft_parse_op(t_asm *info, char *line)
 {
 	int i;
-	int	flag;
 
-	flag = 0;	
 	info->end = 0;
 	info->start = 0;
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (flag == 0 && !ft_is_space(line[i]))
+		if (!ft_is_space(line[i]))
 		{
 			ft_split_word(&(*info), line, i);
-			flag = 1;
+			break ; 
 		}
 		++i;
 	}
-
-	
 }

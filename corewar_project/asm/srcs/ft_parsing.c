@@ -20,7 +20,6 @@ static void	ft_check_data(t_asm *info)
 		info->error = 1;
 		info->err_pos = 1;
 	}
-
 }
 
 static void	check_line(t_asm *info, char *line, int len)
@@ -54,5 +53,5 @@ void		ft_gnl(t_asm *info)
 	}
 	ft_check_data(&(*info));
 	free(line);
-	ft_printf("Name =%s\nComment =%s", info->name, info->comment);
+//	ft_printf("Name2 =%s\nComment =%s", info->name, info->comment);
 }
