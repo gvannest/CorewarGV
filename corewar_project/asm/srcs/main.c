@@ -43,7 +43,13 @@ int	main(int argc, char **argv)
 
 	init_info(&info);
 //	ft_test_params();
-//	ft_token_add(&info, "%:live", 1);
+	ft_token_add(&info, "%:live"); //remplacer par l'arg de Martin
+	ft_token_add(&info, "2"); //remplacer par l'arg de Martin
+	ft_token_add(&info, "sti"); //remplacer par l'arg de Martin
+	ft_token_add(&info, "r1"); //remplacer par l'arg de Martin
+	ft_token_add(&info, "r2"); //remplacer par l'arg de Martin
+	ft_token_add(&info, "%1"); //remplacer par l'arg de Martin
+	ft_token_display_all(info.atoken);
 //	ft_token_display(info.atoken);
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
 		perror("Error");

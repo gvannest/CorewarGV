@@ -56,6 +56,8 @@ typedef struct	s_token
 	int				type;
 	char			*s_val;
 	int				i_val;
+	int				opcode;
+	int				ocp;
 	int				pos;
 	int				line;
 	int				cl;
@@ -137,8 +139,8 @@ int		ft_is_op(char *arg);
 ** Fonctions tokens
 */
 
-void	ft_token_add(t_asm *sasm, char *arg, int arg_type);
-void	ft_token_add_tail(t_token *token, t_token *new_token);
+void	ft_token_add(t_asm *sasm, char *arg);
+void	ft_token_add_tail(t_token **token, t_token *new_token);
 void	ft_token_init(t_token *new_token);
 void	ft_token_free(t_token *token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg, int arg_type);
@@ -148,12 +150,6 @@ void	ft_token_display(t_token *token);
 /*
 ** FONCTIONS DE TESTS
 */
-
-void	ft_test_is_reg();
-void	ft_test_is_dir();
-void	ft_test_is_ind();
-void	ft_test_is_op();
-void	ft_test_is_label();
 
 
 /*
