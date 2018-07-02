@@ -30,10 +30,10 @@ static void	check_line(t_asm *info, char *line, int len)
 	i = len;
 	if (line == NULL)
 		return ;
-	line = ft_strtrim(line);
 	if (info->comment_f <= 0 || info->name_f <= 0)
 		ft_parse_cmd(&(*info), line);
-	ft_strdel(&line);
+	if (info->comment_f == 1 && info->name_f == 1)
+		ft_parse_op(&(*info), line);
 }
 
 void		ft_gnl(t_asm *info)
@@ -45,7 +45,6 @@ void		ft_gnl(t_asm *info)
 			&& info->stop == 0)
 	{
 			++info->line_nb;
-//			printf("%s\n", line);
 			check_line(&(*info), line, ft_strlen(line));
 			if (info->error != -1)
 				parsing_error(info, line);
@@ -53,5 +52,5 @@ void		ft_gnl(t_asm *info)
 	}
 	ft_check_data(&(*info));
 	free(line);
-	printf("Name =%s\nComment=%s\n", info->name, info->comment);
+	ft_printf("Name =%s\nComment =%s", info->name, info->comment);
 }

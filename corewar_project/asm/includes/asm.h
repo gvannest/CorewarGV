@@ -105,6 +105,11 @@ extern t_op op_tab[NB_INSTR + 1];
  */
 void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
+void	ft_name(t_asm *info, char *line);
+void	ft_comment(t_asm *info, char *line);
+
+
+
 /*
  * Error
  */
@@ -132,12 +137,13 @@ int		ft_is_op(char *arg);
 */
 
 void	ft_token_add(t_asm *sasm, char *arg, int arg_type);
-void	ft_token_add_tail(t_token *token, t_token *new_token);
+void	ft_token_add_tail(t_token **token, t_token *new_token);
 void	ft_token_init(t_token *new_token);
 void	ft_token_free(t_token *token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg, int arg_type);
 t_token	*ft_token_new();
 void	ft_token_display(t_token *token);
+void	ft_token_display_all(t_token *atoken);
 
 /*
 ** FONCTIONS DE TESTS

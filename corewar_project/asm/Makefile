@@ -30,9 +30,9 @@ ifeq ($(NOFLAGS), yes)
 endif
 
 # PATHS
-LIBS = ./libs/libft.a
-LIB_PATH = ../libs/
-export LIB_NEED = ./libft
+LIBS = ../../libft/libft.a
+LIB_PATH = ../../libft/
+export LIB_NEED = ../../libft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 
@@ -43,6 +43,7 @@ SRC_NAME = main.c \
 		   op.c \
 		   ft_parsing.c \
 		   parse_cmd2.c \
+		   ft_tests.c \
 		   ft_error.c
 
 
@@ -54,7 +55,7 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 # FLAGS
-CPPFLAGS = -I./includes/ -I../libs/libft/includes -I../../includes
+CPPFLAGS = -I./includes/ -I../../libft/includes -I../../includes
 
 # **************************************************************************** #
 # SPECIAL CHARS
