@@ -15,6 +15,7 @@
 void	init_info(t_asm *info)
 {
 	//coucou gautier
+	
 	info->name_f = 0;
 	info->comment_f = 0;
 	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );

@@ -32,7 +32,8 @@ static void	check_line(t_asm *info, char *line, int len)
 		return ;
 	if (info->comment_f <= 0 || info->name_f <= 0)
 		ft_parse_cmd(&(*info), line);
-//	ft_strdel(&line);
+	if (info->comment_f == 1 && info->name_f == 1)
+		ft_parse_op(&(*info), line);
 }
 
 void		ft_gnl(t_asm *info)
