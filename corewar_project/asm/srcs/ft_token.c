@@ -20,10 +20,7 @@ void	ft_token_add_tail(t_token **token, t_token *new_token)
 	if (new_token != NULL)
 	{
 		if (p_token == NULL)
-		{
 			*token = new_token;
-			ft_token_display(new_token);
-		}
 		else
 		{
 			while (p_token->next != NULL)
@@ -47,25 +44,22 @@ void	ft_token_init(t_token *new_token)
 	new_token->next = NULL;
 }
 
-void	ft_token_load(t_asm *sasm, t_token *token, char *arg, int arg_type)
+void	ft_token_load(t_asm *sasm, t_token *token, char *arg)
 {
-	int pos;
 	int arg_ln;
 
 	arg_ln = ft_strlen(arg);
-	token->type = arg_type;
+	token->type = ft_get_type(arg);
 	if (ft_is_label(arg))
 		token->s_val = ft_strndup(arg, arg_ln - 1);
 	else
 		token->s_val = ft_strdup(arg);
-	if (arg_type == T_OP)
-		token->i_val = ft_get_ival(arg); // recuperer l'opcode si operation dans tableau sinon valeur registre/dir/label/indirect
-	else if (arg_type == T_REG)
+	if (token->type == T_OP)
+		token->opcode = ft_get_opcode(arg); // recuperer l'opcode si operation dans tableau
+	else if (token->type == T_REG)
 		token->i_val = ft_atoi(&token->s_val[1]);
 	token->line = sasm->line_nb;
 	token->cl = sasm->err_pos;
-	pos = sasm->err_pos;
-	sasm->err_pos += arg_ln;
 }
 
 int ft_get_ival(char *arg)
@@ -149,9 +143,9 @@ t_token *ft_token_new()
 	return (token);
 }
 
-void	ft_token_display(t_token *token)
+void	ft_token_display(t_token *token, int token_nb)
 {
-	ft_printf("TOKEN :\n");
+	ft_printf("TOKEN %d:\n", token_nb);
 	if (token != NULL)
 	{
 		ft_printf("    Type : %d\n", token->type);
@@ -174,11 +168,14 @@ void	ft_token_display(t_token *token)
 void	ft_token_display_all(t_token *atoken)
 {
 	t_token *p_token;
+	int		token_nb;
 
+	token_nb = 0;
 	p_token = atoken;
 	while (p_token)
 	{
-		ft_token_display(p_token);
+		ft_token_display(p_token, token_nb);
+		token_nb++;
 		p_token = p_token->next;
 	}
 }
@@ -186,11 +183,9 @@ void	ft_token_display_all(t_token *atoken)
 void	ft_token_add(t_asm *sasm, char *arg)
 {
 	t_token *new_token;
-	int arg_type;
 
-	arg_type = ft_get_ival(arg);
 	new_token = ft_token_new();
 	ft_token_init(new_token);
-	ft_token_load(sasm, new_token, arg, arg_type);
+	ft_token_load(sasm, new_token, arg);
 	ft_token_add_tail(&sasm->atoken, new_token);
 }
