@@ -34,10 +34,11 @@ void	ft_comment(t_asm *info, char *line)
 {
 	int i;
 
-	i = -1;
+//	printf("Flag comment\n");
+	i = 0;
 	if (!line)
 		return ;
-	while (line[++i] && info->stop == 0)
+	while (line[i] && info->stop == 0)
 	{
 		ft_comment2(&(*info), line, i);
 		if (info->stop == 1)
@@ -49,6 +50,7 @@ void	ft_comment(t_asm *info, char *line)
 			if (info->quote == 2)
 				break ;
 		}
+		++i;
 	}
 	if (info->quote == 2 && line[i] != '\0' && line[i + 1] != '\0')
 		ft_syntax_err(&(*info), i, &line[i]);
@@ -76,10 +78,11 @@ void	ft_name(t_asm *info, char *line)
 {
 	int i;
 
-	i = -1;
+//	printf("Flag name\n");
+	i = 0;
 	if (!line || line[0] == '\0')
 		return ;
-	while (line[++i] && info->stop == 0)
+	while (line[i] && info->stop == 0)
 	{
 		if (line[i] != '"')
 			ft_name2(&(*info), line, i);
@@ -90,6 +93,7 @@ void	ft_name(t_asm *info, char *line)
 			if (info->quote == 2)
 				break ;
 		}
+		++i;
 	}
 	if (info->quote == 2 && line[i] != '\0' && line[i + 1] != '\0')
 		ft_syntax_err(&(*info), i, &line[i + 1]);
