@@ -11,13 +11,26 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "corewar_visual.h"
 
-void		ft_init_visual(t_arena *arena, t_corvisu *visual)
+/*static void	ft_color_pyr(t_arena *arena, int *tab_color)
 {
-	visual->map_v = arena->map;
-	visual->map_pyr_v = arena->map_pyr;
-	visual->map_proc_v = arena->map_process;
+	int	p;
 
+	p = 0;
+	while (p < arena->nb_pyrs)
+	{
+		arena->tab_pyr[p].color_pyr = tab_color[p];
+		p++;
+	}
+}
+*/
+void		ft_init_visual(t_arena *arena)
+{
+	int p;
+	int tab_color[7] = {4, 1, 2, 3, 5, 6, 7};
+
+	p = 1;
 	initscr();
 	raw();
 	noecho();
@@ -28,11 +41,31 @@ void		ft_init_visual(t_arena *arena, t_corvisu *visual)
 		ft_error_vm(0, "Your terminal does not support color", "", 0);
 	}
 	start_color();
+	while (p <= arena->nb_pyrs)
+	{
+		init_pair(p, tab_color[p], COLOR_BLACK);
+		p++;
+	}
+	//ft_color_pyr(arena, tab_color);
 }
 
 void		ft_visual(t_arena *arena)
 {
-	printw("%s", arena->map);
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (arena->map_pyr[i] != 0)
+		{
+			attron(COLOR_PAIR(arena->map_pyr[i]));
+			printw("%c ", arena->map[i]);
+			attroff(COLOR_PAIR(arena->map_pyr[i]));
+			if (i != 0 && i % 64 == 0)
+				printw("\n");
+		}
+		i++;
+	}
 	refresh();
 	getch();
 	endwin();

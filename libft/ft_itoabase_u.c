@@ -31,10 +31,8 @@ static int		ft_countdigits(uintmax_t value, char *base)
 static void		ft_fillitoa(char *str, uintmax_t l, char *base)
 {
 	int i;
-	int k;
 
 	i = 0;
-	k = ft_countdigits(l, base);
 	while (l > 0)
 	{
 		str[i] = base[l % ft_strlen(base)];

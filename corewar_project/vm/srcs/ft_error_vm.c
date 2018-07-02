@@ -49,7 +49,5 @@ void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 		else
 			ft_putstr_fd("between comment and instructions\n", 2);
 	}
-	else if (error_code == 7)
-		ft_dprintf(2, 
 	exit(EXIT_FAILURE);
 }

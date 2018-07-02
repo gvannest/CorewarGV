@@ -16,15 +16,13 @@
 #include <ncurses.h>
 #include "corewar_visual.h"
 
-struct		s_corvisu
+typedef struct		s_corvisu
 {
 	char	*map_v;
 	int		*map_pyr_v;
 	int		*map_proc_v;
 	int		nb_pyrs_v;
-	char	tab_color[MAX_PLAYERS];
-}			t_corvisu;
-
+}					t_corvisu;
 
 #endif
 

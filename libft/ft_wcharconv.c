@@ -22,9 +22,6 @@ static void		ft_unicode4(wchar_t c, char str[5])
 
 static void		ft_unicode3(wchar_t c, char str[5])
 {
-	size_t			i;
-
-	i = 0;
 	str[0] = (c >> 12) | 0xe0;
 	str[1] = ((c >> 6) & 0x3f) | 0x80;
 	str[2] = (c & 0x3f) | 0x80;
@@ -32,9 +29,6 @@ static void		ft_unicode3(wchar_t c, char str[5])
 
 static void		ft_unicode2(wchar_t c, char str[5])
 {
-	size_t			i;
-
-	i = 0;
 	str[0] = (c >> 6) | 0xc0;
 	str[1] = (c & 0x3f) | 0x80;
 }

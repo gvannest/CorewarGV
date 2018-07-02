@@ -52,9 +52,9 @@ static char	*ft_retpositif(char *stkfd, char **line)
 int			get_next_line(const int fd, char **line)
 {
 	t_gnl		s;
-	static char	*stk[OPEN_MAX];
+	static char	*stk[3000];
 
-	if (read(fd, 0, 0) < 0 || fd > OPEN_MAX || line == 0)
+	if (read(fd, 0, 0) < 0 || fd > 3000 || line == 0)
 		return (-1);
 	ft_bzero(&s, sizeof(t_gnl));
 	if (!stk[fd])
