@@ -103,13 +103,14 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
-void	ft_parse_name(t_asm *info, char *line);
+void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 /*
  * Error
  */
 void	ft_error(int a);
-void	parsing_error(t_asm *info, int pos, char *line);
+void	parsing_error(t_asm *info, char *line);
+void	ft_syntax_err(t_asm *info, int i, char *line);
 
 /*
  * Lexical analysis
