@@ -17,12 +17,10 @@ char	*ft_strtrim(char const *s)
 	char	*str;
 	size_t	i;
 	size_t	j;
-	size_t	k;
 
 	if (s)
 	{
 		i = 0;
-		k = 0;
 		j = ft_strlen(s) - 1;
 		while ((s[i] == ' ' || s[i] == ',' || s[i] == '\n' ||
 				s[i] == '\t') && s[i])

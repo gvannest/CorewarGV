@@ -33,10 +33,10 @@ static void		ft_open_cor(t_arena *arena, char **argv, int i)
 
 int				main(int argc, char **argv)
 {
-	t_arena		arena;
-	t_corvisu	visual;
-	int			i;
-	char		v;
+	t_arena			arena;
+	t_corvisu		visual;
+	int				i;
+	char			v;
 
 	i = 0;
 	ft_bzero(&arena, sizeof(arena));

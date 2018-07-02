@@ -24,7 +24,7 @@ static void		ft_fill_map_pyr(t_arena *arena)
 		i = 0;
 		while (i < arena->tab_pyr[p].nb_inst)
 		{
-			arena->map_pyr[i + p * MEM_SIZE / arena->nb_pyrs] = arena->tab_pyr[p].pyr_nbr;
+			arena->map_pyr[i + p * MEM_SIZE / arena->nb_pyrs] = p + 1;
 			i++;
 		}
 		p++;
@@ -43,8 +43,6 @@ static void		ft_fill_map(t_arena *arena)
 		i++;
 	}
 }
-
-
 
 void		ft_fill_game(t_arena *arena)
 {
