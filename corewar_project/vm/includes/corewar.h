@@ -30,6 +30,7 @@ typedef struct		s_player
 	char			pyr_name[PROG_NAME_LENGTH + 1];
 	int				pyr_nbr;
 	int				nb_inst;
+	int				color_pyr;
 	char			champ[CHAMP_MAX_SIZE + 1];
 	char			comment[COMMENT_LENGTH + 1];
 	unsigned int	pyr_nb_live;
@@ -79,12 +80,13 @@ void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
 unsigned long long	ft_convert_nbr(char *str, size_t k);
 void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
 void				ft_parse_vm2(char *line, t_arena *arena, char *cor, int i);
-void				ft_param(int argc, char **argv, t_arena *arena);
+char				ft_param(int argc, char **argv, t_arena *arena);
 void				ft_assert(char *line, t_arena *arena);
 int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_visual(t_arena *arena);
+void				ft_init_visual(t_arena *arena);
 
 #endif
 

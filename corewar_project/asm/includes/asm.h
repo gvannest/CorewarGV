@@ -106,6 +106,7 @@ extern t_op op_tab[NB_INSTR + 1];
  * parsing
  */
 void	ft_parse_cmd(t_asm *info, char *line);
+void	ft_parse_op(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);
@@ -145,7 +146,6 @@ void	ft_token_free(t_token *token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg, int arg_type);
 t_token	*ft_token_new();
 void	ft_token_display(t_token *token);
-void	ft_token_display_all(t_token *atoken);
 
 /*
 ** FONCTIONS DE TESTS
