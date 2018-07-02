@@ -16,7 +16,7 @@
  **Comment
 */
 
-void	ft_comment2(t_asm *info, char *line, int i)
+static void	ft_comment2(t_asm *info, char *line, int i)
 {
 	int	nb;
 
@@ -34,10 +34,11 @@ void	ft_comment(t_asm *info, char *line)
 {
 	int i;
 
-	i = -1;
+//	printf("Flag comment\n");
+	i = 0;
 	if (!line)
 		return ;
-	while (line[++i] && info->stop == 0)
+	while (line[i] && info->stop == 0)
 	{
 		ft_comment2(&(*info), line, i);
 		if (info->stop == 1)
@@ -49,6 +50,7 @@ void	ft_comment(t_asm *info, char *line)
 			if (info->quote == 2)
 				break ;
 		}
+		++i;
 	}
 	if (info->quote == 2 && line[i] != '\0' && line[i + 1] != '\0')
 		ft_syntax_err(&(*info), i, &line[i]);
@@ -58,7 +60,7 @@ void	ft_comment(t_asm *info, char *line)
  **Name
 */
 
-void	ft_name2(t_asm *info, char *line, int i)
+static void	ft_name2(t_asm *info, char *line, int i)
 {
 	int	nb;
 
@@ -76,10 +78,11 @@ void	ft_name(t_asm *info, char *line)
 {
 	int i;
 
-	i = -1;
+//	printf("Flag name\n");
+	i = 0;
 	if (!line || line[0] == '\0')
 		return ;
-	while (line[++i] && info->stop == 0)
+	while (line[i] && info->stop == 0)
 	{
 		if (line[i] != '"')
 			ft_name2(&(*info), line, i);
@@ -90,29 +93,8 @@ void	ft_name(t_asm *info, char *line)
 			if (info->quote == 2)
 				break ;
 		}
+		++i;
 	}
 	if (info->quote == 2 && line[i] != '\0' && line[i + 1] != '\0')
 		ft_syntax_err(&(*info), i, &line[i + 1]);
-}
-
-void	ft_parse_cmd(t_asm *info, char *line)
-{
-	if ((info->name_f != -1) && ((ft_strnequ(line, COMMENT_CMD_STRING, 8)
-					&& info->comment_f == 0) || info->comment_f < 0))
-	{
-		info->quote = (info->comment_f == 0) ? 0 : info->quote;
-		ft_comment(&(*info), line);
-		if (info->comment_f < 0 && info->quote != 2)
-			info->comment[ft_strlen(info->comment)] = '\n';
-	}
-	else if ((info->comment_f != -1) && ((ft_strnequ(line, NAME_CMD_STRING, 5)
-					&& info->name_f == 0) || info->name_f < 0))
-	{
-		info->quote = (info->name_f == 0) ? 0 : info->quote;
-		ft_name(&(*info), line);
-		if (info->name_f < 0 && info->quote != 2 && ft_strlen(line) != 0)
-		{
-			info->name[ft_strlen(info->name)] = '\n';
-		}
-	}
 }

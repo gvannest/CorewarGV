@@ -24,6 +24,16 @@ void	init_info(t_asm *info)
 	info->err_pos = -1;
 }
 
+int	ft_open(char *path)
+{
+	int	fp;
+
+	fp = 0;
+
+	fp = open(path, O_RDONLY);
+	return (fp);
+}
+
 int	main(int argc, char **argv)
 {
 	(void) argc;
@@ -32,12 +42,12 @@ int	main(int argc, char **argv)
 
 	init_info(&info);
 //	ft_test_params();
-	ft_token_add(&info, "%:live", 1);
+//	ft_token_add(&info, "%:live", 1);
 //	ft_token_display(info.atoken);
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
 		perror("Error");
-//	else if ((info.fp = ft_open(argv[1])) == 0)
-//		return (0);
+	else if ((info.fp = ft_open(argv[1])) == 0)
+		return (0);
 	else
 		ft_gnl(&info);
 	//char *line = ft_strdup("tird:    sti    r10,%:fin,r3");
