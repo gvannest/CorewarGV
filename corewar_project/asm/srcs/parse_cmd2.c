@@ -12,6 +12,29 @@
 
 #include "asm.h"
 
+void	ft_check_end(t_asm *info, char *line, int i)
+{
+	int len;
+
+	len = ft_strlen(line);
+	if (line[i] == '\0')
+		return ; 
+	else if (i == len)
+		return ;
+	else 
+	{
+		while (ft_is_space(line[i]))
+				++i;
+		if (line[i] == '#')
+			return;
+		else
+		{
+			printf("Error found\n");
+			ft_syntax_err(&(*info), i, &line[i]);
+		}
+	}
+}
+
 /*
  **Comment
 */
@@ -34,11 +57,10 @@ void	ft_comment(t_asm *info, char *line)
 {
 	int i;
 
-//	printf("Flag comment\n");
 	i = 0;
 	if (!line)
 		return ;
-	while (line[i] && info->stop == 0)
+	while (line[i] && info->stop == 0 && info->quote != 2)
 	{
 		ft_comment2(&(*info), line, i);
 		if (info->stop == 1)
@@ -47,13 +69,15 @@ void	ft_comment(t_asm *info, char *line)
 		{
 			++info->quote;
 			info->comment_f = (info->quote == 2) ? 1 : -1;
-			if (info->quote == 2)
-				break ;
 		}
 		++i;
 	}
-	if (info->quote == 2 && line[i] != '\0' && line[i + 1] != '\0')
-		ft_syntax_err(&(*info), i, &line[i]);
+//	printf("line[i] =->%c<-\n", line[i]);
+	if (info->quote == 2 && line[i] != '\0')
+	{
+	//	ft_syntax_err(&(*info), i, &line[i]);y
+		ft_check_end(&(*info), line, i);
+	}
 }
 
 /*
@@ -82,7 +106,7 @@ void	ft_name(t_asm *info, char *line)
 	i = 0;
 	if (!line || line[0] == '\0')
 		return ;
-	while (line[i] && info->stop == 0)
+	while (line[i] && info->stop == 0 && info->quote != 2)
 	{
 		if (line[i] != '"')
 			ft_name2(&(*info), line, i);
@@ -90,11 +114,9 @@ void	ft_name(t_asm *info, char *line)
 		{
 			++info->quote;
 			info->name_f = (info->quote == 2) ? 1 : -1;
-			if (info->quote == 2)
-				break ;
 		}
 		++i;
 	}
-	if (info->quote == 2 && line[i] != '\0' && line[i + 1] != '\0')
-		ft_syntax_err(&(*info), i, &line[i + 1]);
+	if (info->quote == 2 && line[i] != '\0')
+		ft_check_end(&(*info), line, i);
 }
