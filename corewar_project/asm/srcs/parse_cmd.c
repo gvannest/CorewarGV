@@ -1,15 +1,19 @@
 
 #include "asm.h"
 
+
+
+
+
+
 char *ft_whitesp(t_asm *info, char *line)
 {
 	int i;
 
 	i = 0;
 	if (info->name_f < 0 || info->quote == 1 || info->comment_f < 0)
-		return (&line[i]);
-	while (line[i] != '\0' && (line[i] == 32
-				|| (line[i] >= 9 && line[i] <= 13) ))
+		return (line);
+	while (line[i] && ft_is_space(line[i]))
 		++i;
 	return (&line[i]);
 }

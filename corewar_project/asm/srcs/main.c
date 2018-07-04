@@ -15,13 +15,14 @@
 void	init_info(t_asm *info)
 {
 	//coucou gautier
-	
-	info->name_f = 0;
+//	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );
+//	ft_bzero(info->comment, COMMENT_LENGTH + 1);
+/*	info->name_f = 0;
 	info->comment_f = 0;
-	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );
-	ft_bzero(info->comment, COMMENT_LENGTH + 1);
 	info->line_nb = 0;
 	info->error = 0;
+	info->stop = 0;
+	info->quote = 0;*/
 	info->err_pos = -1;
 }
 
@@ -41,6 +42,7 @@ int	main(int argc, char **argv)
 	t_asm	info;
 	(void) argv;
 
+	ft_bzero(&info, sizeof(t_asm));	
 	init_info(&info);
 /*	ft_test_params();
 	ft_printf("SAVINEIEN SEGF\n");
@@ -53,16 +55,13 @@ int	main(int argc, char **argv)
 	ft_token_display_all(info.atoken);
 //	ft_token_display(info.atoken);
 //	*/
-	ft_printf("SAVINEIEN SEGF 2\n");
+//	ft_printf("SAVINEIEN SEGF 2\n");
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
 		perror("Error");
 	else if ((info.fp = ft_open(argv[1])) == 0)
 		return (0);
-	else
-	{
-		printf("ft_gnl\n");
+		printf("main\n");
 		ft_gnl(&info);
-	}
 	//char *line = ft_strdup("tird:    sti    r10,%:fin,r3");
 //	ft_split_line(line);
 	return (0);

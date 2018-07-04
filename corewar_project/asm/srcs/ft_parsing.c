@@ -27,12 +27,17 @@ static void	check_line(t_asm *info, char *line, int len)
 	int i;
 	
 	i = len;
+//	printf("Chekc line ->%s<-\n", line);
 	if (line == NULL)
 		return ;
 	if (info->comment_f <= 0 || info->name_f <= 0)
+	{
+//		printf("parse cmd\n");
 		ft_parse_cmd(&(*info), line);
+	}
 	else if (info->comment_f == 1 && info->name_f == 1)
 	{
+//		printf("parse op\n");
 		ft_parse_op(&(*info), line);
 	}
 }
@@ -42,9 +47,11 @@ void		ft_gnl(t_asm *info)
 	char	*line;
 
 	line = 0;
+//	printf("ft_gnl fp=%d\n", info->fp);
 	while ((info->gnl = get_next_line(info->fp, &line)) > 0 && info->error == 0
 			&& info->stop == 0)
 	{
+
 			++info->line_nb;
 			check_line(&(*info), line, ft_strlen(line));
 			if (info->error != -1)
@@ -53,5 +60,5 @@ void		ft_gnl(t_asm *info)
 	}
 	ft_check_data(&(*info));
 	free(line);
-//	ft_printf("Name2 =%s\nComment =%s", info->name, info->comment);
+//	ft_printf("Name =%s\nComment =%s", info->name, info->comment);
 }
