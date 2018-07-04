@@ -43,7 +43,7 @@ void		ft_init_visual(t_arena *arena)
 	start_color();
 	while (p <= arena->nb_pyrs)
 	{
-		init_pair(p, tab_color[p], COLOR_BLACK);
+		init_pair(p, tab_color[p - 1], COLOR_BLACK);
 		p++;
 	}
 	//ft_color_pyr(arena, tab_color);
@@ -52,17 +52,33 @@ void		ft_init_visual(t_arena *arena)
 void		ft_visual(t_arena *arena)
 {
 	int i;
+	t_proc *ptr_proc;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		if (arena->map_pyr[i] != 0)
+		ptr_proc = arena->list_proc;
+		if (i != 0 && i % 64 == 0)
+			printw("\n");
+/*		if (arena->map_pyr[i] != 0)
 		{
 			attron(COLOR_PAIR(arena->map_pyr[i]));
-			printw("%c ", arena->map[i]);
+			printw("%.2hhx ", arena->map[i]);
 			attroff(COLOR_PAIR(arena->map_pyr[i]));
-			if (i != 0 && i % 64 == 0)
-				printw("\n");
+		}
+*/
+/*		while (ptr_proc)
+		{
+			if (i == ptr_proc->pc_act)
+			{
+				attron(COLOR_PAIR(1));
+				printw("%.2hhx ", arena->map[i]);
+				attroff(COLOR_PAIR(1));
+			}
+*/
+			else
+				printw("%.2hhx ", arena->map[i]);
+			ptr_proc = ptr_proc->next;
 		}
 		i++;
 	}

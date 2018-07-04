@@ -1,60 +1,49 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_processus.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/29 13:41:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 15:27:31 by gvannest         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "corewar.h"
 
-static void		next_process(t_arena *arena, int p)
+static void		ft_move_noocp(int *map_process, t_proc *proc)
 {
-	t_proc *ptr;
-	t_proc *new_proc;
-
-	ptr = arena->list_proc;
-	if (!(new_proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
-		ft_error_vm(0, "Error : malloc failed","Line 22 in ft_processus.c",0);
-	ft_bzero(new_proc->reg, sizeof(int) * REG_NUMBER);
-	new_proc->reg[0] = arena->tab_pyr[p].pyr_nbr;
-	new_proc->p_nbr = p + 1;
-	new_proc->pc_act = 0 + p * MEM_SIZE / arena->nb_pyrs;
-	arena->map_process[p * MEM_SIZE / arena->nb_pyrs] = new_proc->p_nbr;
-	while (ptr->next != 0)
-		ptr = ptr->next;
-	ptr->next = new_proc;
+	if (proc->opcode_act == 0x01)
+		proc->pc_act = pc_act + 5;
+	else
+		proc->pc_act = pc_act + 3;
 }
 
-static void		first_process(t_arena *arena)
+static void		ft_move_ocp(int *map_process, t_proc *proc, char ocp)
 {
-	t_proc *proc;
+	unsigned int	i;
+	short int		k;
+	unsigned char	tab[3];
 
-	if (!(proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
-		ft_error_vm(0, "Error : malloc failed","Line 30 in ft_processus.c",0);
-	ft_bzero(proc->reg, sizeof(int) * REG_NUMBER);
-	proc->reg[0] = arena->tab_pyr[0].pyr_nbr;
-	proc->p_nbr = 1;
-	proc->pc_act = 0;
-	arena->map_process[0] = proc->p_nbr;
-	arena->list_proc = proc;
-	arena->nb_live_proc = 1;
-}
-
-void		ft_init_process(t_arena *arena)
-{
-	int p;
-
-	p = 1;
-	first_process(arena);
-	while (p < arena->nb_pyrs)
+	i = 0;
+	k = 0;
+	tab[0] = ocp >> 6 & 0x03;
+	tab[1] = ocp >> 4 & 0x03;
+	tab[2] = ocp >> 2 & 0x03;
+	while (i < 3)
 	{
-		next_process(arena, p);
-		p++;
+		if (tab[i] == 0x01)
+			i = i + 1;
+		else if (tab[i] == 0x02)
+			i = i + 4 - 2 * op_tab[proc->opcode_act - 1].dir_oct_size;
+		else if (tab[i] == 0x03)
+			i = i + 2;
+		i++;
 	}
+	proc->pc_act = 1 + i + 1;
 }
 
+
+
+void			ft_move_process(int *map_process, t_proc *proc, char ocp)
+{
+	int				k;
+	unsigned int	i;
+
+	k = map_process[proc->pc_act];
+	map_process[proc->pc_act] = 0;
+	if (ocp == 0)
+		ft_move_noocp(map_process, proc);
+	else
+		ft_move_ocp(map_process, proc, ocp);
+	map_process[proc->pc_act] = k;
+}
