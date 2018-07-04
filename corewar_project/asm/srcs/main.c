@@ -12,19 +12,19 @@
 
 #include "asm.h"
 
-/*void	init_info(t_asm *info)
+void	init_info(t_asm *info)
 {
 	//coucou gautier
 //	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );
 //	ft_bzero(info->comment, COMMENT_LENGTH + 1);
-	info->name_f = 0;
+/*	info->name_f = 0;
 	info->comment_f = 0;
 	info->line_nb = 0;
 	info->error = 0;
-	info->err_pos = -1;
 	info->stop = 0;
-	info->quote = 0;
-}*/
+	info->quote = 0;*/
+	info->err_pos = -1;
+}
 
 int	ft_open(char *path)
 {
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	(void) argv;
 
 	ft_bzero(&info, sizeof(t_asm));	
-//	init_info(&info);
+	init_info(&info);
 /*	ft_test_params();
 	ft_printf("SAVINEIEN SEGF\n");
 	ft_token_add(&info, "%:live"); //remplacer par l'arg de Martin
