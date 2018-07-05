@@ -1,5 +1,6 @@
 #include "asm.h"
 
+/*
 static	void	ft_test_is_reg()
 {
 	//Gautier est lourd dans leau
@@ -85,10 +86,13 @@ static	void	ft_test_is_op()
 	printf("is '%s' an operation ? => %d \n", "tzjmp", ft_is_op("tzjmp"));
 }
 
+*/
+
+
 void	ft_test_params()
 {
 
-	ft_test_is_reg();
+/*	ft_test_is_reg();
 	ft_printf("\n");
 	ft_test_is_dir();
 	ft_printf("\n");
@@ -96,6 +100,6 @@ void	ft_test_params()
 	ft_printf("\n");
 	ft_test_is_op();
 	ft_printf("\n");
-	ft_test_is_label();
+	ft_test_is_label();*/
 }
 

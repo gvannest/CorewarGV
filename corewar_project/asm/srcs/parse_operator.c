@@ -24,12 +24,12 @@ static int	ft_split_word(t_asm *info, char *line, int i)
 			}
 			++i;
 		}
-		if (i != info->start)// && line[info->start] != '\0')
+		if (i != info->start)
 		{
 			info->end = i;
 			arg = ft_strsub(line, info->start, info->end - info->start);
 			//ft_token_add(&(*info), &(*arg));
-			ft_printf("->%s<-\t\t\t", arg);
+		//	ft_printf("->%s<-\t\t\t", arg);
 	//		ft_printf("start=%d, end=%d \n", info->start, info->end);
 			ft_strdel(&arg);
 			return (info->end);
