@@ -45,8 +45,9 @@ typedef struct		s_arena
 	unsigned int	nb_cycle_current;//nb cycles current period (<= cycle-to-die)
 	unsigned int	cycle_to_die;// idem op.h
 	unsigned int	nb_live_currt;//nb de vies dans le cycle courant
-	int				nb_live_tot;//nb de vies totales depuis debut partie
-	int				nb_live_proc;// nb processus en vie
+	unsigned int	nb_live_tot;//nb de vies totales depuis debut partie
+	unsigned int	nb_live_proc;// nb processus en vie
+	unsigned int	nb_round_no_decrease;;// nb de round (cycle to die) without decreasing CYCLE TO DIE
 	unsigned short	nb_pyrs;
 	int				last_live_pyr;//dernier joueru a avoir dit " vie" 
 	t_player		tab_pyr[MAX_PLAYERS];// tableau des joueurs
@@ -60,6 +61,7 @@ typedef struct		s_proc
 	short int		pc_act;//adresse actuelle du processus
 	short int		pc_next;//adresse de la prochaine operation
 	char			opcode_act; //opcode de l'operation en cours
+	char			opcode_valid; //flag pour dire si opcode valide
 	unsigned int	nb_cycle_before_op;//nb de cycles restant avant executier et bouger
 	unsigned int	nb_live_curr_cycle;//nb de lives executees sur le cycle courant
 	char			carry;
@@ -73,7 +75,7 @@ typedef struct s_op
 	char	*name;
 	int		nb_params;
 	char	param_type[MAX_ARG];
-	int 	opcode;
+	char 	opcode;
 	int		nb_cycles;
 	char	*description;
 	int 	mod_carry;
@@ -94,6 +96,12 @@ void				ft_init_process(t_arena *arena);
 void				ft_visual(t_arena *arena);
 void				ft_init_visual(t_arena *arena);
 void				ft_live(t_arena *arena, t_proc *proc);
+void				ft_check_cycle(t_arena *arena);
+void				ft_kill_process(t_proc *begin_list, t_proc *proc_to_kill);
+void				ft_reinit_param(t_arena *arena, t_proc *proc);
+void				ft_next_opcode(t_arena *arena, t_proc *proc);
+void				ft_one_cycle(t_arena *arena, t_proc *proc);
+void				ft_move_process(int *map_process, t_proc *proc, char ocp);
 
 #endif
 

@@ -55,10 +55,15 @@ int				main(int argc, char **argv)
 		ft_visual(&arena);
 	while (arena.nb_live_proc > 0 && arena.cycle_to_die > 0)
 	{
-		while (arena.nb_cycle_current < arena.cycle_to_die)
+		while (arena.nb_cycle_current <= arena.cycle_to_die)
+		{
 			ft_one_cycle(&arena, arena.list_proc);
+			arena.nb_cycle_current++;
+		}
+		ft_check_cycle(&arena);
+		ft_reinit_param(&arena, arena.list_proc);
 	}
-		ft_assert("", &arena);
+	//ft_assert("", &arena);
 	return (0);
 }
 

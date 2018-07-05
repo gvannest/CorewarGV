@@ -8,15 +8,14 @@ void			ft_one_cycle(t_arena *arena, t_proc *proc)
 			proc->nb_cycle_before_op--;
 		else
 		{
-			if (proc->opcode == t_op[0].opcode)
+			if (proc->opcode_act == op_tab[0].opcode && proc->opcode_valid == 1)
 				ft_live(arena, proc);//tableau de pointeur sur fonction en fonction opcode stocke dans processus
-			ft_move_process(arena->map_process, proc, 0);
-			ft_opcode_act = ....
-
-			//ici venir stocker le nombre de cycles de l'operation suivante dans proc->nb_cycle_before_op
-			//+ l'opcode de l'opesuivante
+			ft_move_process(arena->map_process, proc, -1);
+			ft_next_opcode(arena, arena->list_proc);
 		}
 		proc = proc->next;
 	}
+	arena->nb_cycle++;
+	arena->nb_cycle_current++;
 }
 

@@ -18,6 +18,9 @@
 
 typedef struct		s_corvisu
 {
+	WINDOW	*win_arena;
+	WINDOW	*win_info_game;
+	WINDOW	*win_info_pyrs;
 	char	*map_v;
 	int		*map_pyr_v;
 	int		*map_proc_v;

@@ -13,24 +13,21 @@
 #include "corewar.h"
 #include "corewar_visual.h"
 
-/*static void	ft_color_pyr(t_arena *arena, int *tab_color)
+static void		ft_init_color(unsigned short nb_players)
 {
-	int	p;
+	int p;
+	int tab_color[8] = {0, 4, 1, 2, 3, 5, 6, 7};
 
-	p = 0;
-	while (p < arena->nb_pyrs)
+	p = 1;
+	while (p <= nb_players)
 	{
-		arena->tab_pyr[p].color_pyr = tab_color[p];
+		init_pair(p, tab_color[p], COLOR_BLACK);
 		p++;
 	}
 }
-*/
+
 void		ft_init_visual(t_arena *arena)
 {
-	int p;
-	int tab_color[7] = {4, 1, 2, 3, 5, 6, 7};
-
-	p = 1;
 	initscr();
 	raw();
 	noecho();
@@ -41,44 +38,23 @@ void		ft_init_visual(t_arena *arena)
 		ft_error_vm(0, "Your terminal does not support color", "", 0);
 	}
 	start_color();
-	while (p <= arena->nb_pyrs)
-	{
-		init_pair(p, tab_color[p - 1], COLOR_BLACK);
-		p++;
-	}
-	//ft_color_pyr(arena, tab_color);
+	ft_init_color(arena->nb_pyrs);
 }
 
 void		ft_visual(t_arena *arena)
 {
 	int i;
-	t_proc *ptr_proc;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		ptr_proc = arena->list_proc;
 		if (i != 0 && i % 64 == 0)
 			printw("\n");
-/*		if (arena->map_pyr[i] != 0)
+		if (arena->map_pyr[i] != 0)
 		{
 			attron(COLOR_PAIR(arena->map_pyr[i]));
 			printw("%.2hhx ", arena->map[i]);
 			attroff(COLOR_PAIR(arena->map_pyr[i]));
-		}
-*/
-/*		while (ptr_proc)
-		{
-			if (i == ptr_proc->pc_act)
-			{
-				attron(COLOR_PAIR(1));
-				printw("%.2hhx ", arena->map[i]);
-				attroff(COLOR_PAIR(1));
-			}
-*/
-			else
-				printw("%.2hhx ", arena->map[i]);
-			ptr_proc = ptr_proc->next;
 		}
 		i++;
 	}
