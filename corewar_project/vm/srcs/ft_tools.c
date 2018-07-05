@@ -42,3 +42,5 @@ int						ft_isnum(char *str)
 	}
 	return (1);
 }
+
+

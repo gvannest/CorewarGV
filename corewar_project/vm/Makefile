@@ -44,10 +44,13 @@ SRC_NAME = main_test.c \
 		   ft_parse_vm2.c \
 		   ft_error_vm.c \
 		   ft_tools.c \
-		   ft_option.c \
+		   ft_arguments.c \
 		   ft_fill_game.c \
 		   ft_visual.c \
-		   ft_processus.c
+		   ft_init_processus.c \
+		   ft_processus.c \
+		   ft_one_cycle.c \
+		   ft_live.c
 
 
 # OBJECTS

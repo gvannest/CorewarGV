@@ -49,4 +49,5 @@ void		ft_fill_game(t_arena *arena)
 	ft_fill_map(arena);
 	ft_fill_map_pyr(arena);
 	ft_init_process(arena);
+	arena->cycle_to_die = CYCLE_TO_DIE;
 }

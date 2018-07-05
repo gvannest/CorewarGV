@@ -80,6 +80,7 @@ typedef struct s_asm
 	int nb;
 	int	name_f;
 	int	comment_f;
+	int	comment_char;
 	int	fp;
 	int	line_nb;
 	int	error;
@@ -112,7 +113,9 @@ void	ft_parse_op(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);
-
+int		ft_is_space(char c);
+int		ft_is_sep(char c);
+int		ft_is_othchr(char c);
 
 
 /*
