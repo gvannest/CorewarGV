@@ -20,7 +20,9 @@ void	ft_token_add_tail(t_token **token, t_token *new_token)
 	if (new_token != NULL)
 	{
 		if (p_token == NULL)
+		{
 			*token = new_token;
+		}
 		else
 		{
 			while (p_token->next != NULL)
@@ -50,16 +52,17 @@ void	ft_token_load(t_asm *sasm, t_token *token, char *arg)
 
 	arg_ln = ft_strlen(arg);
 	token->type = ft_get_type(arg);
-	if (ft_is_label(arg))
-		token->s_val = ft_strndup(arg, arg_ln - 1);
-	else
-		token->s_val = ft_strdup(arg);
+	token->s_val = ft_strdup(arg);
 	if (token->type == T_OP)
+	{
 		token->opcode = ft_get_opcode(arg); // recuperer l'opcode si operation dans tableau
+		sasm->last_opcode = token->opcode;
+	}
 	else if (token->type == T_REG)
 		token->i_val = ft_atoi(&token->s_val[1]);
 	token->line = sasm->line_nb;
 	token->cl = sasm->err_pos;
+	token->pos = sasm->pos;
 }
 
 int ft_get_ival(char *arg)
@@ -180,6 +183,18 @@ void	ft_token_display_all(t_token *atoken)
 	}
 }
 
+static	void	ft_pos_increment(t_asm *sasm, t_token *new_token)
+{
+	if (new_token->opcode > -1)
+		sasm->last_opcode = new_token->opcode;
+	if (new_token->type == T_DIR && op_tab[sasm->last_opcode - 1].dir_oct_size == 1)
+		sasm->pos += 2;
+	else if (new_token->type == T_DIR && op_tab[sasm->last_opcode - 1].dir_oct_size == 0)
+		sasm->pos += 4;
+	else	
+		sasm->pos++;
+}
+
 void	ft_token_add(t_asm *sasm, char *arg)
 {
 	t_token *new_token;
@@ -188,4 +203,5 @@ void	ft_token_add(t_asm *sasm, char *arg)
 	ft_token_init(new_token);
 	ft_token_load(sasm, new_token, arg);
 	ft_token_add_tail(&sasm->atoken, new_token);
+	ft_pos_increment(sasm, new_token);
 }

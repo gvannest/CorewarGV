@@ -14,15 +14,7 @@
 
 void	init_info(t_asm *info)
 {
-	//coucou gautier
-//	ft_bzero(info->name, PROG_NAME_LENGTH + 1 );
-//	ft_bzero(info->comment, COMMENT_LENGTH + 1);
-/*	info->name_f = 0;
-	info->comment_f = 0;
-	info->line_nb = 0;
-	info->error = 0;
-	info->stop = 0;
-	info->quote = 0;*/
+	info->last_opcode = -1;
 	info->err_pos = -1;
 }
 
@@ -31,7 +23,6 @@ int	ft_open(char *path)
 	int	fp;
 
 	fp = 0;
-
 	fp = open(path, O_RDONLY);
 	return (fp);
 }
@@ -42,27 +33,15 @@ int	main(int argc, char **argv)
 	t_asm	info;
 	(void) argv;
 
-	ft_bzero(&info, sizeof(t_asm));	
+	ft_bzero(&info, sizeof(t_asm));
 	init_info(&info);
-/*	ft_test_params();
-	ft_printf("SAVINEIEN SEGF\n");
-	ft_token_add(&info, "%:live"); //remplacer par l'arg de Martin
-	ft_token_add(&info, "2"); //remplacer par l'arg de Martin
-	ft_token_add(&info, "sti"); //remplacer par l'arg de Martin
-	ft_token_add(&info, "r1"); //remplacer par l'arg de Martin
-	ft_token_add(&info, "r2"); //remplacer par l'arg de Martin
-	ft_token_add(&info, "%1"); //remplacer par l'arg de Martin
-	ft_token_display_all(info.atoken);
-//	ft_token_display(info.atoken);
-//	*/
-//	ft_printf("SAVINEIEN SEGF 2\n");
+//	ft_test_params();
+//	ft_test_label();
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
 		perror("Error");
 	else if ((info.fp = ft_open(argv[1])) == 0)
 		return (0);
-		printf("main\n");
-		ft_gnl(&info);
-	//char *line = ft_strdup("tird:    sti    r10,%:fin,r3");
-//	ft_split_line(line);
+	printf("main\n");
+	ft_gnl(&info);
 	return (0);
 }

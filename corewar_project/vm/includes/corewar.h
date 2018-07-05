@@ -33,29 +33,35 @@ typedef struct		s_player
 	int				color_pyr;
 	char			champ[CHAMP_MAX_SIZE + 1];
 	char			comment[COMMENT_LENGTH + 1];
-	unsigned int	pyr_nb_live;
+	unsigned int	pyr_nb_live;//nb de live executes sur ce joueur
 }					t_player;
 
 typedef struct		s_arena
 {
-	char			map[MEM_SIZE + 1];
-	int				map_pyr[MEM_SIZE];
-	int				map_process[MEM_SIZE];
-	unsigned int	nb_cycle;
-	unsigned int	nb_live_proc;
+	char			map[MEM_SIZE + 1];//l' arene de jeu
+	int				map_pyr[MEM_SIZE];// idem mais avec num pyr pour visu
+	int				map_process[MEM_SIZE];// idem mais avec process pour visu
+	unsigned int	nb_cycle; //nb de cycles depuis debut partie
+	unsigned int	nb_cycle_current;//nb cycles current period (<= cycle-to-die)
+	unsigned int	cycle_to_die;// idem op.h
+	unsigned int	nb_live_currt;//nb de vies dans le cycle courant
+	int				nb_live_tot;//nb de vies totales depuis debut partie
+	int				nb_live_proc;// nb processus en vie
 	unsigned short	nb_pyrs;
-	int				last_live_pyr;
-	t_player		tab_pyr[MAX_PLAYERS];
-	struct s_proc	*list_proc;
+	int				last_live_pyr;//dernier joueru a avoir dit " vie" 
+	t_player		tab_pyr[MAX_PLAYERS];// tableau des joueurs
+	struct s_proc	*list_proc;//pointeur vers debut liste chainee processus
 }					t_arena;
 
 typedef struct		s_proc
 {
-	int				p_nbr;
+	short int		p_nbr;
 	int				reg[REG_NUMBER];
-	int				pc_act;
-	short int		pc_next;
-	int				nb_live_cycle;
+	short int		pc_act;//adresse actuelle du processus
+	short int		pc_next;//adresse de la prochaine operation
+	char			opcode_act; //opcode de l'operation en cours
+	unsigned int	nb_cycle_before_op;//nb de cycles restant avant executier et bouger
+	unsigned int	nb_live_curr_cycle;//nb de lives executees sur le cycle courant
 	char			carry;
 	struct s_proc	*parent;
 	struct s_proc	*son;
@@ -87,6 +93,7 @@ void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_visual(t_arena *arena);
 void				ft_init_visual(t_arena *arena);
+void				ft_live(t_arena *arena, t_proc *proc);
 
 #endif
 

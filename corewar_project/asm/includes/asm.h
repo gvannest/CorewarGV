@@ -72,6 +72,8 @@ typedef struct s_asm
 	char	name[PROG_NAME_LENGTH + 1];
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
+	int	pos;
+	int	last_opcode;
 	int	quote;
 	int	start;
 	int	end;
@@ -155,6 +157,17 @@ void	ft_token_display_all(t_token *atoken);
 ** FONCTIONS DE TESTS
 */
 
+void	ft_test_params();
+void	ft_test_label();
+
+/*
+** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
+*/
+
+void	ft_fill_labels(t_token *atoken);
+char *ft_clean_label(char *label);
+t_token		*ft_find_label(t_token *atoken, char *label);
+void	ft_fill_label(t_token *token_src, t_token *token_dst);
 
 /*
 void	ft_display_param(t_param *param, int param_id);
