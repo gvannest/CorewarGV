@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/06 13:57:56 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 13:59:46 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	main(int argc, char **argv)
 //		return (0);
 //	ft_tests_syntax();
 //	printf("test display\n");
-//	ft_display(&info);
-//	ft_gnl(&info);
+	ft_display(&info);
 	return (0);
 }
