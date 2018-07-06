@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 18:12:46 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:49:44 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,10 @@ int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_visual(t_arena *arena);
-void				ft_init_visual(t_arena *arena);
+void				ft_init_visual(t_arena *arena, t_corvisu *visual);
 void				ft_live(t_arena *arena, t_proc *proc);
 void				ft_check_cycle(t_arena *arena);
-void				ft_kill_process(t_proc *begin_list, t_proc *proc_to_kill);
+t_proc				*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill);
 void				ft_reinit_param(t_arena *arena, t_proc *proc);
 void				ft_next_opcode(t_arena *arena, t_proc *proc);
 void				ft_one_cycle(t_arena *arena, t_proc *proc);

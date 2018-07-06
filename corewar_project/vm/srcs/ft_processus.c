@@ -3,9 +3,9 @@
 static void		ft_move_noocp(t_proc *proc)
 {
 	if (proc->opcode_act == 0x01)
-		proc->pc_act = proc->pc_act + 5;
+		proc->pc_act = (proc->pc_act + 5) % MEM_SIZE;
 	else
-		proc->pc_act = proc->pc_act + 3;
+		proc->pc_act = (proc->pc_act + 3) % MEM_SIZE;
 }
 
 static void		ft_move_ocp(t_proc *proc, char ocp)
@@ -29,7 +29,7 @@ static void		ft_move_ocp(t_proc *proc, char ocp)
 			i = i + 2;
 		i++;
 	}
-	proc->pc_act = 1 + i + 1;
+	proc->pc_act = (1 + i + 1) % MEM_SIZE;
 }
 
 void			ft_move_process(int *map_process, t_proc *proc, char ocp)
@@ -50,18 +50,24 @@ void			ft_move_process(int *map_process, t_proc *proc, char ocp)
 	map_process[proc->pc_act] = k;
 }
 
-void			ft_kill_process(t_proc *begin_list, t_proc *proc_to_kill)
+t_proc			*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill)
 {
 	t_proc *ptr;
 
-	ptr = begin_list;
-	if (proc_to_kill == begin_list)
-		begin_list = begin_list->next;
+	ptr = *begin_list;
+	if (proc_to_kill == *begin_list)
+	{
+		*begin_list = (*begin_list)->next;
+		ptr = *begin_list;
+	}
 	else
 	{
 		while (ptr->next != proc_to_kill)
 			ptr = ptr->next;
 		ptr->next = proc_to_kill->next;
+		ptr = ptr->next;
 	}
 	free(proc_to_kill);
+	proc_to_kill = NULL;
+	return (ptr);
 }

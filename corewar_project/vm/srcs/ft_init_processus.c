@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:41:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 15:27:31 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/06 13:56:26 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		next_process(t_arena *arena, int p)
 	ptr = arena->list_proc;
 	if (!(new_proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
 		ft_error_vm(0, "Error : malloc failed","Line 22 in ft_processus.c",0);
-	ft_bzero(new_proc->reg, sizeof(int) * REG_NUMBER);
+	ft_bzero(new_proc, sizeof(t_proc));
 	new_proc->reg[0] = arena->tab_pyr[p].pyr_nbr;
 	new_proc->p_nbr = p + 1;
 	new_proc->pc_act = 0 + p * MEM_SIZE / arena->nb_pyrs;
@@ -38,7 +38,7 @@ static void		first_process(t_arena *arena)
 
 	if (!(proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
 		ft_error_vm(0, "Error : malloc failed","Line 30 in ft_processus.c",0);
-	ft_bzero(proc->reg, sizeof(int) * REG_NUMBER);
+	ft_bzero(proc, sizeof(t_proc));
 	proc->reg[0] = arena->tab_pyr[0].pyr_nbr;
 	proc->p_nbr = 1;
 	proc->pc_act = 0;

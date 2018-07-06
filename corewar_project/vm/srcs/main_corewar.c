@@ -6,7 +6,7 @@
 /*   By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:54:27 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 19:15:28 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:43:34 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,22 @@ static void		ft_open_cor(t_arena *arena, char **argv, int argc, int i)
 int				main(int argc, char **argv)
 {
 	t_arena			arena;
-	//	t_corvisu		visual;
+	t_corvisu		visual;
 	int				i;
 	char			v;
 
 	i = 0;
 	ft_bzero(&arena, sizeof(arena));
 	if ((v = ft_param(argc, argv, &arena)) == 1)
-		ft_init_visual(&arena);
+		ft_init_visual(&arena, &visual);
 	ft_open_cor(&arena, argv, argc, i);
 	ft_fill_game(&arena);
-	if (v == 1)
-		ft_visual(&arena);
+	//if (v == 1)
+		//ft_visual(&arena, &visual);
 	while (arena.nb_live_proc > 0 && arena.cycle_to_die > 0)
 	{
-		while (arena.nb_cycle_current <= arena.cycle_to_die)
-		{
+		while (arena.nb_cycle_current < arena.cycle_to_die)
 			ft_one_cycle(&arena, arena.list_proc);
-			arena.nb_cycle_current++;
-		}
 		ft_check_cycle(&arena);
 		ft_reinit_param(&arena, arena.list_proc);
 	}

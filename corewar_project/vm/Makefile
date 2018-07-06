@@ -6,13 +6,13 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/29 15:19:20 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/06 12:00:53 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g
 
 #BINARY
 NAME = corewar
