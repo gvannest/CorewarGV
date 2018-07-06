@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 13:13:48 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 13:58:13 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,22 @@ typedef struct s_asm
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
 	int	pos;
+	int	comma_f;
+	int	operator_f;
+	int	label_f;
+	int	nb_param;
+	int	nb_labelchr;
+	int	nb_comma;
+	int	comchr_f;
+	int	directchr_f;
 	int	last_opcode;
+	int	addon;
 	int	quote;
 	int	start;
 	int	end;
 	int nb;
 	int	name_f;
 	int	comment_f;
-	int	comment_char;
 	int	fp;
 	int	line_nb;
 	int	error;
@@ -115,9 +123,11 @@ void	ft_parse_op(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);
+int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
 int		ft_is_sep(char c);
 int		ft_is_othchr(char c);
+int		ft_is_comchar(int *num, char c);
 
 
 /*
