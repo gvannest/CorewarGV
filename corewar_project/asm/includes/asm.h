@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/29 14:21:46 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 13:13:48 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ typedef struct	s_token
 	int				type;
 	char			*s_val;
 	int				i_val;
-	int				opcode;
-	int				ocp;
+	char			opcode;
+	char			ocp;
 	int				pos;
 	int				line;
 	int				cl;
@@ -66,7 +66,7 @@ typedef struct	s_token
 
 typedef struct s_asm
 {
-	char			*tab;
+	char			tab[MEM_SIZE/6];
 	struct 	s_token *atoken;
 	char	comment[COMMENT_LENGTH + 1];
 	char	name[PROG_NAME_LENGTH + 1];
@@ -98,11 +98,11 @@ typedef struct s_op
 	char	*name;
 	int		nb_params;
 	char	param_type[MAX_ARG];
-	int 	opcode;
+	char 	opcode;
 	int		nb_cycles;
 	char	*description;
-	int 	mod_carry;
-	int		dir_oct_size; //0 = 4 octets et 1 = 2 octets
+	char 	mod_carry;
+	char	dir_oct_size; //0 = 4 octets et 1 = 2 octets
 }				t_op;
 
 extern t_op op_tab[NB_INSTR + 1];
@@ -157,7 +157,7 @@ void	ft_token_add_tail(t_token **token, t_token *new_token);
 void	ft_token_init(t_token *new_token);
 void	ft_token_free(t_token *token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg);
-t_token	*ft_token_new();
+//t_token	*ft_token_new();
 void	ft_token_display(t_token *token, int token_nb);
 void	ft_token_display_all(t_token *atoken);
 
@@ -168,6 +168,11 @@ void	ft_token_display_all(t_token *atoken);
 void	ft_test_params();
 void	ft_test_label();
 void	ft_tests_syntax();
+
+/*
+** FONCTION AFFICHAGE CHAMP
+*/
+void	ft_display(t_asm *sasm);
 
 /*
 ** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
