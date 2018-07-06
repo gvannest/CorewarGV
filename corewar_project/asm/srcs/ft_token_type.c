@@ -126,3 +126,16 @@ int	ft_is_op(char *arg)
 	}
 	return (is_op);
 }
+
+
+/*
+int	ft_is_type(int type)
+{
+	int valid_type;
+
+	valid_type = 0;
+	if (type == T_REG || type == T_DIR || type == T_IND || type == T_LAB
+	|| type == T_IND_LAB || type == T_DIR_LAB || type == T_OP))
+		valid_type = 1;
+	return (valid_type);
+}*/

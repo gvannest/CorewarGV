@@ -37,11 +37,12 @@ int	main(int argc, char **argv)
 	init_info(&info);
 //	ft_test_params();
 //	ft_test_label();
-	if (argc < 2 || argc > 2 || argv[1] == NULL)
-		perror("Error");
-	else if ((info.fp = ft_open(argv[1])) == 0)
-		return (0);
+//	if (argc < 2 || argc > 2 || argv[1] == NULL)
+//		perror("Error");
+//	else if ((info.fp = ft_open(argv[1])) == 0)
+//		return (0);
 	printf("main\n");
-	ft_gnl(&info);
+	ft_tests_syntax();
+//	ft_gnl(&info);
 	return (0);
 }

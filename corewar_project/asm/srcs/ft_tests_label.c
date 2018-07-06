@@ -39,7 +39,6 @@ void	ft_test_label()
 	ft_token_add(&info2, "r2"); //remplacer par l'arg de Martin
 	ft_token_add(&info2, "label42:"); //remplacer par l'arg de Martin
 	ft_token_add(&info2, "%1"); //remplacer par l'arg de Martin
-	ft_token_add(&info2, "live:"); //remplacer par l'arg de Martin
 	ft_token_add(&info2, "%:live"); //remplacer par l'arg de Martin
 	ft_token_display_all(info2.atoken);
 //	printf("%d\n", ft_find_label(info2.atoken, "live:")->pos);
