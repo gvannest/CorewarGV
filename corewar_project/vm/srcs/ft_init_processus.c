@@ -24,7 +24,7 @@ static void		next_process(t_arena *arena, int p)
 	new_proc->reg[0] = arena->tab_pyr[p].pyr_nbr;
 	new_proc->p_nbr = p + 1;
 	new_proc->pc_act = 0 + p * MEM_SIZE / arena->nb_pyrs;
-	new_proc->opcode_act = arena->map[new_proc->pc_act];
+	ft_next_opcode(arena, new_proc);
 	arena->map_process[p * MEM_SIZE / arena->nb_pyrs] = new_proc->p_nbr;
 	while (ptr->next != 0)
 		ptr = ptr->next;
@@ -42,7 +42,7 @@ static void		first_process(t_arena *arena)
 	proc->reg[0] = arena->tab_pyr[0].pyr_nbr;
 	proc->p_nbr = 1;
 	proc->pc_act = 0;
-	proc->opcode_act = arena->map[0];
+	ft_next_opcode(arena, proc);
 	arena->map_process[0] = proc->p_nbr;
 	arena->list_proc = proc;
 	arena->nb_live_proc = 1;

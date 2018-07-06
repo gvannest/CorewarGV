@@ -45,5 +45,10 @@ int	main(int argc, char **argv)
 	ft_gnl(&info);
 //	if (info.error != 0)
 //		ft_printf("Error found");
+//	if (argc < 2 || argc > 2 || argv[1] == NULL)
+//		perror("Error");
+//	else if ((info.fp = ft_open(argv[1])) == 0)
+//		return (0);
+	ft_tests_syntax();
 	return (0);
 }

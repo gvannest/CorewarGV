@@ -50,7 +50,11 @@ SRC_NAME = main_test.c \
 		   ft_init_processus.c \
 		   ft_processus.c \
 		   ft_one_cycle.c \
-		   ft_live.c
+		   ft_live.c \
+		   ft_opcode.c \
+		   ft_reinit_param.c \
+		   op.c \
+		   ft_check_cycle.c
 
 
 # OBJECTS

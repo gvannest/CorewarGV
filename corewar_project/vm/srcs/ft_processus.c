@@ -1,14 +1,14 @@
 #include "corewar.h"
 
-static void		ft_move_noocp(int *map_process, t_proc *proc)
+static void		ft_move_noocp(t_proc *proc)
 {
 	if (proc->opcode_act == 0x01)
-		proc->pc_act = pc_act + 5;
+		proc->pc_act = proc->pc_act + 5;
 	else
-		proc->pc_act = pc_act + 3;
+		proc->pc_act = proc->pc_act + 3;
 }
 
-static void		ft_move_ocp(int *map_process, t_proc *proc, char ocp)
+static void		ft_move_ocp(t_proc *proc, char ocp)
 {
 	unsigned int	i;
 	short int		k;
@@ -32,18 +32,36 @@ static void		ft_move_ocp(int *map_process, t_proc *proc, char ocp)
 	proc->pc_act = 1 + i + 1;
 }
 
-
-
 void			ft_move_process(int *map_process, t_proc *proc, char ocp)
 {
 	int				k;
-	unsigned int	i;
 
 	k = map_process[proc->pc_act];
 	map_process[proc->pc_act] = 0;
-	if (ocp == 0)
-		ft_move_noocp(map_process, proc);
+	if (proc->opcode_valid == 1)
+	{
+		if (ocp == -1)
+			ft_move_noocp(proc);
+		else
+			ft_move_ocp(proc, ocp);
+	}
 	else
-		ft_move_ocp(map_process, proc, ocp);
+		proc->pc_act = proc->pc_act + 1;
 	map_process[proc->pc_act] = k;
+}
+
+void			ft_kill_process(t_proc *begin_list, t_proc *proc_to_kill)
+{
+	t_proc *ptr;
+
+	ptr = begin_list;
+	if (proc_to_kill == begin_list)
+		begin_list = begin_list->next;
+	else
+	{
+		while (ptr->next != proc_to_kill)
+			ptr = ptr->next;
+		ptr->next = proc_to_kill->next;
+	}
+	free(proc_to_kill);
 }

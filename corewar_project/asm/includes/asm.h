@@ -96,6 +96,8 @@ typedef struct s_asm
 	int	stop;
 	int	gnl;
 	int	eof;
+	char cur_param;
+	char nb_params_left;
 	struct s_label	*label;
 }				t_asm;
 
@@ -136,7 +138,7 @@ void	parsing_error(t_asm *info, char *line);
 void	ft_syntax_err(t_asm *info, int i, char *line);
 
 /*
- * Lexical analysis
+* Lexical analysis
 */
 
 void	ft_line_split(char *line);
@@ -149,6 +151,12 @@ int		ft_get_ival(char *arg);
 int		ft_get_type(char *arg);
 int		ft_get_opcode(char *arg);
 int		ft_is_op(char *arg);
+
+/*
+* Syntax analysis
+*/
+
+int	ft_is_valid_syntax(t_asm *info);
 
 /*
 ** Fonctions tokens
@@ -169,6 +177,7 @@ void	ft_token_display_all(t_token *atoken);
 
 void	ft_test_params();
 void	ft_test_label();
+void	ft_tests_syntax();
 
 /*
 ** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
