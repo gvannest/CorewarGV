@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 13:47:31 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/28 16:56:58 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 10:45:54 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	ft_is_label(char *arg)
 	{
 		if (arg[arg_ln - 1] == LABEL_CHAR)
 		{
-			while (index < arg_ln - 1 && ft_strchr(LABEL_CHARS, arg[index]) != 0)
+			while (index < arg_ln - 1 &&
+					ft_strchr(LABEL_CHARS, arg[index]) != 0)
 				index++;
 			if (index == arg_ln - 1)
 				is_label = T_LAB;
@@ -126,16 +127,3 @@ int	ft_is_op(char *arg)
 	}
 	return (is_op);
 }
-
-
-/*
-int	ft_is_type(int type)
-{
-	int valid_type;
-
-	valid_type = 0;
-	if (type == T_REG || type == T_DIR || type == T_IND || type == T_LAB
-	|| type == T_IND_LAB || type == T_DIR_LAB || type == T_OP))
-		valid_type = 1;
-	return (valid_type);
-}*/

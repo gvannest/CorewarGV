@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tests_syntax.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/06 10:37:27 by srossi            #+#    #+#             */
+/*   Updated: 2018/07/06 10:37:41 by srossi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 static	void	init_info(t_asm *info)
@@ -6,8 +18,7 @@ static	void	init_info(t_asm *info)
 	info->err_pos = -1;
 }
 
-
-void	ft_tests_syntax()
+void			ft_tests_syntax(void)
 {
 	t_asm info;
 
