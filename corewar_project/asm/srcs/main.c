@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/29 14:54:11 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 13:57:56 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,17 @@ int	main(int argc, char **argv)
 //		perror("Error");
 //	else if ((info.fp = ft_open(argv[1])) == 0)
 //		return (0);
-	printf("main\n");
-	ft_tests_syntax();
+//	printf("main\n");
+//	ft_gnl(&info);
+//	if (info.error != 0)
+//		ft_printf("Error found");
+//	if (argc < 2 || argc > 2 || argv[1] == NULL)
+//		perror("Error");
+//	else if ((info.fp = ft_open(argv[1])) == 0)
+//		return (0);
+//	ft_tests_syntax();
+//	printf("test display\n");
+//	ft_display(&info);
 //	ft_gnl(&info);
 	return (0);
 }

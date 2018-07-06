@@ -15,8 +15,9 @@
 static void	ft_check_data(t_asm *info)
 {
 	//check comment name
-	if ((info->name_f != 1 || info->comment_f != 1))
+	if (info->name_f != 1 || info->comment_f != 1)
 	{
+//	ft_printf("check comment & name\n");
 		info->error = 1;
 		info->err_pos = 1;
 	}
@@ -37,7 +38,7 @@ static void	check_line(t_asm *info, char *line, int len)
 	}
 	else if (info->comment_f == 1 && info->name_f == 1)
 	{
-//		printf("parse op\n");
+	//	printf("parse op\n");
 		ft_parse_op(&(*info), line);
 	}
 }
@@ -51,7 +52,6 @@ void		ft_gnl(t_asm *info)
 	while ((info->gnl = get_next_line(info->fp, &line)) > 0 && info->error == 0
 			&& info->stop == 0)
 	{
-
 			++info->line_nb;
 			check_line(&(*info), line, ft_strlen(line));
 			if (info->error != -1)
@@ -60,5 +60,5 @@ void		ft_gnl(t_asm *info)
 	}
 	ft_check_data(&(*info));
 	free(line);
-//	ft_printf("Name =%s\nComment =%s", info->name, info->comment);
+//	ft_printf("Name %d =%s\nComment %d =%s", info->name_f, info->name, info->comment_f, info->comment);
 }

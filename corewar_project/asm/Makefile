@@ -6,13 +6,13 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/06/28 15:24:06 by srossi           ###   ########.fr        #
+#    Updated: 2018/07/06 11:31:07 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 #BINARY
 NAME = asm
@@ -51,6 +51,9 @@ SRC_NAME = main.c \
 		   ft_tests_label.c \
 		   ft_test_params.c \
 		   ft_tests_syntax.c \
+		   ft_display.c \
+		   ft_token_free.c \
+		   ft_get_value.c \
 		   ft_error.c
 
 

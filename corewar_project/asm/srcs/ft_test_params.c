@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_test_params.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/06 10:32:52 by srossi            #+#    #+#             */
+/*   Updated: 2018/07/06 10:35:42 by srossi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
-/*
-static	void	ft_test_is_reg()
+static	void	ft_test_is_reg(void)
 {
-	//Gautier est lourd dans leau
 	printf("is '%s' a reg ? => %d \n", "r10", ft_is_reg("r10"));
 	printf("is '%s' a reg ? => %d \n", "r0", ft_is_reg("r0"));
 	printf("is '%s' a reg ? => %d \n", "r15", ft_is_reg("r15"));
@@ -17,7 +27,7 @@ static	void	ft_test_is_reg()
 	printf("is '%s' a reg ? => %d \n", "r-1", ft_is_reg("r-1"));
 }
 
-static	void	ft_test_is_dir()
+static	void	ft_test_is_dir(void)
 {
 	printf("is '%s' a dir_value ? => %d \n", "%10", ft_is_dir("%10"));
 	printf("is '%s' a dir_value ? => %d \n", "%", ft_is_dir(""));
@@ -29,7 +39,7 @@ static	void	ft_test_is_dir()
 	printf("is '%s' a dir_value ? => %d \n", "%00001", ft_is_dir("%00001"));
 }
 
-static	void	ft_test_is_ind()
+static	void	ft_test_is_ind(void)
 {
 	printf("is '%s' a ind_value ? => %d \n", "10", ft_is_ind("10"));
 	printf("is '%s' a ind_value ? => %d \n", "", ft_is_ind(""));
@@ -39,8 +49,7 @@ static	void	ft_test_is_ind()
 	printf("is '%s' a ind_value ? => %d \n", "a", ft_is_ind("a"));
 }
 
-
-static	void	ft_test_is_label()
+static	void	ft_test_is_label(void)
 {
 	printf("is '%s' a label ? => %d \n", ":label", ft_is_label(":label"));
 	printf("is '%s' a label ? => %d \n", ":", ft_is_label(":"));
@@ -58,7 +67,7 @@ static	void	ft_test_is_label()
 	printf("is '%s' a label ? => %d \n", "% :", ft_is_label("% :"));
 }
 
-static	void	ft_test_is_op()
+static	void	ft_test_is_op(void)
 {
 	printf("is '%s' an operation ? => %d \n", "live", ft_is_op("live"));
 	printf("is '%s' an operation ? => %d \n", "ld", ft_is_op("ld"));
@@ -86,13 +95,9 @@ static	void	ft_test_is_op()
 	printf("is '%s' an operation ? => %d \n", "tzjmp", ft_is_op("tzjmp"));
 }
 
-*/
-
-
-void	ft_test_params()
+void			ft_test_params(void)
 {
-
-/*	ft_test_is_reg();
+	ft_test_is_reg();
 	ft_printf("\n");
 	ft_test_is_dir();
 	ft_printf("\n");
@@ -100,6 +105,5 @@ void	ft_test_params()
 	ft_printf("\n");
 	ft_test_is_op();
 	ft_printf("\n");
-	ft_test_is_label();*/
+	ft_test_is_label();
 }
-
