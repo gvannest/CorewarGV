@@ -41,7 +41,9 @@ int	main(int argc, char **argv)
 		perror("Error");
 	else if ((info.fp = ft_open(argv[1])) == 0)
 		return (0);
-	printf("main\n");
+//	printf("main\n");
 	ft_gnl(&info);
+//	if (info.error != 0)
+//		ft_printf("Error found");
 	return (0);
 }
