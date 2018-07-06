@@ -6,12 +6,13 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 14:02:03 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 14:55:33 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_create_champ(t_asm *info)
+/*void	ft_create_champ(t_asm *info)
 {
 }
+*/

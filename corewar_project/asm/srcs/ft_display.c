@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:10:36 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 14:09:49 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 14:56:02 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,17 @@ void	ft_comment_display(char comment[COMMENT_LENGTH + 1])
 	}
 }
 
-void	ft_comment_display()
+/*void	ft_comment_display()
 {
 	printf("00 EA 83 F3");
-}
+}*/
 
 void	ft_display(t_asm *info)
 {
-	printf("magic nb   n ----\n\n");
-	ft_magic_nb(info->name);
-	printf("name section ----\n\n");
-	ft_name_display(info->name);
+//	printf("magic nb   n ----\n\n");
+//	ft_magic_nb(info->name);
+//	printf("name section ----\n\n");
+//	ft_name_display(info->name);
 	printf("\ncomment section ----\n\n");
 	ft_comment_display(info->comment);
 	printf("\nchamp section ----\n\n");
