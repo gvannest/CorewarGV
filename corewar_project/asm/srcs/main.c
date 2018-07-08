@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 //		return (0);
 //	ft_tests_syntax();
 //	printf("test display\n");
+	ft_create_champ(&info);
 	ft_display(&info);
 	return (0);
 }

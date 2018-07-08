@@ -59,7 +59,7 @@ static	void	ft_champ_display(char champ[CHAMP_MAX_SIZE])
 			printf("\n");
 		if (index % 2 == 0)
 			printf(" ");
-		printf("%.2x", champ[index]);
+		printf("%.2X", champ[index]);
 		index++;
 	}
 }
@@ -75,7 +75,7 @@ void	ft_name_display(char name[PROG_NAME_LENGTH + 1])
 			printf("\n");
 		if (index % 2 == 0)
 			printf(" ");
-		printf("%.2x", name[index]);
+		printf("%.2X", name[index]);
 		index++;
 	}
 }
@@ -91,22 +91,77 @@ void	ft_comment_display(char comment[COMMENT_LENGTH + 1])
 			printf("\n");
 		if (index % 2 == 0)
 			printf(" ");
-		printf("%.2x", comment[index]);
+		printf("%.2X", comment[index]);
 		index++;
 	}
 }
 
-/*void	ft_comment_display()
+static void swap_bytes(unsigned char *t)
 {
-	printf("00 EA 83 F3");
-}*/
+	unsigned char tmp;
+
+	tmp = t[0];
+	t[0] = t[3];
+	t[3] = tmp;
+
+	tmp = t[1];
+	t[1] = t[2];
+	t[2] = tmp;
+}
+
+static	void	ft_magic_nb_display()
+{
+	unsigned int magic_nb;
+	unsigned char octets[4];
+	int index;
+
+	index = 0;
+	magic_nb = 0x00EA83F3;
+	octets[0] = magic_nb >> 0;
+	octets[1] = magic_nb >> 8;
+	octets[2] = magic_nb >> 16;
+	octets[3] = magic_nb >> 24;
+	swap_bytes(octets);
+	printf("%.2X %.2X %.2X %.2X\n", octets[0], octets[1], octets[2], octets[3]);
+	/*	while (index < sizeof(int))
+		{
+		if (index % 2 == 0)
+		printf(" ");
+		printf("%.2hhX", magic_nb[index]);
+		index++;
+		}*/
+
+}
+static	void	ft_write_int(int nb)
+{
+	unsigned char octets[4];
+	int index;
+
+	index = 0;
+	octets[0] = nb >> 0;
+	octets[1] = nb >> 8;
+	octets[2] = nb >> 16;
+	octets[3] = nb >> 24;
+	swap_bytes(octets);
+	printf("%.2X %.2X %.2X %.2X\n", octets[0], octets[1], octets[2], octets[3]);
+}
+
+/*void	ft_comment_display()
+  {
+  printf("00 EA 83 F3");
+  }*/
 
 void	ft_display(t_asm *info)
 {
-//	printf("magic nb   n ----\n\n");
-//	ft_magic_nb(info->name);
-//	printf("name section ----\n\n");
-//	ft_name_display(info->name);
+	int magic;
+
+	magic = 0x00EA83F3;
+	printf("magic nb   n ----\n\n");
+	ft_magic_nb_display();
+	ft_write_int(0);
+	ft_write_int(magic);
+	printf("name section ----\n\n");
+	ft_name_display(info->name);
 	printf("\ncomment section ----\n\n");
 	ft_comment_display(info->comment);
 	printf("\nchamp section ----\n\n");

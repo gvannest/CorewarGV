@@ -73,6 +73,7 @@ typedef struct s_asm
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
 	int	pos;
+	int	nb_instr;
 	int	comma_f;
 	int	operator_f;
 	int	label_f;
@@ -184,6 +185,10 @@ void	ft_tests_syntax();
 */
 void	ft_display(t_asm *sasm);
 
+/*
+** FONCTION CREER CHAMP
+*/
+void	ft_create_champ(t_asm *info);
 /*
 ** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
 */
