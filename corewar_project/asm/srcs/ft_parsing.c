@@ -15,9 +15,10 @@
 static void	ft_check_data(t_asm *info)
 {
 	//check comment name
+	ft_printf("check comment & name\n");
 	if (info->name_f != 1 || info->comment_f != 1)
 	{
-//	ft_printf("check comment & name\n");
+	ft_printf("error check comment & name\n");
 		info->error = 1;
 		info->err_pos = 1;
 	}
