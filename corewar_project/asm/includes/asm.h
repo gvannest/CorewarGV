@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 14:10:14 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/09 13:56:21 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ extern t_op op_tab[NB_INSTR + 1];
  */
 void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_parse_op(t_asm *info, char *line);
+int		retrieve_line(t_asm *info, char *line, int i);
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);
