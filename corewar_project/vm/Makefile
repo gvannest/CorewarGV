@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/06 12:00:53 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/09 14:12:34 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ SRC_NAME = main_test.c \
 		   ft_opcode.c \
 		   ft_reinit_param.c \
 		   op.c \
-		   ft_check_cycle.c
+		   ft_check_cycle.c \
+		   ft_game.c
 
 
 # OBJECTS
@@ -101,7 +102,7 @@ libftcomp:
 
 $(NAME): $(OBJ)
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-	$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS) $(LIB_NCURSES)
+	@$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS) $(LIB_NCURSES)
 	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
 
 $(OBJ_PATH):
@@ -109,7 +110,7 @@ $(OBJ_PATH):
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
+	@$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
 
 .PHONY: clean
 clean:

@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/06 11:59:28 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/09 13:27:54 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void		ft_init_visual(t_arena *arena, t_corvisu *visual)
 	int row;
 	int col;
 
-	(void)visual;
 	initscr();
 	raw();
 	noecho();
@@ -54,19 +53,21 @@ void		ft_init_visual(t_arena *arena, t_corvisu *visual)
 	start_color();
 	ft_init_color(arena->nb_pyrs);
 	getmaxyx(stdscr, row, col);
-	printw("%d / %d\n", row, col);
-	//visual->win_arena = create_newwin(2 * row / 3, col, 0, 0);
-	//visual->win_info_game = create_newwin(row / 5, col / 5, (2 / 3 + 1 / 15) * row, col / 5);
-	//visual->win_arena = create_newwin(row / 5, col / 5, (2 / 3 + 1 / 15 * row), 3 * col / 5);
+	//printw("%d / %d\n", row, col);
+	refresh();
+	visual->win_arena = create_newwin(2 * row / 3, col, 0, 0);
+	visual->win_info_game = create_newwin(row / 5, col / 5, 3 * row / 4, col / 5);
+	visual->win_info_pyrs = create_newwin(row / 5, col / 5, 3 * row / 4, 3 * col / 5);
 	getch();
 	endwin();
 }
 
-void		ft_visual(t_arena *arena)
+/*void		ft_visual(t_arena *arena, t_corvisu *visual)
 {
 	int i;
 
 	i = 0;
+	(void)visual;
 	while (i < MEM_SIZE)
 	{
 		if (i != 0 && i % 64 == 0)
@@ -82,5 +83,5 @@ void		ft_visual(t_arena *arena)
 	refresh();
 	getch();
 	endwin();
-}
+}*/
 
