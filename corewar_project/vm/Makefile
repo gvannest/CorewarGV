@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/09 10:42:43 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/09 14:12:34 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ SRC_NAME = main_test.c \
 		   ft_opcode.c \
 		   ft_reinit_param.c \
 		   op.c \
-		   ft_check_cycle.c
+		   ft_check_cycle.c \
+		   ft_game.c
 
 
 # OBJECTS

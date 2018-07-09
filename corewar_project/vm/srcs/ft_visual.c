@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/09 11:45:26 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/09 13:27:54 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ WINDOW *create_newwin(int height, int width, int starty, int startx)
 
 	local_win = newwin(height, width, starty, startx);
 	box(local_win, startx, starty);
-	mvwprintw(local_win, height / 2, width / 2, "Hello world!");
 	wrefresh(local_win);
 	return (local_win);
 }
@@ -55,10 +54,10 @@ void		ft_init_visual(t_arena *arena, t_corvisu *visual)
 	ft_init_color(arena->nb_pyrs);
 	getmaxyx(stdscr, row, col);
 	//printw("%d / %d\n", row, col);
-	visual->win_arena = create_newwin(2 * row / 3, col, 0, 0);
-	visual->win_info_game = create_newwin(row / 5, col / 5, (2 / 3 + 1 / 5) * row, col / 5);
-	visual->win_info_pyrs = create_newwin(row / 5, col / 5, (2 / 3 + 1 / 5) * row, 3 * col / 5);
 	refresh();
+	visual->win_arena = create_newwin(2 * row / 3, col, 0, 0);
+	visual->win_info_game = create_newwin(row / 5, col / 5, 3 * row / 4, col / 5);
+	visual->win_info_pyrs = create_newwin(row / 5, col / 5, 3 * row / 4, 3 * col / 5);
 	getch();
 	endwin();
 }

@@ -15,7 +15,5 @@ void			ft_one_cycle(t_arena *arena, t_proc *proc)
 		}
 		proc = proc->next;
 	}
-	arena->nb_cycle++;
-	arena->nb_cycle_current++;
 }
 
