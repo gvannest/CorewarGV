@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 13:58:13 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/06 14:10:14 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_asm
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
 	int	pos;
+	int	nb_instr;
 	int	comma_f;
 	int	operator_f;
 	int	label_f;
@@ -184,6 +185,10 @@ void	ft_tests_syntax();
 */
 void	ft_display(t_asm *sasm);
 
+/*
+** FONCTION CREER CHAMP
+*/
+void	ft_create_champ(t_asm *info);
 /*
 ** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
 */

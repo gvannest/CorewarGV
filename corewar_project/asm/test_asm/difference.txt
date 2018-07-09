@@ -1,0 +1,93 @@
+[1;32mcomment0.s[0m: #No .comment at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:010] DIRECT_LABEL "%:live"
+[1;34mYour output:[0m
+Error found
+
+[1;32mcomment1.s[0m: #no beginning quote for .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:010] INSTRUCTION "just"
+[1;34mYour output:[0m
+
+[1;32mcomment2.s[0m: #No end quote for .comment     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][013:001] END "(null)"
+[1;34mYour output:[0m
+
+[1;32mcomment3.s[0m: #Nada comment     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:001] ENDLINE
+[1;34mYour output:[0m
+
+[1;32mcomment4.s[0m: #instruction after .comment
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:030] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:031] "sti"
+Error found
+
+[1;32mcomment5.s[0m: #.comment command on the same line as .name     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:007] ".comment"
+Error found
+
+[1;32mcomment6.s[0m: #.comment command on the same line as .name with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:007] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:008] ".comment"
+Error found
+
+[1;32mname0.s[0m: #No .name at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+
+[1;32mname1.s[0m: #no beginning quote for .name    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][002:008] INSTRUCTION "zork"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:012] "just"
+Error found
+
+[1;32mname2.s[0m: #No end quote for .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:011] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:012] "just"
+Error found
+
+[1;32mname3.s[0m: #Nada in .name     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] ENDLINE
+[1;34mYour output:[0m
+
+[1;32mname4.s[0m: #instruction after .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:007] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:008] "sti"
+Error found
+
+[1;32mname5.s[0m: #.name command on the same line as .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:036] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:037] ".name"
+Error found
+
+[1;32mname6.s[0m: #.sname command on the same line as .comment with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:037] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:038] ".name"
+Error found
+
+[1;32mzork.s[0m:      .name                      " 
+[1;34mExpected oupout:[0m
+Writing output program to ./unvalid/zork.cor
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][009:-01] ""
+

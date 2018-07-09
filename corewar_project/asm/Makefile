@@ -54,6 +54,7 @@ SRC_NAME = main.c \
 		   ft_display.c \
 		   ft_token_free.c \
 		   ft_get_value.c \
+		   ft_create_champ.c \
 		   ft_error.c
 
 
