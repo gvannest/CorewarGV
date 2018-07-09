@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 14:10:14 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/09 18:31:05 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct	s_token
 	char			*s_val;
 	int				i_val;
 	char			opcode;
-	char			ocp;
+	unsigned char	ocp;
 	int				pos;
 	int				line;
 	int				cl;
