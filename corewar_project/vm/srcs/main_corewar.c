@@ -6,7 +6,7 @@
 /*   By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:54:27 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/06 14:43:34 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/09 10:50:31 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int				main(int argc, char **argv)
 		ft_init_visual(&arena, &visual);
 	ft_open_cor(&arena, argv, argc, i);
 	ft_fill_game(&arena);
-	//if (v == 1)
-		//ft_visual(&arena, &visual);
+	/*if (v == 1)
+		ft_visual(&arena, &visual);*/
 	while (arena.nb_live_proc > 0 && arena.cycle_to_die > 0)
 	{
 		while (arena.nb_cycle_current < arena.cycle_to_die)
