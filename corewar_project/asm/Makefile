@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/09 15:23:35 by srossi           ###   ########.fr        #
+#    Updated: 2018/07/10 11:10:16 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ SRC_NAME = main.c \
 		   ft_get_value.c \
 		   ft_create_champ.c \
 		   ft_write_cor.c \
+		   parse_operator.c \
+		   ft_retrieve_line.c \
 		   ft_error.c
 
 

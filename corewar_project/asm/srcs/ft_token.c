@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 10:39:37 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/10 15:57:52 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	ft_pos_increment(t_asm *sasm, t_token *new_token)
 {
-	if (new_token->opcode > -1)
+	if (new_token->opcode > 0)
 		sasm->last_opcode = new_token->opcode;
 	if (new_token->type == T_DIR
 			&& op_tab[sasm->last_opcode - 1].dir_oct_size == 1)
@@ -51,7 +51,7 @@ void			ft_token_init(t_token *new_token)
 	new_token->s_val = NULL;
 	new_token->i_val = -1;
 	new_token->opcode = -1;
-	new_token->ocp = -1;
+	new_token->ocp = 0;
 	new_token->pos = -1;
 	new_token->line = -1;
 	new_token->cl = -1;
