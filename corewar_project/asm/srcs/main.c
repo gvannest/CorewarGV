@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/06 14:55:30 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/09 17:36:59 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&info, sizeof(t_asm));
 	init_info(&info);
+	ft_token_add(&info, "sti");
+	ft_token_add(&info, "r1");
+	ft_token_add(&info, "%:live");
+	ft_token_add(&info, "%1");
+	ft_token_add(&info, "and");
+	ft_token_add(&info, "r1");
+	ft_token_add(&info, "%0");
+	ft_token_add(&info, "r1");
+	ft_token_add(&info, "live:");
+	ft_token_add(&info, "live");
+	ft_token_add(&info, "%1");
+	ft_token_add(&info, "zjump");
+	ft_token_add(&info, "%:live");
+	ft_token_display_all(info.atoken);
+	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
+	ft_fill_labels(info.atoken);
 //	ft_test_params();
 //	ft_test_label();
 //	if (argc < 2 || argc > 2 || argv[1] == NULL)
