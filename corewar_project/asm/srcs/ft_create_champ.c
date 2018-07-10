@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/10 16:00:41 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/10 16:02:11 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_create_champ(t_asm *info)
 			info->tab[index] = p_token->i_val;
 			index++;
 		}
-		else if (p_token->type == T_DIR_LABEL || p_token->type = T_IND_LABEL)
+		else if (p_token->type == T_DIR_LAB || p_token->type == T_IND_LAB)
 		{
 			info->tab[index] = p_token->i_val;
 			index++;
