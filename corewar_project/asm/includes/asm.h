@@ -130,7 +130,9 @@ int		ft_is_space(char c);
 int		ft_is_sep(char c);
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
-
+int		ft_split_word(t_asm *info, char *line, int i);
+void	reset_words_flags(t_asm *info, char **arg);
+int 	ft_keep_going(t_asm *info, char *line, int i);
 
 /*
  * Error

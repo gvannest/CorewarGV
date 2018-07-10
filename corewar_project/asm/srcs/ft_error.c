@@ -18,7 +18,7 @@ void	ft_syntax_err(t_asm *info, int i, char *line)
 	int	j;
 
 	j = 0;
-	pos = -1;
+	pos = i;
 //	printf("i=%d pos = %d line[i] = %c\n", i,  pos, line[i]);
 	while (line[pos])
 	{
@@ -27,7 +27,7 @@ void	ft_syntax_err(t_asm *info, int i, char *line)
 			if (info->err_pos == -1)
 			{
 		//		printf("i=%d pos = %d line[pos] = %c\n", i,  pos, line[pos]);
-				info->err_pos = i + pos + 2;
+				info->err_pos = info->end;
 				info->error = 1;
 			}
 			while (line[pos] != ' ')
@@ -47,7 +47,7 @@ void	parsing_error(t_asm *info, char *line)
 {
 	if (info->error == 1)
 	{
-		ft_printf("Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->err_pos, info->err_content);
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->start, info->code);
 	}
 	else if (info->error == 1 && line == NULL)
 	{
