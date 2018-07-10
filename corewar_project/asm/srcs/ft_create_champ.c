@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/10 16:02:11 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/10 16:04:25 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,25 @@ void	ft_create_champ(t_asm *info)
 		printf("p_token->opcode : %hhX\n", p_token->opcode);
 		if (p_token->type == T_OP)
 		{
-			info->tab[index++] = p_token->opcode;
 			ft_load_ocp(p_token);
+			info->tab[index++] = p_token->opcode;
 		}
-		else if (p_token->type == T_REG)
+	/*	else if (p_token->type == T_REG)
 		{
-			info->tab[index] = p_token->i_val;
-			index++;
+			info->tab[index++] = p_token->i_val;
 		}
 		else if (p_token->type == T_IND)
 		{
-			info->tab[index] = p_token->i_val;
-			index++;
+			info->tab[index++] = p_token->i_val;
 		}
 		else if (p_token->type == T_DIR)
 		{
-			info->tab[index] = p_token->i_val;
-			index++;
+			info->tab[index++] = p_token->i_val;
 		}
 		else if (p_token->type == T_DIR_LAB || p_token->type == T_IND_LAB)
 		{
-			info->tab[index] = p_token->i_val;
-			index++;
-		}
+			info->tab[index++] = p_token->i_val;
+		}*/
 		p_token = p_token->next;
 	}
 }
