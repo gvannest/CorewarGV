@@ -12,54 +12,70 @@
 
 #include "asm.h"
 
-void	parse_line(t_asm *info, char *line, char *target)
+int	parse_line(t_asm *info, char *line, char *target, int i)
 {
 	int	len;
-	int	i;
 
-	i = info->start;
+		
 	len = ft_strlen(target);
-	while (line[i] && line[i] != '"')
+	while (line[i] && info->stop == 0)
 	{
-		if (len + 1 < ((info->comment_f == -1) ? COMMENT_LENGTH : PROG_NAME_LENGTH))
+		if (line[i] == '"')
 		{
-			if (line[i])
-				target[ft_strlen(target)] = line[i];
+			++info->quote;
+			//++i;
+			if (info->quote == 2 && info->comment_f == -1)
+			{
+				info->lock = 1;
+				info->comment_f = 1;
+			}
+			else if (info->quote == 2 && info->name_f == -1)
+			{
+				info->lock = 1;
+				info->name_f = 1;
+			}
+			if (info->quote == 2)
+				info->quote = 0;
+			else
+				info->error = 1;
+			break;
 		}
-		else
+		else if (info->quote == 1)
 		{
-			info->error = 1; // a etoffer
-			ft_printf("comment ou name trop long (retrieve line)\n");
-			break ; 
+		//	ft_printf("parse_line ...\n");
+			if (len + 1 < ((info->comment_f == -1) ? COMMENT_LENGTH : PROG_NAME_LENGTH))
+			{
+				if (line[i])
+				target[ft_strlen(target)] = line[i];
+			}
+			else
+			{
+				info->stop = 1; // a etoffer
+				break ; 
+			}
 		}
 		++i;
 	}
-	if (line[i] == '"')
-	{
-		if (info->comment_f == -1)
-			info->comment_f = 1;
-		else if (info->name_f == -1)
-			info->name_f = 1;
-	}
-	info->end = i;
-	ft_printf("name=%s", info->name);
+	return (i);
 }
 
 //COMMENT_LENGTH (2048)
 //PROG_NAME_LENGTH	128
 
-void	retrieve_line(t_asm *info, char *line)
+int		retrieve_line(t_asm *info, char *line, int i)
 {
+//	ft_printf("retrieve_line quote_f=%d\n", info->quote);
 	if (info->comment_f == -1)
 	{
-		parse_line(&(*info), line, &(*info->comment));
+		i = parse_line(&(*info), line, &(*info->comment), i);
 		if (info->comment_f == -1)
 			info->comment[ft_strlen(info->comment)] = '\n';
 	}
 	else if (info->name_f == -1)
 	{
-		parse_line(&(*info), line, &(*info->name));
+		i = parse_line(&(*info), line, &(*info->name), i);
 		if (info->name_f == -1)
 			info->name[ft_strlen(info->name)] = '\n';
 	}
+	return (i);
 }

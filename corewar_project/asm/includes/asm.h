@@ -80,6 +80,7 @@ typedef struct s_asm
 	int				operator_f;
 	int				label_f;
 	int				nb_param;
+	int				nb_params;
 	int				nb_labelchr;
 	int				nb_comma;
 	int				comchr_f;
@@ -100,6 +101,7 @@ typedef struct s_asm
 	int				stop;
 	int				gnl;
 	int				eof;
+	int				size;
 	char 			cur_param;
 	char 			nb_params_left;
 	struct s_label	*label;
@@ -124,14 +126,18 @@ extern t_op op_tab[NB_INSTR + 1];
  */
 void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_parse_op(t_asm *info, char *line);
-int		retrieve_line(t_asm *info, char *line, int i);
+void	retrieve_line(t_asm *info, char *line);
 void	parse_correctly(t_asm *info, char *line);
+
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);
+void	analyse_separator(t_asm *info, char *line);
 int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
 int		ft_is_sep(char c);
+int		ft_is_nonsep(char c);
+
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
 int		ft_split_word(t_asm *info, char *line, int i);
