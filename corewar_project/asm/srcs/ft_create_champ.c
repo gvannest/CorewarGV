@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/10 16:04:25 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/11 17:59:24 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ static void ft_load_ocp(t_token *token_op)
 	int		index;
 
 	p_token = token_op->next;
-	params_nb = 3; // A remplacer dans struct token par nb params de l'operation
-	index  = 6;
+	params_nb = token_op->nb_params;
+	printf("nb params op : %d\n", params_nb);
+	index = 6;
 //	ft_printf("token ocp : %b\n\n", token_op->ocp);
 	while (index >= 6 / params_nb)
 	{
@@ -51,28 +52,32 @@ void	ft_create_champ(t_asm *info)
 			printf("\nname OP : %s\n", p_token->s_val);
 			ft_load_ocp(p_token);
 			info->tab[index++] = p_token->opcode;
-			info->tab[index++] = p_token->ocp;
+			if (p_token->nb_params > 1)
+				info->tab[index++] = p_token->ocp;
 
 		}
 		else if (p_token->type == T_REG)
 		{
 			info->tab[index++] = p_token->i_val;
 		}
-		else if (p_token->type == T_DIR)
+		else if (p_token->type == T_DIR || p_token->type == T_DIR_LAB)
 		{
-			// checker (et stocker ?) la valeur 0 ou 1 de l'operation pour savoir si +2 ou +4
-			info->tab[index] = p_token->ocp;;
-			info->tab[index + 1] = p_token->ocp;
-			index += 2; //2 ou 4
+			printf("alert! i_val : %d\n", p_token->i_val);
+			if (p_token->arg_size == 2)
+			{
+				ft_write_short((short)p_token->i_val); // remplacer par load short
+				index += 2;
+			}
+			if (p_token->arg_size == 4)
+			{
+				ft_write_int(p_token->i_val); //remplacer par load int
+				index += 4;
+			}
 		}
-		/*else if (p_token->type == T_IND)
+		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)
 		{
 			info->tab[index++] = p_token->i_val;
 		}
-		else if (p_token->type == T_DIR_LAB || p_token->type == T_IND_LAB)
-		{
-			info->tab[index++] = p_token->i_val;
-		}*/
 		p_token = p_token->next;
 	}
 }
