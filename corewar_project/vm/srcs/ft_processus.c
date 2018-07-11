@@ -46,7 +46,7 @@ void			ft_move_process(int *map_process, t_proc *proc, char ocp)
 			ft_move_ocp(proc, ocp);
 	}
 	else
-		proc->pc_act = proc->pc_act + 1;
+		proc->pc_act = (proc->pc_act + 1) % MEM_SIZE;
 	map_process[proc->pc_act] = k;
 }
 

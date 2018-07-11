@@ -6,82 +6,78 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/09 13:27:54 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/10 17:24:11 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include "corewar_visual.h"
 
 WINDOW *create_newwin(int height, int width, int starty, int startx)
 {
 	WINDOW *local_win;
 
 	local_win = newwin(height, width, starty, startx);
-	box(local_win, startx, starty);
+	box(local_win, ACS_VLINE, ACS_HLINE);
 	wrefresh(local_win);
 	return (local_win);
 }
 
-static void		ft_init_color(unsigned short nb_players)
+static void		ft_init_color()
 {
-	int p;
-	int tab_color[8] = {0, 4, 1, 2, 3, 5, 6, 7};
-
-	p = 1;
+	start_color();
 	if(has_colors() == FALSE)
 	{
 		endwin();
 		ft_error_vm(0, "Your terminal does not support color", "", 0);
 	}
-	while (p <= nb_players)
-	{
-		init_pair(p, tab_color[p], COLOR_BLACK);
-		p++;
-	}
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	init_pair(2, COLOR_RED, COLOR_BLACK);
+	init_pair(3, COLOR_BLUE, COLOR_BLACK);
+	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(6, COLOR_CYAN, COLOR_BLACK);
+	init_pair(7, COLOR_WHITE, COLOR_BLACK);
+	init_pair(8, COLOR_BLACK, COLOR_GREEN);
+	init_pair(9, COLOR_BLACK, COLOR_RED);
+	init_pair(10, COLOR_BLACK, COLOR_BLUE);
+	init_pair(11, COLOR_BLACK, COLOR_YELLOW);
+	init_pair(12, COLOR_BLACK, COLOR_MAGENTA);
+	init_pair(13, COLOR_BLACK, COLOR_CYAN);
+	init_pair(14, COLOR_BLACK, COLOR_WHITE);
 }
 
-void		ft_init_visual(t_arena *arena, t_corvisu *visual)
+void		ft_init_visual(t_corvisu *visual)
 {
-	int row;
-	int col;
-
 	initscr();
-	raw();
+	cbreak();
 	noecho();
 	keypad(stdscr, TRUE);
-	start_color();
-	ft_init_color(arena->nb_pyrs);
-	getmaxyx(stdscr, row, col);
-	//printw("%d / %d\n", row, col);
+	ft_init_color();
 	refresh();
-	visual->win_arena = create_newwin(2 * row / 3, col, 0, 0);
-	visual->win_info_game = create_newwin(row / 5, col / 5, 3 * row / 4, col / 5);
-	visual->win_info_pyrs = create_newwin(row / 5, col / 5, 3 * row / 4, 3 * col / 5);
-	getch();
-	endwin();
+	visual->win_arena = create_newwin(64 + 2, 65 * 3 + 2, 0, 0);
+	visual->win_info_game = create_newwin(15, 65 * 3 + 2, 64 + 2, 0);
+	visual->win_info_pyrs = create_newwin(64 + 2, 60, 0, 65 * 3 + 2);
+	curs_set(0);
 }
 
-/*void		ft_visual(t_arena *arena, t_corvisu *visual)
+void		ft_visual(t_arena *arena, t_corvisu *visual)
 {
 	int i;
 
 	i = 0;
-	(void)visual;
+	ft_info_fix(arena->tab_pyr, arena->nb_pyrs, visual);
 	while (i < MEM_SIZE)
 	{
-		if (i != 0 && i % 64 == 0)
-			printw("\n");
-		if (arena->map_pyr[i] != 0)
-		{
-			attron(COLOR_PAIR(arena->map_pyr[i]));
-			printw("%.2hhx ", arena->map[i]);
-			attroff(COLOR_PAIR(arena->map_pyr[i]));
-		}
+		if (arena->map_process[i] != 0)
+			ft_is_proc(visual, arena->map_pyr[i], arena->map[i], i);
+		else
+			ft_is_not_proc(visual, arena->map_pyr[i], arena->map[i], i);
+		ft_info_game(arena, visual);
+		ft_info_player(arena->tab_pyr, arena->nb_pyrs, visual);
 		i++;
 	}
-	refresh();
-	getch();
-	endwin();
-}*/
+	wrefresh(visual->win_arena);
+	wrefresh(visual->win_info_game);
+	wrefresh(visual->win_info_pyrs);
+}
 

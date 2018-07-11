@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 19:02:34 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/26 10:37:36 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/10 17:53:12 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ unsigned long long		ft_convert_nbr(char *str, size_t k)
 		i++;
 	}
 	return (res);
+}
+
+void					ft_write_memory(char *str, unsigned int v, size_t k)
+{
+	unsigned short		i;
+
+	i = 0;
+	while (i < k)
+	{
+		str[i] = v >> (8 * (k - 1 - i));
+		i++;
+	}
 }
 
 int						ft_isnum(char *str)

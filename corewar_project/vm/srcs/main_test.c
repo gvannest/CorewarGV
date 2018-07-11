@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:43:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 17:16:21 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/09 15:32:14 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void		ft_print_champ(t_arena *arena)
 	printf("\n");
 	printf("\n");
 }
-
+*/
 void		ft_print_map_pyr(t_arena *arena)
 {
 	int i;
@@ -87,7 +87,7 @@ void		ft_print_map_pyr(t_arena *arena)
 	printf("\n");
 	printf("\n");
 }
-
+/*
 void		ft_print_map_proc(t_arena *arena)
 {
 	int i;
@@ -104,7 +104,7 @@ void		ft_print_map_proc(t_arena *arena)
 	printf("\n");
 }
 */
-void		ft_print_registres(t_arena *arena)
+/*void		ft_print_registres(t_arena *arena)
 {
 	t_proc *ptr;
 	int		i;
@@ -123,15 +123,15 @@ void		ft_print_registres(t_arena *arena)
 		ptr = ptr->next;
 	}
 }
-
+*/
 void		ft_assert(char *line, t_arena *arena)
 {
 	(void)line;
 	//ft_print_cor(line);
 	//ft_print_champ(arena);
 	//ft_print_map(arena);
-	//ft_print_map_pyr(arena);
+	ft_print_map_pyr(arena);
 	//ft_print_map_proc(arena);
-	ft_print_registres(arena);
+	//ft_print_registres(arena);
 }
 

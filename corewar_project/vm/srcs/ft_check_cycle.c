@@ -12,7 +12,7 @@ static void		ft_check_live_process(t_arena *arena)
 			proc = ft_kill_process(&(arena->list_proc), proc);
 			arena->nb_live_proc--;
 		}
-		if (proc)
+		else
 			proc = proc->next;
 	}
 }
