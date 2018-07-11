@@ -16,6 +16,8 @@ void	init_info(t_asm *info)
 {
 	info->last_opcode = -1;
 	info->err_pos = -1;
+	info->nb_params = 0;
+	info->size = 1;
 }
 
 int	ft_open(char *path)
@@ -68,6 +70,6 @@ int	main(int argc, char **argv)
 //	ft_tests_syntax();
 //	printf("test display\n");
 	ft_create_champ(&info);
-	//ft_display(&info);
+	ft_display(&info);
 	return (0);
 }

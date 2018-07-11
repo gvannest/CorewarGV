@@ -61,6 +61,8 @@ typedef struct	s_token
 	int				pos;
 	int				line;
 	int				cl;
+	char			arg_size;
+	char			nb_params;
 	struct	s_token	*next;
 }				t_token;
 
@@ -73,6 +75,8 @@ typedef struct s_asm
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
 	int	pos;
+	char size;
+	char nb_params;
 	int	nb_instr;
 	int	comma_f;
 	int	operator_f;
