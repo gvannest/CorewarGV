@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	else if ((info.fp = ft_open(argv[1])) == 0)
 		return (0);
 //	printf("main\n");
-	ft_gnl(&info);
+//	ft_gnl(&info);
 //	ft_tests_syntax();
 //	printf("test display\n");
 //	ft_create_champ(&info);
