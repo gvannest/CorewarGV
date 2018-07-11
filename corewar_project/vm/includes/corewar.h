@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/09 14:12:16 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/10 15:27:26 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct		s_arena
 	unsigned int	nb_live_tot;//nb de vies totales depuis debut partie
 	unsigned int	nb_live_proc;// nb processus en vie
 	unsigned int	nb_round_no_decrease;;// nb de round (cycle to die) without decreasing CYCLE TO DIE
-	unsigned short	nb_pyrs;
+	int				nb_pyrs;
 	int				last_live_pyr;//dernier joueru a avoir dit " vie" 
 	t_player		tab_pyr[MAX_PLAYERS];// tableau des joueurs
 	struct s_proc	*list_proc;//pointeur vers debut liste chainee processus
@@ -94,7 +94,12 @@ int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_visual(t_arena *arena, t_corvisu *visual);
-void				ft_init_visual(t_arena *arena, t_corvisu *visual);
+void				ft_init_visual(t_corvisu *visual);
+void				ft_is_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
+void				ft_is_not_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
+void				ft_info_game(t_arena *arena, t_corvisu *visual);
+void				ft_info_fix(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
+void				ft_info_player(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
 void				ft_live(t_arena *arena, t_proc *proc);
 void				ft_game(t_arena *arena, t_corvisu *visual, char v);
 void				ft_check_cycle(t_arena *arena);

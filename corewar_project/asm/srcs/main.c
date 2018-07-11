@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/11 09:08:31 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/11 14:53:58 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	init_info(t_asm *info)
 {
 	info->last_opcode = -1;
 	info->err_pos = -1;
+	info->nb_params = 0;
+	info->size = 1;
 }
 
 int	ft_open(char *path)

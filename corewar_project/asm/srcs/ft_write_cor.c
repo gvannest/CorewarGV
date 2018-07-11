@@ -18,14 +18,14 @@ static	void	ft_write_champ(char *champ)
 	int	champ_ln;
 
 	index = 0;
-	champ_ln = ft_strlen(champ);
+	champ_ln = 25; //pos dernier element + taille dernier element
 	while (index < champ_ln)
 	{
 		if (index % 16 == 0)
 			printf("\n");
 		if (index % 2 == 0)
 			printf(" ");
-		printf("%.2X", champ[index]);
+		printf("%.2hhX", champ[index]);
 		index++;
 	}
 	printf(" ");

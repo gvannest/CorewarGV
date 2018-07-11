@@ -5,14 +5,16 @@ static void		ft_check_opcode(t_proc *proc)
 	int i;
 
 	i = 0;
-	while (i < 15)
+	while (i < 16)
 	{
 		if (proc->opcode_act == op_tab[i].opcode)
 		{
 			proc->opcode_valid = 1;
-			proc->nb_cycle_before_op = op_tab[i].nb_cycles;;
+			proc->nb_cycle_before_op = op_tab[i].nb_cycles;
 			return;
 		}
+		else
+			proc->opcode_valid = 0;
 		i++;
 	}
 }

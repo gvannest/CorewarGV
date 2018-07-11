@@ -19,11 +19,10 @@ static void ft_load_ocp(t_token *token_op)
 	int		index;
 
 	p_token = token_op->next;
-	token_op->ocp = 0;
 	params_nb = 3; // A remplacer dans struct token par nb params de l'operation
-	index = params_nb * 2;
+	index  = 6;
 //	ft_printf("token ocp : %b\n\n", token_op->ocp);
-	while (index > 0)
+	while (index >= 6 / params_nb)
 	{
 		if (p_token->type == T_DIR_LAB)
 			token_op->ocp  = token_op->ocp | (2 << index);
@@ -34,8 +33,8 @@ static void ft_load_ocp(t_token *token_op)
 		index -= 2;
 		p_token = p_token->next;
 	}
-	ft_printf("token fin : 0%b\n\n", token_op->ocp);
-	ft_printf("token fin : %x\n\n", token_op->ocp);
+	ft_printf("token fin bin : 0%b\n", token_op->ocp);
+	ft_printf("token fin hex : %x\n", token_op->ocp);
 }
 
 void	ft_create_champ(t_asm *info)
@@ -47,21 +46,26 @@ void	ft_create_champ(t_asm *info)
 	p_token = info->atoken;
 	while (p_token)
 	{
-		printf("p_token->opcode : %hhX\n", p_token->opcode);
 		if (p_token->type == T_OP)
 		{
+			printf("\nname OP : %s\n", p_token->s_val);
 			ft_load_ocp(p_token);
 			info->tab[index++] = p_token->opcode;
+			info->tab[index++] = p_token->ocp;
+
 		}
-	/*	else if (p_token->type == T_REG)
-		{
-			info->tab[index++] = p_token->i_val;
-		}
-		else if (p_token->type == T_IND)
+		else if (p_token->type == T_REG)
 		{
 			info->tab[index++] = p_token->i_val;
 		}
 		else if (p_token->type == T_DIR)
+		{
+			// checker (et stocker ?) la valeur 0 ou 1 de l'operation pour savoir si +2 ou +4
+			info->tab[index] = p_token->ocp;;
+			info->tab[index + 1] = p_token->ocp;
+			index += 2; //2 ou 4
+		}
+		/*else if (p_token->type == T_IND)
 		{
 			info->tab[index++] = p_token->i_val;
 		}

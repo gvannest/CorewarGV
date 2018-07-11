@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/11 13:30:02 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/11 14:50:51 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct	s_token
 	int				pos;
 	int				line;
 	int				cl;
+	char			arg_size;
+	char			nb_params;
 	struct	s_token	*next;
 }				t_token;
 
