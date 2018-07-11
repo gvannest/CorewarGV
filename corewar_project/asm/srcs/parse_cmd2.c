@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 13:07:37 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 13:28:17 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/09 11:27:11 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ static void	ft_name2(t_asm *info, char *line, int i)
 		else
 			info->stop = 1;
 	}
+	else
+		if (info->quote == 0)
+		{
+			info->stop = 1;
+		}
 }
 
 void	ft_name(t_asm *info, char *line)

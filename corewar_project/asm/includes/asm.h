@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 14:10:14 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/09 18:53:44 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ typedef struct	s_token
 	char			*s_val;
 	int				i_val;
 	char			opcode;
-	char			ocp;
+	unsigned char	ocp;
 	int				pos;
 	int				line;
 	int				cl;
+	char			arg_size;
+	char			nb_params;
 	struct	s_token	*next;
 }				t_token;
 
@@ -73,6 +75,8 @@ typedef struct s_asm
 	char	*code;
 	char	err_content[COMMENT_LENGTH];
 	int	pos;
+	char size;
+	char nb_params;
 	int	nb_instr;
 	int	comma_f;
 	int	operator_f;
@@ -121,6 +125,7 @@ extern t_op op_tab[NB_INSTR + 1];
  */
 void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_parse_op(t_asm *info, char *line);
+int		retrieve_line(t_asm *info, char *line, int i);
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);
@@ -129,7 +134,9 @@ int		ft_is_space(char c);
 int		ft_is_sep(char c);
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
-
+int		ft_split_word(t_asm *info, char *line, int i);
+void	reset_words_flags(t_asm *info, char **arg);
+int 	ft_keep_going(t_asm *info, char *line, int i);
 
 /*
  * Error
