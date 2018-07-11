@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/09 18:53:44 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/11 16:20:46 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,11 @@ void	ft_fill_labels(t_token *atoken);
 char *ft_clean_label(char *label);
 t_token		*ft_find_label(t_token *atoken, char *label);
 void	ft_fill_label(t_token *token_src, t_token *token_dst);
+/*
+** FONCTIONS ECRIRE SHORT OU INT DECOMPOSE EN OCTETS 
+*/
+void	ft_write_int(int nb);
+void	ft_write_short(short nb);
 
 /*
 void	ft_display_param(t_param *param, int param_id);
