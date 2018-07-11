@@ -17,7 +17,7 @@ FLAGS = -Wall -Wextra -Werror -g
 #BINARY
 NAME = asm
 DST = ../../
-
+#DST = ./
 # OPTIONS
 DEBUG = no
 ifeq ($(DEBUG), yes)
@@ -45,7 +45,8 @@ SRC_NAME = main.c \
 		   parse_cmd2.c \
 		   parse_cmd.c	\
 		   parse_operator.c \
-		   ft_fill_labels.c \
+		 split_words.c	\
+			ft_fill_labels.c \
 		   ft_is_smthg.c \
 		   ft_syntax.c \
 		   ft_tests_label.c \

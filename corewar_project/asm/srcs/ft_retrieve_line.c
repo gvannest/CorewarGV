@@ -52,6 +52,7 @@ int	parse_line(t_asm *info, char *line, char *target, int i)
 	}
 	return (i);
 }
+
 //COMMENT_LENGTH (2048)
 //PROG_NAME_LENGTH	128
 

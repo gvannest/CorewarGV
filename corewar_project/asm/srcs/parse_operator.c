@@ -24,7 +24,7 @@ static void	set_var(t_asm *info)
 	info->directchr_f = 0;
 	info->nb_comma = 0;
 	info->nb_param = 0;
-
+	info->addon = info->line_nb;
 }
 
 void	reset_words_flags(t_asm *info, char **arg)
@@ -75,12 +75,16 @@ static int	labelchar(t_asm *info)
 static int	sepachar(t_asm *info)
 {
 	++info->nb_comma;
-	if (info->nb_comma > info->nb_param || info->nb_comma > 2 || info->comma_f == 1)
+//	ft_printf("\t\tsepachar : nb_comma=%d nb_param=%d\n", info->nb_comma, info->nb_param);
+	if (info->nb_comma > info->nb_param || info->comma_f == 1)
 	{
+//		if (info->nb_comma > info->nb_param)
+//			ft_printf("SEPARATOR PROBLEM\n");
 		info->error = 1;
-		return (1);
+		return (0);
 	}
-//	info->comma = 1;
+	if (info->comma_f == 0)
+		info->comma_f = 1;
 	return (1);
 }
 
@@ -97,7 +101,7 @@ static int	dirchar(t_asm *info)
 
 }
 
-static	int ft_keep_going(t_asm *info, char *line, int i)
+int ft_keep_going(t_asm *info, char *line, int i)
 {
 	info->start = i;
 	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || 
@@ -112,15 +116,14 @@ static	int ft_keep_going(t_asm *info, char *line, int i)
 		else if (line[i] == LABEL_CHAR && info->quote == 0)
 		{
 			if(labelchar(&(*info)))
-			{
-				++i;
 				break ;
-			}
 		}
 		else if (line[i] == SEPARATOR_CHAR && info->quote == 0)
 		{
-			if (sepachar(&(*info)))
+			if (!sepachar(&(*info)))
+				++i;
 				break ;
+		
 		}
 		else if (line[i] == DIRECT_CHAR && info->quote == 0)
 		{
@@ -134,38 +137,6 @@ static	int ft_keep_going(t_asm *info, char *line, int i)
 }
 
 //void	reset_words_flags(t_asm *info)
-static	int	ft_split_word(t_asm *info, char *line, int i)
-{
-	char	*arg;
-
-	reset_words_flags(&(*info), &arg);
-//	ft_printf("\ti = %d, info->end = %d\n", i, info->end);
-	i = ft_keep_going(&(*info), line, i);
-	if (i != info->start)
-	{
-		info->end = i;
-		arg = ft_strsub(line, info->start, info->end - info->start);
-		ft_printf("->%s<- \n",arg );
-		if (info->operator_f == -1)
-			info->operator_f = 1;
-		if (info->error != 0)
-		{
-			info->code = arg;
-		}
-		if (ft_strequ(arg, ".name") && info->name_f == 0)
-		{
-			info->name_f = -1;
-		}
-		else if (ft_strequ(arg, ".comment") && info->comment_f == 0)
-		{
-			info->comment_f = -1;
-		}
-		ft_strdel(&arg);
-		info->comma_f = (info->comma_f = 1 && info->error == 0) ? 0 : info->comma_f;
-		return (info->end);
-	}
-	return (i);
-}
 
 void	ft_parse_op(t_asm *info, char *line)
 {
@@ -180,14 +151,14 @@ void	ft_parse_op(t_asm *info, char *line)
 //	ft_printf("Treating line->%s<- quote =%d\n", line, info->quote);
 	while (line[i] && info->error == 0)
 	{
+//	ft_printf("Treating line->%s<- quote =%d\n", &line[i], info->quote);
+
 		if (!ft_is_space(line[i]) || info->quote == 1)
 		{
 			if (info->quote == 1)
 				i = retrieve_line(&(*info), line, i);
 			else
-			{
 				i = ft_split_word(&(*info), line, i);
-			}
 		}
 		if (line[i] == '"')
 			++info->quote;
