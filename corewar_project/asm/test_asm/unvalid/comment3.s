@@ -1,4 +1,4 @@
-#Nada comment     
+# command .comment uniquement pas de quote ou de texte     
 .name                      " 
 zork" #loolololtestttt
 #test

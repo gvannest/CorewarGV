@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:54:13 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/09 16:55:21 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/11 11:53:50 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	set_var(t_asm *info)
 {
+	info->lock = 0;
 	info->end = 0;
 	info->comchr_f = 0;
 	info->start = 0;
@@ -104,9 +105,11 @@ static int	dirchar(t_asm *info)
 int ft_keep_going(t_asm *info, char *line, int i)
 {
 	info->start = i;
+//	ft_printf("keepgoing ");
 	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || 
 				ft_is_othchr(line[i])))// && !ft_is_sep(line[i]))
 	{
+//	ft_printf("%c", line[i]);
 		if (line[i] == '"')
 		{
 		//	ft_printf("quote found alors que non\n");
@@ -123,16 +126,18 @@ int ft_keep_going(t_asm *info, char *line, int i)
 			if (!sepachar(&(*info)))
 				++i;
 				break ;
-		
 		}
 		else if (line[i] == DIRECT_CHAR && info->quote == 0)
 		{
 			dirchar(&(*info));
 		}
 		else if (ft_is_comchar(&info->comchr_f, line[i]) && info->quote != 1)
+		{
 			break ;
+		}
 		++i;
-	}	
+	}
+//	ft_printf("\n");
 	return (i);
 }
 
@@ -148,11 +153,9 @@ void	ft_parse_op(t_asm *info, char *line)
 	set_var(&(*info));
 	if (ft_strlen(line) == 0 && info->quote == 1)
 		retrieve_line(&(*info), line, i);
-//	ft_printf("Treating line->%s<- quote =%d\n", line, info->quote);
 	while (line[i] && info->error == 0)
 	{
 //	ft_printf("Treating line->%s<- quote =%d\n", &line[i], info->quote);
-
 		if (!ft_is_space(line[i]) || info->quote == 1)
 		{
 			if (info->quote == 1)
@@ -161,7 +164,10 @@ void	ft_parse_op(t_asm *info, char *line)
 				i = ft_split_word(&(*info), line, i);
 		}
 		if (line[i] == '"')
+		{
 			++info->quote;
+	//		ft_printf("IT NEVER HAPPENS anyway\n");
+	}
 		if (info->comchr_f == 1 || i >= (int)ft_strlen(line))
 			break ;
 		i++;

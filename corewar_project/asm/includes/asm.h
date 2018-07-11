@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/09 18:53:44 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/11 13:30:02 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,37 +68,38 @@ typedef struct s_asm
 {
 	char			tab[MEM_SIZE/6];
 	struct 	s_token *atoken;
-	char	comment[COMMENT_LENGTH + 1];
-	char	name[PROG_NAME_LENGTH + 1];
-	char	*code;
-	char	err_content[COMMENT_LENGTH];
-	int	pos;
-	int	nb_instr;
-	int	comma_f;
-	int	operator_f;
-	int	label_f;
-	int	nb_param;
-	int	nb_labelchr;
-	int	nb_comma;
-	int	comchr_f;
-	int	directchr_f;
-	int	last_opcode;
-	int	addon;
-	int	quote;
-	int	start;
-	int	end;
-	int nb;
-	int	name_f;
-	int	comment_f;
-	int	fp;
-	int	line_nb;
-	int	error;
-	int	err_pos;
-	int	stop;
-	int	gnl;
-	int	eof;
-	char cur_param;
-	char nb_params_left;
+	char			comment[COMMENT_LENGTH + 1];
+	char			name[PROG_NAME_LENGTH + 1];
+	char			*code;
+	char			err_content[COMMENT_LENGTH];
+	int				pos;
+	int				nb_instr;
+	int				comma_f;
+	int				operator_f;
+	int				label_f;
+	int				nb_param;
+	int				nb_labelchr;
+	int				nb_comma;
+	int				comchr_f;
+	int				directchr_f;
+	int				last_opcode;
+	int				addon;
+	int				lock;
+	int				quote;
+	int				start;
+	int				end;
+	int				nb;
+	int				name_f;
+	int				comment_f;
+	int				fp;
+	int				line_nb;
+	int				error;
+	int				err_pos;
+	int				stop;
+	int				gnl;
+	int				eof;
+	char 			cur_param;
+	char 			nb_params_left;
 	struct s_label	*label;
 }				t_asm;
 
@@ -122,6 +123,7 @@ extern t_op op_tab[NB_INSTR + 1];
 void	ft_parse_cmd(t_asm *info, char *line);
 void	ft_parse_op(t_asm *info, char *line);
 int		retrieve_line(t_asm *info, char *line, int i);
+void	parse_correctly(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 void	ft_name(t_asm *info, char *line);
 void	ft_comment(t_asm *info, char *line);

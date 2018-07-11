@@ -38,7 +38,9 @@ int		ft_is_othchr(char c)
 		return (1);
 	if (c == SEPARATOR_CHAR)
 		return (1);
-	if (c == '.')
+	if (c == '"')
+		return (1);
+	if (c == COMMENT_CHAR)
 		return (1);
 	return (0);
 }
