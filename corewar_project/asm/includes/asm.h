@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/11 18:00:49 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 15:28:11 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,14 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
-void	ft_parse_cmd(t_asm *info, char *line);
-void	ft_parse_op(t_asm *info, char *line);
+//void	ft_parse_cmd(t_asm *info, char *line);
+//void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);
 void	parse_correctly(t_asm *info, char *line);
 
 void	ft_gnl(t_asm *info);
-void	ft_name(t_asm *info, char *line);
-void	ft_comment(t_asm *info, char *line);
+//void	ft_name(t_asm *info, char *line);
+//void	ft_comment(t_asm *info, char *line);
 void	analyse_separator(t_asm *info, char *line);
 int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
@@ -140,9 +140,9 @@ int		ft_is_nonsep(char c);
 
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
-int		ft_split_word(t_asm *info, char *line, int i);
+//int		ft_split_word(t_asm *info, char *line, int i);
 void	reset_words_flags(t_asm *info, char **arg);
-int 	ft_keep_going(t_asm *info, char *line, int i);
+//int 	ft_keep_going(t_asm *info, char *line, int i);
 
 /*
  * Error
@@ -150,7 +150,7 @@ int 	ft_keep_going(t_asm *info, char *line, int i);
 void	ft_error(int a);
 void	parsing_error(t_asm *info, char *line);
 void	ft_syntax_err(t_asm *info, int i, char *line);
-
+void	ft_error_management(t_asm *info, char *arg);
 /*
 * Lexical analysis
 */
