@@ -25,10 +25,18 @@ int		ft_is_space(char c)
 // SEPARATOR_CHAR = ',' 
 int		ft_is_sep(char c)
 {
-	if (c == SEPARATOR_CHAR)
+	if (c == SEPARATOR_CHAR || c == ' ' || (c >= 9 && c <= 13))
 		return (1);
 	return (0);
 }
+
+int		ft_is_nonsep(char c)
+{
+	if (c == LABEL_CHAR || c == DIRECT_CHAR || c == '.')
+		return (1);
+	return (0);
+}
+
 
 int		ft_is_othchr(char c)
 {
