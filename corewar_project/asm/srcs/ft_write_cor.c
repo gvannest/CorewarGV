@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:21:45 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/11 17:14:28 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 13:32:39 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_write_int(int nb)
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
 	swap_bytes(octets);
-	printf("%.2X%.2X %.2X%.2X ", octets[0], octets[1], octets[2], octets[3]);
+	printf("int : %.2X%.2X %.2X%.2X .", octets[0], octets[1], octets[2], octets[3]);
 }
 
 void	ft_write_short(short nb)
@@ -111,7 +111,7 @@ void	ft_write_short(short nb)
 	tmp = octets[0];
 	octets[0] = octets[1];
 	octets[1] = tmp;
-	printf("%.2X%.2X ", octets[0], octets[1]);
+	printf("short : %.2X%.2X .", octets[0], octets[1]);
 }
 
 void	ft_display(t_asm *info)

@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 11:58:35 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 14:29:01 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,12 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 		info->last_opcode = token->opcode;
 		info->operator_f = 1;
 	}
-	else if (token->type == T_REG)
+	else if (token->type == T_IND || token->type == T_IND_LAB || token->type == T_DIR_LAB || token->type == T_DIR || token->type == T_REG)
 	{
-		token->i_val = ft_atoi(&token->s_val[1]);
+		if (token->type == T_DIR || token->type == T_REG)
+			token->i_val = ft_atoi(&token->s_val[1]);
 		info->nb_param++;
 	}
-	else if (token->type == T_IND || token->type == T_IND_LAB || token->type == T_DIR_LAB || token->type == T_DIR)
-		info->nb_param++;
 }
 
 void			ft_token_add(t_asm *info, char *arg)
