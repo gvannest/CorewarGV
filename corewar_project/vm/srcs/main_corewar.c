@@ -6,7 +6,7 @@
 /*   By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:54:27 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/09 16:23:14 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/12 18:17:52 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ int				main(int argc, char **argv)
 
 	i = 0;
 	ft_bzero(&arena, sizeof(arena));
-	v = ft_param(argc, argv, &arena);
+	v = ft_arguments(argc, argv, &arena);
 	ft_open_cor(&arena, argv, argc, i);
 	ft_fill_game(&arena);
-	//ft_assert("", &arena);
 	ft_game(&arena, &visual, v);
+	ft_assert("", &arena);
 	return (0);
 }
 

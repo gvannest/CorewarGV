@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/10 15:27:26 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/12 17:47:03 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "corewar_visual.h"
-
-# include "test_unitaire.h"
-
+// ATTENTION : chaque .h dans include doit etre justifie. mettre les autres .h dans les .c ou ils sont utilises. les .h ici doivent etre utilises dans ce .h!!!!
 
 typedef struct		s_player
 {
@@ -54,6 +52,13 @@ typedef struct		s_arena
 	struct s_proc	*list_proc;//pointeur vers debut liste chainee processus
 }					t_arena;
 
+typedef struct		s_param
+{
+	int				value;
+	char			size;
+	char			type;
+}					t_param;
+
 typedef struct		s_proc
 {
 	short int		p_nbr;
@@ -65,6 +70,8 @@ typedef struct		s_proc
 	unsigned int	nb_cycle_before_op;//nb de cycles restant avant executier et bouger
 	unsigned int	nb_live_curr_cycle;//nb de lives executees sur le cycle courant
 	char			carry;
+	char			ocp;
+	t_param			tab_param[3];
 	struct s_proc	*parent;
 	struct s_proc	*son;
 	struct s_proc	*next;
@@ -85,10 +92,10 @@ typedef struct s_op
 extern t_op op_tab[NB_INSTR + 1];
 
 void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
-unsigned long long	ft_convert_nbr(char *str, size_t k);
+unsigned long long	ft_read_memory(char *str, size_t k);
 void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
 void				ft_parse_vm2(char *line, t_arena *arena, char *cor, int i);
-char				ft_param(int argc, char **argv, t_arena *arena);
+char				ft_arguments(int argc, char **argv, t_arena *arena);
 void				ft_assert(char *line, t_arena *arena);
 int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
@@ -100,14 +107,22 @@ void				ft_is_not_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
 void				ft_info_game(t_arena *arena, t_corvisu *visual);
 void				ft_info_fix(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
 void				ft_info_player(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
-void				ft_live(t_arena *arena, t_proc *proc);
 void				ft_game(t_arena *arena, t_corvisu *visual, char v);
 void				ft_check_cycle(t_arena *arena);
 t_proc				*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill);
-void				ft_reinit_param(t_arena *arena, t_proc *proc);
+void				ft_reinit_cycle(t_arena *arena, t_proc *proc);
+void				ft_reinit_param(t_proc *proc);
 void				ft_next_opcode(t_arena *arena, t_proc *proc);
 void				ft_one_cycle(t_arena *arena, t_proc *proc);
 void				ft_move_process(int *map_process, t_proc *proc, char ocp);
+void				ft_get_param(t_arena *arena, t_proc *proc, int pc, char dir_size);
+
+void				ft_live(t_arena *arena, t_proc *proc);
+void				ft_load(t_arena *arena, t_proc *proc);
+
+void				ft_free_listproc(t_proc *begin_list);
+
+void				ft_print_test(char *line);
 
 #endif
 

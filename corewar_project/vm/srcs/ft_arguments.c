@@ -6,13 +6,13 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:30:07 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 19:13:33 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/12 15:41:32 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static	int		ft_check_param(char **argv, int argc, int i, t_arena *arena)
+static	int		ft_check_arg(char **argv, int argc, int i, t_arena *arena)
 {
 	if (ft_strcmp(argv[i], "-n") == 0)
 	{
@@ -109,7 +109,7 @@ static void			ft_sort_pyr(t_arena *arena)
 	}
 }
 
-char				ft_param(int argc, char **argv, t_arena *arena)
+char				ft_arguments(int argc, char **argv, t_arena *arena)
 {
 	int		i;
 	char	v;
@@ -120,7 +120,7 @@ char				ft_param(int argc, char **argv, t_arena *arena)
 		ft_error_vm(1, "Wrong number of arguments", "", 0);
 	while (i < argc)
 	{
-		if (!ft_check_param(argv, argc, i, arena))
+		if (!ft_check_arg(argv, argc, i, arena))
 			ft_error_vm(1, "Error usage : wrong arguments", "", 0);
 		if (ft_strcmp(argv[i], "-visual") == 0)
 			v = 1;

@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:59:16 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/10 17:10:57 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/12 16:44:29 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 			arena->nb_cycle_current++;
 		}
 		ft_check_cycle(arena);
-		ft_reinit_param(arena, arena->list_proc);
+		ft_reinit_cycle(arena, arena->list_proc);
 	}
 	getch();
 	endwin();

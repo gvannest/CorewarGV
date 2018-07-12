@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/10 11:58:24 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/12 15:37:15 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,24 +39,29 @@ LIB_NCURSES = -lncurses
 
 # SOURCES
 SRC_NAME = main_test.c \
-		   main_corewar.c \
+		   ft_arguments.c \
+		   ft_check_cycle.c \
+		   ft_error_vm.c \
+		   ft_fill_game.c \
+		   ft_free_corewar.c \
+		   ft_game.c \
+		   ft_init_processus.c \
+		   ft_live.c \
+		   ft_load.c \
+		   ft_one_cycle.c \
+		   ft_opcode.c \
 		   ft_parse_vm1.c \
 		   ft_parse_vm2.c \
-		   ft_error_vm.c \
+		   ft_processus.c \
+		   ft_reinit.c \
+		   ft_store.c \
 		   ft_tools.c \
-		   ft_arguments.c \
-		   ft_fill_game.c \
+		   ft_tools2.c \
 		   ft_visual.c \
 		   ft_visual2.c \
-		   ft_init_processus.c \
-		   ft_processus.c \
-		   ft_one_cycle.c \
-		   ft_live.c \
-		   ft_opcode.c \
-		   ft_reinit_param.c \
+		   main_corewar.c \
+		   ft_tools.c \
 		   op.c \
-		   ft_check_cycle.c \
-		   ft_game.c
 
 
 # OBJECTS
