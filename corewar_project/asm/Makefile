@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/12 12:21:21 by msicot           ###   ########.fr        #
+#    Updated: 2018/07/12 12:22:16 by msicot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,8 @@ SRC_NAME = main.c \
 		   ft_write_cor.c \
 		   parse_operator.c \
 		   ft_retrieve_line.c \
+		   ft_parse_correctly.c \
+		   analyse_separator.c \
 		   ft_error.c
 
 
