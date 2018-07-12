@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 11:40:12 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 12:20:19 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ void	ft_create_champ(t_asm *info)
 		}
 		else if (p_token->type == T_REG)
 		{
+			printf("\nalert! s_val : %s | i_val : %d\n", p_token->s_val, p_token->i_val);
 			info->tab[index++] = p_token->i_val;
 		}
 		else if (p_token->type == T_DIR || p_token->type == T_DIR_LAB)
 		{
-			printf("alert! i_val : %d\n", p_token->i_val);
+			printf("\nalert! s_val : %s | i_val : %d\n", p_token->s_val, p_token->i_val);
 			if (p_token->arg_size == 2)
 			{
 				ft_write_short((short)p_token->i_val); // remplacer par load short

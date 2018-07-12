@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 12:19:47 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/12 12:25:51 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_word(t_asm *info, char *arg)
 	}
 	else
 	{
-		//send to savinien !!!!!!!!
+		ft_token_add(info, arg);		//send to savinien !!!!!!!!
 	}
 }
 
