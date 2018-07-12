@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 12:25:51 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 15:07:49 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*retrieve_word(t_asm *info, char *line)
 		++i;
 	}
 	info->end = i;
-	if (i > info->start)
+	if (i >= info->start)
 	{
 		arg = ft_strsub(line, info->start, i - info->start);
 	//	ft_printf("arg ->%s<- i=%d\n", arg, i);
@@ -118,6 +118,8 @@ void	parse_correctly(t_asm *info, char *line)
 			break ;
 		}
 	}
+	if (info->comma_f == 1 && info->nb_comma == info->nb_param)
+		info->error = 1;
 	//test pour au cas ou il ny a pas de quote de debut
 	if (info->lock == 1 && (info->comment_f == -1 || info->name_f == -1))
 	{

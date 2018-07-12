@@ -1,0 +1,108 @@
+[1;32mNAME0.S[0m: #Espace a la fin apres \" de name
+[1;34mExpected oupout:[0m
+Writing output program to ./valid/name0.cor
+[1;34mYour output:[0m
+Writing output program to ./valid/name0.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mNAME1.S[0m: #Pas d'espace entre name et le \"
+[1;34mExpected oupout:[0m
+Writing output program to ./valid/name1.cor
+[1;34mYour output:[0m
+Writing output program to ./valid/name1.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mNAME2.S[0m: # \" apres un retour a la ligne"
+[1;34mExpected oupout:[0m
+Writing output program to ./valid/name2.cor
+[1;34mYour output:[0m
+Writing output program to ./valid/name2.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mVALID0.S[0m: #\" de fermeture apres un \n"
+[1;34mExpected oupout:[0m
+Writing output program to ./valid/valid0.cor
+[1;34mYour output:[0m
+Writing output program to ./valid/valid0.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mVALID1.S[0m: # Comments a gogo
+[1;34mExpected oupout:[0m
+Writing output program to ./valid/valid1.cor
+[1;34mYour output:[0m
+Writing output program to ./valid/valid1.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mZORK.S[0m:      .name                      " 
+[1;34mExpected oupout:[0m
+Writing output program to ./valid/zork.cor
+[1;34mYour output:[0m
+Writing output program to ./valid/zork.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+

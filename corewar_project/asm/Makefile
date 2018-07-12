@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/12 12:22:16 by msicot           ###   ########.fr        #
+#    Updated: 2018/07/12 14:35:59 by msicot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ FLAGS = -Wall -Wextra -Werror -g
 
 #BINARY
 NAME = asm
-DST = ../../
-#DST = ./
+#DST = ../../
+DST = ./
 # OPTIONS
 DEBUG = no
 ifeq ($(DEBUG), yes)

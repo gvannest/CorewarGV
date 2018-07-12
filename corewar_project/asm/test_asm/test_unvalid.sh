@@ -1,7 +1,7 @@
 #!/bin/bash
 clear && printf '\e[3J'
 list_file=`find ./unvalid -type f -name "*.s"`
-rm difference.txt 2> /dev/null || true
+rm difference.txt2> /dev/null || true
 echo "\033[0;35mChecking unvalid champs\n\033[0m"
 for file in $list_file
 do

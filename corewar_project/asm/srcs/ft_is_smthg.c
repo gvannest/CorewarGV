@@ -32,7 +32,7 @@ int		ft_is_sep(char c)
 
 int		ft_is_nonsep(char c)
 {
-	if (c == LABEL_CHAR ||c == DIRECT_CHAR || c == '.')
+	if (c == LABEL_CHAR || c == DIRECT_CHAR || c == '.')
 		return (1);
 	return (0);
 }
