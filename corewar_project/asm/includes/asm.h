@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/11 18:00:49 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 15:41:12 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,6 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "op.h"
-
-/*typedef struct	s_param
-{
-	char	type;
-	char	*type_name;
-	int		int_value;
-	char	*str_value;
-	char	f_label;
-}				t_param;
-
-typedef struct	s_instruction
-{
-	char	*name;
-	char	ocp;
-	char	opcode;
-	struct	s_param	param1;
-	struct	s_param	param2;
-	struct	s_param	param3;
-	struct	s_instruction *next_instruction;
-}				t_instruction;
-
-typedef struct s_label
-{
-	char 	*name;
-	struct	s_instruction *instruction;
-	int		address;
-	struct	s_label	*next_label; 
-
-}			t_label;
-*/
 
 typedef struct	s_token
 {
@@ -74,34 +44,34 @@ typedef struct s_asm
 	char			name[PROG_NAME_LENGTH + 1];
 	char			*code;
 	char			err_content[COMMENT_LENGTH];
-	int				pos;
+	int				addon;
 	int				nb_instr;
 	int				comma_f;
-	int				operator_f;
+	int				comment_f;
+	int				comchr_f;
+	int				directchr_f;
+	int				end;
+	int				eof;
+	int				error;
+	int				err_pos;
+	int				fp;
+	int				gnl;
 	int				label_f;
+	int				line_nb;
+	int				name_f;
+	int				nb;
+	int				nb_comma;
 	int				nb_param;
 	int				nb_params;
 	int				nb_labelchr;
-	int				nb_comma;
-	int				comchr_f;
-	int				directchr_f;
 	int				last_opcode;
-	int				addon;
 	int				lock;
+	int				operator_f;
+	int				pos;
 	int				quote;
-	int				start;
-	int				end;
-	int				nb;
-	int				name_f;
-	int				comment_f;
-	int				fp;
-	int				line_nb;
-	int				error;
-	int				err_pos;
-	int				stop;
-	int				gnl;
-	int				eof;
 	int				size;
+	int				start;
+	int				stop;
 	char 			cur_param;
 	char 			nb_params_left;
 	struct s_label	*label;
@@ -124,14 +94,14 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
-void	ft_parse_cmd(t_asm *info, char *line);
-void	ft_parse_op(t_asm *info, char *line);
+//void	ft_parse_cmd(t_asm *info, char *line);
+//void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);
 void	parse_correctly(t_asm *info, char *line);
 
 void	ft_gnl(t_asm *info);
-void	ft_name(t_asm *info, char *line);
-void	ft_comment(t_asm *info, char *line);
+//void	ft_name(t_asm *info, char *line);
+//void	ft_comment(t_asm *info, char *line);
 void	analyse_separator(t_asm *info, char *line);
 int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
@@ -140,9 +110,9 @@ int		ft_is_nonsep(char c);
 
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
-int		ft_split_word(t_asm *info, char *line, int i);
+//int		ft_split_word(t_asm *info, char *line, int i);
 void	reset_words_flags(t_asm *info, char **arg);
-int 	ft_keep_going(t_asm *info, char *line, int i);
+//int 	ft_keep_going(t_asm *info, char *line, int i);
 
 /*
  * Error
@@ -150,7 +120,7 @@ int 	ft_keep_going(t_asm *info, char *line, int i);
 void	ft_error(int a);
 void	parsing_error(t_asm *info, char *line);
 void	ft_syntax_err(t_asm *info, int i, char *line);
-
+void	ft_error_management(t_asm *info, char *arg);
 /*
 * Lexical analysis
 */

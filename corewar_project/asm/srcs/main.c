@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 13:31:23 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 17:16:22 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,18 @@ int	main(int argc, char **argv)
 //	ft_test_params();
 //	ft_test_label();
 	if (argc < 2 || argc > 2 || argv[1] == NULL)
-		perror("Error");
-	else if ((info.fp = ft_open(argv[1])) == 0)
+		exit (1);
+	else if ((info.fp = ft_open(argv[1])) < 0)
 		return (0);
 //	printf("main\n");
 	ft_gnl(&info);
-	ft_fill_labels(info.atoken);
+//	ft_fill_labels(info.atoken);
 //	ft_tests_syntax();
 //	printf("test display\n");
 //	ft_create_champ(&info);
-	//ft_display(&info);
-	ft_create_champ(&info);
-	ft_display(&info);
-	if (info.error == 1)
-		ft_printf("ERROR\n");
+//	ft_create_champ(&info);
+//	ft_display(&info);
+	if (info.error != 1)
+		ft_printf("Writing output program to %s.cor\n", argv[1]);
 	return (0);
 }

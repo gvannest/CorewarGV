@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_line_split.c                                    :+:      :+:    :+:   */
+/*   ft_errorm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/28 13:34:08 by srossi            #+#    #+#             */
-/*   Updated: 2018/06/28 14:54:16 by srossi           ###   ########.fr       */
+/*   Created: 2018/07/12 15:25:26 by msicot            #+#    #+#             */
+/*   Updated: 2018/07/12 15:28:31 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void ft_line_split(t_asm *sasm, char *line)
+void	ft_error_management(t_asm *info, char *arg)
 {
-	int start;
-	int end;
-
-	start = 0;
-	end = 0;
-	while (start[i])
-	{
-
-	}
+	if (arg == NULL || info == NULL)
+		return ;
 }

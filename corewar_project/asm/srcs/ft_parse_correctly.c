@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 12:25:51 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 15:27:50 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
  *
  */
 
-void	check_word(t_asm *info, char *arg)
+static void	check_word(t_asm *info, char *arg)
 {
 	if (info->lock == 1)
 	{
@@ -46,11 +46,12 @@ void	check_word(t_asm *info, char *arg)
 	}
 	else
 	{
+		ft_error_management(info, arg);
 		ft_token_add(info, arg);		//send to savinien !!!!!!!!
 	}
 }
 
-char	*retrieve_word(t_asm *info, char *line)
+static char	*retrieve_word(t_asm *info, char *line)
 {
 	char	*arg;
 	int		i;
@@ -61,7 +62,7 @@ char	*retrieve_word(t_asm *info, char *line)
 		++i;
 	}
 	info->end = i;
-	if (i > info->start)
+	if (i >= info->start)
 	{
 		arg = ft_strsub(line, info->start, i - info->start);
 	//	ft_printf("arg ->%s<- i=%d\n", arg, i);
@@ -72,7 +73,7 @@ char	*retrieve_word(t_asm *info, char *line)
 }
 
 
-int	ft_parse_it(t_asm *info, char *line)
+static int	ft_parse_it(t_asm *info, char *line)
 {
 	char	*arg;
 	//ft_printf("\tparsing it start=%d ->%c<-_\n", info->start, line[info->start]);
@@ -118,6 +119,8 @@ void	parse_correctly(t_asm *info, char *line)
 			break ;
 		}
 	}
+	if (info->comma_f == 1 && info->nb_comma == info->nb_param)
+		info->error = 1;
 	//test pour au cas ou il ny a pas de quote de debut
 	if (info->lock == 1 && (info->comment_f == -1 || info->name_f == -1))
 	{

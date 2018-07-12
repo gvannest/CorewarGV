@@ -2,89 +2,658 @@
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][008:000] "(null)"
+Syntax error at token [TOKEN][004:006] "(null)"
 
 [1;32mCOMMENT1.S[0m: #no beginning quote for .comment    
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][005:010] INSTRUCTION "just"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][012:013] "(null)"
+Syntax error at token [TOKEN][005:009] "(null)"
 
 [1;32mCOMMENT2.S[0m: #No end quote for .comment     
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][013:001] END "(null)"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][012:013] "(null)"
+Syntax error at token [TOKEN][012:000] "(null)"
 
 [1;32mCOMMENT3.S[0m: # command .comment uniquement pas de quote ou de texte     
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][006:001] ENDLINE
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][011:000] "(null)"
+Syntax error at token [TOKEN][005:000] "(null)"
 
 [1;32mCOMMENT4.S[0m: #instruction after .comment
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][004:030] INSTRUCTION "sti"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][008:013] "(null)"
+Syntax error at token [TOKEN][004:029] "(null)"
 
 [1;32mCOMMENT5.S[0m: #.comment command on the same line as .name     
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][003:006] COMMAND_COMMENT ".comment"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][003:015] "just"
+Syntax error at token [TOKEN][003:005] "(null)"
 
 [1;32mCOMMENT6.S[0m: #.comment command on the same line as .name with a space  
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][003:007] COMMAND_COMMENT ".comment"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][003:016] "just"
+Syntax error at token [TOKEN][003:006] "(null)"
 
 [1;32mNAME0.S[0m: #No .name at all  
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][008:000] "(null)"
+Syntax error at token [TOKEN][004:006] "(null)"
 
 [1;32mNAME1.S[0m: #no beginning quote for .name    
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][002:008] INSTRUCTION "zork"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][002:007] "zork"
+Syntax error at token [TOKEN][002:007] "(null)"
 
 [1;32mNAME2.S[0m: #No end quote for .name
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][004:011] INSTRUCTION "just"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][013:013] "(null)"
+Syntax error at token [TOKEN][004:010] "(null)"
 
 [1;32mNAME3.S[0m: #Nada in .name  as de quote   
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][003:006] ENDLINE
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][010:000] "(null)"
+Syntax error at token [TOKEN][003:000] "(null)"
 
 [1;32mNAME4.S[0m: #instruction after .name
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][005:007] INSTRUCTION "sti"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][010:013] "(null)"
+Syntax error at token [TOKEN][005:006] "(null)"
 
 [1;32mNAME5.S[0m: #.name command on the same line as .comment    
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][003:036] COMMAND_NAME ".name"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][009:013] "(null)"
+Syntax error at token [TOKEN][003:035] "(null)"
 
 [1;32mNAME6.S[0m: #.sname command on the same line as .comment with a space  
 [1;34mExpected oupout:[0m
 Syntax error at token [TOKEN][003:037] COMMAND_NAME ".name"
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][003:064] "test"
+Syntax error at token [TOKEN][003:036] "(null)"
+
+[1;32mSYNTAX00.S[0m: #deux instructions same line 
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:026] INSTRUCTION "sti"
+[1;34mYour output:[0m
+comma_f=1	nb_comma=1	
+flag allume
+comma_f=1	nb_comma=2	
+flag allume
+comma_f=1	nb_comma=3	
+flag allume
+comma_f=1	nb_comma=4	
+flag allume
+comma_f=1	nb_comma=1	
+flag allume
+comma_f=1	nb_comma=2	
+flag allume
+Writing output program to ./unvalid/syntax00.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mSYNTAX01.S[0m: #->2 virgules qui se suivente
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:015] SEPARATOR ","
+[1;34mYour output:[0m
+comma_f=1	nb_comma=1	
+flag allume
+ERROR comma analyser
+comma_f=1	nb_comma=1	
+flag allume
+Syntax error at token [TOKEN][006:014] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX02.S[0m: # 1 virgule avant un param
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:012] SEPARATOR ","
+[1;34mYour output:[0m
+ERROR comma analyser 2
+comma_f=0	nb_comma=0	
+Syntax error at token [TOKEN][006:011] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX03.S[0m: #->1 virgule avant un ope
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:008] SEPARATOR ","
+[1;34mYour output:[0m
+ERROR comma analyser 2
+comma_f=0	nb_comma=0	
+Syntax error at token [TOKEN][006:007] "(null)"
+
+[1;32mSYNTAX04.S[0m: #->Vvirgule a la fin
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:025] ENDLINE
+[1;34mYour output:[0m
+comma_f=1	nb_comma=1	
+flag allume
+comma_f=1	nb_comma=2	
+flag allume
+comma_f=1	nb_comma=3	
+flag allume
+Syntax error at token [TOKEN][006:023] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
 
 [1;32mZORK.S[0m:      .name                      " 
 [1;34mExpected oupout:[0m
 Writing output program to ./unvalid/zork.cor
 [1;34mYour output:[0m
-Syntax error at token [TOKEN][013:013] "(null)"
+comma_f=1	nb_comma=1	
+flag allume
+comma_f=1	nb_comma=2	
+flag allume
+comma_f=1	nb_comma=1	
+flag allume
+comma_f=1	nb_comma=2	
+flag allume
+Writing output program to ./unvalid/zork.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mCOMMENT0.S[0m: #No .comment at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:006] "(null)"
+
+[1;32mCOMMENT1.S[0m: #no beginning quote for .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:010] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:009] "(null)"
+
+[1;32mCOMMENT2.S[0m: #No end quote for .comment     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][013:001] END "(null)"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][012:000] "(null)"
+
+[1;32mCOMMENT3.S[0m: # command .comment uniquement pas de quote ou de texte     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:001] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:000] "(null)"
+
+[1;32mCOMMENT4.S[0m: #instruction after .comment
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:030] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:029] "(null)"
+
+[1;32mCOMMENT5.S[0m: #.comment command on the same line as .name     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:005] "(null)"
+
+[1;32mCOMMENT6.S[0m: #.comment command on the same line as .name with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:007] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:006] "(null)"
+
+[1;32mNAME0.S[0m: #No .name at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:006] "(null)"
+
+[1;32mNAME1.S[0m: #no beginning quote for .name    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][002:008] INSTRUCTION "zork"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][002:007] "(null)"
+
+[1;32mNAME2.S[0m: #No end quote for .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:011] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:010] "(null)"
+
+[1;32mNAME3.S[0m: #Nada in .name  as de quote   
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:000] "(null)"
+
+[1;32mNAME4.S[0m: #instruction after .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:007] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:006] "(null)"
+
+[1;32mNAME5.S[0m: #.name command on the same line as .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:036] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:035] "(null)"
+
+[1;32mNAME6.S[0m: #.sname command on the same line as .comment with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:037] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:036] "(null)"
+
+[1;32mSYNTAX00.S[0m: #deux instructions same line 
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:026] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Writing output program to ./unvalid/syntax00.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mSYNTAX01.S[0m: #->2 virgules qui se suivente
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:015] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:014] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX02.S[0m: # 1 virgule avant un param
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:012] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:011] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX03.S[0m: #->1 virgule avant un ope
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:008] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:007] "(null)"
+
+[1;32mSYNTAX04.S[0m: #->Vvirgule a la fin
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:025] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:023] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mZORK.S[0m:      .name                      " 
+[1;34mExpected oupout:[0m
+Writing output program to ./unvalid/zork.cor
+[1;34mYour output:[0m
+Writing output program to ./unvalid/zork.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mCOMMENT0.S[0m: #No .comment at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:006] "(null)"
+
+[1;32mCOMMENT1.S[0m: #no beginning quote for .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:010] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:009] "(null)"
+
+[1;32mCOMMENT2.S[0m: #No end quote for .comment     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][013:001] END "(null)"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][012:000] "(null)"
+
+[1;32mCOMMENT3.S[0m: # command .comment uniquement pas de quote ou de texte     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:001] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:000] "(null)"
+
+[1;32mCOMMENT4.S[0m: #instruction after .comment
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:030] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:029] "(null)"
+
+[1;32mCOMMENT5.S[0m: #.comment command on the same line as .name     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:005] "(null)"
+
+[1;32mCOMMENT6.S[0m: #.comment command on the same line as .name with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:007] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:006] "(null)"
+
+[1;32mNAME0.S[0m: #No .name at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:006] "(null)"
+
+[1;32mNAME1.S[0m: #no beginning quote for .name    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][002:008] INSTRUCTION "zork"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][002:007] "(null)"
+
+[1;32mNAME2.S[0m: #No end quote for .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:011] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:010] "(null)"
+
+[1;32mNAME3.S[0m: #Nada in .name  as de quote   
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:000] "(null)"
+
+[1;32mNAME4.S[0m: #instruction after .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:007] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:006] "(null)"
+
+[1;32mNAME5.S[0m: #.name command on the same line as .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:036] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:035] "(null)"
+
+[1;32mNAME6.S[0m: #.sname command on the same line as .comment with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:037] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:036] "(null)"
+
+[1;32mSYNTAX00.S[0m: #deux instructions same line 
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:026] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Writing output program to ./unvalid/syntax00.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mSYNTAX01.S[0m: #->2 virgules qui se suivente
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:015] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:014] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX02.S[0m: # 1 virgule avant un param
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:012] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:011] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX03.S[0m: #->1 virgule avant un ope
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:008] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:007] "(null)"
+
+[1;32mSYNTAX04.S[0m: #->Vvirgule a la fin
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:025] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:023] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mZORK.S[0m:      .name                      " 
+[1;34mExpected oupout:[0m
+Writing output program to ./unvalid/zork.cor
+[1;34mYour output:[0m
+Writing output program to ./unvalid/zork.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mCOMMENT0.S[0m: #No .comment at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:006] "(null)"
+
+[1;32mCOMMENT1.S[0m: #no beginning quote for .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:010] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:009] "(null)"
+
+[1;32mCOMMENT2.S[0m: #No end quote for .comment     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][013:001] END "(null)"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][012:000] "(null)"
+
+[1;32mCOMMENT3.S[0m: # command .comment uniquement pas de quote ou de texte     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:001] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:000] "(null)"
+
+[1;32mCOMMENT4.S[0m: #instruction after .comment
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:030] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:029] "(null)"
+
+[1;32mCOMMENT5.S[0m: #.comment command on the same line as .name     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:005] "(null)"
+
+[1;32mCOMMENT6.S[0m: #.comment command on the same line as .name with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:007] COMMAND_COMMENT ".comment"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:006] "(null)"
+
+[1;32mNAME0.S[0m: #No .name at all  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:003] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:006] "(null)"
+
+[1;32mNAME1.S[0m: #no beginning quote for .name    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][002:008] INSTRUCTION "zork"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][002:007] "(null)"
+
+[1;32mNAME2.S[0m: #No end quote for .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][004:011] INSTRUCTION "just"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][004:010] "(null)"
+
+[1;32mNAME3.S[0m: #Nada in .name  as de quote   
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:006] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:000] "(null)"
+
+[1;32mNAME4.S[0m: #instruction after .name
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][005:007] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:006] "(null)"
+
+[1;32mNAME5.S[0m: #.name command on the same line as .comment    
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:036] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:035] "(null)"
+
+[1;32mNAME6.S[0m: #.sname command on the same line as .comment with a space  
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][003:037] COMMAND_NAME ".name"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][003:036] "(null)"
+
+[1;32mSYNTAX00.S[0m: #deux instructions same line 
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:026] INSTRUCTION "sti"
+[1;34mYour output:[0m
+Writing output program to ./unvalid/syntax00.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
+
+[1;32mSYNTAX01.S[0m: #->2 virgules qui se suivente
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:015] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:014] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX02.S[0m: # 1 virgule avant un param
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:012] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:011] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mSYNTAX03.S[0m: #->1 virgule avant un ope
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:008] SEPARATOR ","
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:007] "(null)"
+
+[1;32mSYNTAX04.S[0m: #->Vvirgule a la fin
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:025] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:023] "(null)"
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+
+[1;32mZORK.S[0m:      .name                      " 
+[1;34mExpected oupout:[0m
+Writing output program to ./unvalid/zork.cor
+[1;34mYour output:[0m
+Writing output program to ./unvalid/zork.s.cor
+INDEX :  10
+SIZE :  1
+NB_PARAMS :  3
+INDEX :  5
+SIZE :  0
+NB_PARAMS :  3
+INDEX :  0
+SIZE :  0
+NB_PARAMS :  1
+INDEX :  8
+SIZE :  1
+NB_PARAMS :  1
 

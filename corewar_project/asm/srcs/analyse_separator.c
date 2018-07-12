@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 14:26:54 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 12:14:45 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/12 15:07:40 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,22 @@ static void comma_analyser(t_asm *info)
 	 * Si non, allumer le flag et augmenter le nombre de virgule.
 	 * il faudra dans la fonction qui recupere l'argument penser a reset le flag virgule apres chaque retrieve dargument.
 	 */
-/*	if (info->comma_f == 1 || info->nb_param != 0)
+	if (info->comma_f == 1 || (info->nb_comma > info->nb_param))
 	{
-		ft_printf("ERROR comma analyser\n");
+//		ft_printf("ERROR comma analyser\n");
 		info->error = 1;
 	}
-	if
-	{*/
+	else if (info->operator_f == 0 || info->nb_param == 0)
+	{
+//		ft_printf("ERROR comma analyser 2\n");
+		info->error = 1;
+	}
+	else
+	{
 		info->comma_f = 1; 
 		++info->nb_comma;
-	
+	}
+//	ft_printf("comma_f=%d\tnb_comma=%d\t\n", info->comma_f, info->nb_comma);	
 }
 
 static void quote_analyser(t_asm *info)
@@ -65,40 +71,24 @@ static void quote_analyser(t_asm *info)
 	}
 }
 
-static void	space_analyser(t_asm *info)
+/*static void	space_analyser(t_asm *info)
 {
-	if (info->nb_param != 0 && info->operator_f== 1)
-		info->error = 1;
-}
+		info->error = info->error;
+}*/
 
 void analyse_separator(t_asm *info, char *line)
-{
-//	ft_printf("analyse_separator being analysed->%c<-", line[info->start]);
+{	
 	if (line == NULL)
 	   return ;	
 	if (START == SEPARATOR_CHAR)
 	{
 		comma_analyser(info);
+//		if (info->comma_f == 1)
+//			ft_printf("flag allume\n");
 	}
 	else if (START == '"')
 	{
 		quote_analyser(info);
 	}
-	else if (ft_is_space(START))
-	{
-		space_analyser(info);
-	}
-	
-//	ft_printf("start=%d, end=%d  len=%ld\n", info->start, info->end, ft_strlen(line));
 	info->end = info->start + 1;
-//	ft_printf("start=%d, end=%d  len=%ld\n", info->start, info->end, ft_strlen(line));
-	/*	else if (START == COMMENT_CHAR)
-	{
-		info->comchr_f = 1;
-	}*/
-/*	else if (START == SEPARATOR_CHAR)
-	else if (START == COMMENT_CHAR)
-		++info->quote;
-	else if (START == LABEL_CHAR)*/
 }
-

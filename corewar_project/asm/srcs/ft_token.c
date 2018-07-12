@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 14:29:01 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/12 17:17:08 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,12 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	{
 		if (token->type == T_DIR || token->type == T_REG)
 			token->i_val = ft_atoi(&token->s_val[1]);
+		info->nb_param++;
+		--info->comma_f; // Ajout MAS
+	}
+	else if (token->type == T_IND || token->type == T_IND_LAB || token->type == T_DIR_LAB || token->type == T_DIR)
+	{
+		--info->comma_f; // Ajout MAS
 		info->nb_param++;
 	}
 }
