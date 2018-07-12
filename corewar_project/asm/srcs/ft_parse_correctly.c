@@ -31,6 +31,11 @@
 
 void	check_word(t_asm *info, char *arg)
 {
+	if (info->lock == 1)
+	{
+		info->error = 1;
+		return ;
+	}
 	if (info->comment_f == 0 || info->name_f == 0)
 	{
 		if (ft_strequ(arg, ".comment"))
@@ -51,19 +56,18 @@ char	*retrieve_word(t_asm *info, char *line)
 
 	i = info->start;
 
-	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || line[i] == '.'))
+	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || ft_is_nonsep(line[i])))
 	{
-		ft_printf("ret_word ->%c<-\n", line[i]);
 		++i;
 	}
+	info->end = i;
 	if (i > info->start)
 	{
 		arg = ft_strsub(line, info->start, i - info->start);
-		ft_printf("->%s<- i=%d\n", arg, i);
+		ft_printf("arg ->%s<- i=%d\n", arg, i);
 	}
 	else
 		return (NULL);
-	info->end = i;
 	return (arg);
 }
 
@@ -72,13 +76,13 @@ int	ft_parse_it(t_asm *info, char *line)
 {
 	char	*arg;
 
-	if (info->quote)
-		info->quote = 1;//		retrieve_line(&(*info), line);
-	else if (ft_is_othchr(line[info->start]))
+	if (info->quote == 1)
+		retrieve_line(&(*info), line);
+	else if (ft_is_sep(line[info->start]) || line[info->start] == '"')
 	{
 		analyse_separator(&(*info), line);
 	}
-	else 
+	else if (!ft_is_comchar(&info->comchr_f, line[info->start]))
 	{
 		arg = retrieve_word(&(*info), line);
 		if (arg != NULL)
@@ -95,14 +99,19 @@ void	parse_correctly(t_asm *info, char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] && info->error == 0)
+	while (line[i] != '\0' && info->error == 0)
 	{
+		ft_printf("parse_correctly line->%s char=%c i=%d\n", line, line[i], i);
 		if (ft_is_space(line[i]) && info->quote != 1)
 			++i;
 		else
 		{
 			info->start = i;
 			i = ft_parse_it(&(*info), line);
+		}
+		if (info->comchr_f == 1)
+		{
+			break ;
 		}
 	}
 }

@@ -152,15 +152,15 @@ void	ft_parse_op(t_asm *info, char *line)
 		return ;
 	set_var(&(*info));
 	if (ft_strlen(line) == 0 && info->quote == 1)
-		retrieve_line(&(*info), line, i);
+		retrieve_line(&(*info), line);
 	while (line[i] && info->error == 0)
 	{
 //	ft_printf("Treating line->%s<- quote =%d\n", &line[i], info->quote);
 		if (!ft_is_space(line[i]) || info->quote == 1)
 		{
-			if (info->quote == 1)
-				i = retrieve_line(&(*info), line, i);
-			else
+		//	if (info->quote == 1)
+		//		i = retrieve_line(&(*info), line, i);
+		//	else
 				i = ft_split_word(&(*info), line, i);
 		}
 		if (line[i] == '"')

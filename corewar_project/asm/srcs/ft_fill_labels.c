@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:46:05 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 10:47:40 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/11 17:53:08 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_token		*ft_find_label(t_token *atoken, char *label)
 
 void		ft_fill_label(t_token *token_src, t_token *token_dst)
 {
-	token_src->i_val = token_dst->pos - token_src->pos;
+	token_src->i_val = token_dst->pos - token_src->pos + 1;
 }
 
 void		ft_fill_labels(t_token *atoken)

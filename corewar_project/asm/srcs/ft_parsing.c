@@ -12,10 +12,26 @@
 
 #include "asm.h"
 
+static void	reset_flags(t_asm *info)
+{
+	info->lock = 0;
+	info->start = 0;
+	info->end = 0;
+	info->comchr_f = 0;
+	info->comma_f = 0;
+	info->operator_f = 0;
+	info->label_f = 0;
+	info->comchr_f = 0;
+	info->directchr_f = 0;
+	info->nb_comma = 0;
+	info->nb_param = 0;
+	info->addon = info->line_nb;
+}
+
 static void	ft_check_data(t_asm *info)
 {
 	//check comment name
-//	ft_printf("check comment & name\n");
+	//	ft_printf("check comment & name\n");
 	if (((info->error != 1) || (info->error == 0 && info->quote == 0)) && (info->name_f != 1 || info->comment_f != 1))
 	{
 		info->error = 1;
@@ -30,14 +46,17 @@ static void	check_line(t_asm *info, char *line, int len)
 	i = len;
 	if (line == NULL)
 		return ;
-/*	if ((info->name_f == -1 || info->comment_f == -1) && info->quote == 0)
+	reset_flags(&(*info));
+	parse_correctly(&(*info), line);
+
+	/*	if ((info->name_f == -1 || info->comment_f == -1) && info->quote == 0)
 	{
 		info->error = 0;
 	}
 	else
 		ft_parse_op(&(*info), line);
 		*/
-	parse_correctly(&(*info), line);
+
 }
 
 void		ft_gnl(t_asm *info)
