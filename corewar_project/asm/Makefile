@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/10 11:10:16 by srossi           ###   ########.fr        #
+#    Updated: 2018/07/12 12:21:21 by msicot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRC_NAME = main.c \
 		   parse_cmd2.c \
 		   parse_cmd.c	\
 		   parse_operator.c \
+		   ft_parse_correctly.c	\
+		   analyse_separator.c	\
 		 split_words.c	\
 			ft_fill_labels.c \
 		   ft_is_smthg.c \
