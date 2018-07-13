@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/13 15:07:32 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:16:52 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int	main(int argc, char **argv)
 		exit (1);
 	else if ((info.fp = ft_open(argv[1])) < 0)
 		return (0);
-//	printf("main\n");
+	printf("main\n");
 	ft_gnl(&info);
+	printf("gnl done\n");
 	ft_fill_labels(info.atoken);
 //	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();

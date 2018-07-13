@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:46:05 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:07:49 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:28:50 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,10 @@ t_token		*ft_find_label(t_token *atoken, char *label)
 	{
 		if (p_token->type == T_LAB &&
 				ft_strequ(ft_clean_label(p_token->s_val), clean_label))
-		{
-		//	ft_printf("trouve !\n");
 			break ;
-		}
 		p_token = p_token->next;
 	}
 	if (p_token == NULL)
-	//	ft_printf("pas trouve !\n");
 	ft_strdel(&clean_label);
 	return (p_token);
 }
@@ -66,7 +62,6 @@ void		ft_fill_labels(t_token *atoken)
 		{
 			p_token_dst = ft_find_label(p_token_dst, p_token_src->s_val);
 			p_token_src->i_val = p_token_dst->pos - p_token_src->last_op_pos;
-		//	ft_fill_label(p_token_src, p_token_dst);
 		}
 		p_token_src = p_token_src->next;
 	}
