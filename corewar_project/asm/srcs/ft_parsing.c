@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:54:26 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 12:15:01 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:39:58 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,24 @@ static void	reset_flags(t_asm *info)
 	info->nb_comma = 0;
 	info->nb_param = 0;
 	info->addon = info->line_nb;
+	ft_strdel(&info->err_log);
 }
 
 static void	ft_check_data(t_asm *info)
 {
+	if (info->name_f == -1 || info->comment_f == -1)
+	{
+		info->error = 5;
+		parsing_error(info, NULL);
+	}
+	
 	//check comment name
 	//	ft_printf("check comment & name\n");
-	if (((info->error != 1) || (info->error == 0 && info->quote == 0)) && (info->name_f != 1 || info->comment_f != 1))
+/*	if (((info->error != 0) || (info->error == 0 && info->quote == 0)) && (info->name_f != 1 || info->comment_f != 1))
 	{
 		info->error = 1;
 		parsing_error(info, "\0");
-	}
+	}*/
 }
 
 static void	check_line(t_asm *info, char *line, int len)
@@ -71,10 +78,14 @@ void		ft_gnl(t_asm *info)
 	//	ft_printf("GNL->%s\n", line);
 		++info->line_nb;
 		check_line(&(*info), line, ft_strlen(line));
-		if (info->error == 1)
+		if (info->error != 0)
+		{
+	//		ft_printf("GNL parse error \n");
 			parsing_error(info, line);
+		}
 		ft_strdel(&line);
 	//	ft_printf("**************************** error=%d\n\n", info->error);
+	info->eof = (info->gnl = 0) ? 1 : info->eof;
 	}
 	ft_check_data(&(*info));
 	free(line);

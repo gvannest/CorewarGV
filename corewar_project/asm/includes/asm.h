@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 15:41:12 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/13 09:14:12 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_asm
 	char			comment[COMMENT_LENGTH + 1];
 	char			name[PROG_NAME_LENGTH + 1];
 	char			*code;
+	char			*err_log;
 	char			err_content[COMMENT_LENGTH];
 	int				addon;
 	int				nb_instr;
@@ -98,7 +99,7 @@ extern t_op op_tab[NB_INSTR + 1];
 //void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);
 void	parse_correctly(t_asm *info, char *line);
-
+char	*retrieve_word(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
 //void	ft_name(t_asm *info, char *line);
 //void	ft_comment(t_asm *info, char *line);
@@ -121,6 +122,7 @@ void	ft_error(int a);
 void	parsing_error(t_asm *info, char *line);
 void	ft_syntax_err(t_asm *info, int i, char *line);
 void	ft_error_management(t_asm *info, char *arg);
+void	command_name_error(t_asm *info, char *arg);
 /*
 * Lexical analysis
 */
