@@ -6,53 +6,52 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/06/28 13:21:53 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:28:18 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-void	ft_syntax_err(t_asm *info, int i, char *line)
+void	error_instr(t_asm *info, char *arg)
 {
-	int pos;
-	int	j;
-
-	j = 0;
-	pos = i;
-//	printf("i=%d pos = %d line[i] = %c\n", i,  pos, line[i]);
-	while (line[pos])
+	if (ft_strequ(arg, ".name"))
 	{
-		if (line[pos] != ' ' && line[pos] != '"')
-		{
-			if (info->err_pos == -1)
-			{
-		//		printf("i=%d pos = %d line[pos] = %c\n", i,  pos, line[pos]);
-				info->err_pos = info->end;
-				info->error = 1;
-			}
-			while (line[pos] != ' ')
-			{
-				info->err_content[j] = line[pos];
-				++j;
-				++pos;
-			}
-			if (line[pos] == ' ')
-				break ;
-		}
-		++pos;
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] COMMAND_NAME \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 	}
+	else if (ft_strequ(arg, ".comment"))
+	{
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] COMMAND_COMMENT \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
+	}
+	else
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] INSTRUCTION \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 }
 
 void	parsing_error(t_asm *info, char *line)
 {
+	char *lol;
+
+	lol = line;
+	//	ft_printf("test [TOKEN][%03d:%03d] INSTRUCTION \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 	if (info->error == 1)
 	{
-		ft_printf("Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->start, info->code);
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 	}
-	else if (info->error == 1 && line == NULL)
+	else if (info->error == 2)
 	{
-		ft_printf("2 Syntax error at token [TOKEN][%03d:%03d]\n", info->line_nb + 1, 1);
+		error_instr(info, line);
 	}
+	else if (info->error == 4)
+	{
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] ENDLINE\n", info->line_nb, info->end + 1);
+
+	}
+	else if (info->error == 5)
+	{
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] END \"%s\"\n", info->line_nb, info->end + 1, line);
+	}
+	//free
+		//exitt
+	
+	exit (0);
 
 }
 
