@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 17:16:22 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:07:32 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	main(int argc, char **argv)
 	init_info(&info);
 //	ft_token_display_all(info.atoken);
 //	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
-//	ft_token_display_all(info.atoken);
 //	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
 //	ft_fill_labels(info.atoken);
 //	ft_test_params();
@@ -50,13 +49,14 @@ int	main(int argc, char **argv)
 		return (0);
 //	printf("main\n");
 	ft_gnl(&info);
-//	ft_fill_labels(info.atoken);
+	ft_fill_labels(info.atoken);
+//	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();
 //	printf("test display\n");
+	ft_create_champ(&info);
 //	ft_create_champ(&info);
-//	ft_create_champ(&info);
-//	ft_display(&info);
+	ft_display(&info);
 	if (info.error != 1)
-		ft_printf("Writing output program to %s.cor\n", argv[1]);
+		printf("\nWriting output program to %s.cor\n", argv[1]);
 	return (0);
 }

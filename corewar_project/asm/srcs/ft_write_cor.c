@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:21:45 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 13:32:39 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:08:06 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static	void	ft_write_champ(t_asm *info)
 	while (p_token->next)
 		p_token = p_token->next;
 	champ_ln = p_token->pos + p_token->arg_size; //pos dernier element + taille dernier element
-	printf("champ ln  : %d\n", champ_ln);
-	printf("last pos : %d\n", p_token->pos);
-	printf("last size : %d\n", p_token->arg_size);
-	while (index < champ_ln - 1)
+//	printf("champ ln  : %d\n", champ_ln);
+//	printf("last pos : %d\n", p_token->pos);
+//	printf("last size : %d\n", p_token->arg_size);
+	while (index < champ_ln)
 	{
 		if (index % 16 == 0)
 			printf("\n");
 		if (index % 2 == 0)
 			printf(" ");
-		printf("%.2hhX", info->tab[index]);
+		printf("%.2hhx", info->tab[index]);
 		index++;
 	}
 	printf(" ");
@@ -49,7 +49,7 @@ void	ft_write_name(char *name)
 			printf("\n");
 		if (index % 2 == 0 && index != 0)
 			printf(" ");
-		printf("%.2X", name[index]);
+		printf("%.2x", name[index]);
 		index++;
 	}
 	printf(" ");
@@ -66,7 +66,7 @@ void	ft_write_comment(char *comment)
 			printf("\n");
 		if (index % 2 == 0 && index != 0)
 			printf(" ");
-		printf("%.2X", comment[index]);
+		printf("%.2x", comment[index]);
 		index++;
 	}
 	printf(" ");
@@ -96,7 +96,7 @@ void	ft_write_int(int nb)
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
 	swap_bytes(octets);
-	printf("int : %.2X%.2X %.2X%.2X .", octets[0], octets[1], octets[2], octets[3]);
+	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 
 void	ft_write_short(short nb)
@@ -111,7 +111,7 @@ void	ft_write_short(short nb)
 	tmp = octets[0];
 	octets[0] = octets[1];
 	octets[1] = tmp;
-	printf("short : %.2X%.2X .", octets[0], octets[1]);
+	printf("%.2x%.2x ", octets[0], octets[1]);
 }
 
 void	ft_display(t_asm *info)
@@ -120,8 +120,8 @@ void	ft_display(t_asm *info)
 
 	magic = 0x00EA83F3;
 	info->nb_instr = 23;
-	ft_strcpy(info->name, "zork");
-	ft_strcpy(info->comment, "just a basic living prog");
+//	ft_strcpy(info->name, "zork");
+//	ft_strcpy(info->comment, "just a basic living prog");
 	printf(" ");
 	ft_write_int(magic);
 	ft_write_name(info->name);
@@ -129,7 +129,6 @@ void	ft_display(t_asm *info)
 	ft_write_int(info->nb_instr);
 	ft_write_comment(info->comment);
 	ft_write_int(0);
-	printf("\n\n");
 	ft_create_champ(info);
 	ft_write_champ(info);
 }

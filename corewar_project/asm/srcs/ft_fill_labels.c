@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:46:05 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 17:02:20 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:07:49 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,17 @@ t_token		*ft_find_label(t_token *atoken, char *label)
 		if (p_token->type == T_LAB &&
 				ft_strequ(ft_clean_label(p_token->s_val), clean_label))
 		{
-			ft_printf("trouve !\n");
+		//	ft_printf("trouve !\n");
 			break ;
 		}
 		p_token = p_token->next;
 	}
 	if (p_token == NULL)
-		ft_printf("pas trouve !\n");
+	//	ft_printf("pas trouve !\n");
 	ft_strdel(&clean_label);
 	return (p_token);
 }
 
-void		ft_fill_label(t_token *token_src, t_token *token_dst)
-{
-	printf("dest pos : %d et src pos : %d\n", token_dst->pos, token_src->pos);
-	if (token_dst->pos > token_src->pos)
-		token_src->i_val = token_dst->pos - token_src->pos;
-	else if (token_dst->pos < token_src->pos)
-		token_src->i_val = token_dst->pos - token_src->pos;
-}
-
-static	void		ft_fill_dir_label(t_token *token_src, t_token *token_dst)
-{
-	printf("dest pos : %d et src pos : %d\n", token_dst->pos, token_src->pos);
-	token_src->i_val = token_dst->pos;
-}
 
 void		ft_fill_labels(t_token *atoken)
 {
@@ -76,15 +62,11 @@ void		ft_fill_labels(t_token *atoken)
 	while (p_token_src)
 	{
 		p_token_dst = atoken;
-		if (p_token_src->type == T_IND_LAB)
+		if (p_token_src->type == T_IND_LAB || p_token_src->type == T_DIR_LAB)
 		{
 			p_token_dst = ft_find_label(p_token_dst, p_token_src->s_val);
-			ft_fill_label(p_token_src, p_token_dst);
-		}
-		else if (p_token_src->type == T_DIR_LAB)
-		{
-			p_token_dst = ft_find_label(p_token_dst, p_token_src->s_val);
-			ft_fill_dir_label(p_token_src, p_token_dst);
+			p_token_src->i_val = p_token_dst->pos - p_token_src->last_op_pos;
+		//	ft_fill_label(p_token_src, p_token_dst);
 		}
 		p_token_src = p_token_src->next;
 	}
