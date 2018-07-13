@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/12 15:41:12 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/13 14:18:02 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_token
 	char			opcode;
 	unsigned char	ocp;
 	int				pos;
+	int				last_op_pos;
 	int				line;
 	int				cl;
 	char			arg_size;
@@ -38,7 +39,7 @@ typedef struct	s_token
 
 typedef struct s_asm
 {
-	char			tab[MEM_SIZE/6];
+	char			tab[CHAMP_MAX_SIZE];
 	struct 	s_token *atoken;
 	char			comment[COMMENT_LENGTH + 1];
 	char			name[PROG_NAME_LENGTH + 1];
@@ -65,6 +66,7 @@ typedef struct s_asm
 	int				nb_params;
 	int				nb_labelchr;
 	int				last_opcode;
+	int				last_op_pos;
 	int				lock;
 	int				operator_f;
 	int				pos;
@@ -179,7 +181,7 @@ void	ft_create_champ(t_asm *info);
 void	ft_fill_labels(t_token *atoken);
 char *ft_clean_label(char *label);
 t_token		*ft_find_label(t_token *atoken, char *label);
-void	ft_fill_label(t_token *token_src, t_token *token_dst);
+//void	ft_fill_label(t_token *token_src, t_token *token_dst);
 /*
 ** FONCTIONS ECRIRE SHORT OU INT DECOMPOSE EN OCTETS 
 */

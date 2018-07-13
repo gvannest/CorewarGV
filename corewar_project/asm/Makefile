@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/12 15:30:12 by msicot           ###   ########.fr        #
+#    Updated: 2018/07/13 14:17:03 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ SRC_NAME = main.c \
 		   ft_token.c \
 		   op.c \
 		   ft_parsing.c \
-		   ft_parse_correctly.c	\
-		   analyse_separator.c	\
+		   ft_parse_correctly.c \
+		   analyse_separator.c \
 		   ft_retrieve_line.c \
-		   ft_errorm.c	\
+		   ft_errorm.c \
 		   ft_fill_labels.c \
 		   ft_is_smthg.c \
 		   ft_syntax.c \
