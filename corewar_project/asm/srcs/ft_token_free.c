@@ -14,8 +14,10 @@
 
 void	ft_token_free(t_token *token)
 {
-	ft_strdel(&token->s_val);
-	free(token->next);
+	if (token == NULL)
+		return ;
+	if (token->s_val != NULL)
+		ft_strdel(&token->s_val);
 	free(token);
 }
 
@@ -24,16 +26,12 @@ void	ft_token_list_free(t_token *a_token)
 	t_token *p_token;
 
 	p_token = a_token;
-	if (p_token != NULL)
+	if (p_token == NULL)
+		return ;
+	while (p_token)
 	{
-		p_token = a_token->next;
-		while (a_token != NULL)
-		{
-			ft_token_free(a_token);
-			a_token = p_token;
-			p_token = a_token->next;
-		}
-		free(p_token);
-		free(a_token);
+		a_token = a_token->next;
+		ft_token_free(p_token);
+		p_token = a_token;
 	}
 }

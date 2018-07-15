@@ -32,17 +32,22 @@ t_token		*ft_find_label(t_token *atoken, char *label)
 {
 	t_token	*p_token;
 	char	*clean_label;
+	char	*clean_label_token;
 
 	clean_label = ft_clean_label(label);
+	clean_label_token = NULL;
 	p_token = atoken;
 	while (p_token)
 	{
+		clean_label_token = ft_clean_label(p_token->s_val);
 		if (p_token->type == T_LAB &&
-				ft_strequ(ft_clean_label(p_token->s_val), clean_label))
+				ft_strequ(clean_label_token, clean_label))
 			break ;
 		p_token = p_token->next;
+		ft_strdel(&clean_label_token);
 	}
-	if (p_token == NULL)
+	ft_strdel(&clean_label_token);
+//	if (p_token == NULL)
 	ft_strdel(&clean_label);
 	return (p_token);
 }

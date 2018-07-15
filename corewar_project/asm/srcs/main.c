@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 //	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();
 //	printf("test display\n");
-	ft_create_champ(&info);
+//	ft_create_champ(&info);
 //	ft_create_champ(&info);
 	ft_display(&info);
 	ft_token_list_free(info.atoken);

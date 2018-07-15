@@ -153,7 +153,7 @@ int	ft_is_valid_syntax(t_asm *info);
 void	ft_token_add(t_asm *sasm, char *arg);
 void	ft_token_add_tail(t_token **token, t_token *new_token);
 void	ft_token_init(t_token *new_token);
-void	ft_token_free(t_token *token);
+//void	ft_token_free(t_token *token);
 void	ft_token_list_free(t_token *a_token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg);
 //t_token	*ft_token_new();
