@@ -69,19 +69,6 @@ void	ft_write_comment(char *comment)
 	printf(" ");
 }
 
-static void swap_bytes(unsigned char *t)
-{
-	unsigned char tmp;
-
-	tmp = t[0];
-	t[0] = t[3];
-	t[3] = tmp;
-
-	tmp = t[1];
-	t[1] = t[2];
-	t[2] = tmp;
-}
-
 void	ft_write_int(int nb)
 {
 	unsigned char octets[4];
@@ -92,7 +79,7 @@ void	ft_write_int(int nb)
 	octets[1] = nb >> 8;
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
-	swap_bytes(octets);
+	ft_swap_bytes_int(octets);
 	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 

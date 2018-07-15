@@ -47,9 +47,7 @@ int	main(int argc, char **argv)
 		exit (1);
 	else if ((info.fp = ft_open(argv[1])) < 0)
 		return (0);
-	printf("main\n");
 	ft_gnl(&info);
-	printf("gnl done\n");
 	ft_fill_labels(info.atoken);
 //	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();
@@ -57,6 +55,7 @@ int	main(int argc, char **argv)
 	ft_create_champ(&info);
 //	ft_create_champ(&info);
 	ft_display(&info);
+	ft_token_list_free(info.atoken);
 	if (info.error != 1)
 		printf("\nWriting output program to %s.cor\n", argv[1]);
 	return (0);
