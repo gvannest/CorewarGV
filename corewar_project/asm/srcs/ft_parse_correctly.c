@@ -41,6 +41,7 @@ void	check_error(t_asm *info, char *arg)
 	if (info->comment_f == -1 || info->name_f == -1)
 	{
 		info->error = 1;
+		ft_printf("check error\n");
 		parsing_error(info, arg);
 		exit (0);
 	}

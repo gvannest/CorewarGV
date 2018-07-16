@@ -33,11 +33,15 @@ void	parsing_error(t_asm *info, char *line)
 	//	ft_printf("test [TOKEN][%03d:%03d] INSTRUCTION \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 	if (info->error == 1)
 	{
-		ft_printf("Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
+		ft_printf("Error=1 Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 	}
 	else if (info->error == 2)
 	{
 		error_instr(info, line);
+	}
+	else if (info->error == 3)
+	{
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] SEPARATOR \"%s\"\n", info->line_nb, info->start + 1, line);
 	}
 	else if (info->error == 4)
 	{
