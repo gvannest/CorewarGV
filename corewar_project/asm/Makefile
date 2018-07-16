@@ -53,6 +53,7 @@ SRC_NAME = main.c \
 		   ft_test_params.c \
 		   ft_tests_syntax.c \
 		   ft_display.c \
+		   ft_display_cor.c \
 		   ft_token_free.c \
 		   ft_get_value.c \
 		   ft_create_champ.c \
