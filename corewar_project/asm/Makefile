@@ -38,6 +38,7 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main.c \
+		   ft_check_parameters.c	\
 		   ft_token_type.c \
 		   ft_token.c \
 		   op.c \

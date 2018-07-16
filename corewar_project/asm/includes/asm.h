@@ -78,6 +78,7 @@ typedef struct s_asm
 	int				stop;
 	char 			cur_param;
 	char 			nb_params_left;
+	char			*true_name;
 	struct s_label	*label;
 }				t_asm;
 
@@ -98,6 +99,7 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
+int		ft_check_parameters(t_asm *info, char **argv, int argc);
 //void	ft_parse_cmd(t_asm *info, char *line);
 //void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);

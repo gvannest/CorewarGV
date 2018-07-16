@@ -20,15 +20,6 @@ void	init_info(t_asm *info)
 	info->size = 1;
 }
 
-int	ft_open(char *path)
-{
-	int	fp;
-
-	fp = 0;
-	fp = open(path, O_RDONLY);
-	return (fp);
-}
-
 int	ft_open_champ(char *path)
 {
 	int	fp;
@@ -52,10 +43,7 @@ int	main(int argc, char **argv)
 //	ft_fill_labels(info.atoken);
 //	ft_test_params();
 //	ft_test_label();
-	if (argc < 2 || argc > 2 || argv[1] == NULL)
-		exit (1);
-	else if ((info.fp = ft_open(argv[1])) < 0)
-		return (0);
+	ft_check_parameters(&info, argv, argc);
 	ft_gnl(&info);
 	champ_file = ft_strjoin(info.name, ".cor");
 	info.fd_cor = ft_open_champ(champ_file);
