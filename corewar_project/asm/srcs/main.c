@@ -29,11 +29,20 @@ int	ft_open(char *path)
 	return (fp);
 }
 
+int	ft_open_champ(char *path)
+{
+	int	fp;
+
+	fp = 0;
+	fp = open(path, O_WRONLY | O_CREAT | O_TRUNC, 00700);
+	return (fp);
+}
 int	main(int argc, char **argv)
 {
 	(void) argc;
 	t_asm	info;
 	(void) argv;
+	char	*champ_file;
 
 	ft_bzero(&info, sizeof(t_asm));
 	init_info(&info);
@@ -48,15 +57,24 @@ int	main(int argc, char **argv)
 	else if ((info.fp = ft_open(argv[1])) < 0)
 		return (0);
 	ft_gnl(&info);
+	champ_file = ft_strjoin(info.name, ".cor");
+	info.fd_cor = ft_open_champ(champ_file);
+	ft_strdel(&champ_file);
 	ft_fill_labels(info.atoken);
 //	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();
 //	printf("test display\n");
+	ft_create_champ(&info);
 //	ft_create_champ(&info);
-//	ft_create_champ(&info);
-	ft_display(&info);
+/*
+	if (info,f_option_display)
+		ft_display(&info);
+		flag d'option, si active il faut afficher le .cor style xxd
+*/
+	ft_write(&info);
 	ft_token_list_free(info.atoken);
 	if (info.error != 1)
-		printf("\nWriting output program to %s.cor\n", argv[1]);
+		printf("Writing output program to %s.cor\n", argv[1]);
+	close (info.fd_cor);
 	return (0);
 }

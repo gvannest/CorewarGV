@@ -57,6 +57,7 @@ typedef struct s_asm
 	int				error;
 	int				err_pos;
 	int				fp;
+	int				fd_cor;
 	int				gnl;
 	int				label_f;
 	int				line_nb;
@@ -188,8 +189,10 @@ t_token		*ft_find_label(t_token *atoken, char *label);
 /*
 ** FONCTIONS ECRIRE SHORT OU INT DECOMPOSE EN OCTETS 
 */
-void	ft_write_int(int nb);
-void	ft_write_short(short nb);
+void	ft_write_int(int nb, int fd_cor);
+void	ft_write_int(int nb, int fd_cor);
+void	ft_write_short(short nb, int fd_cor);
+void	ft_write(t_asm *info);
 
 /*
 ** FONCTIONS SWAP BITS INT OU SHORT 
