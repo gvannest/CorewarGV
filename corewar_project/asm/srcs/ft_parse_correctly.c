@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/13 15:40:00 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/16 11:33:26 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static void	check_word(t_asm *info, char *arg)
 			info->name_f = -1;
 		else
 			command_name_error(info, arg);
+	//	ft_printf("check word, locking\n");
 		info->lock = 1;
 	}
 	else
