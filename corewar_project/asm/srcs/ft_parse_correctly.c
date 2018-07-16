@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/16 11:33:26 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/16 11:39:02 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	ft_check_before_sending(t_asm *info, char *arg)
 
 static void	check_word(t_asm *info, char *arg)
 {
+	static int index = 0;
 	if (info->lock == 1)
 	{
 		info->error = 2;
@@ -79,6 +80,7 @@ static void	check_word(t_asm *info, char *arg)
 //		ft_error_management(info, arg);
 		ft_check_before_sending(info, arg);
 	}
+	index++;
 }
 
 char	*retrieve_word(t_asm *info, char *line)

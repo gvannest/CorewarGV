@@ -47,7 +47,7 @@ typedef struct s_asm
 	char			*err_log;
 	char			err_content[COMMENT_LENGTH];
 	int				addon;
-	int				nb_instr;
+//	int				nb_instr;
 	int				comma_f;
 	int				comment_f;
 	int				comchr_f;
@@ -153,7 +153,8 @@ int	ft_is_valid_syntax(t_asm *info);
 void	ft_token_add(t_asm *sasm, char *arg);
 void	ft_token_add_tail(t_token **token, t_token *new_token);
 void	ft_token_init(t_token *new_token);
-void	ft_token_free(t_token *token);
+//void	ft_token_free(t_token *token);
+void	ft_token_list_free(t_token *a_token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg);
 //t_token	*ft_token_new();
 void	ft_token_display(t_token *token, int token_nb);
@@ -191,6 +192,13 @@ void	ft_write_int(int nb);
 void	ft_write_short(short nb);
 
 /*
+** FONCTIONS SWAP BITS INT OU SHORT 
+*/
+
+void	ft_swap_bytes_int(unsigned char *t);
+void	ft_swap_bytes_short(unsigned char *t);
+
+/*
 void	ft_display_param(t_param *param, int param_id);
 void	ft_display_instruction(t_instruction *instruction);
 void	ft_display_label(t_label *label);
@@ -199,7 +207,6 @@ void	ft_label_add_tail(t_asm *sasm, t_label *new_label);
 void	ft_label_new(t_asm *sasm, char *label_name);
 void	ft_label_free(t_label *label);
 void	ft_label_add_instruction(t_label *label, t_instruction *new_instruction);
-void	ft_instruction_new(t_label *label, char *label_name);
 void	ft_instruction_free(t_instruction *instruction);
 void	ft_instruction_free_all(t_label *label);
 void	ft_param_free(t_param *param);

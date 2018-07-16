@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:21:45 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:08:06 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/13 15:43:53 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ static	void	ft_write_champ(t_asm *info)
 	p_token = info->atoken;
 	while (p_token->next)
 		p_token = p_token->next;
-	champ_ln = p_token->pos + p_token->arg_size; //pos dernier element + taille dernier element
-//	printf("champ ln  : %d\n", champ_ln);
-//	printf("last pos : %d\n", p_token->pos);
-//	printf("last size : %d\n", p_token->arg_size);
+	champ_ln = p_token->pos + p_token->arg_size;
 	while (index < champ_ln)
 	{
 		if (index % 16 == 0)
@@ -72,19 +69,6 @@ void	ft_write_comment(char *comment)
 	printf(" ");
 }
 
-static void swap_bytes(unsigned char *t)
-{
-	unsigned char tmp;
-
-	tmp = t[0];
-	t[0] = t[3];
-	t[3] = tmp;
-
-	tmp = t[1];
-	t[1] = t[2];
-	t[2] = tmp;
-}
-
 void	ft_write_int(int nb)
 {
 	unsigned char octets[4];
@@ -95,7 +79,7 @@ void	ft_write_int(int nb)
 	octets[1] = nb >> 8;
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
-	swap_bytes(octets);
+	ft_swap_bytes_int(octets);
 	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 
@@ -119,14 +103,10 @@ void	ft_display(t_asm *info)
 	int magic;
 
 	magic = 0x00EA83F3;
-	info->nb_instr = 23;
-//	ft_strcpy(info->name, "zork");
-//	ft_strcpy(info->comment, "just a basic living prog");
-	printf(" ");
 	ft_write_int(magic);
 	ft_write_name(info->name);
 	ft_write_int(0);
-	ft_write_int(info->nb_instr);
+	ft_write_int(info->pos);
 	ft_write_comment(info->comment);
 	ft_write_int(0);
 	ft_create_champ(info);
