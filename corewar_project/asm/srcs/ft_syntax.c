@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:47:46 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 10:48:25 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:02:37 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_is_valid_syntax(t_asm *info)
 			if (info->nb_params_left <= 0)
 				return (0);
 			info->nb_params_left--;
+		//	printf("current param : %d / info start : %d\n", info->cur_param, info->start);
 			info->cur_param++;
 		}
 		else if (p_token->type == T_LAB && info->nb_params_left > 0)
