@@ -49,7 +49,7 @@ void	ft_error_management(t_asm *info, char *arg)
 	char *useless;
 
 	useless = arg;
-	//	ft_printf("Err mana ->%s<-\tlock=%d\n", arg, info->lock);
+//		ft_printf("Err mana ->%s<-\tlock=%d\n", info->err_log, info->lock);
 //	if (info->comment_f <= 0 || info->name_f <= 0)
 //		command_name_error(info, arg);
 	if (info->comma_f == 1 && info->nb_comma == info->nb_param)

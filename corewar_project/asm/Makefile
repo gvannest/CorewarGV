@@ -38,6 +38,7 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main.c \
+		   ft_check_parameters.c	\
 		   ft_token_type.c \
 		   ft_token.c \
 		   op.c \
@@ -53,6 +54,7 @@ SRC_NAME = main.c \
 		   ft_test_params.c \
 		   ft_tests_syntax.c \
 		   ft_display.c \
+		   ft_display_cor.c \
 		   ft_token_free.c \
 		   ft_get_value.c \
 		   ft_create_champ.c \

@@ -57,6 +57,7 @@ typedef struct s_asm
 	int				error;
 	int				err_pos;
 	int				fp;
+	int				fd_cor;
 	int				gnl;
 	int				label_f;
 	int				line_nb;
@@ -77,6 +78,7 @@ typedef struct s_asm
 	int				stop;
 	char 			cur_param;
 	char 			nb_params_left;
+	char			*true_name;
 	struct s_label	*label;
 }				t_asm;
 
@@ -97,6 +99,7 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
+int		ft_check_parameters(t_asm *info, char **argv, int argc);
 //void	ft_parse_cmd(t_asm *info, char *line);
 //void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);
@@ -188,8 +191,10 @@ t_token		*ft_find_label(t_token *atoken, char *label);
 /*
 ** FONCTIONS ECRIRE SHORT OU INT DECOMPOSE EN OCTETS 
 */
-void	ft_write_int(int nb);
-void	ft_write_short(short nb);
+void	ft_write_int(int nb, int fd_cor);
+void	ft_write_int(int nb, int fd_cor);
+void	ft_write_short(short nb, int fd_cor);
+void	ft_write(t_asm *info);
 
 /*
 ** FONCTIONS SWAP BITS INT OU SHORT 
