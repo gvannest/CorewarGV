@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/16 11:39:02 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:04:21 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	ft_check_before_sending(t_asm *info, char *arg)
 	int	send;
 
 	send = 1;
-	
+
 	if (send == 1)
 		ft_token_add(info, arg);		//send to savinien !!!!!!!!
 }
