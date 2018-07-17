@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/16 11:34:24 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 10:39:39 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ void	error_instr(t_asm *info, char *arg)
 
 void	parsing_error(t_asm *info, char *line)
 {
-	char *lol;
-
-	lol = line;
-	//	ft_printf("test [TOKEN][%03d:%03d] INSTRUCTION \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
 	if (info->error == 1)
 	{
 		ft_printf("Error=1 Syntax error at token [TOKEN][%03d:%03d] \"%s\"\n", info->line_nb, info->start + 1, info->err_log);
@@ -52,9 +48,8 @@ void	parsing_error(t_asm *info, char *line)
 	{
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] END \"%s\"\n", info->line_nb, info->end + 1, line);
 	}
-	//free
-		//exitt
-	
+	ft_strdel(&line);
+	ft_strdel(&info->err_log);
 	exit (0);
 
 }

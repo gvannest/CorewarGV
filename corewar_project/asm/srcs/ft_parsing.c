@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:54:26 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/13 15:39:58 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 13:25:05 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ static void	ft_check_data(t_asm *info)
 		info->error = 5;
 		parsing_error(info, NULL);
 	}
-	
-	//check comment name
-	//	ft_printf("check comment & name\n");
-/*	if (((info->error != 0) || (info->error == 0 && info->quote == 0)) && (info->name_f != 1 || info->comment_f != 1))
-	{
-		info->error = 1;
-		parsing_error(info, "\0");
-	}*/
 }
 
 static void	check_line(t_asm *info, char *line, int len)
@@ -55,15 +47,6 @@ static void	check_line(t_asm *info, char *line, int len)
 		return ;
 	reset_flags(&(*info));
 	parse_correctly(&(*info), line);
-
-	/*	if ((info->name_f == -1 || info->comment_f == -1) && info->quote == 0)
-	{
-		info->error = 0;
-	}
-	else
-		ft_parse_op(&(*info), line);
-		*/
-
 }
 
 void		ft_gnl(t_asm *info)
