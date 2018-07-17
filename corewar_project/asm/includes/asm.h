@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:41:52 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 16:59:36 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_asm
 	int				gnl;
 	int				label_f;
 	int				line_nb;
+//	int				cur_op_
 	int				name_f;
 	int				nb;
 	int				nb_comma;

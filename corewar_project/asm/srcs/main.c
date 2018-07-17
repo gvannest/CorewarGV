@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/13 15:16:52 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:02:54 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	main(int argc, char **argv)
 	init_info(&info);
 //	ft_token_display_all(info.atoken);
 //	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
-//	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
+//	if (!ft_is_valid_syntax(&info))
+//		error_instr(info, 
 //	ft_fill_labels(info.atoken);
 //	ft_test_params();
 //	ft_test_label();

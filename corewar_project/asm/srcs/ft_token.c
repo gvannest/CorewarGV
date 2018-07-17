@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 14:18:43 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:02:08 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static	void	ft_load_values_info(t_asm *info, char *arg, t_token *token)
 	if (token->type == T_OP)
 	{
 			index_tab = ft_find_index_arg(arg);
-	//		printf("INDEX :  %d\n", index_tab);
+			info->nb_params_left = op_tab[index_tab].nb_params;
+//			printf("INDEX :  %d\n", index_tab);
 			if (index_tab < 16)
 			{
 				info->size = ((op_tab[index_tab].dir_oct_size == 0)? 4 : 2);
@@ -101,7 +102,7 @@ static	void			ft_token_reload(t_asm *info, t_token *token)
 	token->nb_params = info->nb_params;
 	token->arg_size = info->size;
 	token->line = info->line_nb;
-	token->cl = info->err_pos;
+	token->cl = info->start;
 	token->pos = info->pos;
 	token->last_op_pos = info->last_op_pos;
 }
@@ -113,26 +114,98 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	arg_ln = ft_strlen(arg);
 	token->type = ft_get_type(arg);
 	token->s_val = ft_strdup(arg);
-	if (token->type == T_OP)
+	if (token->type == T_OP || token->type == T_LAB)
 	{
-		token->opcode = ft_get_opcode(arg);
-		info->last_opcode = token->opcode;
-		info->last_op_pos = info->pos;
-		info->operator_f = 1;
+		if (info->nb_params_left > 0)
+		{
+			printf("ERROR NB_PARAMS TOO FEW\n");
+			exit (1);
+		}
+		//ft_error
+		if (token->type == T_OP)
+		{
+			token->opcode = ft_get_opcode(arg);
+			info->last_opcode = token->opcode;
+			info->last_op_pos = info->pos;
+			info->cur_param = 0;
+			info->operator_f = 1;
+		}
 	}
 	else if (token->type == T_IND || token->type == T_IND_LAB || token->type == T_DIR_LAB || token->type == T_DIR || token->type == T_REG)
 	{
+		if (info->nb_params_left <= 0)
+		{
+			printf("ERROR NB_PARAMS TOO MANY\n");
+			exit (1);
+		}
 		if (token->type == T_DIR || token->type == T_REG)
 			token->i_val = ft_atoi(&token->s_val[1]);
 		info->nb_param++;
 		--info->comma_f; // Ajout MAS
+		info->cur_param++;
+		info->nb_params_left--;
 	}
-	else if (token->type == T_IND || token->type == T_IND_LAB || token->type == T_DIR_LAB || token->type == T_DIR)
+/*	else if (token->type == T_IND || token->type == T_IND_LAB || token->type == T_DIR_LAB || token->type == T_DIR)
 	{
 		--info->comma_f; // Ajout MAS
 		info->nb_param++;
-	}
+		info->cur_param++;
+	}*/
 }
+
+static	char *ft_type_char(int type)
+{
+	if (type == T_DIR || type == T_DIR_LAB)
+		return "direct";
+	else if (type == T_IND || type == T_IND_LAB)
+		return "index";
+	else if (type == T_REG)
+		return "registre";
+	else if (type == T_LAB)
+		return "label";
+	else
+		return "unknown";
+}
+
+static	int	ft_check_token(t_asm *info, t_token *token)
+{
+	char	type;
+	int		error;
+
+	error = 0;
+	type = token->type;
+	if (type == T_DIR_LAB)
+		type = T_DIR;
+	else if (type == T_IND_LAB)
+		type = T_IND;
+	if (token->type == T_DIR_LAB || token->type == T_IND_LAB || token->type == T_DIR || token->type == T_IND)
+	{
+		if (info->nb_params_left < 0)
+		{
+			printf("ERROR TOO MANY ARGUMENTS\n");
+			error = -1;
+		//	printf("argument : %s\n", token->s_val);
+		}
+		else if (op_tab[info->last_opcode - 1].nb_params < info->cur_param)
+		{
+			printf("ERROR: cur param too big for operation\n");
+			error = -1;
+		}
+		else if ((op_tab[info->last_opcode - 1].param_type[info->cur_param - 1] & type) == 0)
+		{
+		//	ft_printf("ligne tab:  %d\n", (info->last_opcode));
+		//	ft_printf("type d'optab :  %b\n", (op_tab[info->last_opcode - 1].param_type[info->cur_param - 1]));
+		//	ft_printf("token type binaire : %b\n", token->type);
+		//	printf("argument : %s\n", token->s_val);
+	//		printf("nb param : %d\n", info->cur_param);
+			printf("Invalid parameter %d type %s for instruction %s\n", info->cur_param - 1, ft_type_char(token->type), op_tab[info->last_opcode - 1].name);
+
+			error = -1;
+		}
+	}
+	return (error);
+}
+
 
 void			ft_token_add(t_asm *info, char *arg)
 {
@@ -143,6 +216,13 @@ void			ft_token_add(t_asm *info, char *arg)
 	ft_token_load(info, new_token, arg);
 	ft_load_values_info(info, arg, new_token);
 	ft_token_reload(info, new_token);
+//	printf("name : %s\n Cur param : %d\n params left : %d\n\n", new_token->s_val, info->cur_param, info->nb_params_left);
+	if (ft_check_token(info, new_token) == -1)
+	{
+	//	printf("error token\n");
+		ft_token_list_free(info->atoken);
+		exit(1);
+	}
 	ft_token_add_tail(&info->atoken, new_token);
 	ft_pos_increment(info, new_token);
 }
