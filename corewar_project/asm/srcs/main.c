@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/17 17:02:54 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/17 17:05:37 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 //	ft_fill_labels(info.atoken);
 //	ft_test_params();
 //	ft_test_label();
-	ft_check_parameters(&info, argv, argc);
+	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
 	champ_file = ft_strjoin(info.name, ".cor");
 	info.fd_cor = ft_open_champ(champ_file);
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	ft_write(&info);
 	ft_token_list_free(info.atoken);
 	if (info.error != 1)
-		printf("Writing output program to %s.cor\n", argv[1]);
+		ft_printf("Writing output program to %s.cor\n", argv[1]);
 	close (info.fd_cor);
 	return (0);
 }

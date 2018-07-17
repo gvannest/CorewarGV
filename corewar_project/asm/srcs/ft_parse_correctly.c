@@ -6,7 +6,11 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/07/17 17:04:21 by srossi           ###   ########.fr       */
+=======
+/*   Updated: 2018/07/17 14:17:10 by msicot           ###   ########.fr       */
+>>>>>>> 121305cd67b7f9cad24923f0a9eb69e6ccc5f37a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +45,8 @@ void	check_error(t_asm *info, char *arg)
 	if (info->comment_f == -1 || info->name_f == -1)
 	{
 		info->error = 1;
-		ft_printf("check error\n");
+	//	ft_printf("check error\n");
 		parsing_error(info, arg);
-		exit (0);
 	}
 }
 
@@ -52,9 +55,17 @@ static void	ft_check_before_sending(t_asm *info, char *arg)
 	int	send;
 
 	send = 1;
+<<<<<<< HEAD
 
 	if (send == 1)
+=======
+	
+	//	ft_printf("check error\n");
+	//	ft_printf("PRE TOKEN ADD\n");
+	if (send == 1 && arg != NULL)
+>>>>>>> 121305cd67b7f9cad24923f0a9eb69e6ccc5f37a
 		ft_token_add(info, arg);		//send to savinien !!!!!!!!
+	//	ft_printf("POST TOKEN ADD\n");
 }
 
 static void	check_word(t_asm *info, char *arg)
@@ -123,6 +134,7 @@ static int	ft_parse_it(t_asm *info, char *line)
 		check_word(info, arg);
 //		check_error(info, arg);
 		ft_strdel(&arg);
+		ft_strdel(&info->err_log);
 	}
 	return (info->end);
 }

@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 14:26:54 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 15:07:40 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 15:56:31 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static void comma_analyser(t_asm *info, char *line)
 	{
 //		ft_printf("ERROR comma analyser\n");
 		info->error = 3;
-		parsing_error(info, ",");
+		parsing_error(info, ft_strdup(","));
 	}
 	else if (info->end + 1 == (int)ft_strlen(line))
 	{
 		info->error = 4;
-		parsing_error(info, ",");
+		parsing_error(info, ft_strdup(","));
 	}
 	else
 	{
