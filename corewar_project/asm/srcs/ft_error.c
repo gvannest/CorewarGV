@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/17 14:38:21 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 15:51:29 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	parsing_error(t_asm *info, char *line)
 	}
 	else if (info->error == 4)
 	{
-		ft_printf("Syntax error at token [TOKEN][%03d:%03d] ENDLINE\n", info->line_nb + 1, 1);
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] ENDLINE\n", info->line_nb, info->end + 1);
 	}
 	else if (info->error == 5)
 	{
