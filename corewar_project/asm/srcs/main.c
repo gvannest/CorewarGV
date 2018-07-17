@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/17 16:04:50 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 16:24:24 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 //	ft_fill_labels(info.atoken);
 //	ft_test_params();
 //	ft_test_label();
-	ft_check_parameters(&info, argv, argc);
+	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
 	champ_file = ft_strjoin(info.name, ".cor");
 	info.fd_cor = ft_open_champ(champ_file);

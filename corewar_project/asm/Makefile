@@ -6,13 +6,14 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/13 14:17:03 by srossi           ###   ########.fr        #
+#    Updated: 2018/07/17 16:24:02 by msicot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 #BINARY
 NAME = asm
@@ -38,7 +39,7 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main.c \
-		   ft_check_parameters.c	\
+		   ft_check_argv.c	\
 		   ft_token_type.c \
 		   ft_token.c \
 		   op.c \

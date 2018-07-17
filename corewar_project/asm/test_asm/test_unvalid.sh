@@ -34,7 +34,7 @@ do
 done
 
 #rm useless files
-rm ./unvalid/*.cor
+rm  -r *.cor
 rm $origin $asm 2> /dev/null || true
 
 cat $output

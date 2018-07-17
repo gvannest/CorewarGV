@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:41:52 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 16:22:18 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
-int		ft_check_parameters(t_asm *info, char **argv, int argc);
+int		ft_check_argv(t_asm *info, char **argv, int argc);
 //void	ft_parse_cmd(t_asm *info, char *line);
 //void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);
