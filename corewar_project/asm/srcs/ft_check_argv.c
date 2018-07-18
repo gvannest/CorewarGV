@@ -37,7 +37,7 @@ static void	check_name(t_asm *info, char *path)
 	info->true_name = retrieve_name(path);
 	len = (int)ft_strlen(info->true_name);
 //	ft_printf("%s\n", info->true_name);
-	if (len > 2)
+	if (len > 25555)
 	{
 		if (path[len - 1] != 's' || path[len - 2] != '.')
 		ft_printf("Can't read source file %s", info->true_name);
