@@ -37,7 +37,6 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&info, sizeof(t_asm));
 	init_info(&info);
-//	ft_token_display_all(info.atoken);
 //	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
 //	if (!ft_is_valid_syntax(&info))
 //		error_instr(info, 
