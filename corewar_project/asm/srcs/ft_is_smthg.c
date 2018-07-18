@@ -3,6 +3,7 @@
  * Verifie que le mot est bien constitue de char autorise
  *
 */ 
+/*
 int		ft_is_labelchar(int *ptr, char c)
 {
 	if (ft_strchr(LABEL_CHARS, c))
@@ -13,7 +14,7 @@ int		ft_is_labelchar(int *ptr, char c)
 		return (0);
 	}
 
-}
+}*/
 
 int		ft_is_space(char c)
 {

@@ -47,6 +47,11 @@ void	parsing_error(t_asm *info, char *line)
 	{
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] END \"%s\"\n", info->line_nb, info->end + 1, line);
 	}
+	else if (info->error == 6)
+	{
+	
+		ft_printf("Lexical error at [%d:%d]\n", info->line_nb, info->end + 1);
+	}
 	if (line != NULL)
 		ft_strdel(&line);
 	if (info->err_log != NULL)

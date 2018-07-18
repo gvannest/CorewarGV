@@ -116,6 +116,16 @@ static int	ft_parse_it(t_asm *info, char *line)
 	return (info->end);
 }
 
+int	ft_unauth_char(char c)
+{
+	
+		if (ft_is_sep(c) || ft_strchr(LABEL_CHARS, c) || ft_is_othchr(c) || ft_is_nonsep(c, 0) || (c == '\0'))
+			return (1);
+		if (c >= 'A' && c <= 'Z')
+			return (1);
+		return (0);
+}
+
 void	parse_correctly(t_asm *info, char *line)
 {
 	int	i;
@@ -135,6 +145,10 @@ void	parse_correctly(t_asm *info, char *line)
 		if (info->comchr_f == 1)
 		{
 			break ;
+		}
+		if (!ft_unauth_char(line[i]))
+		{
+			info->error = 6;
 		}
 	}
 	ft_error_management(info, line);

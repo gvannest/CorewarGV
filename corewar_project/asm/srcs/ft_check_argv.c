@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "asm.h"
-
-static char	*retrieve_name(char *path)
+char	*retrieve_name(char *path)
 {
 	int len;
 	int	i;
@@ -28,7 +27,7 @@ static char	*retrieve_name(char *path)
 	return (arg);
 }
 
-static void	check_name(t_asm *info, char *path)
+void	check_name(t_asm *info, char *path)
 {
 	int	len;
 	int i;
@@ -52,7 +51,8 @@ static int	ft_open(t_asm *info, char *path)
 
 	fp = 0;
 	fp = open(path, O_RDONLY);
-	check_name(info, path);
+	info->fp = fp;
+//	check_name(info, path);
 	return (fp);
 }
 
