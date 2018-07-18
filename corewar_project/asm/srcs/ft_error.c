@@ -65,3 +65,28 @@ void	ft_error(int a)
 	else
 		return ;
 }
+
+static	char *ft_type_char(int type)
+{
+	if (type == T_DIR || type == T_DIR_LAB)
+		return "direct";
+	else if (type == T_IND || type == T_IND_LAB)
+		return "index";
+	else if (type == T_REG)
+		return "register";
+	else if (type == T_LAB)
+		return "label";
+	else
+		return "unknown";
+}
+
+void	ft_error_param(t_asm *info, t_token *token, int nb_error)
+{
+	if (nb_error == 1)
+		printf("Invalid parameter count for instruction %s\n", op_tab[info->last_opcode - 1].name);
+	else if (nb_error == 2)
+			printf("Invalid parameter %d type %s for instruction %s\n", info->cur_param, ft_type_char(token->type), op_tab[info->last_opcode - 1].name);
+	else if (nb_error == 3)
+			printf("Invalid parameter %d type %s for instruction %s\n", info->cur_param - 1, ft_type_char(token->type), op_tab[info->last_opcode - 1].name);
+	exit (EXIT_FAILURE);
+}
