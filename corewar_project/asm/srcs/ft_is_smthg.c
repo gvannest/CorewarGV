@@ -30,9 +30,9 @@ int		ft_is_sep(char c)
 	return (0);
 }
 
-int		ft_is_nonsep(char c)
+int		ft_is_nonsep(char c, int f)
 {
-	if (c == LABEL_CHAR || c == DIRECT_CHAR || c == '.' || c == '-')
+	if (c == LABEL_CHAR || c == DIRECT_CHAR || c == '.' || c == '-' || (f == 1 && c == ' '))
 		return (1);
 	return (0);
 }

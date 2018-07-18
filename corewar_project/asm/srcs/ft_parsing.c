@@ -58,7 +58,6 @@ void		ft_gnl(t_asm *info)
 			&& info->stop == 0)
 	{
 	//	ft_printf("****************************\n");
-	//	ft_printf("GNL->%s\n", line);
 		++info->line_nb;
 		check_line(&(*info), line, ft_strlen(line));
 		if (info->error != 0)

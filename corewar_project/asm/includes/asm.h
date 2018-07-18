@@ -113,7 +113,7 @@ void	analyse_separator(t_asm *info, char *line);
 int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
 int		ft_is_sep(char c);
-int		ft_is_nonsep(char c);
+int		ft_is_nonsep(char c, int f);
 
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
