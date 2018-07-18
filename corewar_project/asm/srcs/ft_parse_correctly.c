@@ -36,33 +36,20 @@
  *
  */
 
-void	check_error(t_asm *info, char *arg)
-{
-	if (info->comment_f == -1 || info->name_f == -1)
-	{
-		info->error = 1;
-	//	ft_printf("check error\n");
-		parsing_error(info, arg);
-	}
-}
-
 static void	ft_check_before_sending(t_asm *info, char *arg)
 {
 	int	send;
 
 	send = 1;
-	if (send == 1)
-	
-	//	ft_printf("check error\n");
-	//	ft_printf("PRE TOKEN ADD\n");
 	if (send == 1 && arg != NULL)
+	{
+//		ft_printf("arg = %s\n", arg);
 		ft_token_add(info, arg);		//send to savinien !!!!!!!!
-	//	ft_printf("POST TOKEN ADD\n");
+		}
 }
 
 static void	check_word(t_asm *info, char *arg)
 {
-//	static int index = 0;
 	if (info->lock == 1)
 	{
 		info->error = 2;
@@ -84,7 +71,6 @@ static void	check_word(t_asm *info, char *arg)
 //		ft_error_management(info, arg);
 		ft_check_before_sending(info, arg);
 	}
-//	index++;
 }
 
 char	*retrieve_word(t_asm *info, char *line)
@@ -93,7 +79,7 @@ char	*retrieve_word(t_asm *info, char *line)
 	int		i;
 
 	i = info->start;
-	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || ft_is_nonsep(line[i])))
+	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || ft_is_nonsep(line[i], info->comma_f)))
 	{
 		++i;
 	}
@@ -124,7 +110,6 @@ static int	ft_parse_it(t_asm *info, char *line)
 	{
 		arg = retrieve_word(&(*info), line);
 		check_word(info, arg);
-//		check_error(info, arg);
 		ft_strdel(&arg);
 		ft_strdel(&info->err_log);
 	}
