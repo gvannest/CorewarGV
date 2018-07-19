@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_display_cor.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/19 13:48:34 by srossi            #+#    #+#             */
+/*   Updated: 2018/07/19 13:48:51 by srossi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 static	void	ft_display_champ(t_asm *info)
@@ -23,7 +35,7 @@ static	void	ft_display_champ(t_asm *info)
 	printf(" ");
 }
 
-void	ft_display_name(char *name)
+void			ft_display_name(char *name)
 {
 	int index;
 
@@ -40,7 +52,7 @@ void	ft_display_name(char *name)
 	printf(" ");
 }
 
-void	ft_display_comment(char *comment)
+void			ft_display_comment(char *comment)
 {
 	int index;
 
@@ -57,7 +69,7 @@ void	ft_display_comment(char *comment)
 	printf(" ");
 }
 
-void	ft_display_int(int nb)
+void			ft_display_int(int nb)
 {
 	unsigned char octets[4];
 	int index;
@@ -71,7 +83,7 @@ void	ft_display_int(int nb)
 	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 
-void	ft_display_short(short nb)
+void			ft_display_short(short nb)
 {
 	unsigned char octets[2];
 	unsigned char tmp;
@@ -86,7 +98,7 @@ void	ft_display_short(short nb)
 	printf("%.2x%.2x ", octets[0], octets[1]);
 }
 
-void	ft_display(t_asm *info)
+void			ft_display(t_asm *info)
 {
 	int magic;
 

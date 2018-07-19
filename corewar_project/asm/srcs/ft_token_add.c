@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:44:16 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 13:34:01 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@ static	void	ft_pos_increment(t_asm *info, t_token *new_token)
 		info->pos++;
 }
 
+void			ft_token_init(t_token *new_token)
+{
+	new_token->type = -1;
+	new_token->s_val = NULL;
+	new_token->i_val = -1;
+	new_token->opcode = -1;
+	new_token->ocp = 0;
+	new_token->pos = -1;
+	new_token->line = -1;
+	new_token->cl = -1;
+	new_token->arg_size = 1;
+	new_token->nb_params = 0;
+	new_token->next = NULL;
+}
+
 void			ft_token_add_tail(t_token **token, t_token *new_token)
 {
 	t_token *p_token;
@@ -46,21 +61,6 @@ void			ft_token_add_tail(t_token **token, t_token *new_token)
 		}
 		new_token->next = NULL;
 	}
-}
-
-void			ft_token_init(t_token *new_token)
-{
-	new_token->type = -1;
-	new_token->s_val = NULL;
-	new_token->i_val = -1;
-	new_token->opcode = -1;
-	new_token->ocp = 0;
-	new_token->pos = -1;
-	new_token->line = -1;
-	new_token->cl = -1;
-	new_token->arg_size = 1;
-	new_token->nb_params = 0;
-	new_token->next = NULL;
 }
 
 void			ft_token_add(t_asm *info, char *arg)

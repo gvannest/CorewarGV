@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/17 16:24:02 by msicot           ###   ########.fr        #
+#    Updated: 2018/07/19 13:37:04 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,10 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main.c \
-		   ft_check_argv.c	\
+		   ft_check_argv.c \
 		   ft_token_type.c \
-		   ft_token.c \
+		   ft_token_type2.c \
+		   ft_token_add.c \
 		   op.c \
 		   ft_parsing.c \
 		   ft_parse_correctly.c \
@@ -60,6 +61,9 @@ SRC_NAME = main.c \
 		   ft_get_value.c \
 		   ft_create_champ.c \
 		   ft_write_cor.c \
+		   ft_find_index.c \
+		   ft_check_token.c \
+		   ft_token_load.c \
 		   ft_error.c
 
 

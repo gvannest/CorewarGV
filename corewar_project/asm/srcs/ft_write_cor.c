@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:21:45 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:43:53 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 13:43:27 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static	void	ft_write_champ(t_asm *info)
 {
-	int index;
-	t_token *p_token;
-	int	champ_ln;
+	t_token	*p_token;
+	int		index;
+	int		champ_ln;
 
 	index = 0;
 	p_token = info->atoken;
@@ -30,9 +30,9 @@ static	void	ft_write_champ(t_asm *info)
 	}
 }
 
-void	ft_write_name(char *name, int fd_cor)
+static	void	ft_write_name(char *name, int fd_cor)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (index < PROG_NAME_LENGTH)
@@ -43,9 +43,9 @@ void	ft_write_name(char *name, int fd_cor)
 	printf(" ");
 }
 
-void	ft_write_comment(char *comment, int fd_cor)
+static	void	ft_write_comment(char *comment, int fd_cor)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (index < COMMENT_LENGTH)
@@ -55,10 +55,10 @@ void	ft_write_comment(char *comment, int fd_cor)
 	}
 }
 
-void	ft_write_int(int nb, int fd_cor)
+static	void	ft_write_int(int nb, int fd_cor)
 {
-	unsigned char octets[4];
-	int index;
+	unsigned char	octets[4];
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -69,11 +69,11 @@ void	ft_write_int(int nb, int fd_cor)
 	dprintf(fd_cor, "%c%c%c%c", octets[0], octets[1], octets[2], octets[3]);
 }
 
-void	ft_write_short(short nb, int fd_cor)
+/*static	void	ft_write_short(short nb, int fd_cor)
 {
-	unsigned char octets[2];
-	unsigned char tmp;
-	int index;
+	unsigned char	octets[2];
+	unsigned char	tmp;
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -82,9 +82,9 @@ void	ft_write_short(short nb, int fd_cor)
 	octets[0] = octets[1];
 	octets[1] = tmp;
 	dprintf(fd_cor, "%c%c ", octets[0], octets[1]);
-}
+}*/
 
-void	ft_write(t_asm *info)
+void			ft_write(t_asm *info)
 {
 	int magic;
 

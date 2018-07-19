@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/17 17:05:37 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 12:17:01 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	ft_write(&info);
 	ft_token_list_free(info.atoken);
 	if (info.error != 1)
-		ft_printf("Writing output program to %s.cor\n", argv[1]);
+		ft_printf("Writing output program to %s%s.cor\n", info.path, info.true_name);
 	close (info.fd_cor);
 	return (0);
 }
