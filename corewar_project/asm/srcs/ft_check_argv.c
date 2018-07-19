@@ -16,7 +16,7 @@ static void	usage_err(char *path, int i)
 {
 	if (i == 1)
 	{
-		ft_printf("Can't read source file %s.s\n", path);
+		ft_printf("Can't read source file %s\n", path);
 	}
 	exit (1);
 }
