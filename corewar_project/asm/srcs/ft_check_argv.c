@@ -78,6 +78,6 @@ int		ft_check_argv(t_asm *info, char **argv, int argc)
 	if (argc < 2 || argc > 2)
 			ft_print_usage(argc, argv);
 	info->fp = ft_open(info, argv[1]);
-	ft_printf("true_name=%s  path->%s<- fp->%d<-\n", info->true_name, info->path, info->fp);
+//	ft_printf("true_name=%s  path->%s<- fp->%d<-\n", info->true_name, info->path, info->fp);
 	return (info->fp);
 }
