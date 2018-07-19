@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/19 13:37:04 by srossi           ###   ########.fr        #
+#    Updated: 2018/07/19 14:29:09 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRC_NAME = main.c \
 		   ft_find_index.c \
 		   ft_check_token.c \
 		   ft_token_load.c \
+		   ft_swap_bytes.c \
 		   ft_error.c
 
 

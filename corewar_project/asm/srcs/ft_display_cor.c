@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:48:34 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:48:51 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 14:30:06 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static	void	ft_display_champ(t_asm *info)
 	{
 		if (index % 16 == 0)
 			printf("\n");
-		if (index % 2 == 0)
+		if (index % 2 == 0 && index != 0)
 			printf(" ");
 		printf("%.2hhx", info->tab[index]);
 		index++;

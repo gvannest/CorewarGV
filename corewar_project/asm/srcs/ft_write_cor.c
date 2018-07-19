@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:21:45 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:43:27 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 15:15:35 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static	void	ft_write_name(char *name, int fd_cor)
 		dprintf(fd_cor, "%c", name[index]);
 		index++;
 	}
-	printf(" ");
 }
 
 static	void	ft_write_comment(char *comment, int fd_cor)

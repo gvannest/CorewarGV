@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:34:04 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 14:35:03 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_asm
 	int				nb_labelchr;
 	int				last_opcode;
 	int				last_op_pos;
+	int				last_op_line;
 	int				lock;
 	int				operator_f;
 	int				pos;
