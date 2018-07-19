@@ -80,6 +80,7 @@ typedef struct s_asm
 	char 			cur_param;
 	char 			nb_params_left;
 	char			*true_name;
+	char			*path;
 	struct s_label	*label;
 }				t_asm;
 
