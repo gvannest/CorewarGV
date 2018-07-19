@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:36:22 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:36:44 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 17:41:11 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_is_dir(char *arg)
 	int	is_dir;
 
 	arg_ln = ft_strlen(arg);
+	printf("arg is dir : %s\n", arg);
 	is_dir = 0;
 	index = 1;
 	if (arg[index] == '-')
@@ -27,9 +28,11 @@ int	ft_is_dir(char *arg)
 	{
 		while (index < arg_ln && ft_isdigit(arg[index]))
 			index++;
+		printf("index : %d / arg_ln : %d\n", index, arg_ln);
 		if (index == arg_ln)
 			is_dir = T_DIR;
 	}
+	printf("is dir ? : %d\n", is_dir);
 	return (is_dir);
 }
 

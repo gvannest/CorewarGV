@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:27:48 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 15:09:34 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 17:42:37 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void			ft_load_values_info(t_asm *info, char *arg, t_token *token)
 	{
 		index_tab = ft_find_index_arg(arg);
 		info->nb_params_left = op_tab[index_tab].nb_params;
-		
 		if (index_tab < 16)
 		{
 			info->size = ((op_tab[index_tab].dir_oct_size == 0) ? 4 : 2);
@@ -61,6 +60,8 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	arg_ln = ft_strlen(arg);
 	token->type = ft_get_type(arg);
 	token->s_val = ft_strdup(arg);
+	printf("val token : %s.\n", token->s_val);
+	printf("type token : %d\n", token->type);
 	if (token->type == T_OP || token->type == T_LAB)
 	{
 		if (token->type == T_OP)
@@ -77,7 +78,6 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 		if (token->type == T_DIR || token->type == T_REG)
 			token->i_val = ft_atoi(&token->s_val[1]);
 		info->nb_param++;
-	//	--info->comma_f; // Ajout MAS
 		info->cur_param++;
 		info->nb_params_left--;
 	}
