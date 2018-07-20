@@ -45,9 +45,9 @@ void	command_name_error(t_asm *info, char *arg)
 
 void	ft_error_management(t_asm *info, char *arg)
 {
-	if (info->comma_f == 1 && info->nb_comma == info->nb_param)
-		info->error = 1;
-	else if (info->lock == 1 && (info->comment_f == -1 || info->name_f == -1))
+//	if (info->comma_f == 1 && info->nb_comma == info->nb_param)
+//		info->error = 1;
+	if (info->lock == 1 && (info->comment_f == -1 || info->name_f == -1))
 	{
 		if (info->quote == 0)
 		{

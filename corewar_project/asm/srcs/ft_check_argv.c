@@ -12,38 +12,40 @@
 
 #include "asm.h"
 
-static char	*retrieve_name(char *path)
+static void	usage_err(char *path, int i)
 {
-	int len;
-	int	i;
-	int	j;
-	char	*arg;
-	len = (int)ft_strlen(path);
-	i = len - 1;
-	j = 0;
-	while (path[i] != '/' && i >= 0)
-		--i;
-	j = len - i + 1;
-	arg = ft_strdup(&path[i]);
-	return (arg);
+	if (i == 1)
+	{
+		ft_printf("Can't read source file %s\n", path);
+	}
+	exit (1);
 }
 
-static void	check_name(t_asm *info, char *path)
+static void check_name(t_asm *info, char *path)
 {
-	int	len;
 	int i;
+	int	j;
+	int k;
 
-	i = 0;
-	info->true_name = retrieve_name(path);
-	len = (int)ft_strlen(info->true_name);
-//	ft_printf("%s\n", info->true_name);
-	if (len > 2)
+	if (path == NULL)
+		return ;
+	i = (int)ft_strlen(path) - 1;
+	j = i;
+	k = 0;
+	while (i >= 0 && path[i])
 	{
-		if (path[len - 1] != 's' || path[len - 2] != '.')
-		ft_printf("Can't read source file %s", info->true_name);
+	   if (path[i] == '/')
+	   {
+		   info->path = ft_strsub(path, 0, i + 1);
+		   break ;
+	   }
+		if (info->comma_f == 0)
+			++k;
+ 		if (path[i] == '.')   
+			info->comma_f = 1;
+		--i;
 	}
-	if (len < 3)
-		ft_printf("Can't read source file %s", info->true_name);
+	info->true_name = ft_strsub(path, i + 1, j - i - k );
 }
 
 static int	ft_open(t_asm *info, char *path)
@@ -52,7 +54,13 @@ static int	ft_open(t_asm *info, char *path)
 
 	fp = 0;
 	fp = open(path, O_RDONLY);
-	check_name(info, path);
+	if (fp < 0)
+	{
+		usage_err(path, 1);
+	}
+	info->fp = fp;
+	if (fp >= 0)
+		check_name(info, path);
 	return (fp);
 }
 
@@ -67,9 +75,9 @@ void	ft_print_usage(int argc, char **argv)
 
 int		ft_check_argv(t_asm *info, char **argv, int argc)
 {
-	if (argc < 2 || argc > 2 || argv[1] == NULL)
+	if (argc < 2 || argc > 2)
 			ft_print_usage(argc, argv);
-//	ft_printf("%s\n", argv[1]);
 	info->fp = ft_open(info, argv[1]);
+//	ft_printf("true_name=%s  path->%s<- fp->%d<-\n", info->true_name, info->path, info->fp);
 	return (info->fp);
 }

@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/17 17:06:52 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 14:35:03 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_asm
 	int				nb_labelchr;
 	int				last_opcode;
 	int				last_op_pos;
+	int				last_op_line;
 	int				lock;
 	int				operator_f;
 	int				pos;
@@ -80,6 +81,7 @@ typedef struct s_asm
 	char 			cur_param;
 	char 			nb_params_left;
 	char			*true_name;
+	char			*path;
 	struct s_label	*label;
 }				t_asm;
 
@@ -113,7 +115,7 @@ void	analyse_separator(t_asm *info, char *line);
 int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
 int		ft_is_sep(char c);
-int		ft_is_nonsep(char c);
+int		ft_is_nonsep(char c, int f);
 
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
@@ -129,6 +131,7 @@ void	parsing_error(t_asm *info, char *line);
 void	ft_syntax_err(t_asm *info, int i, char *line);
 void	ft_error_management(t_asm *info, char *arg);
 void	command_name_error(t_asm *info, char *arg);
+void	ft_error_param(t_asm *info, t_token *token, int nb_error);
 /*
 * Lexical analysis
 */
@@ -192,9 +195,8 @@ t_token		*ft_find_label(t_token *atoken, char *label);
 /*
 ** FONCTIONS ECRIRE SHORT OU INT DECOMPOSE EN OCTETS 
 */
-void	ft_write_int(int nb, int fd_cor);
-void	ft_write_int(int nb, int fd_cor);
-void	ft_write_short(short nb, int fd_cor);
+//void	ft_write_int(int nb, int fd_cor);
+//void	ft_write_short(short nb, int fd_cor);
 void	ft_write(t_asm *info);
 
 /*
@@ -205,22 +207,22 @@ void	ft_swap_bytes_int(unsigned char *t);
 void	ft_swap_bytes_short(unsigned char *t);
 
 /*
-void	ft_display_param(t_param *param, int param_id);
-void	ft_display_instruction(t_instruction *instruction);
-void	ft_display_label(t_label *label);
-void	ft_display_asm(t_asm *sasm);
-void	ft_label_add_tail(t_asm *sasm, t_label *new_label);
-void	ft_label_new(t_asm *sasm, char *label_name);
-void	ft_label_free(t_label *label);
-void	ft_label_add_instruction(t_label *label, t_instruction *new_instruction);
-void	ft_instruction_free(t_instruction *instruction);
-void	ft_instruction_free_all(t_label *label);
-void	ft_param_free(t_param *param);
-void	ft_split_line(t_asm *sasm, char *line);
-void	ft_load_asm_instruction(t_asm *sasm, char **tab);
-void	ft_load_instruction_params(t_instruction *instruction, char **tab);
-int		ft_is_valid_line(char **tab, char **tab_params);
-int		ft_load_asm(t_asm *sasm, char **tab);
-int		ft_strtab_nblines(char **tab);
+** FONCTION FIND INDEX DANS OPTAB
 */
+
+int	ft_find_index_arg(char *arg);
+
+/*
+** FONCTION CHECK TOKEN
+*/
+
+void	ft_check_token(t_asm *info, t_token *token);
+/*
+** FONCTIONS LOAD TOKEN
+*/
+
+void	ft_token_load(t_asm *info, t_token *token, char *arg);
+void	ft_token_reload(t_asm *info, t_token *token);
+void	ft_load_values_info(t_asm *info, char *arg, t_token *token);
+
 #endif

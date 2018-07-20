@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:20:50 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 10:32:26 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 17:39:09 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int	ft_get_type(char *arg)
 		type = T_OP;
 	else
 		type = ft_is_label(arg);
+//	printf("arg : %s\n", arg);
+//	printf("type : %d\n", type);
 	return (type);
 }

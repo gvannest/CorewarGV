@@ -6,15 +6,15 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:42:34 by srossi           ###   ########.fr       */
+/*   Updated: 2018/07/19 14:20:58 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void ft_load_ocp(t_token *token_op)
+static	void	ft_load_ocp(t_token *token_op)
 {
-	t_token *p_token;
+	t_token	*p_token;
 	int		params_nb;
 	int		index;
 
@@ -34,29 +34,7 @@ static void ft_load_ocp(t_token *token_op)
 	}
 }
 
-
-void ft_swap_bytes_int(unsigned char *t) // attentioin fonction dupliquee pour tests
-{
-	unsigned char tmp;
-
-	tmp = t[0];
-	t[0] = t[3];
-	t[3] = tmp;
-
-	tmp = t[1];
-	t[1] = t[2];
-	t[2] = tmp;
-}
-
-void ft_swap_bytes_short(unsigned char *t) // attentioin fonction dupliquee pour tests
-{
-	unsigned char tmp;
-
-	tmp = t[0];
-	t[0] = t[1];
-	t[1] = tmp;
-}
-static void	ft_load_int(int nb, char *champ)
+static	void	ft_load_int(int nb, char *champ)
 {
 	unsigned char octets[4];
 	int index;
