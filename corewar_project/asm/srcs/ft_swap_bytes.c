@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_free.c                                    :+:      :+:    :+:   */
+/*   ft_swap_bytes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 10:20:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 10:20:19 by srossi           ###   ########.fr       */
+/*   Created: 2018/07/19 11:43:11 by srossi            #+#    #+#             */
+/*   Updated: 2018/07/19 12:06:46 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_token_free(t_token *token)
+void	ft_swap_bytes_int(unsigned char *t)
 {
-	if (token == NULL)
-		return ;
-	if (token->s_val != NULL)
-		ft_strdel(&token->s_val);
-	free(token);
+	unsigned char tmp;
+
+	tmp = t[0];
+	t[0] = t[3];
+	t[3] = tmp;
+	tmp = t[1];
+	t[1] = t[2];
+	t[2] = tmp;
 }
 
-void	ft_token_list_free(t_token *a_token)
+void	ft_swap_bytes_short(unsigned char *t)
 {
-	t_token *p_token;
+	unsigned char tmp;
 
-	p_token = a_token;
-	if (p_token == NULL)
-		return ;
-	while (p_token)
-	{
-		a_token = a_token->next;
-		ft_token_free(p_token);
-		p_token = a_token;
-	}
+	tmp = t[0];
+	t[0] = t[1];
+	t[1] = tmp;
 }

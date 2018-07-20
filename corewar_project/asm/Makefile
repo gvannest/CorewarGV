@@ -6,13 +6,14 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/12 15:30:12 by msicot           ###   ########.fr        #
+#    Updated: 2018/07/19 14:29:09 by srossi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 #BINARY
 NAME = asm
@@ -38,14 +39,16 @@ OBJ_PATH = ./objs/
 
 # SOURCES
 SRC_NAME = main.c \
+		   ft_check_argv.c \
 		   ft_token_type.c \
-		   ft_token.c \
+		   ft_token_type2.c \
+		   ft_token_add.c \
 		   op.c \
 		   ft_parsing.c \
-		   ft_parse_correctly.c	\
-		   analyse_separator.c	\
+		   ft_parse_correctly.c \
+		   analyse_separator.c \
 		   ft_retrieve_line.c \
-		   ft_errorm.c	\
+		   ft_errorm.c \
 		   ft_fill_labels.c \
 		   ft_is_smthg.c \
 		   ft_syntax.c \
@@ -53,10 +56,15 @@ SRC_NAME = main.c \
 		   ft_test_params.c \
 		   ft_tests_syntax.c \
 		   ft_display.c \
+		   ft_display_cor.c \
 		   ft_token_free.c \
 		   ft_get_value.c \
 		   ft_create_champ.c \
 		   ft_write_cor.c \
+		   ft_find_index.c \
+		   ft_check_token.c \
+		   ft_token_load.c \
+		   ft_swap_bytes.c \
 		   ft_error.c
 
 

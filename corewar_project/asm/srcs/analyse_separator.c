@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 14:26:54 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/12 15:07:40 by msicot           ###   ########.fr       */
+/*   Updated: 2018/07/17 15:56:31 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,23 @@
  * #define COMMENT_CMD_STRING		".comment"
  * */
 
-static void comma_analyser(t_asm *info)
+static void comma_analyser(t_asm *info, char *line)
 {
 	/* 1- Est ce que flag comma_f est on ?
 	 * Si oui cest qu'il y a deja une virgule avant -> erreur
 	 * Si non, allumer le flag et augmenter le nombre de virgule.
 	 * il faudra dans la fonction qui recupere l'argument penser a reset le flag virgule apres chaque retrieve dargument.
 	 */
-	if (info->comma_f == 1 || (info->nb_comma > info->nb_param))
+	if (info->comma_f == 1 || (info->nb_comma > info->nb_param) || info->operator_f == 0 || info->nb_param == 0)
 	{
 //		ft_printf("ERROR comma analyser\n");
-		info->error = 1;
+		info->error = 3;
+		parsing_error(info, ft_strdup(","));
 	}
-	else if (info->operator_f == 0 || info->nb_param == 0)
+	else if (info->end + 1 == (int)ft_strlen(line))
 	{
-//		ft_printf("ERROR comma analyser 2\n");
-		info->error = 1;
+		info->error = 4;
+		parsing_error(info, ft_strdup(","));
 	}
 	else
 	{
@@ -71,18 +72,13 @@ static void quote_analyser(t_asm *info)
 	}
 }
 
-/*static void	space_analyser(t_asm *info)
-{
-		info->error = info->error;
-}*/
-
 void analyse_separator(t_asm *info, char *line)
 {	
 	if (line == NULL)
 	   return ;	
 	if (START == SEPARATOR_CHAR)
 	{
-		comma_analyser(info);
+		comma_analyser(info, line);
 //		if (info->comma_f == 1)
 //			ft_printf("flag allume\n");
 	}

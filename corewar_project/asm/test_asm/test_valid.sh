@@ -17,5 +17,5 @@ do
 #	rm zazs.txt asm.txt 
 done
 rm ./$repo/*.cor
-cat $name.txt
+cat valid.txt
 echo "\nThanks for using that script, good luck ;)"

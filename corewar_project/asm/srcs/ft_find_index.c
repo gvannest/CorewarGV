@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_free.c                                    :+:      :+:    :+:   */
+/*   ft_find_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 10:20:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/06 10:20:19 by srossi           ###   ########.fr       */
+/*   Created: 2018/07/19 13:22:39 by srossi            #+#    #+#             */
+/*   Updated: 2018/07/19 13:32:18 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_token_free(t_token *token)
+int	ft_find_index_arg(char *arg)
 {
-	if (token == NULL)
-		return ;
-	if (token->s_val != NULL)
-		ft_strdel(&token->s_val);
-	free(token);
-}
+	int index;
 
-void	ft_token_list_free(t_token *a_token)
-{
-	t_token *p_token;
-
-	p_token = a_token;
-	if (p_token == NULL)
-		return ;
-	while (p_token)
+	index = 0;
+	while (index < 17)
 	{
-		a_token = a_token->next;
-		ft_token_free(p_token);
-		p_token = a_token;
+		if (ft_strequ(arg, op_tab[index].name))
+			break ;
+		index++;
 	}
+	return (index);
 }
