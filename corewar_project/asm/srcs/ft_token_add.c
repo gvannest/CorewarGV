@@ -74,6 +74,6 @@ void			ft_token_add(t_asm *info, char *arg)
 	ft_token_reload(info, new_token);
 	ft_check_token(info, new_token);
 	ft_token_add_tail(&info->atoken, new_token);
-	printf("nb params lefts : %d\n", info->nb_params_left);
+//	printf("nb params lefts : %d\n", info->nb_params_left);
 	ft_pos_increment(info, new_token);
 }

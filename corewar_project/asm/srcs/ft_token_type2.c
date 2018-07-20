@@ -19,7 +19,7 @@ int	ft_is_dir(char *arg)
 	int	is_dir;
 
 	arg_ln = ft_strlen(arg);
-	printf("arg is dir : %s\n", arg);
+//	printf("arg is dir : %s\n", arg);
 	is_dir = 0;
 	index = 1;
 	if (arg[index] == '-')
@@ -28,11 +28,11 @@ int	ft_is_dir(char *arg)
 	{
 		while (index < arg_ln && ft_isdigit(arg[index]))
 			index++;
-		printf("index : %d / arg_ln : %d\n", index, arg_ln);
+	//	printf("index : %d / arg_ln : %d\n", index, arg_ln);
 		if (index == arg_ln)
 			is_dir = T_DIR;
 	}
-	printf("is dir ? : %d\n", is_dir);
+//	printf("is dir ? : %d\n", is_dir);
 	return (is_dir);
 }
 

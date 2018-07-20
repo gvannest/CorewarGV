@@ -60,8 +60,8 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	arg_ln = ft_strlen(arg);
 	token->type = ft_get_type(arg);
 	token->s_val = ft_strdup(arg);
-	printf("val token : %s.\n", token->s_val);
-	printf("type token : %d\n", token->type);
+//	printf("val token : %s.\n", token->s_val);
+//	printf("type token : %d\n", token->type);
 	if (token->type == T_OP || token->type == T_LAB)
 	{
 		if (token->type == T_OP)
