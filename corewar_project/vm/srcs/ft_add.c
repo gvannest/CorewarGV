@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reinit.c                                        :+:      :+:    :+:   */
+/*   ft_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/20 14:56:20 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:08:33 by gvannest         ###   ########.fr       */
+/*   Created: 2018/07/19 11:57:53 by gvannest          #+#    #+#             */
+/*   Updated: 2018/07/20 15:56:18 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		ft_reinit_cycle(t_arena *arena, t_proc *proc)
+void			ft_add(t_arena *arena, t_proc *proc)
 {
-	arena->nb_cycle_current = 0;
-	arena->nb_live_currt = 0;
-	while (proc)
-	{
-		proc->nb_live_curr_cycle = 0;
-		proc = proc->next;
-	}
+	int	tab_tmp[2];
+
+	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
+		return;
+	if (!(ft_verif_reg(proc)))
+		return;
+	tab_tmp[0] = proc->reg[proc->tab_param[0].value - 1];
+	tab_tmp[1] = proc->reg[proc->tab_param[1].value - 1];
+	proc->reg[proc->tab_param[2].value - 1] = tab_tmp[0] + tab_tmp[1];
+	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
 }
 
-void		ft_reinit_param(t_proc *proc)
-{
-	int i;
-
-	i = 0;
-	while (i < 3)
-	{
-		proc->tab_param[i].value = 0;
-		proc->tab_param[i].size = 0;
-		proc->tab_param[i].type = 0;
-		i++;
-	}
-	proc->ocp = 0;
-	proc->jump = 0;
-	proc = proc->next;
-}

@@ -6,12 +6,12 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 11:38:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/21 13:41:04 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/18 12:07:28 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "ft_tabptr.h"
+#include "ft_dtabptr.h"
 
 static int	ft_fill_buffer(const char *format, t_lst *p, va_list ap)
 {
@@ -30,9 +30,9 @@ static int	ft_fill_buffer(const char *format, t_lst *p, va_list ap)
 	ft_clean_options(p);
 	while (i < 16)
 	{
-		if (TYPE == tabtype[i].c)
+		if (TYPE == dtabtype[i].c)
 		{
-			if (tabtype[i].f_type(p, ap) < 0)
+			if (dtabtype[i].f_type(p, ap) < 0)
 				return (-1);
 		}
 		i++;

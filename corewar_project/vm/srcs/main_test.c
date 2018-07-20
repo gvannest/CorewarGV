@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:43:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 18:23:16 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/19 16:36:36 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,13 @@ void		ft_print_registres(t_arena *arena)
 	while (ptr)
 	{
 		i = 1;
-		printf("Registres %d : [%d, ", ptr->p_nbr, ptr->reg[0]);
+		printf("Registres %u : [%.2x, ", ptr->p_nbr, ptr->reg[0]);
 		while (i < REG_NUMBER - 1)
 		{
-			printf("%d, ", ptr->reg[i]);
+			printf("%.2x, ", ptr->reg[i]);
 			i++;
 		}
-		printf("%d]\n", ptr->reg[i]);
+		printf("%.2x]\n", ptr->reg[i]);
 		ptr = ptr->next;
 	}
 }

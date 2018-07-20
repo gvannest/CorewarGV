@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/10 17:24:11 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/18 10:55:26 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void		ft_visual(t_arena *arena, t_corvisu *visual)
 	wrefresh(visual->win_arena);
 	wrefresh(visual->win_info_game);
 	wrefresh(visual->win_info_pyrs);
+	getch();
 }
 

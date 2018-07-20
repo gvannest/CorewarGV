@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 17:55:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 17:44:49 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/18 14:53:33 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		ft_check_magic(char *line, char *cor)
 {
 	int magic;
 
-	magic = (int)(ft_read_memory(line, 4));
+	magic = (int)(ft_read_memory(line, 0, 4));
 	if (magic != COREWAR_EXEC_MAGIC)
 		ft_error_vm(2, "Error : Wrong magic number", cor, magic);
 }
@@ -39,7 +39,7 @@ static void		ft_nb_instruct(char *line, t_arena *arena, int i, char *cor)
 {
 	int nb;
 
-	nb = (int)(ft_read_memory(line, 4));
+	nb = (int)(ft_read_memory(line, 0, 4));
 	if (nb > CHAMP_MAX_SIZE || nb < 1)
 		ft_error_vm(5, "Error : Wrong champion size", cor, nb);
 	arena->tab_pyr[i].nb_inst = nb;

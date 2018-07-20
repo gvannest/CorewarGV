@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 14:45:28 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 17:49:53 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/20 15:12:57 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ t_functions					g_tab_function[] =
 {
 	{1, &ft_live},
 	{2, &ft_load},
-	/*{3, &ft_store},
+	{3, &ft_store},
 	{4, &ft_add},
 	{5, &ft_sub},
 	{6, &ft_and},
 	{7, &ft_or},
 	{8, &ft_xor},
 	{9, &ft_zjmp},
-	{10, &ft_ldi},
+	/*{10, &ft_ldi},
 	{11, &ft_sti},
 	{12, &ft_fork},
 	{13, &ft_lld},

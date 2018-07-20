@@ -12,18 +12,14 @@ void			ft_one_cycle(t_arena *arena, t_proc *proc)
 		else
 		{
 			i = 0;
-			while (i < 2)
+			while (i < 9)
 			{
-				printf("%c\n", proc->opcode_act);
-				printf("%c\n", g_tab_function[i].o);
-				printf("%c\n", proc->opcode_valid);
 				if (proc->opcode_act == g_tab_function[i].o && proc->opcode_valid == 1)
-				{
 					g_tab_function[i].f_inst(arena, proc);
-				}
 				i++;
 			}
-			ft_move_process(arena->map_process, proc, proc->ocp);
+			if (proc->jump != 1)
+				ft_move_process(arena->map_process, proc, proc->ocp);
 			ft_next_opcode(arena, proc);
 			ft_reinit_param(proc);
 		}

@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 17:47:03 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/20 15:26:08 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_proc
 	unsigned int	nb_cycle_before_op;//nb de cycles restant avant executier et bouger
 	unsigned int	nb_live_curr_cycle;//nb de lives executees sur le cycle courant
 	char			carry;
+	char			jump;
 	char			ocp;
 	t_param			tab_param[3];
 	struct s_proc	*parent;
@@ -92,7 +93,6 @@ typedef struct s_op
 extern t_op op_tab[NB_INSTR + 1];
 
 void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
-unsigned long long	ft_read_memory(char *str, size_t k);
 void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
 void				ft_parse_vm2(char *line, t_arena *arena, char *cor, int i);
 char				ft_arguments(int argc, char **argv, t_arena *arena);
@@ -115,10 +115,23 @@ void				ft_reinit_param(t_proc *proc);
 void				ft_next_opcode(t_arena *arena, t_proc *proc);
 void				ft_one_cycle(t_arena *arena, t_proc *proc);
 void				ft_move_process(int *map_process, t_proc *proc, char ocp);
-void				ft_get_param(t_arena *arena, t_proc *proc, int pc, char dir_size);
+int					ft_get_param(t_arena *arena, t_proc *proc, int pc, char dir_size);
 
 void				ft_live(t_arena *arena, t_proc *proc);
 void				ft_load(t_arena *arena, t_proc *proc);
+void				ft_store(t_arena *arena, t_proc *proc);
+void				ft_add(t_arena *arena, t_proc *proc);
+void				ft_sub(t_arena *arena, t_proc *proc);
+void				ft_and(t_arena *arena, t_proc *proc);
+void				ft_or(t_arena *arena, t_proc *proc);
+void				ft_xor(t_arena *arena, t_proc *proc);
+void				ft_zjmp(t_arena *arena, t_proc *proc);
+
+unsigned long		ft_read_memory(char *map, int start, size_t k);
+void				ft_write_memory(char *map, unsigned int v, int start, size_t k);
+void				ft_update_map_pyr(int *map_pyr, int pc_act, int start, size_t k);
+int					ft_verif_reg(t_proc *proc);
+void				ft_index_idxmod(int *k, int value, int pc_act);
 
 void				ft_free_listproc(t_proc *begin_list);
 

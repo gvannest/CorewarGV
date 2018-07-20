@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/12 15:37:15 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/20 15:13:25 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,10 @@ SRC_NAME = main_test.c \
 		   ft_init_processus.c \
 		   ft_live.c \
 		   ft_load.c \
+		   ft_add.c \
+		   ft_sub.c \
+		   ft_andorxor.c \
+		   ft_zjmp.c \
 		   ft_one_cycle.c \
 		   ft_opcode.c \
 		   ft_parse_vm1.c \
