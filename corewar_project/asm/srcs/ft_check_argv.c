@@ -69,15 +69,23 @@ void	ft_print_usage(int argc, char **argv)
 	if (argc < 2)
 		ft_printf("Usage: %s <sourcefile.s>\n", argv[0]);
 	else if (argc > 2)
-		ft_printf("Usage: %s <sourcefile.s>\n", argv[0]);
+		ft_printf("Usage: %s [-hd] <sourcefile.s>\n", argv[0]);
 	exit (1);
 }
 
+
+
 int		ft_check_argv(t_asm *info, char **argv, int argc)
 {
-	if (argc < 2 || argc > 2)
+	if (argc < 2 || argc > 3)
 			ft_print_usage(argc, argv);
-	info->fp = ft_open(info, argv[1]);
+	if (argc == 3)
+	{
+		ft_check_options(info, argc, argv);
+		info->fp = ft_open(info, argv[2]);
+	}
+	else //argc = 2
+		info->fp = ft_open(info, argv[1]);
 //	ft_printf("true_name=%s  path->%s<- fp->%d<-\n", info->true_name, info->path, info->fp);
 	return (info->fp);
 }
