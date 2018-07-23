@@ -72,6 +72,8 @@ typedef struct s_asm
 	int				last_op_pos;
 	int				last_op_line;
 	int				lock;
+	char				f_option_h;
+	char				f_option_d;
 	int				operator_f;
 	int				pos;
 	int				quote;
@@ -102,6 +104,8 @@ extern t_op op_tab[NB_INSTR + 1];
 /*
  * parsing
  */
+
+void	ft_check_options(t_asm *info, int argc, char **argv);
 int		ft_check_argv(t_asm *info, char **argv, int argc);
 //void	ft_parse_cmd(t_asm *info, char *line);
 //void	ft_parse_op(t_asm *info, char *line);
@@ -224,5 +228,7 @@ void	ft_check_token(t_asm *info, t_token *token);
 void	ft_token_load(t_asm *info, t_token *token, char *arg);
 void	ft_token_reload(t_asm *info, t_token *token);
 void	ft_load_values_info(t_asm *info, char *arg, t_token *token);
+
+void	ft_print_usage(int argc, char **argv);
 
 #endif
