@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:30:07 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 15:41:32 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/23 11:02:01 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	int		ft_check_arg(char **argv, int argc, int i, t_arena *arena)
 				ft_strstr(argv[i + 2], ".cor"))
 			return (1);
 	}
-	else if (ft_strcmp(argv[i], "-dump") == 0)
+	else if (ft_strcmp(argv[i], "-d") == 0)
 	{
 		if (ft_isnum(argv[i + 1]))
 			return (1);
@@ -29,7 +29,7 @@ static	int		ft_check_arg(char **argv, int argc, int i, t_arena *arena)
 		return (1);
 	else if (ft_isnum(argv[i]))
 	{
-		if (ft_strcmp(argv[i - 1],"-dump") == 0 || (ft_strcmp(argv[i - 1],
+		if (ft_strcmp(argv[i - 1],"-d") == 0 || (ft_strcmp(argv[i - 1],
 						"-n") == 0 && ft_strstr(argv[i + 1], ".cor")))
 			return (1);
 	}
