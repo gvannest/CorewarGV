@@ -66,6 +66,7 @@ SRC_NAME = main.c \
 		   ft_token_load.c \
 		   ft_swap_bytes.c \
 		   ft_options.c \
+		   ft_help.c \
 		   ft_error.c
 
 
