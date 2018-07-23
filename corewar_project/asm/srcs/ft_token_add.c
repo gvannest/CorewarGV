@@ -66,14 +66,20 @@ void			ft_token_add_tail(t_token **token, t_token *new_token)
 void			ft_token_add(t_asm *info, char *arg)
 {
 	t_token *new_token;
+	char	*arg_trim;
 
 	new_token = ft_memalloc(sizeof(t_token));
+	arg_trim = ft_strtrim(arg);
 	ft_token_init(new_token);
-	ft_token_load(info, new_token, arg);
-	ft_load_values_info(info, arg, new_token);
+	ft_token_load(info, new_token, arg_trim);
+	ft_load_values_info(info, arg_trim, new_token);
 	ft_token_reload(info, new_token);
 	ft_check_token(info, new_token);
 	ft_token_add_tail(&info->atoken, new_token);
+//	ft_token_display(new_token, new_token->pos);
+//	while (1)
+//		;
 //	printf("nb params lefts : %d\n", info->nb_params_left);
 	ft_pos_increment(info, new_token);
+	ft_strdel(&arg_trim);
 }

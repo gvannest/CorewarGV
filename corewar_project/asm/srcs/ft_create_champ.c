@@ -78,6 +78,8 @@ void	ft_create_champ(t_asm *info)
 	p_token = info->atoken;
 	while (p_token)
 	{
+		printf("ptoken address debut : %p\n", p_token);
+		printf("ptoken sval : %s.\n", p_token->s_val);
 		if (p_token->type == T_OP)
 		{
 			ft_load_ocp(p_token);
@@ -90,18 +92,19 @@ void	ft_create_champ(t_asm *info)
 		else if (p_token->type == T_DIR || p_token->type == T_DIR_LAB)
 		{
 			if (p_token->arg_size == 2)
-			{
 				ft_load_short((short)p_token->i_val, &info->tab[index]);
-				index += 2;
-			}
-			if (p_token->arg_size == 4)
-			{
+			else if (p_token->arg_size == 4)
 				ft_load_int(p_token->i_val, &info->tab[index]);
-				index += 4;
-			}
+			index += p_token->arg_size;
 		}
 		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)
 			info->tab[index++] = p_token->i_val;
+		printf("ptoken address : %p\n", p_token);
 		p_token = p_token->next;
+		printf("ptoken address apres : %p\n", p_token);
+		//printf("ptoken sval apres: %s.\n", p_token->s_val);
+
 	}
+	printf("index : %d\n", index);
+//	printf("atoken final sval : %s.\n", info->atoken->s_val);
 }

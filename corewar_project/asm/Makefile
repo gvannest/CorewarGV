@@ -12,7 +12,7 @@
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 #FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 #BINARY

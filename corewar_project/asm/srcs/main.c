@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 //	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
 //	if (!ft_is_valid_syntax(&info))
 //		error_instr(info, 
-//	ft_fill_labels(info.atoken);
 //	ft_test_params();
 //	ft_test_label();
 	ft_check_argv(&info, argv, argc);
@@ -55,7 +54,10 @@ int	main(int argc, char **argv)
 	ft_fill_labels(info.atoken);
 //	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();
+//	ft_token_display_all(info.atoken);
 	ft_create_champ(&info);
+	printf("test2\n");
+//	ft_token_display_all(info.atoken);
 	ft_write(&info);
 	if (info.f_option_d)
 	{
