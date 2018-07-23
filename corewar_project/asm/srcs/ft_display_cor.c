@@ -27,7 +27,7 @@ static	void	ft_display_champ(t_asm *info)
 	{
 		if (index % 16 == 0)
 			printf("\n");
-		if (index % 2 == 0 && index != 0)
+		else if (index % 2 == 0 && index != 0)
 			printf(" ");
 		printf("%.2hhx", info->tab[index]);
 		index++;
@@ -44,7 +44,7 @@ void			ft_display_name(char *name)
 	{
 		if ((index + 4) % 16 == 0)
 			printf("\n");
-		if (index % 2 == 0 && index != 0)
+		else if (index % 2 == 0 && index != 0)
 			printf(" ");
 		printf("%.2x", name[index]);
 		index++;
@@ -61,7 +61,7 @@ void			ft_display_comment(char *comment)
 	{
 		if ((index + 12) % 16 == 0 && index != 0)
 			printf("\n");
-		if (index % 2 == 0 && index != 0)
+		else if (index % 2 == 0 && index != 0)
 			printf(" ");
 		printf("%.2x", comment[index]);
 		index++;
