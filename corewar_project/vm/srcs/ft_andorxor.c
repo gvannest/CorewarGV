@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:46 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:56:58 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/23 11:29:32 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void			ft_andorxor(t_arena *arena, t_proc *proc, char ope)
 	(ope == 'o' ? *res = tab_tmp[0] | tab_tmp[1] : 0);
 	(ope == 'x' ? *res = tab_tmp[0] ^ tab_tmp[1] : 0);
 	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
-	//ft_assert("", arena);
 }
 
 

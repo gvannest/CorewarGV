@@ -15,7 +15,10 @@ void			ft_one_cycle(t_arena *arena, t_proc *proc)
 			while (i < 9)
 			{
 				if (proc->opcode_act == g_tab_function[i].o && proc->opcode_valid == 1)
+				{
 					g_tab_function[i].f_inst(arena, proc);
+					break;
+				}
 				i++;
 			}
 			if (proc->jump != 1)
