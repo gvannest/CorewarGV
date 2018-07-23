@@ -32,7 +32,6 @@ static	void	ft_display_champ(t_asm *info)
 		printf("%.2hhx", info->tab[index]);
 		index++;
 	}
-	printf(" ");
 }
 
 void			ft_display_name(char *name)
