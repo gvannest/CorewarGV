@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:59:16 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 16:44:29 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 14:17:14 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 			if (v == 1)
 				ft_visual(arena, visual);
 			ft_one_cycle(arena, arena->list_proc);
-			if (arena->nb_cycle == (unsigned int)arena->dump_nb)
-				ft_dump_mem(arena);
 			arena->nb_cycle++;
 			arena->nb_cycle_current++;
+			if (arena->dump_f == 1 && arena->nb_cycle == (unsigned int)arena->dump_nb)
+				ft_dump_mem(arena);
 		}
 		ft_check_cycle(arena);
 		ft_reinit_cycle(arena, arena->list_proc);
