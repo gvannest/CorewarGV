@@ -23,7 +23,7 @@ void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 			if (v == 1)
 				ft_visual(arena, visual);
 			ft_one_cycle(arena, arena->list_proc);
-			if (arena->nb_cycle == (unsigned int)arena->dump_nb)
+			if (arena->nb_cycle == (unsigned int)arena->dump_nb && arena->dump_f == 1)
 				ft_dump_mem(arena);
 			arena->nb_cycle++;
 			arena->nb_cycle_current++;
