@@ -99,6 +99,7 @@ void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
 void				ft_parse_vm2(char *line, t_arena *arena, char *cor, int i);
 char				ft_arguments(int argc, char **argv, t_arena *arena);
 int					ft_dump(t_arena *arena, char **argv, int argc, int i);
+void				ft_dump_mem(t_arena *arena);
 void				ft_assert(char *line, t_arena *arena);
 int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);

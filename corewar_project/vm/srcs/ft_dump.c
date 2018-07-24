@@ -1,6 +1,20 @@
 #include "corewar.h"
 
-int	ft_dump(t_arena *arena, char **argv, int argc, int i)
+void	ft_dump_mem(t_arena *arena)
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%.2hhx ", arena->map[i]);
+		++i;
+		if (i % 64 == 0)
+			ft_printf("\n");
+	}
+}
+
+int		ft_dump(t_arena *arena, char **argv, int argc, int i)
 {
 	if (i + 1 >= argc)
 		return (0);
