@@ -19,7 +19,7 @@ char	*ft_strrev(char *str)
 	char	tmp;
 
 	i = 0;
-	j = ft_strlen(str) - 1;
+	j = ft_strlen(str);
 	while (i < j)
 	{
 		tmp = (str)[i];

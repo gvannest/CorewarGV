@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 18:30:00 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/12 18:23:18 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/23 18:13:06 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 	}
 	else if (error_code == 7)
 		ft_dprintf(2, "%s\n%s %x\n", msg1, msg2, v1);
+	else if (error_code == 8)
+		ft_dprintf(2, "%s\n", msg1);
 	exit(EXIT_FAILURE);
 }

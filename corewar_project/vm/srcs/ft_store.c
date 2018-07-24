@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 16:08:15 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:56:05 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 12:10:07 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ft_store(t_arena *arena, t_proc *proc)
 
 	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
 		return;
-	if (!(ft_verif_reg(proc)))
+	if (!ft_check_ocp(proc->tab_param, "r", "ir", ""))
 		return;
 	reg_value = proc->reg[proc->tab_param[0].value - 1];
 	if (proc->tab_param[1].type == 'i')

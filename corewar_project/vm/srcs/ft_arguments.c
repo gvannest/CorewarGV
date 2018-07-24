@@ -21,10 +21,7 @@ static	int		ft_check_arg(char **argv, int argc, int i, t_arena *arena)
 			return (1);
 	}
 	else if (ft_strcmp(argv[i], "-d") == 0)
-	{
-		if (ft_isnum(argv[i + 1]))
-			return (1);
-	}
+			return (ft_dump(arena, argv, argc, i));
 	else if (ft_strcmp(argv[i], "-visual") == 0)
 		return (1);
 	else if (ft_isnum(argv[i]))

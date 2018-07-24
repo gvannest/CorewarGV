@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-/*static void	ft_print_cor(char *line)
+void	ft_print_cor(char *line)
 {
 	int i = 0;
 
@@ -30,7 +30,7 @@
 	putchar('\n');
 }
 
-static void		ft_print_champ(t_arena *arena)
+void		ft_print_champ(t_arena *arena)
 {
 	unsigned short i;
 	int k;
@@ -54,9 +54,8 @@ static void		ft_print_champ(t_arena *arena)
 		i++;
 	}
 }
-*/
 
-/*void		ft_print_map(t_arena *arena)
+void		ft_print_map(t_arena *arena)
 {
 	int i;
 
@@ -71,8 +70,8 @@ static void		ft_print_champ(t_arena *arena)
 	printf("\n");
 	printf("\n");
 }
-*/
-/*void		ft_print_map_pyr(t_arena *arena)
+
+void		ft_print_map_pyr(t_arena *arena)
 {
 	int i;
 
@@ -86,8 +85,8 @@ static void		ft_print_champ(t_arena *arena)
 	}
 	printf("\n");
 	printf("\n");
-}*/
-/*
+}
+
 void		ft_print_map_proc(t_arena *arena)
 {
 	int i;
@@ -103,7 +102,7 @@ void		ft_print_map_proc(t_arena *arena)
 	printf("\n");
 	printf("\n");
 }
-*/
+
 void		ft_print_registres(t_arena *arena)
 {
 	t_proc *ptr;

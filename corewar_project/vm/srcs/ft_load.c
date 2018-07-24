@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 17:31:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:55:51 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 11:44:10 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_load(t_arena *arena, t_proc *proc)
 
 	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
 		return;
-	if (proc->tab_param[1].value < 1 || proc->tab_param[1].value > 16)
+	if (!ft_check_ocp(proc->tab_param, "di", "r", ""))
 		return;
 	if (proc->tab_param[0].type == 'd')
 		proc->reg[proc->tab_param[1].value - 1] = proc->tab_param[0].value;

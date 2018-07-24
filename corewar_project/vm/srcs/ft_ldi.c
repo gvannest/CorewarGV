@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sub.c                                           :+:      :+:    :+:   */
+/*   ft_ldi.c                                          :+:      :+:    :+:    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 13:59:32 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 12:10:23 by gvannest         ###   ########.fr       */
+/*   Created: 2018/07/23 12:10:36 by gvannest          #+#    #+#             */
+/*   Updated: 2018/07/24 12:13:27 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			ft_sub(t_arena *arena, t_proc *proc)
+void			ft_ldi(t_arena *arena, t_proc *proc)
 {
+
+	int k;
+	int i;
 	int	tab_tmp[2];
 
-	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
+	i = 0;
+	if (!(ft_get_param(arena, proc, proc->pc_act, 1)))
 		return;
-	if (!ft_check_ocp(proc->tab_param, "r", "r", "r"))
+	if (!ft_check_ocp(proc->tab_param, "rdi", "ir", "r"))
 		return;
-	tab_tmp[0] = proc->reg[proc->tab_param[0].value - 1];
-	tab_tmp[1] = proc->reg[proc->tab_param[1].value - 1];
-	proc->reg[proc->tab_param[2].value - 1] = tab_tmp[0] - tab_tmp[1];
-	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
-}
+	while (i < 2)
+	{
+		
