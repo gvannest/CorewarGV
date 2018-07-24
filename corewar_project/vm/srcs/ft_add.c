@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 11:57:53 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:56:18 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 12:09:44 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_add(t_arena *arena, t_proc *proc)
 
 	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
 		return;
-	if (!(ft_verif_reg(proc)))
+	if (!ft_check_ocp(proc->tab_param, "r", "r", "r"))
 		return;
 	tab_tmp[0] = proc->reg[proc->tab_param[0].value - 1];
 	tab_tmp[1] = proc->reg[proc->tab_param[1].value - 1];

@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:46 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/23 11:29:32 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 12:10:42 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void			ft_andorxor(t_arena *arena, t_proc *proc, char ope)
 	i = 0;
 	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
 		return;
-	if (!(ft_verif_reg(proc)))
-		return;
+	if (!(ft_check_ocp(proc->tab_param, "rid", "rid", "r")))
+		return ;
 	while (i < 2)
 	{
 		ft_loop_andorxor(arena->map, tab_tmp, i, proc);
@@ -50,7 +50,6 @@ static void			ft_andorxor(t_arena *arena, t_proc *proc, char ope)
 	(ope == 'x' ? *res = tab_tmp[0] ^ tab_tmp[1] : 0);
 	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
 }
-
 
 void			ft_and(t_arena *arena, t_proc *proc)
 {

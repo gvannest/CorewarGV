@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/20 15:13:25 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/24 11:42:52 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC_NAME = main_test.c \
 		   ft_store.c \
 		   ft_tools.c \
 		   ft_tools2.c \
+		   ft_getparam.c \
 		   ft_visual.c \
 		   ft_visual2.c \
 		   main_corewar.c \

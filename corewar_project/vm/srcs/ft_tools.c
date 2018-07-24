@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 19:02:34 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:42:52 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 12:11:33 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,52 +39,35 @@ void			ft_write_memory(char *map, unsigned int v, int start, size_t k)
 	}
 }
 
-static int		ft_check_ocp(char ocp, t_proc *proc)
+static int	ft_verif_reg(t_param *tab)
 {
-	if ((unsigned char)ocp < 0x04 || (unsigned char)ocp > 0xfc)
-	{
-		proc->opcode_valid = 0;
-		return (0);
-	}
-	return (1);
-}
-
-static void		ft_get_param_value(char *map, t_param *tab, int pc)
-{
-	tab[0].value = (int)ft_read_memory(map, pc + 2, tab[0].size);
-	tab[1].value = (int)ft_read_memory(map, pc + 2 + tab[0].size,
-			tab[1].size);
-	tab[2].value = (int)ft_read_memory(map, pc + 2 + tab[0].size + tab[1].size,
-			tab[2].size);
-}
-
-int			ft_get_param(t_arena *arena, t_proc *proc, int pc, char dir_size)
-{
-	int		i;
+	int i;
 
 	i = 0;
-	proc->ocp = (char)ft_read_memory(arena->map, pc + 1, 1);
-	if(!(ft_check_ocp(proc->ocp, proc)))
-		return (0);
 	while (i < 3)
 	{
-		if ((proc->ocp >> (6 - 2 * i) & 0x03) == 1)
-		{
-			proc->tab_param[i].type = 'r';
-			proc->tab_param[i].size = 1;
-		}
-		else if ((proc->ocp >> (6 - 2 * i) & 0x03) == 2)
-		{
-			proc->tab_param[i].type = 'd';
-			proc->tab_param[i].size = 4 - 2 * dir_size;
-		}
-		else if ((proc->ocp >> (6 - 2 * i) & 0x03) == 3)
-		{
-			proc->tab_param[i].type = 'i';
-			proc->tab_param[i].size = 2;
-		}
+		if (tab[i].type == 'r' && (tab[i].value < 1 || tab[i].value > 16))
+			return (0);
 		i++;
 	}
-	ft_get_param_value(arena->map, proc->tab_param, pc);
 	return (1);
 }
+
+int			ft_check_ocp(t_param *tab, char *p1, char *p2, char *p3)
+{
+	int i;
+	static int cpt = 1;
+
+	i = 0;
+	cpt++;
+	if (!ft_strchr(p1, tab[0].type))
+		return (0);
+	if (!ft_strchr(p2, tab[1].type))
+		return (0);
+	if (!ft_strchr(p3, tab[2].type))
+		return (0);
+	if (!ft_verif_reg(tab))
+		return (0);
+	return (1);
+}
+
