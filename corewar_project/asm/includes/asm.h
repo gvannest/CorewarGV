@@ -230,5 +230,10 @@ void	ft_token_reload(t_asm *info, t_token *token);
 void	ft_load_values_info(t_asm *info, char *arg, t_token *token);
 
 void	ft_print_usage(int argc, char **argv);
+/*
+** FONCTION HELP
+*/
+
+void	ft_help();
 
 #endif

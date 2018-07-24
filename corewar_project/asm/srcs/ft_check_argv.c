@@ -69,7 +69,7 @@ void	ft_print_usage(int argc, char **argv)
 	if (argc < 2)
 		ft_printf("Usage: %s <sourcefile.s>\n", argv[0]);
 	else if (argc > 2)
-		ft_printf("Usage: %s [-hd] <sourcefile.s>\n", argv[0]);
+		ft_printf("Usage: %s [-h | -d] <sourcefile.s>\n", argv[0]);
 	exit (1);
 }
 

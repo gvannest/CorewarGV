@@ -54,6 +54,8 @@ static	int	ft_options_valid(t_asm *info, char *arg)
 
 void	ft_check_options(t_asm *info, int argc, char **argv)
 {
-	if (!ft_options_valid(info, argv[1]))
+	if (!ft_options_valid(info, argv[1]) || (info->f_option_h && info->f_option_d))
 		ft_print_usage(argc, argv);
+	else if (info->f_option_h)
+		ft_help();
 }

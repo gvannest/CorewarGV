@@ -56,13 +56,12 @@ int	main(int argc, char **argv)
 //	ft_token_display_all(info.atoken);
 //	ft_tests_syntax();
 	ft_create_champ(&info);
-//	ft_create_champ(&info);
-/*
-	if (info,f_option_display)
-		ft_display(&info);
-		flag d'option, si active il faut afficher le .cor style xxd
-*/
 	ft_write(&info);
+	if (info.f_option_d)
+	{
+		ft_display(&info);
+		exit(EXIT_SUCCESS);
+	}
 	ft_token_list_free(info.atoken);
 	if (info.error != 1)
 		printf("Writing output program to %s%s.cor\n", info.path, info.true_name);

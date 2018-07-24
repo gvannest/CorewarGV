@@ -12,7 +12,8 @@
 
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+#FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 #BINARY
 NAME = corewar
@@ -66,6 +67,7 @@ SRC_NAME = main_test.c \
 		   ft_visual2.c \
 		   main_corewar.c \
 		   ft_tools.c \
+		   ft_dump.c \
 		   op.c \
 
 

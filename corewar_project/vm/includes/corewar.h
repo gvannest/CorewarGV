@@ -39,6 +39,7 @@ typedef struct		s_arena
 	char			map[MEM_SIZE + 1];//l' arene de jeu
 	int				map_pyr[MEM_SIZE];// idem mais avec num pyr pour visu
 	int				map_process[MEM_SIZE];// idem mais avec process pour visu
+	int				dump_nb;
 	unsigned int	nb_cycle; //nb de cycles depuis debut partie
 	unsigned int	nb_cycle_current;//nb cycles current period (<= cycle-to-die)
 	unsigned int	cycle_to_die;// idem op.h
@@ -46,6 +47,7 @@ typedef struct		s_arena
 	unsigned int	nb_live_tot;//nb de vies totales depuis debut partie
 	unsigned int	nb_live_proc;// nb processus en vie
 	unsigned int	nb_round_no_decrease;;// nb de round (cycle to die) without decreasing CYCLE TO DIE
+	unsigned int	dump_f;
 	int				nb_pyrs;
 	int				last_live_pyr;//dernier joueru a avoir dit " vie" 
 	t_player		tab_pyr[MAX_PLAYERS];// tableau des joueurs
@@ -96,6 +98,8 @@ void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
 void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
 void				ft_parse_vm2(char *line, t_arena *arena, char *cor, int i);
 char				ft_arguments(int argc, char **argv, t_arena *arena);
+int					ft_dump(t_arena *arena, char **argv, int argc, int i);
+void				ft_dump_mem(t_arena *arena);
 void				ft_assert(char *line, t_arena *arena);
 int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);

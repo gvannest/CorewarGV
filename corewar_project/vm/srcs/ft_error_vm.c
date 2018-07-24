@@ -51,5 +51,7 @@ void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 	}
 	else if (error_code == 7)
 		ft_dprintf(2, "%s\n%s %x\n", msg1, msg2, v1);
+	else if (error_code == 8)
+		ft_dprintf(2, "%s\n", msg1);
 	exit(EXIT_FAILURE);
 }
