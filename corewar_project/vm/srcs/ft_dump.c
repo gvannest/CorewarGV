@@ -1,21 +1,35 @@
 #include "corewar.h"
 
+static void	ft_print_champ(t_arena *arena)
+{
+	int i;
+	t_player *tmp;
+	i = 0;
+	while (i < arena->nb_pyrs)
+	{	
+		tmp = &arena->tab_pyr[i];
+		ft_printf("*Player %d, weighing x bytes, \"%s\" (\"%s\")\n", tmp->pyr_nbr, tmp->pyr_name, tmp->comment);
+		++i;
+	}
+//	* Player 1, weighing 36 bytes, "load and store for test" ("just a basic living prog which loads and stores") !
+}
+
 void	ft_dump_mem(t_arena *arena)
 {
 	int i;
 
 	i = 0;
-//	ft_printf("0x%d: ", i);
+	ft_printf("Introducing contestants...\n");
+	ft_print_champ(arena);
+	ft_printf("0x%#04x : ", i);
 	while (i < MEM_SIZE)
 	{
-		if (i % 64 == 0)
-		{
-			ft_printf("0x%d: ", i);
-		}
+		if (i % 64 == 0 && i != 0)
+			ft_printf("%#0.4x : ", i);
 		ft_printf("%.2hhx ", arena->map[i]);
-		if (i % 63 == 0)
-			ft_printf("\n");
 		++i;
+		if (i % 64 == 0)
+			ft_printf("\n");
 	}
 }
 
