@@ -5,12 +5,17 @@ void	ft_dump_mem(t_arena *arena)
 	int i;
 
 	i = 0;
+//	ft_printf("0x%d: ", i);
 	while (i < MEM_SIZE)
 	{
-		ft_printf("%.2hhx ", arena->map[i]);
-		++i;
 		if (i % 64 == 0)
+		{
+			ft_printf("0x%d: ", i);
+		}
+		ft_printf("%.2hhx ", arena->map[i]);
+		if (i % 63 == 0)
 			ft_printf("\n");
+		++i;
 	}
 }
 
