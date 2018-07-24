@@ -30,6 +30,8 @@ typedef struct	s_token
 	unsigned char	ocp;
 	int				pos;
 	int				last_op_pos;
+	int				cor_index;
+	int				last_cor_index;
 	int				line;
 	int				cl;
 	char			arg_size;
@@ -47,7 +49,6 @@ typedef struct s_asm
 	char			*err_log;
 	char			err_content[COMMENT_LENGTH];
 	int				addon;
-//	int				nb_instr;
 	int				comma_f;
 	int				comment_f;
 	int				comchr_f;
@@ -61,19 +62,20 @@ typedef struct s_asm
 	int				gnl;
 	int				label_f;
 	int				line_nb;
-//	int				cur_op_
 	int				name_f;
 	int				nb;
 	int				nb_comma;
 	int				nb_param;
 	int				nb_params;
 	int				nb_labelchr;
+	int				cor_index;
+	int				last_cor_index;
 	int				last_opcode;
 	int				last_op_pos;
 	int				last_op_line;
 	int				lock;
-	char				f_option_h;
-	char				f_option_d;
+	char			f_option_h;
+	char			f_option_d;
 	int				operator_f;
 	int				pos;
 	int				quote;
@@ -84,6 +86,7 @@ typedef struct s_asm
 	char 			nb_params_left;
 	char			*true_name;
 	char			*path;
+	int				nb_instr;
 	struct s_label	*label;
 }				t_asm;
 

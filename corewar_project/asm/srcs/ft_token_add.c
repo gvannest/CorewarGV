@@ -39,7 +39,7 @@ void			ft_token_init(t_token *new_token)
 	new_token->pos = -1;
 	new_token->line = -1;
 	new_token->cl = -1;
-	new_token->arg_size = 1;
+	new_token->arg_size = 0;
 	new_token->nb_params = 0;
 	new_token->next = NULL;
 }
