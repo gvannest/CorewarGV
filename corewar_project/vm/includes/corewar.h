@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 13:33:38 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 13:38:50 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void				ft_next_opcode(t_arena *arena, t_proc *proc);
 void				ft_one_cycle(t_arena *arena, t_proc *proc);
 void				ft_move_process(int *map_process, t_proc *proc, char ocp);
 int					ft_get_param(t_arena *arena, t_proc *proc, int pc, char dir_size);
-int					ft_dump(t-arena *arena, char **argv, int argc, int i);
+int					ft_dump(t_arena *arena, char **argv, int argc, int i);
 void				ft_dump_mem(t_arena *arena);
 
 void				ft_live(t_arena *arena, t_proc *proc);
