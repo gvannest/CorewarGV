@@ -33,7 +33,6 @@ void			ft_token_reload(t_asm *info, t_token *token)
 {
 	token->pos = info->pos;
 	token->nb_params = info->nb_params;
-	printf("token nb_params %s : %d\n", token->s_val, token->nb_params);
 	token->arg_size = info->size;
 	token->line = info->line_nb;
 	token->cl = info->start;
@@ -61,9 +60,6 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	arg_ln = ft_strlen(arg);
 	token->type = ft_get_type(arg);
 	token->s_val = ft_strdup(arg);
-//	printf("s val token : %s.\n", token->s_val);
-//	printf("i val token : %d.\n", token->i_val);
-//	printf("type token : %d\n", token->type);
 	if (token->type == T_OP || token->type == T_LAB)
 	{
 		if (token->type == T_OP)
@@ -75,7 +71,6 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 			|| token->type == T_DIR_LAB || token->type == T_DIR
 			|| token->type == T_REG)
 	{
-		printf("nb params lefts : %d\n", info->nb_params_left);
 		if (info->nb_params_left <= 0)
 			ft_error_param(info, token, 2);
 		if (token->type == T_DIR || token->type == T_REG)

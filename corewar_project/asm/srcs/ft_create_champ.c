@@ -50,7 +50,7 @@ static	void	ft_load_int(int nb, char *champ)
 		champ[index] = octets[index];
 		index++;
 	}
-//	printf("%.2X%.2X %.2X%.2X ", octets[0], octets[1], octets[2], octets[3]);
+	//	printf("%.2X%.2X %.2X%.2X\n", octets[0], octets[1], octets[2], octets[3]);
 }
 
 static	void	ft_load_short(short nb, char *champ)
@@ -78,8 +78,11 @@ void	ft_create_champ(t_asm *info)
 	p_token = info->atoken;
 	while (p_token)
 	{
-		printf("ptoken address debut : %p\n", p_token);
-		printf("ptoken sval : %s.\n", p_token->s_val);
+		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
+		{
+			printf("Your champion is too big, go WW\n");
+			exit(EXIT_FAILURE);
+		}
 		if (p_token->type == T_OP)
 		{
 			ft_load_ocp(p_token);
@@ -94,17 +97,11 @@ void	ft_create_champ(t_asm *info)
 			if (p_token->arg_size == 2)
 				ft_load_short((short)p_token->i_val, &info->tab[index]);
 			else if (p_token->arg_size == 4)
-				ft_load_int(p_token->i_val, &info->tab[index]);
+				ft_load_int((int)p_token->i_val, &info->tab[index]);
 			index += p_token->arg_size;
 		}
 		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)
 			info->tab[index++] = p_token->i_val;
-		printf("ptoken address : %p\n", p_token);
 		p_token = p_token->next;
-		printf("ptoken address apres : %p\n", p_token);
-		//printf("ptoken sval apres: %s.\n", p_token->s_val);
-
 	}
-	printf("index : %d\n", index);
-//	printf("atoken final sval : %s.\n", info->atoken->s_val);
 }

@@ -21,12 +21,8 @@ static	void	ft_write_champ(t_asm *info)
 	index = 0;
 	p_token = info->atoken;
 	while (p_token->next)
-	{
-		printf("atoken write champ : %p\n", p_token);
 		p_token = p_token->next;
-	}
 	champ_ln = p_token->pos + p_token->arg_size;
-	printf("champ ln : %d\n", champ_ln);
 	while (index < champ_ln)
 	{
 		dprintf(info->fd_cor, "%c", info->tab[index]);

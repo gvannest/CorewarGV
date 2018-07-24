@@ -56,7 +56,6 @@ int	main(int argc, char **argv)
 //	ft_tests_syntax();
 //	ft_token_display_all(info.atoken);
 	ft_create_champ(&info);
-	printf("test2\n");
 //	ft_token_display_all(info.atoken);
 	ft_write(&info);
 	if (info.f_option_d)
