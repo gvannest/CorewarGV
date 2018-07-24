@@ -14,9 +14,12 @@
 
 static	void	ft_pos_increment(t_asm *info, t_token *new_token)
 {
+		info->pos += new_token->arg_size;
 	if (new_token->opcode > 0)
 		info->last_opcode = new_token->opcode;
-	if ((new_token->type == T_DIR || new_token->type == T_DIR_LAB)
+	if (new_token->type == T_OP && new_token->nb_params > 1)
+		info->pos++;
+/*	if ((new_token->type == T_DIR || new_token->type == T_DIR_LAB)
 			&& op_tab[info->last_opcode - 1].dir_oct_size == 1)
 		info->pos += 2;
 	else if ((new_token->type == T_DIR || new_token->type == T_DIR_LAB)
@@ -26,7 +29,7 @@ static	void	ft_pos_increment(t_asm *info, t_token *new_token)
 			&& op_tab[info->last_opcode - 1].nb_params > 1)
 		info->pos += 2;
 	else if (new_token->type != T_LAB)
-		info->pos++;
+		info->pos++;*/
 }
 
 void			ft_token_init(t_token *new_token)

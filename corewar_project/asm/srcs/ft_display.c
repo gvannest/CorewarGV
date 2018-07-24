@@ -17,17 +17,19 @@ void	ft_token_display(t_token *token, int token_nb)
 	printf("TOKEN %d:\n", token_nb);
 	if (token != NULL)
 	{
-		printf("    Type : %d\n", token->type);
+	//	printf("    Type : %d\n", token->type);
 		if (token->s_val != NULL)
-			printf("    S_val : %s\n", token->s_val);
+			printf("    S_val : %10s   ", token->s_val);
 		else
-			printf("    S_val : NULL\n");
-		printf("    I_val : %d\n", token->i_val);
-		printf("    opcode : %d\n", token->opcode);
-		printf("    ocp : %d\n", token->ocp);
-		printf("    Pos : %d\n", token->pos);
-		printf("    Line : %d\n", token->line);
-		printf("    Cl : %d\n", token->cl);
+			printf("    S_val : NULL   ");
+		//	printf("    I_val : %d\n", token->i_val);
+//		printf("    opcode : %d\n", token->opcode);
+//		printf("    ocp : %d\n", token->ocp);
+		//printf("    Pos : %d\n", token->pos);
+		printf("    Pos : %2d   ", token->pos);
+		printf("    Arg_size : %2d\n", token->arg_size);
+//		printf("    Line : %d\n", token->line);
+//		printf("    Cl : %d\n", token->cl);
 	}
 	else
 		ft_printf("ERROR. NULL TOKEN\n");

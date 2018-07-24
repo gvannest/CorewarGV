@@ -83,7 +83,7 @@ void	ft_create_champ(t_asm *info)
 		{
 			printf("IndLab, name : %s,  pos : %d et index : %d\n", p_token->s_val, p_token->pos, index);
 		}
-		printf("sval : %s\n", p_token->s_val);
+	//	printf("sval : %s\n", p_token->s_val);
 		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
 		{
 			printf("Your champion is too big, visit www.weightwatchers.com\n");
@@ -127,11 +127,11 @@ void	ft_create_champ(t_asm *info)
 		}
 		p_token->last_cor_index = info->last_cor_index;
 		info->nb_instr = index;
-		info->cor_index = index; //doublon avec nb_instr
+	//	info->cor_index = index; //doublon avec nb_instr
 	//	printf("arg size : %d\n", p_token->arg_size);
 		p_token = p_token->next;
 	}
-	printf("index : %d\n", index);
-	printf("cor_index : %d\n", info->cor_index);
+//	printf("index : %d\n", index);
+//	printf("cor_index : %d\n", info->cor_index);
 	//	ft_token_display_all(info->atoken);
 }

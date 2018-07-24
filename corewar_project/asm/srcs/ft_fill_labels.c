@@ -43,8 +43,8 @@ t_token		*ft_find_label(t_token *atoken, char *label)
 		if (p_token->type == T_LAB &&
 				ft_strequ(clean_label_token, clean_label))
 		{
-			printf("label %s trouve a position : %d\n", p_token->s_val, p_token->pos);
-		//	printf("et index : %d\n", p_token->index);
+		//	printf("label %s trouve a position : %d\n", p_token->s_val, p_token->pos);
+		//	printf("et index : %d\n", p_token->cor_index);
 			break ;
 		}
 		p_token = p_token->next;
@@ -89,8 +89,8 @@ void		ft_fill_labels(t_token *atoken)
 				exit(EXIT_FAILURE);
 			}
 			p_token_src->i_val = p_token_dst->pos - p_token_src->last_op_pos;
-			printf("difference : %d = dst pos : %d - src last_op_pos : %d\n", p_token_src->i_val, p_token_dst->pos, p_token_src->last_op_pos);
-			printf("difference : %d = dst index : %d - src last_op_index : %d\n", p_token_src->i_val, p_token_dst->cor_index, p_token_src->last_cor_index);
+		//	printf("difference : %d = dst pos : %d - src last_op_pos : %d\n", p_token_src->i_val, p_token_dst->pos, p_token_src->last_op_pos);
+		//	printf("difference : %d = dst index : %d - src last_op_index : %d\n", p_token_src->i_val, p_token_dst->cor_index, p_token_src->last_cor_index);
 		}
 		p_token_src = p_token_src->next;
 	}

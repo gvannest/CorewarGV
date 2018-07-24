@@ -32,6 +32,7 @@ void			ft_load_values_info(t_asm *info, char *arg, t_token *token)
 void			ft_token_reload(t_asm *info, t_token *token)
 {
 	token->pos = info->pos;
+//	token->cor_index = info->cor_index;
 	token->nb_params = info->nb_params;
 	if (token->type == T_DIR || token->type == T_DIR_LAB)
 		token->arg_size = info->size;
@@ -41,7 +42,8 @@ void			ft_token_reload(t_asm *info, t_token *token)
 		token->arg_size = 1;
 	token->line = info->line_nb;
 	token->cl = info->start;
-	token->pos = info->pos;
+	//token->pos = info->pos;
+//	token->last_cor_index = info->last_cor_index;
 	token->last_op_pos = info->last_op_pos;
 	--info->comma_f; // Ajout MAS
 }
@@ -51,6 +53,7 @@ static	void	ft_load_op(t_asm *info, t_token *token, char *arg)
 	token->opcode = ft_get_opcode(arg);
 	info->last_opcode = token->opcode;
 	info->last_op_pos = info->pos;
+//	info->last_cor_index = info->cor_index;
 	if (info->line_nb == info->last_op_line && info->last_op_line != -1)
 		ft_error_param(info, token, 4);
 	info->last_op_line = info->line_nb;

@@ -23,10 +23,10 @@ static	void	ft_write_champ(t_asm *info)
 	while (p_token->next)
 		p_token = p_token->next;
 	champ_ln = p_token->pos + p_token->arg_size;
-	printf("p_token->pos : %d et arg_size : %d\n", p_token->pos, p_token->arg_size);
+//	printf("p_token->pos : %d et arg_size : %d\n", p_token->pos, p_token->arg_size);
 	//printf("info index : %d\n", info->index);
-///	while (index < champ_ln)
-	while (index < info->nb_instr)
+//	while (index < info->nb_instr)
+	while (index < champ_ln)
 		dprintf(info->fd_cor, "%c", info->tab[index++]);
 }
 
