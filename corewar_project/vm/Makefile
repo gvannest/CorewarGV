@@ -6,14 +6,13 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/24 11:42:52 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/24 13:31:42 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC = gcc
-#FLAGS = -Wall -Wextra -Werror -g
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g
 
 #BINARY
 NAME = corewar
@@ -41,6 +40,7 @@ LIB_NCURSES = -lncurses
 # SOURCES
 SRC_NAME = main_test.c \
 		   ft_arguments.c \
+		   ft_dump.c \
 		   ft_check_cycle.c \
 		   ft_error_vm.c \
 		   ft_fill_game.c \
@@ -53,6 +53,7 @@ SRC_NAME = main_test.c \
 		   ft_sub.c \
 		   ft_andorxor.c \
 		   ft_zjmp.c \
+		   ft_ldi.c \
 		   ft_one_cycle.c \
 		   ft_opcode.c \
 		   ft_parse_vm1.c \
@@ -67,7 +68,6 @@ SRC_NAME = main_test.c \
 		   ft_visual2.c \
 		   main_corewar.c \
 		   ft_tools.c \
-		   ft_dump.c \
 		   op.c \
 
 
