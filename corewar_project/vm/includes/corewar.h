@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 13:40:42 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 13:52:45 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct		s_arena
 	unsigned int	nb_live_tot;//nb de vies totales depuis debut partie
 	unsigned int	nb_live_proc;// nb processus en vie
 	unsigned int	nb_round_no_decrease;;// nb de round (cycle to die) without decreasing CYCLE TO E
+	unsigned int	dump_f;
+	int				dump_nb;
 	int				nb_pyrs;
 	int				last_live_pyr;//dernier joueru a avoir dit " vie" 
 	t_player		tab_pyr[MAX_PLAYERS];// tableau des joueurs
