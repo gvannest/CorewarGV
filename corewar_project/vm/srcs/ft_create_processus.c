@@ -6,18 +6,38 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:41:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/20 15:35:28 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 18:52:16 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+void			ft_create_proc(t_arena *arena, t_proc *proc, short index)
+{
+	t_proc		*new_proc;
+	int			i;
+
+	i = 0;
+	if (!(new_proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
+		ft_error_vm(0, "Error : malloc failed","Line 22 in ft_processus.c",0);
+	ft_bzero(new_proc, sizeof(t_proc));
+	new_proc->pc_act = index;
+	while (i < 16)
+	{
+		new_proc->reg[i] = proc->reg[i];
+		i++;
+	}
+	ft_next_opcode(arena, new_proc);
+	arena->map_process[new_proc->pc_act] = 1;
+	new_proc->next = arena->list_proc;
+	arena->list_proc = new_proc;
+	arena->nb_live_proc++;
+}
+
 static void		next_process(t_arena *arena, int p)
 {
-	t_proc *ptr;
 	t_proc *new_proc;
 
-	ptr = arena->list_proc;
 	if (!(new_proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
 		ft_error_vm(0, "Error : malloc failed","Line 22 in ft_processus.c",0);
 	ft_bzero(new_proc, sizeof(t_proc));
@@ -26,9 +46,8 @@ static void		next_process(t_arena *arena, int p)
 	new_proc->pc_act = 0 + p * MEM_SIZE / arena->nb_pyrs;
 	ft_next_opcode(arena, new_proc);
 	arena->map_process[p * MEM_SIZE / arena->nb_pyrs] = new_proc->p_nbr;
-	while (ptr->next != 0)
-		ptr = ptr->next;
-	ptr->next = new_proc;
+	new_proc->next = arena->list_proc;
+	arena->list_proc = new_proc;
 	arena->nb_live_proc++;
 }
 

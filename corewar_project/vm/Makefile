@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/24 13:31:42 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/24 18:38:15 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC_NAME = main_test.c \
 		   ft_fill_game.c \
 		   ft_free_corewar.c \
 		   ft_game.c \
-		   ft_init_processus.c \
+		   ft_create_processus.c \
 		   ft_live.c \
 		   ft_load.c \
 		   ft_add.c \
@@ -54,6 +54,8 @@ SRC_NAME = main_test.c \
 		   ft_andorxor.c \
 		   ft_zjmp.c \
 		   ft_ldi.c \
+		   ft_sti.c \
+		   ft_fork.c \
 		   ft_one_cycle.c \
 		   ft_opcode.c \
 		   ft_parse_vm1.c \

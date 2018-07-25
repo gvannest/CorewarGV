@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:43:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/19 16:36:36 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/24 18:52:20 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void		ft_assert(char *line, t_arena *arena)
 	//ft_print_champ(arena);
 	//ft_print_map(arena);
 	//ft_print_map_pyr(arena);
-	//ft_print_map_proc(arena);
-	ft_print_registres(arena);
+	ft_print_map_proc(arena);
+	//ft_print_registres(arena);
 }
 
