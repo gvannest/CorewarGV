@@ -24,15 +24,6 @@ void	ft_check_token(t_asm *info, t_token *token)
 	if (token->type == T_DIR_LAB || token->type == T_IND_LAB
 			|| token->type == T_DIR || token->type == T_IND)
 	{
-		/*if (info->nb_params_left < 0)
-		{
-			printf("ERROR TOO MANY ARGUMENTS\n");
-		//	printf("argument : %s\n", token->s_val);
-		}
-		else if (op_tab[info->last_opcode - 1].nb_params < info->cur_param)
-		{
-			printf("ERROR: cur param too big for operation\n");
-		}*/
 		if ((op_tab[info->last_opcode - 1].param_type[info->cur_param - 1]
 					& type) == 0)
 			ft_error_param(info, token, 3);

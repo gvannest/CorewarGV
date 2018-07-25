@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int	ft_get_ival(char *arg)
+/*int	ft_get_ival(char *arg)
 {
 	int ival;
 	int index;
@@ -24,7 +24,7 @@ int	ft_get_ival(char *arg)
 	if (index < NB_INSTR)
 		ival = op_tab[index].opcode;
 	return (ival);
-}
+}*/
 
 int	ft_get_opcode(char *arg)
 {

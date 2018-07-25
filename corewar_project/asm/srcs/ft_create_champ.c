@@ -50,7 +50,7 @@ static	void	ft_load_int(int nb, char *champ)
 		champ[index] = octets[index];
 		index++;
 	}
-	//	printf("%.2X%.2X %.2X%.2X\n", octets[0], octets[1], octets[2], octets[3]);
+//	printf("%.2X%.2X %.2X%.2X\n", octets[0], octets[1], octets[2], octets[3]);
 }
 
 static	void	ft_load_short(short nb, char *champ)
@@ -66,32 +66,49 @@ static	void	ft_load_short(short nb, char *champ)
 	ft_swap_bytes_short(octets);
 	champ[0] = octets[0];
 	champ[1] = octets[1];
-//	printf("%.2X%.2X ", octets[0], octets[1]);
+	//	printf("%.2X %.2X \n", octets[0], octets[1]);
 }
 
 void	ft_create_champ(t_asm *info)
 {
 	t_token	*p_token;
 	int		index;
-
+	
+	printf("\n\nCREATION CHAMPION\n\n");
 	index = 0;
 	p_token = info->atoken;
 	while (p_token)
 	{
+		if (p_token->type == T_LAB)
+		{
+			printf("IndLab, name : %s,  pos : %d et index : %d\n", p_token->s_val, p_token->pos, index);
+		}
+	//	printf("sval : %s\n", p_token->s_val);
 		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
 		{
-			printf("Your champion is too big, go WW\n");
+			printf("Your champion is too big, visit www.weightwatchers.com\n");
 			exit(EXIT_FAILURE);
 		}
 		if (p_token->type == T_OP)
 		{
 			ft_load_ocp(p_token);
+			p_token->arg_size = 1;
 			info->tab[index++] = p_token->opcode;
+		//	printf("%.2X \n", p_token->opcode);
 			if (p_token->nb_params > 1)
+			{
 				info->tab[index++] = p_token->ocp;
+		//		printf("%.2X \n", p_token->ocp);
+				p_token->arg_size++;
+			}
+			info->last_cor_index = index;;
 		}
 		else if (p_token->type == T_REG)
+		{
+			p_token->arg_size = 1;
 			info->tab[index++] = p_token->i_val;
+		//	printf("%.2X \n", p_token->i_val);
+		}
 		else if (p_token->type == T_DIR || p_token->type == T_DIR_LAB)
 		{
 			if (p_token->arg_size == 2)
@@ -100,8 +117,21 @@ void	ft_create_champ(t_asm *info)
 				ft_load_int((int)p_token->i_val, &info->tab[index]);
 			index += p_token->arg_size;
 		}
-		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)
-			info->tab[index++] = p_token->i_val;
+		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)//fusionner avec if cidessus DIR ?
+		{
+			ft_load_short((short)p_token->i_val, &info->tab[index]);
+			index += p_token->arg_size;
+			//index += 2;
+			//info->tab[index++] = p_token->i_val;
+		//	printf("%.2X \n", p_token->i_val);
+		}
+		p_token->last_cor_index = info->last_cor_index;
+		info->nb_instr = index;
+	//	info->cor_index = index; //doublon avec nb_instr
+	//	printf("arg size : %d\n", p_token->arg_size);
 		p_token = p_token->next;
 	}
+//	printf("index : %d\n", index);
+//	printf("cor_index : %d\n", info->cor_index);
+	//	ft_token_display_all(info->atoken);
 }
