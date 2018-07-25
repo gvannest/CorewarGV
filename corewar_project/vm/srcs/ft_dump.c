@@ -41,7 +41,6 @@ int		ft_dump(t_arena *arena, char **argv, int argc, int i)
 	{
 		arena->dump_f = 1;
 		arena->dump_nb = ft_atoi(argv[i + 1]);
-		ft_printf("dump->%d<-\n", arena->dump_nb);
 		if (arena->dump_nb < 0)
 		{
 			ft_error_vm(8, "-d must be followed by UNSIGNED INT", NULL, 0);
