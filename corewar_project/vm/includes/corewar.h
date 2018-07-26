@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 15:52:02 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 18:16:43 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void				ft_is_not_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
 void				ft_info_game(t_arena *arena, t_corvisu *visual);
 void				ft_info_fix(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
 void				ft_info_player(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
+void				ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int last_live_pyr);
 void				ft_game(t_arena *arena, t_corvisu *visual, char v);
 void				ft_check_cycle(t_arena *arena);
 t_proc				*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill);

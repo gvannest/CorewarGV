@@ -6,21 +6,17 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:59:16 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 17:13:56 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 18:17:04 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void	ft_winner(t_player *tab_pyr, int nb_pyrs, char v, int winner)
+static void	ft_winner_novisu(t_player *tab_pyr, int nb_pyrs, int winner)
 {
 	int i;
 
 	i = 0;
-	(void)v;
-	//if (v == 1)
-	//ft_visual_winner();
-	//else
 	if (winner == 0)
 		ft_printf("You forgot to say live. You Morons...\n");
 	else
@@ -75,7 +71,8 @@ void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 		ft_check_cycle(arena);
 		ft_reinit_cycle(arena, arena->list_proc);
 	}
-	ft_winner(arena->tab_pyr, arena->nb_pyrs, v, arena->last_live_pyr);
-	getch();
-	endwin();
+	if (v == 10)
+		ft_winner_novisu(arena->tab_pyr, arena->nb_pyrs, arena->last_live_pyr);
+	else
+		ft_winner_visu(arena->tab_pyr, arena->nb_pyrs, visual, arena->last_live_pyr);
 }
