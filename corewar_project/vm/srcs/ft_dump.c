@@ -8,7 +8,7 @@ static void	ft_print_champ(t_arena *arena)
 	while (i < arena->nb_pyrs)
 	{	
 		tmp = &arena->tab_pyr[i];
-		ft_printf("*Player %d, weighing x bytes, \"%s\" (\"%s\")\n", tmp->pyr_nbr, tmp->pyr_name, tmp->comment);
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", tmp->pyr_nbr, tmp->nb_inst,  tmp->pyr_name, tmp->comment);
 		++i;
 	}
 //	* Player 1, weighing 36 bytes, "load and store for test" ("just a basic living prog which loads and stores") !
@@ -24,7 +24,7 @@ void	ft_dump_mem(t_arena *arena)
 	ft_printf("0x%#04x : ", i);
 	while (i < MEM_SIZE)
 	{
-		if (i % 64 == 0 && i != 0)
+		if (i % 64 == 0 && i != 0)//Dans le sujet -> 32 octet. 64 a remplacer par 32
 			ft_printf("%#0.4x : ", i);
 		ft_printf("%.2hhx ", arena->map[i]);
 		++i;
