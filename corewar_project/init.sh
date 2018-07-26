@@ -37,15 +37,15 @@ new_link_dir()
 root=`pwd`
 echo "Initialisation des liens..."
 
-new_link $root/libs/libft/libft.h $root/asm/includes/libft.h
+new_link $root/libs/libft/libft.h $root/asm_dir/includes/libft.h
 new_link $root/libs/libft/libft.h $root/vm/includes/libft.h
-new_link $root/includes/op.h $root/asm/includes/op.h
+new_link $root/includes/op.h $root/asm_dir/includes/op.h
 new_link $root/includes/op.h $root/vm/includes/op.h
 new_dir $root/libs
-new_dir $root/asm/libs
+new_dir $root/asm_dir/libs
 new_dir $root/vm/libs
 new_link_dir $root/../libft/ $root/libs/libft
-new_link $root/libs/libft/libft.a $root/asm/libs/libft.a
+new_link $root/libs/libft/libft.a $root/asm_dir/libs/libft.a
 new_link $root/libs/libft/libft.a $root/vm/libs/libft.a
 
 echo "Initialisation effectuee"

@@ -1,0 +1,83 @@
+SYNTAX03.S[1;32m OK[0m
+
+NAME3.S[1;32m OK[0m
+
+[1;32mZORK.S:[0m[1;31m ERROR
+     .name                      " 
+[1;34mExpected oupout:[0m
+Writing output program to ./unvalid/zork.cor
+[1;34mYour output:[0m
+Writing output program to ./unvalid/zork.s.cor
+ 
+COMMENT6.S[1;32m OK[0m
+
+[1;32mCOMMENT2.S:[0m[1;31m ERROR
+#No end quote for .comment     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][013:001] END "(null)"
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][012:020] END "(null)"
+
+NAME0.S[1;32m OK[0m
+
+SYNTAX00.S[1;32m OK[0m
+
+[1;32mSYNTAX04.S:[0m[1;31m ERROR
+#->Vvirgule a la fin
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:025] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][006:024] ENDLINE
+
+WRONG_PARAMETER.S[1;32m OK[0m
+
+NAME4.S[1;32m OK[0m
+
+COMMENT5.S[1;32m OK[0m
+
+COMMENT1.S[1;32m OK[0m
+
+[1;32mTOO_FEW_PARAMETERS.S:[0m[1;31m ERROR
+.name "zork"
+[1;34mExpected oupout:[0m
+Invalid parameter count for instruction sti
+[1;34mYour output:[0m
+two many commandes on the same line
+
+NAME1.S[1;32m OK[0m
+
+SYNTAX01.S[1;32m OK[0m
+
+NAME5.S[1;32m OK[0m
+
+COMMENT4.S[1;32m OK[0m
+
+COMMENT0.S[1;32m OK[0m
+
+SYNTAX02.S[1;32m OK[0m
+
+NAME2.S[1;32m OK[0m
+
+NAME6.S[1;32m OK[0m
+
+[1;32mWRONG_LABEL_CHAR.S:[0m[1;31m ERROR
+.name "zork"
+[1;34mExpected oupout:[0m
+Writing output program to ./unvalid/wrong_label_char.cor
+[1;34mYour output:[0m
+Writing output program to ./unvalid/wrong_label_char.s.cor
+ 
+[1;32mTOO_MANY_PARAMETERS.S:[0m[1;31m ERROR
+.name "zork"
+[1;34mExpected oupout:[0m
+Invalid parameter 3 type register for instruction and
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:016] INSTRUCTION "r2"
+
+[1;32mCOMMENT3.S:[0m[1;31m ERROR
+# command .comment uniquement pas de quote ou de texte     
+[1;34mExpected oupout:[0m
+Syntax error at token [TOKEN][006:001] ENDLINE
+[1;34mYour output:[0m
+Syntax error at token [TOKEN][005:009] ENDLINE
+
