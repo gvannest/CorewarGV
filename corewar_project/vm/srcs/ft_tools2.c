@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 15:12:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 11:47:07 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/25 14:56:33 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,13 @@ void		ft_update_map_pyr(int *map_pyr, int pc_act, int start, size_t k)
 	}
 }
 
-void		ft_index_idxmod(int *k, int value, int pc_act)
+void		ft_calc_index(int *k, int value, int pc_act, char flag_idx)
 {
-	*k = pc_act + (short int)value % IDX_MOD;
+	unsigned int	mod;
+
+//	(flag_idx == 1 ? mod = IDX_MOD : mod = MEM_SIZE);
+	mod = flag_idx == 1 ? IDX_MOD : MEM_SIZE;
+	*k = pc_act + (short int)value % mod;
 	(*k < 0 ? *k = *k + MEM_SIZE : *k);
 }
 

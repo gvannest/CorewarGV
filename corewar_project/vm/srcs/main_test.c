@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:43:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/19 16:36:36 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/25 14:26:11 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void		ft_print_map(t_arena *arena)
 	{
 		if (i != 0 && i % 64 == 0)
 			printf("\n");
-		printf("%.2hhx ", arena->map[i]);
+		if (arena->map_process[i] != 0)
+			ft_printf("{red}%.2d{eoc} ", arena->map[i]);
+		else
+			printf("%.2hhx ", arena->map[i]);
 		i++;
 	}
 	printf("\n");
@@ -96,7 +99,10 @@ void		ft_print_map_proc(t_arena *arena)
 	{
 		if (i != 0 && i % 64 == 0)
 			printf("\n");
-		printf("%.2d ", arena->map_process[i]);
+		if (arena->map_process[i] != 0)
+			ft_printf("{red}%.2d{eoc} ", arena->map_process[i]);
+		else
+			printf("%.2d ", arena->map_process[i]);
 		i++;
 	}
 	printf("\n");
@@ -130,7 +136,7 @@ void		ft_assert(char *line, t_arena *arena)
 	//ft_print_champ(arena);
 	//ft_print_map(arena);
 	//ft_print_map_pyr(arena);
-	//ft_print_map_proc(arena);
-	ft_print_registres(arena);
+	ft_print_map_proc(arena);
+	//ft_print_registres(arena);
 }
 
