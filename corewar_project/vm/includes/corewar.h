@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 15:00:30 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 15:52:02 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct		s_proc
 	char			opcode_act; //opcode de l'operation en cours
 	char			opcode_valid; //flag pour dire si opcode valide
 	unsigned int	nb_cycle_before_op;//nb de cycles restant avant executier et bouger
-	unsigned int	nb_live_curr_cycle;//nb de lives executees sur le cycle courant
+	char			flag_live;
 	char			carry;
 	char			jump;
 	char			ocp;
