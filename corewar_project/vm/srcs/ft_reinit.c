@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/20 14:56:20 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/23 10:55:14 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 15:52:27 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_reinit_cycle(t_arena *arena, t_proc *proc)
 	arena->nb_live_currt = 0;
 	while (proc)
 	{
-		proc->nb_live_curr_cycle = 0;
+		proc->flag_live = 0;
 		proc = proc->next;
 	}
 }

@@ -7,7 +7,7 @@ static void		ft_check_live_process(t_arena *arena)
 	proc = arena->list_proc;
 	while (proc)
 	{
-		if (proc->nb_live_curr_cycle == 0)
+		if (proc->flag_live == 0)
 		{
 			proc = ft_kill_process(&(arena->list_proc), proc);
 			arena->nb_live_proc--;

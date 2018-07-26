@@ -19,5 +19,5 @@ void			ft_live(t_arena *arena, t_proc *proc)
 	}
 	arena->nb_live_currt++;
 	arena->nb_live_tot++;
-	proc->nb_live_curr_cycle++;
+	proc->flag_live = 1;
 }
