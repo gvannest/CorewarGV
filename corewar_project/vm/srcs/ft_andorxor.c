@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:46 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/25 14:52:40 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 12:23:02 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		ft_loop_andorxor(char *map, int *tab_tmp, int i, t_proc *proc)
 	else if (proc->tab_param[i].type == 'i')
 	{
 		ft_calc_index(&k, proc->tab_param[i].value, proc->pc_act, 1);
-		tab_tmp[i] = (int)ft_read_memory(map, k, 4);
+		tab_tmp[i] = (int)ft_read_memory(map, k, REG_SIZE);
 	}
 }
 

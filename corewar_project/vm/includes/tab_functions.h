@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 14:45:28 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/25 15:44:06 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 14:51:49 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_functions					g_tab_function[] =
 	{12, &ft_fork},
 	{13, &ft_lld},
 	{14, &ft_lldi},
-	/*{15, &ft_lfork},
-	{16, &ft_aff},*/
+	{15, &ft_lfork},
+	{16, &ft_aff},
 };
 
 #endif

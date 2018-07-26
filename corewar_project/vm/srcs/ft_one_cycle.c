@@ -12,7 +12,7 @@ void			ft_one_cycle(t_arena *arena, t_proc *proc)
 		else
 		{
 			i = 0;
-			while (i < 13)
+			while (i < 16)
 			{
 				if (proc->opcode_act == g_tab_function[i].o && proc->opcode_valid == 1)
 				{

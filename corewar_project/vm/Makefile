@@ -6,7 +6,7 @@
 #    By: msicot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/14 09:42:10 by msicot            #+#    #+#              #
-#    Updated: 2018/07/25 15:52:08 by gvannest         ###   ########.fr        #
+#    Updated: 2018/07/26 14:52:09 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ SRC_NAME = main_test.c \
 		   ft_zjmp.c \
 		   ft_ldi_and_lldi.c \
 		   ft_sti.c \
-		   ft_fork.c \
+		   ft_fork_and_lfork.c \
+		   ft_aff.c \
 		   ft_one_cycle.c \
 		   ft_opcode.c \
 		   ft_parse_vm1.c \

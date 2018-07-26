@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/25 15:52:04 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 15:00:30 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ void				ft_sti(t_arena *arena, t_proc *proc);
 void				ft_fork(t_arena *arena, t_proc *proc);
 void				ft_lld(t_arena *arena, t_proc *proc);
 void				ft_lldi(t_arena *arena, t_proc *proc);
+void				ft_lfork(t_arena *arena, t_proc *proc);
+void				ft_aff(t_arena *arena, t_proc *proc);
 
 unsigned long		ft_read_memory(char *map, int start, size_t k);
 void				ft_write_memory(char *map, unsigned int v, int start, size_t k);
