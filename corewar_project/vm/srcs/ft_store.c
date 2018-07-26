@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 16:08:15 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 12:10:07 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/25 14:54:05 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		ft_store(t_arena *arena, t_proc *proc)
 	reg_value = proc->reg[proc->tab_param[0].value - 1];
 	if (proc->tab_param[1].type == 'i')
 	{
-		ft_index_idxmod(&k, proc->tab_param[1].value, proc->pc_act);
+		ft_calc_index(&k, proc->tab_param[1].value, proc->pc_act, 1);
 		ft_write_memory(arena->map, reg_value, k, 4);
 		ft_update_map_pyr(arena->map_pyr, proc->pc_act, k, 4);
 	}

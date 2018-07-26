@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:41:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 18:52:16 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/25 15:51:29 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			ft_create_proc(t_arena *arena, t_proc *proc, short index)
 		i++;
 	}
 	ft_next_opcode(arena, new_proc);
-	arena->map_process[new_proc->pc_act] = 1;
+	arena->map_process[index] = 1;
 	new_proc->next = arena->list_proc;
 	arena->list_proc = new_proc;
 	arena->nb_live_proc++;
@@ -45,7 +45,7 @@ static void		next_process(t_arena *arena, int p)
 	new_proc->p_nbr = p + 1;
 	new_proc->pc_act = 0 + p * MEM_SIZE / arena->nb_pyrs;
 	ft_next_opcode(arena, new_proc);
-	arena->map_process[p * MEM_SIZE / arena->nb_pyrs] = new_proc->p_nbr;
+	arena->map_process[p * MEM_SIZE / arena->nb_pyrs] = 1;
 	new_proc->next = arena->list_proc;
 	arena->list_proc = new_proc;
 	arena->nb_live_proc++;
@@ -62,7 +62,7 @@ static void		first_process(t_arena *arena)
 	proc->p_nbr = 1;
 	proc->pc_act = 0;
 	ft_next_opcode(arena, proc);
-	arena->map_process[0] = proc->p_nbr;
+	arena->map_process[0] = 1;
 	arena->list_proc = proc;
 	arena->nb_live_proc = 1;
 }
