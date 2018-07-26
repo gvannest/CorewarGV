@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:41:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/25 15:51:29 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 17:29:36 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			ft_create_proc(t_arena *arena, t_proc *proc, short index)
 	ft_next_opcode(arena, new_proc);
 	arena->map_process[index] = 1;
 	new_proc->next = arena->list_proc;
+	(proc->flag_live == 1 ? new_proc->flag_live = 1 : 0);
 	arena->list_proc = new_proc;
 	arena->nb_live_proc++;
 }

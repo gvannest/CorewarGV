@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/25 14:24:36 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 18:18:48 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,19 @@ void		ft_visual(t_arena *arena, t_corvisu *visual)
 	wrefresh(visual->win_info_game);
 	wrefresh(visual->win_info_pyrs);
 	getch();
+}
+
+void		ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int winner)
+{
+	int c;
+
+	(void)winner;
+	(void)tab_pyr;
+	(void)nb_pyrs;
+	(void)visual;
+	c = getch();
+	while (c != 27)
+		c = getch();
+	endwin();
 }
 
