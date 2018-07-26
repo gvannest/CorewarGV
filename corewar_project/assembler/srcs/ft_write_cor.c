@@ -23,9 +23,6 @@ static	void	ft_write_champ(t_asm *info)
 	while (p_token->next)
 		p_token = p_token->next;
 	champ_ln = p_token->pos + p_token->arg_size;
-//	printf("p_token->pos : %d et arg_size : %d\n", p_token->pos, p_token->arg_size);
-	//printf("info index : %d\n", info->index);
-//	while (index < info->nb_instr)
 	while (index < champ_ln)
 		dprintf(info->fd_cor, "%c", info->tab[index++]);
 }
@@ -67,12 +64,17 @@ void			ft_write(t_asm *info)
 	int magic;
 
 	magic = 0x00EA83F3;
+	if (ft_strlen(info->name) == 0 || ft_strlen(info->comment) == 0)
+	{
+		printf("error\n");
+		exit(EXIT_FAILURE);
+	}
 	ft_write_int(magic, info->fd_cor);
 	ft_write_name(info->name, info->fd_cor);
 	ft_write_int(0, info->fd_cor);
+	ft_putstr("\nlol\n");
 	ft_write_int(info->nb_instr, info->fd_cor);
 	ft_write_comment(info->comment, info->fd_cor);
 	ft_write_int(0, info->fd_cor);
-//	ft_create_champ(info);
 	ft_write_champ(info);
 }

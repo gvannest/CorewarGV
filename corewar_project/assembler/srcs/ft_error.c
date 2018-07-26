@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "asm.h"
+
 void	error_instr(t_asm *info, char *arg)
 {
 	if (ft_strequ(arg, ".name"))
@@ -94,5 +95,7 @@ void	ft_error_param(t_asm *info, t_token *token, int nb_error)
 			printf("Invalid parameter %d type %s for instruction %s\n", info->cur_param - 1, ft_type_char(token->type), op_tab[info->last_opcode - 1].name);
 	else if (nb_error == 4)
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] INSTRUCTION \"%s\"\n", info->line_nb, info->start + 1, token->s_val);
+	else if (nb_error == 5)
+		ft_printf("Champion size is too big.\n");
 	exit (EXIT_FAILURE);
 }
