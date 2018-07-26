@@ -52,7 +52,6 @@ SRC_NAME = ft_putnbr.c ft_putchar.c ft_strlen.c ft_putstr.c ft_strdup.c ft_strcp
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
-DEPS = includes/*.h Makefile
 DEPS = $(shell find . -regex ".*\.[ch]")
 
 
@@ -94,12 +93,13 @@ default:
 	@$(MAKE) $(DEFRULE)
 
 .PHONY: all
-all: building $(OBJ_PATH) $(NAME) Makefile
+all: $(OBJ_PATH) $(NAME)
 
 building:
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
 
-$(NAME): $(OBJ) $(DEPS)
+$(NAME): Makefile $(OBJ) $(DEPS)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
 	@$(CC) -rc $@ $(OBJ)
 	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
