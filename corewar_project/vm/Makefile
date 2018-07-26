@@ -1,11 +1,10 @@
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
-#FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 #BINARY
 NAME = corewar
-DST = ../../
+DST = ./
 
 # OPTIONS
 DEBUG = no
@@ -19,9 +18,8 @@ ifeq ($(NOFLAGS), yes)
 endif
 
 # PATHS
-LIBS = ./libs/libft.a
-LIB_PATH = ../libs/libft
-export LIB_NEED = ./libft
+LIBS = ../libft/libft.a
+LIB_PATH = ../libft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 LIB_NCURSES = -lncurses
@@ -71,7 +69,7 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 # FLAGS
-CPPFLAGS = -I./includes/ -I../libs/libft/includes -I../../includes
+CPPFLAGS = -I./includes/ -I../libft/includes -I../../includes
 
 # **************************************************************************** #
 # SPECIAL CHARS
@@ -97,15 +95,13 @@ LOG_ORANGE= \033[1;38;5;208m
 # RULES
 
 .PHONY: all
-all : libftcomp building $(OBJ_PATH) $(NAME) Makefile
-
-building:
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
+all : libftcomp $(OBJ_PATH) $(NAME) Makefile
 
 libftcomp:
 	@$(MAKE) -C $(LIB_PATH)
 
 $(NAME): $(OBJ)
+	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
 	@$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS) $(LIB_NCURSES)
 	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
@@ -119,7 +115,6 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 
 .PHONY: clean
 clean:
-	@$(MAKE) clean -C $(LIB_PATH)
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
 	@rm -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
@@ -127,7 +122,6 @@ clean:
 
 .PHONY: fclean
 fclean:
-	@$(MAKE) fclean -C $(LIB_PATH)
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
 	@rm -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true

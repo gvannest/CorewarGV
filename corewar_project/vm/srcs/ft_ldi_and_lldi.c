@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 12:10:36 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 12:03:49 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/07/26 14:04:09 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		ft_loop_ldi(char *map, int *tab_tmp, t_proc *proc, char flag_idx)
 		else if (proc->tab_param[i].type == 'i')
 		{
 			ft_calc_index(&k, proc->tab_param[i].value, proc->pc_act, flag_idx);
-			tab_tmp[i] = (int)ft_read_memory(map, k, 4);
+			tab_tmp[i] = (int)ft_read_memory(map, k, REG_SIZE);
 		}
 		i++;
 	}
@@ -43,8 +43,8 @@ static void			ft_ldi_and_lldi(t_arena *arena, t_proc *proc, char flag_idx)
 	if (!ft_check_ocp(proc->tab_param, "rdi", "dr", "r"))
 		return;
 	ft_loop_ldi(arena->map, tab_tmp, proc, flag_idx);
-	ft_calc_index(&res, tab_tmp[0] + tab_tmp[1], proc->pc_act, 1);
-	proc->reg[proc->tab_param[2].value - 1] = (int)ft_read_memory(arena->map, res, 4);
+	ft_calc_index(&res, tab_tmp[0] + tab_tmp[1], proc->pc_act, flag_idx);
+	proc->reg[proc->tab_param[2].value - 1] = (int)ft_read_memory(arena->map, res, REG_SIZE);
 	(res == 0 ? proc->carry = 1 : 0);
 }
 

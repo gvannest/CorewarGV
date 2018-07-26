@@ -1,7 +1,6 @@
 # COMPILATION
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-#FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 DEFRULE = all
 #BINARY
@@ -11,7 +10,6 @@ DST = ./
 # PATHS
 LIBS = ../libft/libft.a
 LIB_PATH = ../libft/
-export LIB_NEED = ../libft
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 INC_PATH = ./includes/ $(LIB_PATH)/includes/ 

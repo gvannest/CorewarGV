@@ -7,7 +7,7 @@ void			ft_live(t_arena *arena, t_proc *proc)
 
 	p = 0;
 	proc->ocp = -1;
-	live_pyr = (int)ft_read_memory(&(arena->map[proc->pc_act + 1]), 0, 4);
+	live_pyr = (int)ft_read_memory(&(arena->map[proc->pc_act + 1]), 0, DIR_SIZE);
 	while (p < arena->nb_pyrs)
 	{
 		if (live_pyr == arena->tab_pyr[p].pyr_nbr)

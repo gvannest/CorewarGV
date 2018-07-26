@@ -11,7 +11,6 @@
 # **************************************************************************** #
 
 DEPS = Makefile vm/Makefile assembler/Makefile
-SUBDIRS = assembler/ vm/
 LIBS = libft/
 
 # **************************************************************************** #
@@ -44,14 +43,20 @@ all: $(DEPS)
 
 .PHONY: clean
 clean:
-	@$(MAKE) clean -C $(SUBDIRS)
+	@$(MAKE) clean -C vm/
+	@$(MAKE) clean -C assembler/
 
 .PHONY: fclean
 fclean:
-	@$(MAKE) fclean -C $(SUBDIRS)
+	@$(MAKE) fclean -C vm/
+	@$(MAKE) fclean -C assembler/
+
+.PHONY: cleanlib
+cleanlib: clean
+	@$(MAKE) clean -C $(LIBS)
 
 .PHONY: fcleanlib
-cleanlib: fclean
+fcleanlib: fclean
 	@$(MAKE) fclean -C $(LIBS)
 
 .PHONY: re
