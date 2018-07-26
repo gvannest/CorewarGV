@@ -10,47 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-# COMPILATION
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-
-#BINARY
-NAME = asm
-DST = ../../
-
-# OPTIONS
-DEBUG = no
-ifeq ($(DEBUG), yes)
-	FLAGS += -g -fsanitize=address
-endif
-
-NOFLAGS = no
-ifeq ($(NOFLAGS), yes)
-	FLAGS = -g -w
-endif
-
-# PATHS
-LIBS = ./libs/libft.a
-LIB_PATH = ../libs/
-export LIB_NEED = ./libft
-SRC_PATH = ./srcs/
-OBJ_PATH = ./objs/
-
-# SOURCES
-SRC_NAME = main.c \
-		   ft_error.c \
-		   ft_display.c \
-		   ft_parsing.c
-
-# OBJECTS
-OBJ_NAME = $(SRC_NAME:.c=.o)
-
-# PREFIXES
-SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
-OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
-
-# FLAGS
-CPPFLAGS = -I./includes/ -I../libs/libft/includes -I../../includes
+DEPS = Makefile vm/Makefile assembler/Makefile
+LIBS = libft/
 
 # **************************************************************************** #
 # SPECIAL CHARS
@@ -76,44 +37,27 @@ LOG_ORANGE= \033[1;38;5;208m
 # RULES
 
 .PHONY: all
-all : libftcomp building $(OBJ_PATH) $(NAME) Makefile
-
-building:
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
-
-libftcomp:
-	@$(MAKE) -C $(LIB_PATH)
-
-$(NAME): $(OBJ)
-	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS)
-	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
-
-$(OBJ_PATH):
-	@mkdir -p $(OBJ_PATH)
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
+all: $(DEPS)
+	@$(MAKE) -C vm/
+	@$(MAKE) -C assembler/
 
 .PHONY: clean
 clean:
-	@$(MAKE) clean -C $(LIB_PATH)
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@rm -f $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
+	@$(MAKE) clean -C vm/
+	@$(MAKE) clean -C assembler/
 
 .PHONY: fclean
 fclean:
-	@$(MAKE) fclean -C $(LIB_PATH)
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@rm -f $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
-	@rm -f $(DST)$(NAME)
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Binary$(LOG_NOCOLOR) deleted............... $(LOG_RED)×$(LOG_NOCOLOR)"
+	@$(MAKE) fclean -C vm/
+	@$(MAKE) fclean -C assembler/
+
+.PHONY: cleanlib
+cleanlib: clean
+	@$(MAKE) clean -C $(LIBS)
+
+.PHONY: fcleanlib
+fcleanlib: fclean
+	@$(MAKE) fclean -C $(LIBS)
 
 .PHONY: re
 re:

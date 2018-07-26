@@ -1,75 +1,65 @@
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
+DEFRULE = all
 #BINARY
-NAME = corewar
+NAME = asm
 DST = ./
-
-# OPTIONS
-DEBUG = no
-ifeq ($(DEBUG), yes)
-	FLAGS += -g -fsanitize=address
-endif
-
-NOFLAGS = no
-ifeq ($(NOFLAGS), yes)
-	FLAGS = -g -w
-endif
 
 # PATHS
 LIBS = ../libft/libft.a
-LIB_PATH = ../libft
+LIB_PATH = ../libft/
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
-LIB_NCURSES = -lncurses
+INC_PATH = ./includes/ $(LIB_PATH)/includes/ 
 
 # SOURCES
-SRC_NAME = main_test.c \
-		   ft_arguments.c \
-		   ft_dump.c \
-		   ft_check_cycle.c \
-		   ft_error_vm.c \
-		   ft_fill_game.c \
-		   ft_free_corewar.c \
-		   ft_game.c \
-		   ft_create_processus.c \
-		   ft_live.c \
-		   ft_ld_and_lld.c \
-		   ft_add.c \
-		   ft_sub.c \
-		   ft_andorxor.c \
-		   ft_zjmp.c \
-		   ft_ldi_and_lldi.c \
-		   ft_sti.c \
-		   ft_fork_and_lfork.c \
-		   ft_aff.c \
-		   ft_one_cycle.c \
-		   ft_opcode.c \
-		   ft_parse_vm1.c \
-		   ft_parse_vm2.c \
-		   ft_processus.c \
-		   ft_reinit.c \
-		   ft_store.c \
-		   ft_tools.c \
-		   ft_tools2.c \
-		   ft_getparam.c \
-		   ft_visual.c \
-		   ft_visual2.c \
-		   main_corewar.c \
-		   ft_tools.c \
+SRC_NAME = main.c \
+		   ft_check_argv.c \
+		   ft_token_type.c \
+		   ft_token_type2.c \
+		   ft_token_add.c \
 		   op.c \
+		   ft_parsing.c \
+		   ft_parse_correctly.c \
+		   analyse_separator.c \
+		   ft_retrieve_line.c \
+		   ft_errorm.c \
+		   ft_fill_labels.c \
+		   ft_is_smthg.c \
+		   ft_syntax.c \
+		   ft_tests_label.c \
+		   ft_test_params.c \
+		   ft_tests_syntax.c \
+		   ft_display.c \
+		   ft_display_cor.c \
+		   ft_token_free.c \
+		   ft_get_value.c \
+		   ft_create_champ.c \
+		   ft_write_cor.c \
+		   ft_find_index.c \
+		   ft_check_token.c \
+		   ft_token_load.c \
+		   ft_swap_bytes.c \
+		   ft_options.c \
+		   ft_help.c \
+		   ft_error.c
 
 
 # OBJECTS
 OBJ_NAME = $(SRC_NAME:.c=.o)
+DEPS = $(shell find . -regex ".*\.[ch]")
 
 # PREFIXES
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I, $(INC_PATH))
 
-# FLAGS
-CPPFLAGS = -I./includes/ -I../libft/includes -I../../includes
+DEBUG = no
+ifeq ($(DEBUG), yes)
+	FLAGS = -g -w
+endif
 
 # **************************************************************************** #
 # SPECIAL CHARS
@@ -93,17 +83,21 @@ LOG_ORANGE= \033[1;38;5;208m
 # **************************************************************************** #
 
 # RULES
+#
+
+default:
+	@$(MAKE) $(DEFRULE)
 
 .PHONY: all
-all : libftcomp $(OBJ_PATH) $(NAME) Makefile
+all : libftcomp $(OBJ_PATH) $(NAME)
 
 libftcomp:
 	@$(MAKE) -C $(LIB_PATH)
 
-$(NAME): $(OBJ)
+$(NAME): Makefile $(OBJ) $(DEPS)
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $^ -o $(DST)$@ $(LIBS) $(FLAGS) $(LIB_NCURSES)
+	@$(CC) $(OBJ) $(INC) $(LIBS) -o $(DST)$@
 	@echo -e "--$(LOG_CLEAR)$(LOG_CYAN)$(NAME)$(LOG_NOCOLOR) compiled................. $(LOG_GREEN)✓$(LOG_NOCOLOR)"
 
 $(OBJ_PATH):
@@ -111,26 +105,26 @@ $(OBJ_PATH):
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)........................ $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $(FLAGS) $(CPPFLAGS) -c -o $@ $^
+	@$(CC) $(CFLAGS) $(INC) -c $^ -o $@
 
 .PHONY: clean
 clean:
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@rm -f $(OBJ)
+	@$(RM) -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
 
 .PHONY: fclean
-fclean:
-	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)clean $(NAME)$(LOG_NOCOLOR)"
-	@rm -f $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Objects$(LOG_NOCOLOR) deleted.............. $(LOG_RED)×$(LOG_NOCOLOR)"
+fclean: clean
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)fclean $(NAME)$(LOG_NOCOLOR)"
-	@rm -f $(DST)$(NAME)
+	@$(RM) -f $(NAME)
 	@echo -e "--$(LOG_CLEAR)$(LOG_YELLOW)Binary$(LOG_NOCOLOR) deleted............... $(LOG_RED)×$(LOG_NOCOLOR)"
 
-.PHONY: re
+.PHONY:re
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+norme:
+	norminette $(SRC)
+	norminette ./includes/*.h
