@@ -17,19 +17,8 @@ static	void	ft_pos_increment(t_asm *info, t_token *new_token)
 		info->pos += new_token->arg_size;
 	if (new_token->opcode > 0)
 		info->last_opcode = new_token->opcode;
-	if (new_token->type == T_OP && new_token->nb_params > 1)
+	if (new_token->type == T_OP && (new_token->nb_params > 1 || (ft_strequ(new_token->s_val,"aff"))))
 		info->pos++;
-/*	if ((new_token->type == T_DIR || new_token->type == T_DIR_LAB)
-			&& op_tab[info->last_opcode - 1].dir_oct_size == 1)
-		info->pos += 2;
-	else if ((new_token->type == T_DIR || new_token->type == T_DIR_LAB)
-			&& op_tab[info->last_opcode - 1].dir_oct_size == 0)
-		info->pos += 4;
-	else if (new_token->type == T_OP
-			&& op_tab[info->last_opcode - 1].nb_params > 1)
-		info->pos += 2;
-	else if (new_token->type != T_LAB)
-		info->pos++;*/
 }
 
 void			ft_token_init(t_token *new_token)
@@ -71,6 +60,13 @@ void			ft_token_add(t_asm *info, char *arg)
 	t_token *new_token;
 	char	*arg_trim;
 
+//	ft_putstr("fonction token_add appellee\n");
+//	printf("Arg recu, valeur : \"%s\"\n", arg);
+	if (info->comment_f == 0 || info->name_f == 0)
+	{
+		printf("error missing comment or name\n");
+		exit(EXIT_FAILURE);
+	}
 	new_token = ft_memalloc(sizeof(t_token));
 	arg_trim = ft_strtrim(arg);
 	ft_token_init(new_token);

@@ -89,8 +89,6 @@ void		ft_fill_labels(t_token *atoken)
 				exit(EXIT_FAILURE);
 			}
 			p_token_src->i_val = p_token_dst->pos - p_token_src->last_op_pos;
-		//	printf("difference : %d = dst pos : %d - src last_op_pos : %d\n", p_token_src->i_val, p_token_dst->pos, p_token_src->last_op_pos);
-		//	printf("difference : %d = dst index : %d - src last_op_index : %d\n", p_token_src->i_val, p_token_dst->cor_index, p_token_src->last_cor_index);
 		}
 		p_token_src = p_token_src->next;
 	}

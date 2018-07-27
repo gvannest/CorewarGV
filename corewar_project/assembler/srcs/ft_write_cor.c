@@ -64,15 +64,9 @@ void			ft_write(t_asm *info)
 	int magic;
 
 	magic = 0x00EA83F3;
-	if (ft_strlen(info->name) == 0 || ft_strlen(info->comment) == 0)
-	{
-		printf("error\n");
-		exit(EXIT_FAILURE);
-	}
 	ft_write_int(magic, info->fd_cor);
 	ft_write_name(info->name, info->fd_cor);
 	ft_write_int(0, info->fd_cor);
-	ft_putstr("\nlol\n");
 	ft_write_int(info->nb_instr, info->fd_cor);
 	ft_write_comment(info->comment, info->fd_cor);
 	ft_write_int(0, info->fd_cor);

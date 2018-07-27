@@ -65,7 +65,6 @@ void		ft_gnl(t_asm *info)
 	{
 		++info->line_nb;
 		check_line(&(*info), line, ft_strlen(line));
-		check_line(&(*info), line, ft_strlen(line));
 		if (info->error != 0)
 			parsing_error(info, line);
 		ft_strdel(&line);

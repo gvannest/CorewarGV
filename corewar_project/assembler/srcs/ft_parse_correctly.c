@@ -43,7 +43,8 @@ static void	ft_check_before_sending(t_asm *info, char *arg)
 	send = 1;
 	if (send == 1 && arg != NULL)
 	{
-//		ft_printf("arg = %s\n", arg);
+	//	ft_putstr("test 1");
+	//	printf("arg = %s\n", arg);
 		ft_token_add(info, arg);		//send to savinien !!!!!!!!
 		}
 }
@@ -57,10 +58,10 @@ static void	check_word(t_asm *info, char *arg)
 	}
 	else if (info->comment_f == 0 || info->name_f == 0)
 	{
-		if (ft_strequ(arg, ".comment"))
-			info->comment_f = -1;
-		else if (ft_strequ(arg, ".name"))
+		if (ft_strequ(arg, ".name"))
 			info->name_f = -1;
+		else if (ft_strequ(arg, ".comment"))
+			info->comment_f = -1;
 		else
 			command_name_error(info, arg);
 	//	ft_printf("check word, locking\n");

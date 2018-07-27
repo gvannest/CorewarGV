@@ -1,1 +1,1 @@
-make -C ./test_asm
+make -C ./

@@ -13,8 +13,8 @@ do
 	rm $origin $asm 2> /dev/null || true
 
 	#send results of original asm and yours in two txt file.
-	./../original_asm $file >> $origin
-	./../asm $file >> $asm
+	./original_asm $file >> $origin
+	./asm $file >> $asm
 
 	#Retrieve first line of each output and stock it into var
 	s1=$(head -1 $origin)
@@ -26,9 +26,9 @@ do
 	else
 		#print both output
 		echo "\033[1;32m$str:\033[0m\033[1;31m ERROR\n$(head -1 $file)\n\033[1;34mExpected oupout:\033[0m" >> $output
-		./../original_asm $file >> $output
+		./original_asm $file >> $output
 		echo "\033[1;34mYour output:\033[0m" >> $output
-		./../asm $file >> $output
+		./asm $file >> $output
 		echo "" >> $output
 	fi
 done

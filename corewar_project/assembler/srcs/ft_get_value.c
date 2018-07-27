@@ -12,19 +12,6 @@
 
 #include "asm.h"
 
-/*int	ft_get_ival(char *arg)
-{
-	int ival;
-	int index;
-
-	ival = 0;
-	index = 0;
-	while (index < NB_INSTR && (ft_strcmp(op_tab[index].name, arg) != 0))
-		index++;
-	if (index < NB_INSTR)
-		ival = op_tab[index].opcode;
-	return (ival);
-}*/
 
 int	ft_get_opcode(char *arg)
 {
@@ -55,7 +42,5 @@ int	ft_get_type(char *arg)
 		type = T_OP;
 	else
 		type = ft_is_label(arg);
-//	printf("arg : %s\n", arg);
-//	printf("type : %d\n", type);
 	return (type);
 }

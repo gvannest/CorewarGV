@@ -97,5 +97,7 @@ void	ft_error_param(t_asm *info, t_token *token, int nb_error)
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] INSTRUCTION \"%s\"\n", info->line_nb, info->start + 1, token->s_val);
 	else if (nb_error == 5)
 		ft_printf("Champion size is too big.\n");
+	else if (nb_error == 6)
+		ft_printf("Lexical error at [%d:%d]\n", info->line_nb, info->end);
 	exit (EXIT_FAILURE);
 }

@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 //	ft_test_label();
 	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
+//	ft_putstr("test main");
 	champ_path = ft_strjoin(info.path, info.true_name);
 	info.fd_cor = ft_open_champ(champ_path);
 	ft_strdel(&champ_path);
