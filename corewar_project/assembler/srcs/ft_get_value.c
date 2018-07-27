@@ -32,7 +32,7 @@ int	ft_get_type(char *arg)
 	int	type;
 
 	type = 0;
-	if (ft_is_reg(arg) > 0)
+	if (ft_is_reg(arg) != 0)
 		type = T_REG;
 	else if (ft_is_dir(arg) > 0)
 		type = T_DIR;

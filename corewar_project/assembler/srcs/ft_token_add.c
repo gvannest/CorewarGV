@@ -67,6 +67,8 @@ void			ft_token_add(t_asm *info, char *arg)
 		printf("error missing comment or name\n");
 		exit(EXIT_FAILURE);
 	}
+	if (info->path == NULL)
+		info->path = ft_strdup("");
 	new_token = ft_memalloc(sizeof(t_token));
 	arg_trim = ft_strtrim(arg);
 	ft_token_init(new_token);

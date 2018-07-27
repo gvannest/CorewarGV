@@ -22,7 +22,11 @@ int	ft_is_dir(char *arg)
 	is_dir = 0;
 	index = 1;
 	if (arg[index] == '-')
+	{
+		if (arg_ln == 2)
+			return (is_dir);
 		index++;
+	}
 	if (arg != 0 && arg[0] == DIRECT_CHAR && arg_ln > 1)
 	{
 		while (index < arg_ln && ft_isdigit(arg[index]))

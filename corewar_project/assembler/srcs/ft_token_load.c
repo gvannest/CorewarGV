@@ -65,6 +65,8 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	token->type = ft_get_type(arg);
 	if (token->type == 0)
 		ft_error_param(info, token, 6);
+	else if (token->type == -1)
+		ft_error_param(info, token, 4);
 	token->s_val = ft_strdup(arg);
 	if (token->type == T_OP || token->type == T_LAB)
 	{
@@ -82,7 +84,7 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 		if (token->type == T_DIR || token->type == T_REG)
 		{
 			token->i_val = ft_atoi(&token->s_val[1]);
-			if (token->type == T_REG && (token->i_val <= 0 || token->i_val > 99))
+			if (token->type == T_REG && (token->i_val < 0 || token->i_val > 99))
 				ft_error_param(info, token, 4);
 		}
 		else if (token->type == T_IND)

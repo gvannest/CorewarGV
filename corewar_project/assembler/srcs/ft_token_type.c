@@ -39,11 +39,19 @@ int				ft_is_reg(char *arg)
 {
 	int	index;
 	int	arg_ln;
+	int i_val;
 
 	arg_ln = ft_strlen(arg);
 	index = 0;
-	if (arg == 0 || arg[index++] != 'r' || ft_atoi(&arg[1]) < 0)
+	i_val = 0;
+	if (arg == 0 || arg[index++] != 'r')
 		return (0);
+	else
+	{
+		i_val = ft_atoi(&arg[1]);
+		if (i_val < 0 || i_val > 99)
+			return (-1);
+	}
 	while (index < arg_ln)
 	{
 		if (!ft_isdigit(arg[index]))
