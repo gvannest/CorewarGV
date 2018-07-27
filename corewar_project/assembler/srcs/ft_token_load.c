@@ -70,10 +70,10 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	token->s_val = ft_strdup(arg);
 	if (token->type == T_OP || token->type == T_LAB)
 	{
-		if (token->type == T_OP)
-			ft_load_op(info, token, arg);
 		if (info->nb_params_left > 0)
 			ft_error_param(info, token, 1);
+		if (token->type == T_OP)
+			ft_load_op(info, token, arg);
 	}
 	else if (token->type == T_IND || token->type == T_IND_LAB
 			|| token->type == T_DIR_LAB || token->type == T_DIR

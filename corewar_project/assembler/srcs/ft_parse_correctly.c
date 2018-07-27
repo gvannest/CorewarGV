@@ -43,10 +43,8 @@ static void	ft_check_before_sending(t_asm *info, char *arg)
 	send = 1;
 	if (send == 1 && arg != NULL)
 	{
-	//	ft_putstr("test 1");
-	//	printf("arg = %s\n", arg);
 		ft_token_add(info, arg);		//send to savinien !!!!!!!!
-		}
+	}
 }
 
 static void	check_word(t_asm *info, char *arg)
@@ -144,13 +142,9 @@ void	parse_correctly(t_asm *info, char *line)
 			i = ft_parse_it(&(*info), line);
 		}
 		if (info->comchr_f == 1)
-		{
 			break ;
-		}
 		if (!ft_unauth_char(line[i]))
-		{
 			info->error = 6;
-		}
 	}
 	ft_error_management(info, line);
 }

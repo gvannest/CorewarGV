@@ -61,12 +61,6 @@ void			ft_token_add(t_asm *info, char *arg)
 	char	*arg_trim;
 
 //	ft_putstr("fonction token_add appellee\n");
-//	printf("Arg recu, valeur : \"%s\"\n", arg);
-	if (info->comment_f == 0 || info->name_f == 0)
-	{
-		printf("error missing comment or name\n");
-		exit(EXIT_FAILURE);
-	}
 	if (info->path == NULL)
 		info->path = ft_strdup("");
 	new_token = ft_memalloc(sizeof(t_token));

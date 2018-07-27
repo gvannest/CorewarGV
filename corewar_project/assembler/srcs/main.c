@@ -42,22 +42,18 @@ int	main(int argc, char **argv)
 	ft_bzero(&info, sizeof(t_asm));
 	init_info(&info);
 //	printf("Valid syntax ? : %d\n", ft_is_valid_syntax(&info));
-//	if (!ft_is_valid_syntax(&info))
-//		error_instr(info, 
-//	ft_test_params();
-//	ft_test_label();
+	if (!ft_is_valid_syntax(&info))
+	{
+		printf("error syntax\n");
+		exit(EXIT_FAILURE);
+	}
 	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
-//	ft_putstr("test main");
 	champ_path = ft_strjoin(info.path, info.true_name);
 	info.fd_cor = ft_open_champ(champ_path);
 	ft_strdel(&champ_path);
 	ft_fill_labels(info.atoken);
-//	ft_token_display_all(info.atoken);
-//	ft_tests_syntax();
-//	ft_token_display_all(info.atoken);
 	ft_create_champ(&info);
-//	ft_token_display_all(info.atoken);
 	ft_write(&info);
 	if (info.f_option_d)
 	{

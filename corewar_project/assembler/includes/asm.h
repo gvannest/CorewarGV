@@ -139,6 +139,7 @@ void	ft_syntax_err(t_asm *info, int i, char *line);
 void	ft_error_management(t_asm *info, char *arg);
 void	command_name_error(t_asm *info, char *arg);
 void	ft_error_param(t_asm *info, t_token *token, int nb_error);
+void	ft_error_incomplete(t_asm *info, int nb_error);
 /*
 * Lexical analysis
 */

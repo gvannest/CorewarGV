@@ -74,12 +74,10 @@ void	ft_create_champ(t_asm *info)
 	
 	index = 0;
 	p_token = info->atoken;
+	if (info->comment_f == 0 || info->name_f == 0 || (info->nb_instr == 0 && !p_token))
+		ft_error_incomplete(info, 1);
 	while (p_token)
 	{
-	/*	if (p_token->type == T_LAB)
-		{
-			printf("IndLab, name : %s,  pos : %d et index : %d\n", p_token->s_val, p_token->pos, index);
-		}*/
 		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
 			ft_error_param(info, p_token, 5);
 		if (p_token->type == T_OP)
