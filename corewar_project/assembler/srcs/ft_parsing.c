@@ -63,6 +63,7 @@ void		ft_gnl(t_asm *info)
 	while ((info->gnl = get_next_line(info->fp, &line)) > 0 && info->error == 0
 			&& info->stop == 0)
 	{
+	//	printf("line : \"%s\"\n", line);
 		++info->line_nb;
 		check_line(&(*info), line, ft_strlen(line));
 		if (info->error != 0)

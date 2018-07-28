@@ -53,7 +53,9 @@ int	main(int argc, char **argv)
 	info.fd_cor = ft_open_champ(champ_path);
 	ft_strdel(&champ_path);
 	ft_fill_labels(info.atoken);
+//	ft_putstr("echo 1\n");
 	ft_create_champ(&info);
+//	ft_putstr("echo 2\n");
 	ft_write(&info);
 	if (info.f_option_d)
 	{

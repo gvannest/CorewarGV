@@ -32,6 +32,11 @@ static char	*ft_retpositif(char *stkfd, char **line)
 	i = 0;
 	while (stkfd[i] != '\n' && stkfd[i])
 		i++;
+	if (stkfd[i] != EOF && stkfd[i] != '\n')
+	{
+		ft_putstr("Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)\n");
+		exit(EXIT_FAILURE);
+	}
 	tmp = stkfd;
 	if (!(*line = ft_strsub(stkfd, 0, i)))
 	{
