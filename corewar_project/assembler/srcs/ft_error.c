@@ -105,6 +105,9 @@ void	ft_error_param(t_asm *info, t_token *token, int nb_error)
 void	ft_error_incomplete(t_asm *info, int nb_error)
 {
 	if (nb_error == 1)
-		ft_printf("Syntax error at token [TOKEN][%03d:%03d] END \"%s\"\n", info->line_nb, info->start + 1, "(null)");
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] END \"%s\"\n", info->line_nb + 1, 1, "(null)");
+
+	else if (nb_error == 2)
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] ENDLINE\n", info->line_nb, info->end + 1);
 	exit (EXIT_FAILURE);
 }
