@@ -124,6 +124,7 @@ int		ft_is_space(char c);
 int		ft_is_sep(char c);
 int		ft_is_nonsep(char c, int f);
 
+char *ft_type_char(int type);
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
 //int		ft_split_word(t_asm *info, char *line, int i);
