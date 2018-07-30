@@ -60,7 +60,6 @@ void			ft_token_add(t_asm *info, char *arg)
 	t_token *new_token;
 	char	*arg_trim;
 
-//	ft_putstr("fonction token_add appellee\n");
 	if (info->path == NULL)
 		info->path = ft_strdup("");
 	new_token = ft_memalloc(sizeof(t_token));

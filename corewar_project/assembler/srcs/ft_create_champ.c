@@ -85,10 +85,8 @@ void	ft_create_champ(t_asm *info)
 	}
 	while (p_token)
 	{
-	//	ft_putstr("champ1\n");
 		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
 			ft_error_param(info, p_token, 5);
-	//	ft_putstr("champ2\n");
 		if (p_token->type == T_OP)
 		{
 			ft_load_ocp(p_token);

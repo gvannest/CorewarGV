@@ -42,31 +42,13 @@ t_token		*ft_find_label(t_token *atoken, char *label)
 		clean_label_token = ft_clean_label(p_token->s_val);
 		if (p_token->type == T_LAB &&
 				ft_strequ(clean_label_token, clean_label))
-		{
-		//	printf("label %s trouve a position : %d\n", p_token->s_val, p_token->pos);
-		//	printf("et index : %d\n", p_token->cor_index);
 			break ;
-		}
 		p_token = p_token->next;
 		ft_strdel(&clean_label_token);
 	}
 	ft_strdel(&clean_label_token);
 	ft_strdel(&clean_label);
 	return (p_token);
-}
-
-static	char *ft_type_char(int type) //fonction dupliquee de ft_error
-{
-	if (type == T_DIR || type == T_DIR_LAB)
-		return "direct";
-	else if (type == T_IND || type == T_IND_LAB)
-		return "index";
-	else if (type == T_REG)
-		return "register";
-	else if (type == T_LAB)
-		return "label";
-	else
-		return "unknown";
 }
 
 void		ft_fill_labels(t_token *atoken)
@@ -84,7 +66,6 @@ void		ft_fill_labels(t_token *atoken)
 			p_token_dst = ft_find_label(p_token_dst, p_token_src->s_val);
 			if (p_token_dst == NULL)
 			{
-				//possible leak ?
 				printf("No such label %s while attempting to dereference token [TOKEN][%.3d:%.3d] %s \"%s\"\n", ft_clean_label(p_token_src->s_val), p_token_src->line, p_token_src->cl + 1, ft_type_char(p_token_src->type), p_token_src->s_val);
 				exit(EXIT_FAILURE);
 			}

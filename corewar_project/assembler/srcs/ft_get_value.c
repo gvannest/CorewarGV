@@ -12,7 +12,6 @@
 
 #include "asm.h"
 
-
 int	ft_get_opcode(char *arg)
 {
 	int index;

@@ -33,7 +33,6 @@ int	ft_is_valid_syntax(t_asm *info)
 			if (info->nb_params_left <= 0)
 				return (0);
 			info->nb_params_left--;
-		//	printf("current param : %d / info start : %d\n", info->cur_param, info->start);
 			info->cur_param++;
 		}
 		else if (p_token->type == T_LAB && info->nb_params_left > 0)

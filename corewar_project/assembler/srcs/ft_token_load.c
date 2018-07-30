@@ -42,7 +42,7 @@ void			ft_token_reload(t_asm *info, t_token *token)
 	token->line = info->line_nb;
 	token->cl = info->start;
 	token->last_op_pos = info->last_op_pos;
-	--info->comma_f; // Ajout MAS
+	--info->comma_f;
 }
 
 static	void	ft_load_op(t_asm *info, t_token *token, char *arg)

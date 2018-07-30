@@ -64,26 +64,27 @@ void	parsing_error(t_asm *info, char *line)
 void	ft_error(int a)
 {
 	if (a == 1)
-	{
 		perror("Error");
-		//		exit(0);
-	}
 	else
 		return ;
 }
 
-static	char *ft_type_char(int type)
+char *ft_type_char(int type)
 {
-	if (type == T_DIR || type == T_DIR_LAB)
-		return "direct";
-	else if (type == T_IND || type == T_IND_LAB)
-		return "index";
+	if (type == T_DIR)
+		return "DIRECT";
+	else if (type == T_DIR_LAB)
+		return "DIRECT LABEL";
+	else if (type == T_IND_LAB)
+		return "INDIRECT LABEL";
+	else if (type == T_IND)
+		return "INDIRECT";
 	else if (type == T_REG)
-		return "register";
+		return "REGISTER";
 	else if (type == T_LAB)
-		return "label";
+		return "LABEL";
 	else
-		return "unknown";
+		return "UNKNOWN TYPE";
 }
 
 void	ft_error_param(t_asm *info, t_token *token, int nb_error)
