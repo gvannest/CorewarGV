@@ -61,9 +61,9 @@ int	main(int argc, char **argv)
 		ft_free(&info);
 		exit(EXIT_SUCCESS);
 	}
-	ft_free(&info);
 	if (info.error != 1)
 		printf("Writing output program to %s%s.cor\n", info.path, info.true_name);
 	close (info.fd_cor);
+	ft_free(&info);
 	return (0);
 }
