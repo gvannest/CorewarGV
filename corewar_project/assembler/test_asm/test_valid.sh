@@ -9,9 +9,9 @@ for file in $list_file
 do
 	str=$((basename $file) | awk '{print toupper($0)}')
 	echo "\033[1;32m$str\033[0m: $(head -1 $file)\n\033[1;34mExpected oupout:\033[0m" >> $name.txt
-	./../original_asm $file >> $name.txt
+	./original_asm $file >> $name.txt
 	echo "\033[1;34mYour output:\033[0m" >> $name.txt
-	./../asm $file >> $name.txt
+	./asm $file >> $name.txt
 	echo "" >> $name.txt
 #	diff zazs.txt asm.txt >> difference.txt	
 #	rm zazs.txt asm.txt 
