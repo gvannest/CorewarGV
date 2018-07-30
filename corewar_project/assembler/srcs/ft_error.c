@@ -56,7 +56,8 @@ void	parsing_error(t_asm *info, char *line)
 		ft_strdel(&line);
 	if (info->err_log != NULL)
 		ft_strdel(&info->err_log);
-	exit (0);
+	ft_free(info);
+	exit(EXIT_FAILURE);
 
 }
 
@@ -99,6 +100,7 @@ void	ft_error_param(t_asm *info, t_token *token, int nb_error)
 		ft_printf("Champion size is too big.\n");
 	else if (nb_error == 6)
 		ft_printf("Lexical error at [%d:%d]\n", info->line_nb, info->start + 1);
+	ft_free(info);
 	exit (EXIT_FAILURE);
 }
 
@@ -109,5 +111,6 @@ void	ft_error_incomplete(t_asm *info, int nb_error)
 
 	else if (nb_error == 2)
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] ENDLINE\n", info->line_nb, info->end + 1);
+	ft_free(info);
 	exit (EXIT_FAILURE);
 }

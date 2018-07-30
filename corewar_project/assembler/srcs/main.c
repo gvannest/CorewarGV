@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	if (!ft_is_valid_syntax(&info))
 	{
 		printf("error syntax\n");
+		ft_free(&info);
 		exit(EXIT_FAILURE);
 	}
 	ft_check_argv(&info, argv, argc);
@@ -60,9 +61,11 @@ int	main(int argc, char **argv)
 	if (info.f_option_d)
 	{
 		ft_display(&info);
+		ft_free(&info);
 		exit(EXIT_SUCCESS);
 	}
-	ft_token_list_free(info.atoken);
+	ft_free(&info);
+//	ft_token_list_free(info.atoken);
 	if (info.error != 1)
 		printf("Writing output program to %s%s.cor\n", info.path, info.true_name);
 	close (info.fd_cor);

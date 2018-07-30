@@ -161,6 +161,10 @@ int		ft_is_op(char *arg);
 
 int	ft_is_valid_syntax(t_asm *info);
 
+
+
+void	ft_free(t_asm *info);
+
 /*
 ** Fonctions tokens
 */

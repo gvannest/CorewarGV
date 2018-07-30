@@ -44,6 +44,7 @@ SRC_NAME = main.c \
 		   ft_swap_bytes.c \
 		   ft_options.c \
 		   ft_help.c \
+		   ft_free.c \
 		   ft_error.c
 
 
