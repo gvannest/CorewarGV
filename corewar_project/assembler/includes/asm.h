@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 16:44:26 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 19:14:33 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct s_op
 	char	dir_oct_size; //0 = 4 octets et 1 = 2 octets
 }				t_op;
 
-extern t_op op_tab[NB_INSTR + 1];
+extern t_op g_op_tab[NB_INSTR + 1];
 
 /*
  * parsing
@@ -110,26 +110,19 @@ extern t_op op_tab[NB_INSTR + 1];
 
 void	ft_check_options(t_asm *info, int argc, char **argv);
 int		ft_check_argv(t_asm *info, char **argv, int argc);
-//void	ft_parse_cmd(t_asm *info, char *line);
-//void	ft_parse_op(t_asm *info, char *line);
 void	retrieve_line(t_asm *info, char *line);
 void	parse_correctly(t_asm *info, char *line);
 char	*retrieve_word(t_asm *info, char *line);
 void	ft_gnl(t_asm *info);
-//void	ft_name(t_asm *info, char *line);
-//void	ft_comment(t_asm *info, char *line);
 void	analyse_separator(t_asm *info, char *line);
 int		ft_is_labelchar(int *ptr, char c);
 int		ft_is_space(char c);
 int		ft_is_sep(char c);
 int		ft_is_nonsep(char c, int f);
-
-char *ft_type_char(int type);
+char	*ft_type_char(int type);
 int		ft_is_othchr(char c);
 int		ft_is_comchar(int *num, char c);
-//int		ft_split_word(t_asm *info, char *line, int i);
 void	reset_words_flags(t_asm *info, char **arg);
-//int 	ft_keep_going(t_asm *info, char *line, int i);
 
 /*
  * Error
@@ -146,7 +139,6 @@ void	ft_error_incomplete(t_asm *info, int nb_error);
 */
 
 void	ft_line_split(char *line);
-void	ft_display_token(t_token *token);
 int		ft_is_reg(char *arg);
 int		ft_is_label(char *arg);
 int		ft_is_dir(char *arg);
@@ -173,17 +165,16 @@ void	ft_free(t_asm *info);
 void	ft_token_add(t_asm *sasm, char *arg);
 void	ft_token_add_tail(t_token **token, t_token *new_token);
 void	ft_token_init(t_token *new_token);
-//void	ft_token_free(t_token *token);
 void	ft_token_list_free(t_token *a_token);
 void	ft_token_load(t_asm *sasm, t_token *token, char* arg);
-//t_token	*ft_token_new();
-void	ft_token_display(t_token *token, int token_nb);
-void	ft_token_display_all(t_token *atoken);
 
 /*
-** FONCTION AFFICHAGE CHAMP
+** FONCTION CHAMP
 */
-void	ft_display(t_asm *sasm);
+
+void	ft_display(t_asm *info);
+int		ft_open_champ(char *path);
+void	ft_option_display(t_asm *info);
 
 /*
 ** FONCTION CREER CHAMP
@@ -196,12 +187,10 @@ void	ft_create_champ(t_asm *info);
 void	ft_fill_labels(t_token *atoken);
 char *ft_clean_label(char *label);
 t_token		*ft_find_label(t_token *atoken, char *label);
-//void	ft_fill_label(t_token *token_src, t_token *token_dst);
 /*
 ** FONCTIONS ECRIRE SHORT OU INT DECOMPOSE EN OCTETS 
 */
-//void	ft_write_int(int nb, int fd_cor);
-//void	ft_write_short(short nb, int fd_cor);
+
 void	ft_write(t_asm *info);
 
 /*
@@ -230,11 +219,22 @@ void	ft_token_load(t_asm *info, t_token *token, char *arg);
 void	ft_token_reload(t_asm *info, t_token *token);
 void	ft_load_values_info(t_asm *info, char *arg, t_token *token);
 
+/*
+** FONCTION USAGE
+*/
+
 void	ft_print_usage(int argc, char **argv);
+
 /*
 ** FONCTION HELP
 */
 
 void	ft_help();
+
+/*
+** FONCTION INIT
+*/
+
+void	ft_init_info(t_asm *info);
 
 #endif

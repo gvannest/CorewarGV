@@ -6,20 +6,27 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/01 16:10:23 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 16:11:00 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 19:09:01 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static	int	ft_is_option(char c)
+void	ft_option_display(t_asm *info)
+{
+	ft_display(info);
+	ft_free(info);
+	exit(EXIT_SUCCESS);
+}
+
+static	int		ft_is_option(char c)
 {
 	int index;
 	int is_option;
 
 	index = 0;
 	is_option = 0;
-	while(ASM_OPTION_CHARS[index])
+	while (ASM_OPTION_CHARS[index])
 	{
 		if (ASM_OPTION_CHARS[index] == c)
 		{
@@ -39,7 +46,7 @@ static	void	ft_set_option(t_asm *info, char option)
 		info->f_option_d = 1;
 }
 
-static	int	ft_options_valid(t_asm *info, char *arg)
+static	int		ft_options_valid(t_asm *info, char *arg)
 {
 	int	index;
 	int	is_valid;

@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:27:48 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 17:42:37 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 19:29:30 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void			ft_load_values_info(t_asm *info, char *arg, t_token *token)
 	if (token->type == T_OP)
 	{
 		index_tab = ft_find_index_arg(arg);
-		info->nb_params_left = op_tab[index_tab].nb_params;
+		info->nb_params_left = g_op_tab[index_tab].nb_params;
 		if (index_tab < 16)
 		{
-			info->size = ((op_tab[index_tab].dir_oct_size == 0) ? 4 : 2);
-			info->nb_params = op_tab[index_tab].nb_params;
+			info->size = ((g_op_tab[index_tab].dir_oct_size == 0) ? 4 : 2);
+			info->nb_params = g_op_tab[index_tab].nb_params;
 		}
 	}
 }
@@ -57,6 +57,23 @@ static	void	ft_load_op(t_asm *info, t_token *token, char *arg)
 	info->operator_f = 1;
 }
 
+static	void	ft_token_subload(t_asm *info, t_token *token)
+{
+	if (info->nb_params_left <= 0)
+		ft_error_param(info, token, 2);
+	if (token->type == T_DIR || token->type == T_REG)
+	{
+		token->i_val = ft_atoi(&token->s_val[1]);
+		if (token->type == T_REG && (token->i_val < 0 || token->i_val > 99))
+			ft_error_param(info, token, 4);
+	}
+	else if (token->type == T_IND)
+		token->i_val = ft_atoi(token->s_val);
+	info->nb_param++;
+	info->cur_param++;
+	info->nb_params_left--;
+}
+
 void			ft_token_load(t_asm *info, t_token *token, char *arg)
 {
 	int arg_ln;
@@ -78,19 +95,5 @@ void			ft_token_load(t_asm *info, t_token *token, char *arg)
 	else if (token->type == T_IND || token->type == T_IND_LAB
 			|| token->type == T_DIR_LAB || token->type == T_DIR
 			|| token->type == T_REG)
-	{
-		if (info->nb_params_left <= 0)
-			ft_error_param(info, token, 2);
-		if (token->type == T_DIR || token->type == T_REG)
-		{
-			token->i_val = ft_atoi(&token->s_val[1]);
-			if (token->type == T_REG && (token->i_val < 0 || token->i_val > 99))
-				ft_error_param(info, token, 4);
-		}
-		else if (token->type == T_IND)
-			token->i_val = ft_atoi(token->s_val);
-		info->nb_param++;
-		info->cur_param++;
-		info->nb_params_left--;
-	}
+		ft_token_subload(info, token);
 }

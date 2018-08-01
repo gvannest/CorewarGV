@@ -29,7 +29,6 @@ SRC_NAME = main.c \
 		   ft_fill_labels.c \
 		   ft_is_smthg.c \
 		   ft_syntax.c \
-		   ft_display.c \
 		   ft_display_cor.c \
 		   ft_token_free.c \
 		   ft_type_char.c \
@@ -41,6 +40,8 @@ SRC_NAME = main.c \
 		   ft_token_load.c \
 		   ft_swap_bytes.c \
 		   ft_options.c \
+		   ft_open_champ.c \
+		   ft_init_info.c \
 		   ft_help.c \
 		   ft_free.c \
 		   ft_error.c

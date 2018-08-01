@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:47:46 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:50:34 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 19:29:00 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_is_valid_syntax(t_asm *info)
 		{
 			if (info->nb_params_left != 0)
 				return (0);
-			info->nb_params_left = op_tab[p_token->opcode - 1].nb_params;
+			info->nb_params_left = g_op_tab[p_token->opcode - 1].nb_params;
 			info->last_opcode = p_token->opcode;
 			info->cur_param = 0;
 		}

@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:48:34 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 14:30:06 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 18:27:50 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static	void	ft_display_champ(t_asm *info)
 {
-	int index;
+	int		index;
 	t_token *p_token;
-	int	champ_ln;
+	int		champ_ln;
 
 	index = 0;
 	p_token = info->atoken;
@@ -34,7 +34,7 @@ static	void	ft_display_champ(t_asm *info)
 	}
 }
 
-void			ft_display_name(char *name)
+static	void	ft_display_name(char *name)
 {
 	int index;
 
@@ -51,7 +51,7 @@ void			ft_display_name(char *name)
 	printf(" ");
 }
 
-void			ft_display_comment(char *comment)
+static	void	ft_display_comment(char *comment)
 {
 	int index;
 
@@ -68,10 +68,10 @@ void			ft_display_comment(char *comment)
 	printf(" ");
 }
 
-void			ft_display_int(int nb)
+static	void	ft_display_int(int nb)
 {
-	unsigned char octets[4];
-	int index;
+	unsigned char	octets[4];
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -82,11 +82,11 @@ void			ft_display_int(int nb)
 	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 
-void			ft_display_short(short nb)
+/*static	void		ft_display_short(short nb)
 {
-	unsigned char octets[2];
-	unsigned char tmp;
-	int index;
+	unsigned char	octets[2];
+	unsigned char	tmp;
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -95,7 +95,7 @@ void			ft_display_short(short nb)
 	octets[0] = octets[1];
 	octets[1] = tmp;
 	printf("%.2x%.2x ", octets[0], octets[1]);
-}
+}*/
 
 void			ft_display(t_asm *info)
 {
