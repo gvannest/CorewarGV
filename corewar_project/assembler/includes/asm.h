@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 14:35:03 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 16:44:26 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,14 +179,6 @@ void	ft_token_load(t_asm *sasm, t_token *token, char* arg);
 //t_token	*ft_token_new();
 void	ft_token_display(t_token *token, int token_nb);
 void	ft_token_display_all(t_token *atoken);
-
-/*
-** FONCTIONS DE TESTS
-*/
-
-void	ft_test_params();
-void	ft_test_label();
-void	ft_tests_syntax();
 
 /*
 ** FONCTION AFFICHAGE CHAMP

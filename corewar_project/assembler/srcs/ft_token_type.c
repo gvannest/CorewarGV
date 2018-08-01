@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 13:47:31 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:48:05 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 16:09:59 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int				ft_is_label(char *arg)
 	return (is_label);
 }
 
-int	ft_is_op(char *arg)
+int					ft_is_op(char *arg)
 {
 	int	is_op;
 	int	index;

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_options.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/01 16:10:23 by srossi            #+#    #+#             */
+/*   Updated: 2018/08/01 16:11:00 by srossi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
-
-static int	ft_is_option(char c)
+static	int	ft_is_option(char c)
 {
 	int index;
 	int is_option;
@@ -20,7 +31,7 @@ static int	ft_is_option(char c)
 	return (is_option);
 }
 
-static void	ft_set_option(t_asm *info, char option)
+static	void	ft_set_option(t_asm *info, char option)
 {
 	if (option == 'h')
 		info->f_option_h = 1;
@@ -52,9 +63,10 @@ static	int	ft_options_valid(t_asm *info, char *arg)
 	return (is_valid);
 }
 
-void	ft_check_options(t_asm *info, int argc, char **argv)
+void			ft_check_options(t_asm *info, int argc, char **argv)
 {
-	if (!ft_options_valid(info, argv[1]) || (info->f_option_h && info->f_option_d))
+	if (!ft_options_valid(info, argv[1])
+			|| (info->f_option_h && info->f_option_d))
 		ft_print_usage(argc, argv);
 	else if (info->f_option_h)
 		ft_help();
