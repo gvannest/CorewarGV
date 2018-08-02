@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 16:08:47 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 17:13:52 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		main(int argc, char **argv)
 	if (info.error != 1)
 		ft_printf("Writing output program to %s%s.cor\n",
 				info.path, info.true_name);
+	ft_printf("%s.\n\n%zu\n", info.comment, ft_strlen(info.comment));
+	ft_printf("\n%zu\n", ft_strlen("test"));
 	close(info.fd_cor);
 	ft_free(&info);
 	return (0);
