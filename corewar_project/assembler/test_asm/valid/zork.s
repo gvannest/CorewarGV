@@ -1,12 +1,5 @@
-     .name                      " 
-zork"
-
-
-
-.comment "just a basic 
-
-
-living prog"
+.name "zork"
+.comment "just a basic living prog"
 
 		sti r1,%:live,%1
 		and r1,%0,r1

@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:21:45 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 15:15:35 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:08:00 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	ft_write_champ(t_asm *info)
 		p_token = p_token->next;
 	champ_ln = p_token->pos + p_token->arg_size;
 	while (index < champ_ln)
-		dprintf(info->fd_cor, "%c", info->tab[index++]);
+		ft_dprintf(info->fd_cor, "%c", info->tab[index++]);
 }
 
 static	void	ft_write_name(char *name, int fd_cor)
@@ -33,7 +33,7 @@ static	void	ft_write_name(char *name, int fd_cor)
 
 	index = 0;
 	while (index < PROG_NAME_LENGTH)
-		dprintf(fd_cor, "%c", name[index++]);
+		ft_dprintf(fd_cor, "%c", name[index++]);
 }
 
 static	void	ft_write_comment(char *comment, int fd_cor)
@@ -42,7 +42,7 @@ static	void	ft_write_comment(char *comment, int fd_cor)
 
 	index = 0;
 	while (index < COMMENT_LENGTH)
-		dprintf(fd_cor, "%c", comment[index++]);
+		ft_dprintf(fd_cor, "%c", comment[index++]);
 }
 
 static	void	ft_write_int(int nb, int fd_cor)
@@ -56,15 +56,12 @@ static	void	ft_write_int(int nb, int fd_cor)
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
 	ft_swap_bytes_int(octets);
-	dprintf(fd_cor, "%c%c%c%c", octets[0], octets[1], octets[2], octets[3]);
+	ft_dprintf(fd_cor, "%c%c%c%c", octets[0], octets[1], octets[2], octets[3]);
 }
 
 void			ft_write(t_asm *info)
 {
-	int magic;
-
-	magic = 0x00EA83F3;
-	ft_write_int(magic, info->fd_cor);
+	ft_write_int(COREWAR_EXEC_MAGIC, info->fd_cor);
 	ft_write_name(info->name, info->fd_cor);
 	ft_write_int(0, info->fd_cor);
 	ft_write_int(info->nb_instr, info->fd_cor);

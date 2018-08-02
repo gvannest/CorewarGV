@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 13:47:31 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 13:48:05 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 19:28:45 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int				ft_is_label(char *arg)
 	return (is_label);
 }
 
-int	ft_is_op(char *arg)
+int				ft_is_op(char *arg)
 {
 	int	is_op;
 	int	index;
@@ -97,7 +97,7 @@ int	ft_is_op(char *arg)
 	index = 0;
 	if (arg != 0)
 	{
-		while (index < NB_INSTR && ft_strcmp(op_tab[index].name, arg) != 0)
+		while (index < NB_INSTR && ft_strcmp(g_op_tab[index].name, arg) != 0)
 			index++;
 		if (index < NB_INSTR)
 			is_op = T_OP;

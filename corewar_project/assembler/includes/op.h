@@ -6,72 +6,62 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/06/28 11:56:08 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 15:08:24 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef OP_H
+# define OP_H
 
 /*
 ** Toutes les tailles sont en octets.
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
 */
-
-#define IND_SIZE				2
-#define REG_SIZE				4
-#define DIR_SIZE				REG_SIZE
-
+# define IND_SIZE				2
+# define REG_SIZE				4
+# define DIR_SIZE				REG_SIZE
 
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
 
+# define MAX_PLAYERS			4
+# define MEM_SIZE				(4*1024)
+# define IDX_MOD				(MEM_SIZE / 8)
+# define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
-#define MAX_ARG				MAX_PLAYERS * 3 + 4
-#define MAX_PLAYERS				4
-#define MEM_SIZE				(4*1024)
-#define IDX_MOD					(MEM_SIZE / 8)
-#define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
+# define COMMENT_CHAR			'#'
+# define LABEL_CHAR				':'
+# define DIRECT_CHAR			'%'
+# define SEPARATOR_CHAR			','
 
-#define COMMENT_CHAR			'#'
-#define LABEL_CHAR				':'
-#define DIRECT_CHAR				'%'
-#define SEPARATOR_CHAR			','
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-#define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define ASM_OPTION_CHARS		"hd"
 
+# define NAME_CMD_STRING		".name"
+# define COMMENT_CMD_STRING		".comment"
 
-#define ASM_OPTION_CHARS				"hd"
+# define REG_NUMBER				16
 
-#define NAME_CMD_STRING			".name"
-#define COMMENT_CMD_STRING		".comment"
-
-#define REG_NUMBER				16
-
-#define CYCLE_TO_DIE			1536
-#define CYCLE_DELTA				50
-#define NBR_LIVE				21
-#define MAX_CHECKS				10
-
-/*
-**
-*/
+# define CYCLE_TO_DIE			1536
+# define CYCLE_DELTA			50
+# define NBR_LIVE				21
+# define MAX_CHECKS				10
 
 typedef char	t_arg_type;
 
-#define T_REG					1
-#define T_DIR					2
-#define T_IND					4
-#define T_LAB					8
+# define T_REG					1
+# define T_DIR					2
+# define T_IND					4
+# define T_LAB					8
 
 /*
-** Savinien :
+** DEFINE DE TYPES SUPPLEMENTAIRES :
 */
-#define T_IND_LAB					16
-#define T_DIR_LAB					32
-#define T_OP					64
-
-/*
-**
-*/
+# define T_IND_LAB				16
+# define T_DIR_LAB				32
+# define T_OP					64
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
@@ -85,13 +75,14 @@ typedef char	t_arg_type;
 /*
 ** NB d'instructions définies dans le tableau op.c :
 */
+# define NB_INSTR 16
 
-#define NB_INSTR 16 
-
-typedef struct		header_s
+typedef struct			s_header
 {
-  unsigned int		magic;
-  char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
-  char				comment[COMMENT_LENGTH + 1];
-}					header_t;
+	unsigned int		magic;
+	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		prog_size;
+	char				comment[COMMENT_LENGTH + 1];
+}						t_header;
+
+#endif

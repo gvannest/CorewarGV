@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:38:03 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 17:13:56 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 16:09:34 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static	void	ft_pos_increment(t_asm *info, t_token *new_token)
 {
-		info->pos += new_token->arg_size;
+	info->pos += new_token->arg_size;
 	if (new_token->opcode > 0)
 		info->last_opcode = new_token->opcode;
-	if (new_token->type == T_OP && (new_token->nb_params > 1 || (ft_strequ(new_token->s_val,"aff"))))
+	if (new_token->type == T_OP && (new_token->nb_params > 1
+				|| (ft_strequ(new_token->s_val, "aff"))))
 		info->pos++;
 }
 

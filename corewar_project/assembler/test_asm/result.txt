@@ -1,0 +1,136 @@
+[H[2J[3J[0;35mChecking unvalid champs
+[0m
+S
+Champion comment too long (Max length 2048)
+Writing output program to ./valid/basic_test/comment_len_2049.cor
+
+Writing output program to ./valid/basic_test/hash_and_tab_at_EOF.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Writing output program to ./valid/basic_test/hash_at_header.cor
+Lexical error at [14:1]
+
+Syntax error at token [TOKEN][003:001] COMMAND_COMMENT ".comment"
+Lexical error at [3:1]
+
+Syntax error at token [TOKEN][002:001] COMMAND_NAME ".name"
+Writing output program to ./valid/basic_test/header_double_names.cor
+
+Champion comment too long (Max length 2048)
+Error=1 Syntax error at token [TOKEN][001:011] "(null)"
+
+Champion name too long (Max length 128)
+Error=1 Syntax error at token [TOKEN][001:008] "(null)"
+
+Lexical error at [5:11]
+Syntax error at token [TOKEN][005:011] INSTRUCTION ""
+
+Lexical error at [9:6]
+Lexical error at [9:1]
+
+Lexical error at [7:6]
+Lexical error at [7:1]
+
+Lexical error at [7:6]
+Lexical error at [7:1]
+
+Syntax error at token [TOKEN][008:001] ENDLINE
+Lexical error at [7:1]
+
+Syntax error at token [TOKEN][004:006] ENDLINE
+Lexical error at [4:1]
+
+Syntax error at token [TOKEN][004:007] LABEL "second:"
+Lexical error at [4:1]
+
+Syntax error at token [TOKEN][011:001] ENDLINE
+Lexical error at [8:1]
+
+Writing output program to ./valid/basic_test/ld_1.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Writing output program to ./valid/basic_test/ld_2.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Writing output program to ./valid/basic_test/ldi_2.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Writing output program to ./valid/basic_test/live.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Writing output program to ./valid/basic_test/name_len_128.cor
+Error=1 Syntax error at token [TOKEN][001:008] "(null)"
+
+Champion name too long (Max length 128)
+Error=1 Syntax error at token [TOKEN][001:008] "(null)"
+
+Writing output program to ./valid/basic_test/neg_indirect_error.cor
+Lexical error at [4:1]
+
+Writing output program to ./valid/basic_test/no_space_after_label.cor
+Lexical error at [8:1]
+
+Writing output program to ./valid/basic_test/no_space_between_op_and_param.cor
+Lexical error at [8:7]
+
+Syntax error at token [TOKEN][005:021] INSTRUCTION "adfa"
+Lexical error at [5:18]
+
+Lexical error at [4:5]
+Lexical error at [2:11]
+
+Syntax error at token [TOKEN][006:020] ENDLINE
+Syntax error at token [TOKEN][004:016] ENDLINE
+
+Syntax error at token [TOKEN][004:008] SEPARATOR ","
+Lexical error at [4:1]
+
+Syntax error at token [TOKEN][005:021] ENDLINE
+Syntax error at token [TOKEN][005:020] ENDLINE
+
+Syntax error at token [TOKEN][006:013] INSTRUCTION "aaa"
+Lexical error at [6:10]
+
+Invalid parameter 1 type indirect for instruction live
+Invalid parameter 1 type INDIRECT for instruction live
+
+Writing output program to ./valid/basic_test/sq_at_header.cor
+Lexical error at [1:7]
+
+Writing output program to ./valid/basic_test/st.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Writing output program to ./valid/basic_test/tab_at_end_of_file.cor
+Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+
+Syntax error at token [TOKEN][003:001] COMMAND_COMMENT ".comment"
+Lexical error at [3:1]
+
+Lexical error at [9:4]
+Lexical error at [9:1]
+
+Writing output program to ./valid/basic_test/test_lifeX.cor
+Lexical error at [14:1]
+
+Writing output program to ./valid/basic_test/test_no_life.cor
+Lexical error at [5:1]
+
+Writing output program to ./valid/basic_test/test_ocp.cor
+Lexical error at [5:1]
+
+Writing output program to ./valid/basic_test/testing2.cor
+Lexical error at [5:1]
+
+Writing output program to ./valid/basic_test/ultimate-surrender.cor
+Lexical error at [426:17]
+
+Writing output program to ./valid/basic_test/weirdest_error_ever.cor
+Lexical error at [11:1]
+
+Syntax error at token [TOKEN][003:001] INDIRECT "42"
+Syntax error at token [TOKEN][003:001] INSTRUCTION "42"
+
+Writing output program to ./valid/basic_test/zultimate-surrender.cor
+Lexical error at [426:17]
+
+Thanks for using that script, good luck ;)

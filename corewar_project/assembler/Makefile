@@ -12,7 +12,7 @@ LIBS = ../libft/libft.a
 LIB_PATH = ../libft/
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
-INC_PATH = ./includes/ $(LIB_PATH)/includes/ 
+INC_PATH = ./includes/ $(LIB_PATH)/includes/
 
 # SOURCES
 SRC_NAME = main.c \
@@ -28,13 +28,11 @@ SRC_NAME = main.c \
 		   ft_errorm.c \
 		   ft_fill_labels.c \
 		   ft_is_smthg.c \
+		   ft_load_champ.c \
 		   ft_syntax.c \
-		   ft_tests_label.c \
-		   ft_test_params.c \
-		   ft_tests_syntax.c \
-		   ft_display.c \
 		   ft_display_cor.c \
 		   ft_token_free.c \
+		   ft_type_char.c \
 		   ft_get_value.c \
 		   ft_create_champ.c \
 		   ft_write_cor.c \
@@ -43,6 +41,9 @@ SRC_NAME = main.c \
 		   ft_token_load.c \
 		   ft_swap_bytes.c \
 		   ft_options.c \
+		   ft_open_champ.c \
+		   ft_load_champ_param.c \
+		   ft_init_info.c \
 		   ft_help.c \
 		   ft_free.c \
 		   ft_error.c
@@ -95,7 +96,8 @@ all : libftcomp $(OBJ_PATH) $(NAME)
 libftcomp:
 	@$(MAKE) -C $(LIB_PATH)
 
-$(NAME): Makefile $(OBJ) $(DEPS)
+$(NAME): Makefile $(DEPS) $(OBJ)
+	
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
 	@$(CC) $(OBJ) $(INC) $(LIBS) -o $(DST)$@

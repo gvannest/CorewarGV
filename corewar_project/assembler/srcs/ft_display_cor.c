@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:48:34 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 14:30:06 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:05:00 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static	void	ft_display_champ(t_asm *info)
 {
-	int index;
+	int		index;
 	t_token *p_token;
-	int	champ_ln;
+	int		champ_ln;
 
 	index = 0;
 	p_token = info->atoken;
@@ -26,15 +26,15 @@ static	void	ft_display_champ(t_asm *info)
 	while (index < champ_ln)
 	{
 		if (index % 16 == 0)
-			printf("\n");
+			ft_printf("\n");
 		else if (index % 2 == 0 && index != 0)
-			printf(" ");
-		printf("%.2hhx", info->tab[index]);
+			ft_printf(" ");
+		ft_printf("%.2hhx", info->tab[index]);
 		index++;
 	}
 }
 
-void			ft_display_name(char *name)
+static	void	ft_display_name(char *name)
 {
 	int index;
 
@@ -42,16 +42,16 @@ void			ft_display_name(char *name)
 	while (index < PROG_NAME_LENGTH)
 	{
 		if ((index + 4) % 16 == 0)
-			printf("\n");
+			ft_printf("\n");
 		else if (index % 2 == 0 && index != 0)
-			printf(" ");
-		printf("%.2x", name[index]);
+			ft_printf(" ");
+		ft_printf("%.2x", name[index]);
 		index++;
 	}
-	printf(" ");
+	ft_printf(" ");
 }
 
-void			ft_display_comment(char *comment)
+static	void	ft_display_comment(char *comment)
 {
 	int index;
 
@@ -59,19 +59,19 @@ void			ft_display_comment(char *comment)
 	while (index < COMMENT_LENGTH)
 	{
 		if ((index + 12) % 16 == 0 && index != 0)
-			printf("\n");
+			ft_printf("\n");
 		else if (index % 2 == 0 && index != 0)
-			printf(" ");
-		printf("%.2x", comment[index]);
+			ft_printf(" ");
+		ft_printf("%.2x", comment[index]);
 		index++;
 	}
-	printf(" ");
+	ft_printf(" ");
 }
 
-void			ft_display_int(int nb)
+static	void	ft_display_int(int nb)
 {
-	unsigned char octets[4];
-	int index;
+	unsigned char	octets[4];
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -79,22 +79,7 @@ void			ft_display_int(int nb)
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
 	ft_swap_bytes_int(octets);
-	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
-}
-
-void			ft_display_short(short nb)
-{
-	unsigned char octets[2];
-	unsigned char tmp;
-	int index;
-
-	index = 0;
-	octets[0] = nb >> 0;
-	octets[1] = nb >> 8;
-	tmp = octets[0];
-	octets[0] = octets[1];
-	octets[1] = tmp;
-	printf("%.2x%.2x ", octets[0], octets[1]);
+	ft_printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 
 void			ft_display(t_asm *info)

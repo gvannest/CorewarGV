@@ -6,47 +6,21 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/19 15:14:23 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 17:13:52 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	init_info(t_asm *info)
+int		main(int argc, char **argv)
 {
-	info->last_opcode = -1;
-	info->err_pos = -1;
-	info->nb_params = 0;
-	info->size = 1;
-	info->last_op_line = -1;
-}
-
-int	ft_open_champ(char *path)
-{
-	int		fp;
-	char	*champ_file;
-
-	champ_file = ft_strjoin(path, ".cor");
-	fp = 0;
-	fp = open(champ_file, O_WRONLY | O_CREAT | O_TRUNC, 00700);
-	ft_strdel(&champ_file);
-	return (fp);
-}
-int	main(int argc, char **argv)
-{
-	(void) argc;
 	t_asm	info;
-	(void) argv;
 	char	*champ_path;
 
 	ft_bzero(&info, sizeof(t_asm));
-	init_info(&info);
+	ft_init_info(&info);
 	if (!ft_is_valid_syntax(&info))
-	{
-		printf("error syntax\n");
-		ft_free(&info);
-		exit(EXIT_FAILURE);
-	}
+		ft_error_syntax(&info);
 	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
 	champ_path = ft_strjoin(info.path, info.true_name);
@@ -56,14 +30,13 @@ int	main(int argc, char **argv)
 	ft_create_champ(&info);
 	ft_write(&info);
 	if (info.f_option_d)
-	{
-		ft_display(&info);
-		ft_free(&info);
-		exit(EXIT_SUCCESS);
-	}
+		ft_option_display(&info);
 	if (info.error != 1)
-		printf("Writing output program to %s%s.cor\n", info.path, info.true_name);
-	close (info.fd_cor);
+		ft_printf("Writing output program to %s%s.cor\n",
+				info.path, info.true_name);
+	ft_printf("%s.\n\n%zu\n", info.comment, ft_strlen(info.comment));
+	ft_printf("\n%zu\n", ft_strlen("test"));
+	close(info.fd_cor);
 	ft_free(&info);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:46:05 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/13 15:28:50 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:06:15 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void		ft_fill_labels(t_token *atoken)
 			p_token_dst = ft_find_label(p_token_dst, p_token_src->s_val);
 			if (p_token_dst == NULL)
 			{
-				printf("No such label %s while attempting to dereference token [TOKEN][%.3d:%.3d] %s \"%s\"\n", ft_clean_label(p_token_src->s_val), p_token_src->line, p_token_src->cl + 1, ft_type_char(p_token_src->type), p_token_src->s_val);
+				ft_printf("No such label %s while attempting to dereference \
+token [TOKEN][%.3d:%.3d] %s \"%s\"\n", ft_clean_label(p_token_src->s_val)
+, p_token_src->line, p_token_src->cl + 1, ft_type_char(p_token_src->type)
+, p_token_src->s_val);
 				exit(EXIT_FAILURE);
 			}
 			p_token_src->i_val = p_token_dst->pos - p_token_src->last_op_pos;
