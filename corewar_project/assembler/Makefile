@@ -42,6 +42,7 @@ SRC_NAME = main.c \
 		   ft_swap_bytes.c \
 		   ft_options.c \
 		   ft_open_champ.c \
+		   ft_load_champ_param.c \
 		   ft_init_info.c \
 		   ft_help.c \
 		   ft_free.c \

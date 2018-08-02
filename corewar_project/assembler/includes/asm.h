@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/02 11:23:56 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 13:40:10 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,12 @@ void	ft_create_champ(t_asm *info);
 void	ft_load_ocp(t_token *token_op);
 void	ft_load_int(int nb, char *champ);
 void	ft_load_short(short nb, char *champ);
+void	ft_param_left(t_asm *info, t_token *p_token);
+int		ft_param_op(t_asm *info, t_token *p_token, int index);
+int		ft_param_dir(t_asm *info, t_token *p_token, int index);
+int		ft_param_ind(t_asm *info, t_token *p_token, int index);
+int		ft_param_reg(t_asm *info, t_token *p_token, int index);
+
 /*
 ** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
 */

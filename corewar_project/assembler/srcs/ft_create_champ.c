@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/02 11:19:04 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 13:41:42 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,40 @@ void			ft_create_champ(t_asm *info)
 
 	index = 0;
 	p_token = info->atoken;
+	if (!info->comment_f || !info->name_f || (info->nb_instr == 0 && !p_token))
+		ft_error_incomplete(info, 1);
+	if (info->nb_params_left > 0)
+		ft_param_left(info, p_token);
+	while (p_token)
+	{
+		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
+			ft_error_param(info, p_token, 5);
+		if (p_token->type == T_OP)
+			index = ft_param_op(info, p_token, index);
+		else if (p_token->type == T_REG)
+			index = ft_param_reg(info, p_token, index);
+		else if (p_token->type == T_DIR || p_token->type == T_DIR_LAB)
+			index = ft_param_dir(info, p_token, index);
+		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)
+			index = ft_param_ind(info, p_token, index);
+		p_token->last_cor_index = info->last_cor_index;
+		info->nb_instr = index;
+		p_token = p_token->next;
+	}
+}
+
+/*void			ft_create_champ(t_asm *info)
+{
+	t_token	*p_token;
+	int		index;
+
+	index = 0;
+	p_token = info->atoken;
 	if (info->comment_f == 0 || info->name_f == 0
 			|| (info->nb_instr == 0 && !p_token))
 		ft_error_incomplete(info, 1);
 	if (info->nb_params_left > 0)
-	{
-		if (info->comma_f == 1)
-			ft_error_incomplete(info, 2);
-		else if (info->comma_f <= 0)
-			ft_error_param(info, p_token, 1);
-	}
+		ft_param_left(info, p_token);
 	while (p_token)
 	{
 		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
@@ -58,7 +82,7 @@ void			ft_create_champ(t_asm *info)
 				ft_load_int((int)p_token->i_val, &info->tab[index]);
 			index += p_token->arg_size;
 		}
-		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)//fusionner avec if cidessus DIR ?
+		else if (p_token->type == T_IND || p_token->type == T_IND_LAB)
 		{
 			ft_load_short((short)p_token->i_val, &info->tab[index]);
 			index += p_token->arg_size;
@@ -67,4 +91,4 @@ void			ft_create_champ(t_asm *info)
 		info->nb_instr = index;
 		p_token = p_token->next;
 	}
-}
+}*/
