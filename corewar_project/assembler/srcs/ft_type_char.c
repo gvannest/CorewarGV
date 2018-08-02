@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_token.c                                   :+:      :+:    :+:   */
+/*   ft_type_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 13:26:06 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 19:30:01 by srossi           ###   ########.fr       */
+/*   Created: 2018/08/01 16:20:34 by srossi            #+#    #+#             */
+/*   Updated: 2018/08/01 16:20:49 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_check_token(t_asm *info, t_token *token)
+char	*ft_type_char(int type)
 {
-	char	type;
-
-	type = token->type;
-	if (type == T_DIR_LAB)
-		type = T_DIR;
+	if (type == T_DIR)
+		return ("DIRECT");
+	else if (type == T_DIR_LAB)
+		return ("DIRECT LABEL");
 	else if (type == T_IND_LAB)
-		type = T_IND;
-	if (token->type == T_DIR_LAB || token->type == T_IND_LAB
-			|| token->type == T_DIR || token->type == T_IND)
-	{
-		if ((g_op_tab[info->last_opcode - 1].param_type[info->cur_param - 1]
-					& type) == 0)
-			ft_error_param(info, token, 3);
-	}
+		return ("INDIRECT LABEL");
+	else if (type == T_IND)
+		return ("INDIRECT");
+	else if (type == T_REG)
+		return ("REGISTER");
+	else if (type == T_LAB)
+		return ("LABEL");
+	else
+		return ("UNKNOWN TYPE");
 }

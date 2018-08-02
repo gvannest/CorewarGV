@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_token.c                                   :+:      :+:    :+:   */
+/*   ft_init_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 13:26:06 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 19:30:01 by srossi           ###   ########.fr       */
+/*   Created: 2018/08/01 18:39:27 by srossi            #+#    #+#             */
+/*   Updated: 2018/08/01 18:41:56 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_check_token(t_asm *info, t_token *token)
+void	ft_init_info(t_asm *info)
 {
-	char	type;
-
-	type = token->type;
-	if (type == T_DIR_LAB)
-		type = T_DIR;
-	else if (type == T_IND_LAB)
-		type = T_IND;
-	if (token->type == T_DIR_LAB || token->type == T_IND_LAB
-			|| token->type == T_DIR || token->type == T_IND)
-	{
-		if ((g_op_tab[info->last_opcode - 1].param_type[info->cur_param - 1]
-					& type) == 0)
-			ft_error_param(info, token, 3);
-	}
+	info->last_opcode = -1;
+	info->err_pos = -1;
+	info->nb_params = 0;
+	info->size = 1;
+	info->last_op_line = -1;
 }
+

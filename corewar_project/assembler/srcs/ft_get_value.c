@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 10:20:50 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 17:39:09 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 19:29:14 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_get_opcode(char *arg)
 	index = 0;
 	while (index < NB_INSTR)
 	{
-		if (ft_strcmp(op_tab[index].name, arg) == 0)
-			return (op_tab[index].opcode);
+		if (ft_strcmp(g_op_tab[index].name, arg) == 0)
+			return (g_op_tab[index].opcode);
 		index++;
 	}
 	return (-1);

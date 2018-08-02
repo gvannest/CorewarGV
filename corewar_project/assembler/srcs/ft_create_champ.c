@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/07/19 14:20:58 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/01 17:34:32 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static	void	ft_load_ocp(t_token *token_op)
 	while (index >= 6 / params_nb)
 	{
 		if (p_token->type == T_DIR_LAB)
-			token_op->ocp  = token_op->ocp | (2 << index);
+			token_op->ocp = token_op->ocp | (2 << index);
 		else if (p_token->type == T_IND_LAB || p_token->type == T_IND)
-			token_op->ocp  = token_op->ocp | (3 << index);
+			token_op->ocp = token_op->ocp | (3 << index);
 		else
-			token_op->ocp  = token_op->ocp | (p_token->type << index);
+			token_op->ocp = token_op->ocp | (p_token->type << index);
 		index -= 2;
 		p_token = p_token->next;
 	}
@@ -36,8 +36,8 @@ static	void	ft_load_ocp(t_token *token_op)
 
 static	void	ft_load_int(int nb, char *champ)
 {
-	unsigned char octets[4];
-	int index;
+	unsigned char	octets[4];
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -54,9 +54,9 @@ static	void	ft_load_int(int nb, char *champ)
 
 static	void	ft_load_short(short nb, char *champ)
 {
-	unsigned char octets[2];
-	unsigned char tmp;
-	int index;
+	unsigned char	octets[2];
+	unsigned char	tmp;
+	int				index;
 
 	index = 0;
 	octets[0] = nb >> 0;
@@ -67,14 +67,15 @@ static	void	ft_load_short(short nb, char *champ)
 	champ[1] = octets[1];
 }
 
-void	ft_create_champ(t_asm *info)
+void			ft_create_champ(t_asm *info)
 {
 	t_token	*p_token;
 	int		index;
-	
+
 	index = 0;
 	p_token = info->atoken;
-	if (info->comment_f == 0 || info->name_f == 0 || (info->nb_instr == 0 && !p_token))
+	if (info->comment_f == 0 || info->name_f == 0
+			|| (info->nb_instr == 0 && !p_token))
 		ft_error_incomplete(info, 1);
 	if (info->nb_params_left > 0)
 	{
@@ -97,7 +98,7 @@ void	ft_create_champ(t_asm *info)
 				info->tab[index++] = p_token->ocp;
 				p_token->arg_size++;
 			}
-			info->last_cor_index = index;;
+			info->last_cor_index = index;
 		}
 		else if (p_token->type == T_REG)
 		{
