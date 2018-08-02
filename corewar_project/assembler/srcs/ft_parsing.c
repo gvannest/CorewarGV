@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:54:26 by msicot            #+#    #+#             */
-/*   Updated: 2018/07/17 13:25:05 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/02 10:47:46 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_check_data(t_asm *info)
 static void	check_line(t_asm *info, char *line, int len)
 {
 	int i;
-	
+
 	i = len;
 	if (line == NULL)
 		return ;
@@ -63,7 +63,6 @@ void		ft_gnl(t_asm *info)
 	while ((info->gnl = get_next_line(info->fp, &line)) > 0 && info->error == 0
 			&& info->stop == 0)
 	{
-	//	printf("line : \"%s\"\n", line);
 		++info->line_nb;
 		check_line(&(*info), line, ft_strlen(line));
 		if (info->error != 0)
