@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/01 18:47:07 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 11:01:55 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ int		main(int argc, char **argv)
 	ft_bzero(&info, sizeof(t_asm));
 	ft_init_info(&info);
 	if (!ft_is_valid_syntax(&info))
-	{
-		printf("error syntax\n");
-		ft_free(&info);
-		exit(EXIT_FAILURE);
-	}
+		ft_error_syntax(&info);
 	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
 	champ_path = ft_strjoin(info.path, info.true_name);

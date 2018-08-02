@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:53:35 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 19:14:33 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 11:23:56 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct s_op
 	char	dir_oct_size; //0 = 4 octets et 1 = 2 octets
 }				t_op;
 
-extern t_op g_op_tab[NB_INSTR + 1];
+	extern t_op g_op_tab[NB_INSTR + 1];
 
 /*
  * parsing
@@ -127,7 +127,7 @@ void	reset_words_flags(t_asm *info, char **arg);
 /*
  * Error
  */
-void	ft_error(int a);
+void	ft_error_syntax(t_asm *info);
 void	parsing_error(t_asm *info, char *line);
 void	ft_syntax_err(t_asm *info, int i, char *line);
 void	ft_error_management(t_asm *info, char *arg);
@@ -177,9 +177,12 @@ int		ft_open_champ(char *path);
 void	ft_option_display(t_asm *info);
 
 /*
-** FONCTION CREER CHAMP
+** FONCTION CREER/LOAD CHAMP
 */
 void	ft_create_champ(t_asm *info);
+void	ft_load_ocp(t_token *token_op);
+void	ft_load_int(int nb, char *champ);
+void	ft_load_short(short nb, char *champ);
 /*
 ** FONCTIONS RECHERCHE/REMPLISSAGE LABELS
 */

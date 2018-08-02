@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:48:34 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 18:27:50 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 10:56:44 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,6 @@ static	void	ft_display_int(int nb)
 	ft_swap_bytes_int(octets);
 	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
-
-/*static	void		ft_display_short(short nb)
-{
-	unsigned char	octets[2];
-	unsigned char	tmp;
-	int				index;
-
-	index = 0;
-	octets[0] = nb >> 0;
-	octets[1] = nb >> 8;
-	tmp = octets[0];
-	octets[0] = octets[1];
-	octets[1] = tmp;
-	printf("%.2x%.2x ", octets[0], octets[1]);
-}*/
 
 void			ft_display(t_asm *info)
 {

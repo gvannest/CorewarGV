@@ -6,13 +6,13 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/01 16:10:23 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/01 19:09:01 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 11:03:08 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	ft_option_display(t_asm *info)
+void			ft_option_display(t_asm *info)
 {
 	ft_display(info);
 	ft_free(info);

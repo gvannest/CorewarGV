@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/01 19:29:50 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 11:02:48 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,11 @@ void	parsing_error(t_asm *info, char *line)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_error(int a)
+void	ft_error_syntax(t_asm *info)
 {
-	if (a == 1)
-		perror("Error");
-	else
-		return ;
+	printf("Syntax error\n");
+	ft_free(info);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_error_param(t_asm *info, t_token *token, int nb_error)
