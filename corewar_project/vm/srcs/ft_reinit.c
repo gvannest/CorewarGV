@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/20 14:56:20 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 17:28:09 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 15:44:30 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		ft_reinit_param(t_proc *proc)
 		i++;
 	}
 	proc->ocp = -1;
+	proc->ocp_valid = 0;
 	proc->jump = 0;
 	proc = proc->next;
 }

@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 11:57:53 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/24 12:09:44 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 19:29:47 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void			ft_add(t_arena *arena, t_proc *proc)
 {
 	int	tab_tmp[2];
+	int	*res;
+	char	dir_size;
 
-	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
+	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return;
-	if (!ft_check_ocp(proc->tab_param, "r", "r", "r"))
-		return;
+	res = &(proc->reg[proc->tab_param[2].value - 1]);
 	tab_tmp[0] = proc->reg[proc->tab_param[0].value - 1];
 	tab_tmp[1] = proc->reg[proc->tab_param[1].value - 1];
-	proc->reg[proc->tab_param[2].value - 1] = tab_tmp[0] + tab_tmp[1];
-	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
+	*res = tab_tmp[0] + tab_tmp[1];
+	proc->carry = (*res == 0 ? 1 : 0);
 }
 

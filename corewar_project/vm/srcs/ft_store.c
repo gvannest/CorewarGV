@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 16:08:15 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 12:34:17 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 19:14:46 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void		ft_store(t_arena *arena, t_proc *proc)
 {
 	int k;
 	int reg_value;
+	char	dir_size;
 
-	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
-		return;
-	if (!ft_check_ocp(proc->tab_param, "r", "ir", ""))
+	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return;
 	reg_value = proc->reg[proc->tab_param[0].value - 1];
-	if (proc->tab_param[1].type == 'i')
+	if (proc->tab_param[1].type == T_IND)
 	{
 		ft_calc_index(&k, proc->tab_param[1].value, proc->pc_act, 1);
 		ft_write_memory(arena->map, reg_value, k, REG_SIZE);
 		ft_update_map_pyr(arena->map_pyr, proc->pc_act, k, REG_SIZE);
 	}
-	if (proc->tab_param[1].type == 'r')
+	if (proc->tab_param[1].type == T_REG)
 		proc->reg[proc->tab_param[1].value - 1] = reg_value;
-	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
+	//proc->carry = (reg_value == 0 ? 1 : 0);
 }

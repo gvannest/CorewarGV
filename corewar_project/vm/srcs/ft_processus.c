@@ -16,18 +16,21 @@ static void		ft_move_ocp(t_proc *proc, char ocp)
 
 	i = 0;
 	k = 1;
-	tab[0] = ocp >> 6 & 0x03;
-	tab[1] = ocp >> 4 & 0x03;
-	tab[2] = ocp >> 2 & 0x03;
-	while (i < 3)
+	if (proc->ocp_valid == 1)
 	{
-		if (tab[i] == 0x01)
-			k = k + 1;
-		else if (tab[i] == 0x02)
-			k = k + 4 - 2 * op_tab[proc->opcode_act - 1].dir_oct_size;
-		else if (tab[i] == 0x03)
-			k = k + 2;
-		i++;
+		tab[0] = ocp >> 6 & 0x03;
+		tab[1] = ocp >> 4 & 0x03;
+		tab[2] = ocp >> 2 & 0x03;
+		while (i < 3)
+		{
+			if (tab[i] == 0x01)
+				k = k + 1;
+			else if (tab[i] == 0x02)
+				k = k + 4 - 2 * op_tab[proc->opcode_act - 1].dir_oct_size;
+			else if (tab[i] == 0x03)
+				k = k + 2;
+			i++;
+		}
 	}
 	proc->pc_act = (proc->pc_act + k + 1) % MEM_SIZE;
 }

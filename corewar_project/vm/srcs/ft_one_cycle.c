@@ -7,7 +7,7 @@ void			ft_one_cycle(t_arena *arena, t_proc *proc)
 
 	while (proc)
 	{
-		if (proc->nb_cycle_before_op != 0)
+		if (proc->nb_cycle_before_op > 1)
 			proc->nb_cycle_before_op--;
 		else
 		{

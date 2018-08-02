@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 17:31:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 14:59:56 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 19:07:19 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 static void		ft_ldandlld(t_arena *arena, t_proc *proc, char flag_idx)
 {
-	int k;
+	int		k;
+	int		*res;
+	char	size_to_read;
+	char	dir_size;
 
-	if (!(ft_get_param(arena, proc, proc->pc_act, 0)))
+	size_to_read = (flag_idx == 1 ? REG_SIZE : IND_SIZE);
+	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return;
-	if (!ft_check_ocp(proc->tab_param, "di", "r", ""))
-		return;
-	if (proc->tab_param[0].type == 'd')
-		proc->reg[proc->tab_param[1].value - 1] = proc->tab_param[0].value;
-	else if (proc->tab_param[0].type == 'i')
+	res = &(proc->reg[proc->tab_param[1].value - 1]);
+	if (proc->tab_param[0].type == T_DIR)
+		*res = proc->tab_param[0].value;
+	else if (proc->tab_param[0].type == T_IND)
 	{
 		ft_calc_index(&k, proc->tab_param[0].value, proc->pc_act, flag_idx);
-		proc->reg[proc->tab_param[1].value - 1] = (int)ft_read_memory(arena->map, k, REG_SIZE);
+		*res = (int)ft_read_memory(arena->map, k, size_to_read);
 	}
-	(proc->reg[proc->tab_param[2].value - 1] == 0 ? proc->carry = 1 : 0);
+	proc->carry = (*res == 0 ? 1 : 0);
 }
 
 void		ft_load(t_arena *arena, t_proc *proc)
