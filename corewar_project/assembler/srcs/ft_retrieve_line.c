@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 12:11:18 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 11:48:45 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:07:14 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,12 @@ void		retrieve_line(t_asm *info, char *line)
 	{
 		parse_line(&(*info), line, &(*info->comment));
 		if (info->comment_f == -1)
-		{
 			info->comment[ft_strlen(info->comment)] = '\n';
-		}
 	}
 	else if (info->name_f == -1)
 	{
 		parse_line(&(*info), line, &(*info->name));
 		if (info->name_f == -1)
-		{
 			info->name[ft_strlen(info->name)] = '\n';
-		}
 	}
 }

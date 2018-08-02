@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:47:09 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 11:02:48 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:06:01 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	parsing_error(t_asm *info, char *line)
 
 void	ft_error_syntax(t_asm *info)
 {
-	printf("Syntax error\n");
+	ft_printf("Syntax error\n");
 	ft_free(info);
 	exit(EXIT_FAILURE);
 }
@@ -65,14 +65,14 @@ void	ft_error_syntax(t_asm *info)
 void	ft_error_param(t_asm *info, t_token *token, int nb_error)
 {
 	if (nb_error == 1)
-		printf("Invalid parameter count for instruction %s\n",
+		ft_printf("Invalid parameter count for instruction %s\n",
 				g_op_tab[info->last_opcode - 1].name);
 	else if (nb_error == 2)
-		printf("Invalid parameter %d type %s for instruction %s\n",
+		ft_printf("Invalid parameter %d type %s for instruction %s\n",
 					info->cur_param, ft_type_char(token->type),
 					g_op_tab[info->last_opcode - 1].name);
 	else if (nb_error == 3)
-		printf("Invalid parameter %d type %s for instruction %s\n",
+		ft_printf("Invalid parameter %d type %s for instruction %s\n",
 					info->cur_param - 1, ft_type_char(token->type),
 					g_op_tab[info->last_opcode - 1].name);
 	else if (nb_error == 4)

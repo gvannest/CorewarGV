@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:48:34 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/02 10:56:44 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:05:00 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static	void	ft_display_champ(t_asm *info)
 	while (index < champ_ln)
 	{
 		if (index % 16 == 0)
-			printf("\n");
+			ft_printf("\n");
 		else if (index % 2 == 0 && index != 0)
-			printf(" ");
-		printf("%.2hhx", info->tab[index]);
+			ft_printf(" ");
+		ft_printf("%.2hhx", info->tab[index]);
 		index++;
 	}
 }
@@ -42,13 +42,13 @@ static	void	ft_display_name(char *name)
 	while (index < PROG_NAME_LENGTH)
 	{
 		if ((index + 4) % 16 == 0)
-			printf("\n");
+			ft_printf("\n");
 		else if (index % 2 == 0 && index != 0)
-			printf(" ");
-		printf("%.2x", name[index]);
+			ft_printf(" ");
+		ft_printf("%.2x", name[index]);
 		index++;
 	}
-	printf(" ");
+	ft_printf(" ");
 }
 
 static	void	ft_display_comment(char *comment)
@@ -59,13 +59,13 @@ static	void	ft_display_comment(char *comment)
 	while (index < COMMENT_LENGTH)
 	{
 		if ((index + 12) % 16 == 0 && index != 0)
-			printf("\n");
+			ft_printf("\n");
 		else if (index % 2 == 0 && index != 0)
-			printf(" ");
-		printf("%.2x", comment[index]);
+			ft_printf(" ");
+		ft_printf("%.2x", comment[index]);
 		index++;
 	}
-	printf(" ");
+	ft_printf(" ");
 }
 
 static	void	ft_display_int(int nb)
@@ -79,7 +79,7 @@ static	void	ft_display_int(int nb)
 	octets[2] = nb >> 16;
 	octets[3] = nb >> 24;
 	ft_swap_bytes_int(octets);
-	printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
+	ft_printf("%.2x%.2x %.2x%.2x ", octets[0], octets[1], octets[2], octets[3]);
 }
 
 void			ft_display(t_asm *info)

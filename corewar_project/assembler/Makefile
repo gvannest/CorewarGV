@@ -12,7 +12,7 @@ LIBS = ../libft/libft.a
 LIB_PATH = ../libft/
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
-INC_PATH = ./includes/ $(LIB_PATH)/includes/ 
+INC_PATH = ./includes/ $(LIB_PATH)/includes/
 
 # SOURCES
 SRC_NAME = main.c \
@@ -96,7 +96,8 @@ all : libftcomp $(OBJ_PATH) $(NAME)
 libftcomp:
 	@$(MAKE) -C $(LIB_PATH)
 
-$(NAME): Makefile $(OBJ) $(DEPS)
+$(NAME): Makefile $(DEPS) $(OBJ)
+	
 	@echo -e "$(LOG_CLEAR)$(LOG_BLUE)build $(NAME)$(LOG_NOCOLOR)"
 	@echo -e "--$(LOG_CLEAR)$(LOG_MAGENTA)$(NAME)$(LOG_NOCOLOR)....................... $(LOG_ORANGE)assembling$(LOG_NOCOLOR)$(LOG_UP)"
 	@$(CC) $(OBJ) $(INC) $(LIBS) -o $(DST)$@

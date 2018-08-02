@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 14:26:54 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 10:39:19 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:03:45 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ static void	comma_analyser(t_asm *info, char *line)
 static void	quote_analyser(t_asm *info)
 {
 	if (info->quote == 0 && info->comment_f != -1 && info->name_f != -1)
-	{
 		info->error = 1;
-	}
 	else
 	{
 		if (info->quote == 0)
@@ -59,12 +57,8 @@ void		analyse_separator(t_asm *info, char *line)
 	if (line == NULL)
 		return ;
 	if (START == SEPARATOR_CHAR)
-	{
 		comma_analyser(info, line);
-	}
 	else if (START == '"')
-	{
 		quote_analyser(info);
-	}
 	info->end = info->start + 1;
 }

@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 09:22:10 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 11:01:55 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:08:47 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	if (info.f_option_d)
 		ft_option_display(&info);
 	if (info.error != 1)
-		printf("Writing output program to %s%s.cor\n",
+		ft_printf("Writing output program to %s%s.cor\n",
 				info.path, info.true_name);
 	close(info.fd_cor);
 	ft_free(&info);

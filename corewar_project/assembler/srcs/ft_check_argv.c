@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 16:21:48 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 11:19:20 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/02 16:04:03 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 static void	usage_err(char *path, int i)
 {
 	if (i == 1)
-	{
 		ft_printf("Can't read source file %s\n", path);
-	}
 	exit(1);
 }
 
@@ -55,9 +53,7 @@ static int	ft_open(t_asm *info, char *path)
 	fp = 0;
 	fp = open(path, O_RDONLY);
 	if (fp < 0)
-	{
 		usage_err(path, 1);
-	}
 	info->fp = fp;
 	if (fp >= 0)
 		check_name(info, path);
