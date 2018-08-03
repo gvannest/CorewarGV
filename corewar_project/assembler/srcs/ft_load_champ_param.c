@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 13:37:59 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/02 13:40:11 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/03 16:36:55 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		ft_param_op(t_asm *info, t_token *p_token, int index)
 		info->tab[index++] = p_token->ocp;
 		p_token->arg_size++;
 	}
+	else if (p_token->opcode == 0x10)
+		info->tab[index++] = p_token->ocp;
 	info->last_cor_index = index;
 	return (index);
 }
