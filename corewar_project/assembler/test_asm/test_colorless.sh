@@ -5,7 +5,7 @@ rm asm
 cp ../asm .
 #Creation des fichiers de travail
 output="difference.txt"
-path="valid/"
+path="valid/basic_test/"
 origin="origin.txt"
 asm1="asm.txt"
 
@@ -35,7 +35,7 @@ do
 		echo "$s2" >> $output
 		echo "" >> $output
 	fi
-	diff $path$s.cor $path$t.cor >> $output 
+	diff $path$s.cor $path$t.cor >> $output
 done
 rm  -r $path*.cor $origin $asm1
 echo "\nThanks for using that script, good luck ;)"
