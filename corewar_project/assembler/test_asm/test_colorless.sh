@@ -27,15 +27,15 @@ do
 	s1=$(head -1 $origin)
 	s2=$(head -1 $asm1)
 	if [ "$s1" == "$s2" ]; then
-		echo "$str\033[1;32m OK\033[0m\n" >> $output
+		echo "$str OK\n" >> $output
 	else
-		echo "\033[1;32m$str:\033[0m\033[1;31m ERROR\n\033[1;34mExpected oupout:\033[0m" >> $output
+		echo "$str: ERROR\nExpected oupout:" >> $output
 		echo "$s1" >> $output
-		echo "\033[1;34mYour output:\033[0m" >> $output
+		echo "Your output:" >> $output
 		echo "$s2" >> $output
 		echo "" >> $output
 	fi
-	diff $path$s.cor $path$t.cor >> $output 2> /dev/null || true
+	diff $path$s.cor $path$t.cor >> $output 
 done
 rm  -r $path*.cor $origin $asm1
 echo "\nThanks for using that script, good luck ;)"
