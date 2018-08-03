@@ -17,11 +17,12 @@ do
 	rm $origin $asm 2> /dev/null || true
 
 	#send results of original asm and yours in two txt file.
-	./../../original_corewar -d $num $file >> $origin
-	./../../corewar -d $num $file >> $asm
+	echo "$str"
+	./../../original_corewar -d $num $file | sed -e '1,2d' > $origin
+	./corewar -d $num -n -1 $file | sed -e '1,2d' > $asm
 	#compare var
 	echo "$str:" >> $output
-	diff $asm $origin >> $output
+	diff -c $asm $origin >> $output
 	echo "" >> $output
 	rm $origin $asm 2> /dev/null || true
 done

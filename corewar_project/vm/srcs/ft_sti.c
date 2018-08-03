@@ -6,45 +6,50 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 16:32:14 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 12:33:51 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 19:18:26 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void		ft_loop_sti(char *map, int *tab_tmp, int i, t_proc *proc)
+static void		ft_loop_sti(char *map, int *tab_tmp, t_proc *proc)
 {
+	int i;
 	int k;
 
-	if (proc->tab_param[i].type == 'r')
-		tab_tmp[i] = proc->reg[proc->tab_param[i].value - 1];
-	else if (proc->tab_param[i].type == 'd')
-		tab_tmp[i] = proc->tab_param[i].value;
-	else if (proc->tab_param[i].type == 'i')
+	i = 1;
+	while (i < 3)
 	{
-		ft_calc_index(&k, proc->tab_param[i].value, proc->pc_act, 1);
-		tab_tmp[i] = (int)ft_read_memory(map, k, REG_SIZE);
+		if (proc->tab_param[i].type == T_REG)
+			tab_tmp[i] = proc->reg[proc->tab_param[i].value - 1];
+		else if (proc->tab_param[i].type == T_DIR)
+			tab_tmp[i] = proc->tab_param[i].value;
+		else if (proc->tab_param[i].type == T_IND)
+		{
+			ft_calc_index(&k, proc->tab_param[i].value, proc->pc_act, 1);
+			tab_tmp[i] = (int)ft_read_memory(map, k, REG_SIZE);
+		}
+		i++;
 	}
 }
 
 void			ft_sti(t_arena *arena, t_proc *proc)
 {
-	int i;
-	int res;
+	int *res;
+	int idx;
 	int	tab_tmp[3];
+	char	dir_size;
 
-	i = 1;
-	if (!(ft_get_param(arena, proc, proc->pc_act, 1)))
+	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return;
-	if (!ft_check_ocp(proc->tab_param, "r", "dri", "dr"))
-		return;
-	while (i < 3)
-	{
-		ft_loop_sti(arena->map, tab_tmp, i , proc);
-		i++;
-	}
-	ft_calc_index(&res, tab_tmp[1] + tab_tmp[2], proc->pc_act, 1);
-	ft_write_memory(arena->map, proc->reg[proc->tab_param[0].value - 1], res, REG_SIZE);
-	ft_update_map_pyr(arena->map_pyr, proc->pc_act, res, 4);
-	(res == 0 ? proc->carry = 1 : 0);
+	ft_loop_sti(arena->map, tab_tmp, proc);
+	printf("-----------------\n");
+	printf("param 2 : %d et param 3 : %d\n", tab_tmp[1], tab_tmp[2]);
+	ft_calc_index(&idx, tab_tmp[1] + tab_tmp[2], proc->pc_act, 1);
+	printf("Index vaut : %d\n", idx);
+	res = &(proc->reg[proc->tab_param[0].value - 1]);
+	ft_write_memory(arena->map, *res, idx, REG_SIZE);
+	ft_update_map_pyr(arena->map_pyr, proc->pc_act, idx, REG_SIZE);
+	proc->carry = (*res == 0 ? 1 : 0);
 }

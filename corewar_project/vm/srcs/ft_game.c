@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:59:16 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 18:17:04 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 15:17:47 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,27 @@ static void	ft_intro_contestants(t_player *tab_pyr, t_corvisu *visual, int nb_py
 
 void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 {
-	ft_intro_contestants(arena->tab_pyr, visual, arena->nb_pyrs, v);
+	(arena->dump_f != 1 ? ft_intro_contestants(arena->tab_pyr, visual, arena->nb_pyrs, v) : 0);
 	while (arena->nb_live_proc > 0 && arena->cycle_to_die > 0)
 	{
 		while (arena->nb_cycle_current < arena->cycle_to_die)
 		{
 			if (v == 1)
 				ft_visual(arena, visual);
-			ft_one_cycle(arena, arena->list_proc);
-			if (arena->dump_f == 1 && arena->nb_cycle == (unsigned int)arena->dump_nb) //ne pas change de place
+			if (arena->dump_f == 1 && arena->nb_cycle == arena->dump_nb) //ne pas change de place
+			{
 				ft_dump_mem(arena);
+				exit(EXIT_SUCCESS);
+			}
+			ft_one_cycle(arena, arena->list_proc);
 			arena->nb_cycle++;
 			arena->nb_cycle_current++;
 		}
 		ft_check_cycle(arena);
 		ft_reinit_cycle(arena, arena->list_proc);
 	}
-	if (v == 10)
-		ft_winner_novisu(arena->tab_pyr, arena->nb_pyrs, arena->last_live_pyr);
-	else
+	if (v == 1)
 		ft_winner_visu(arena->tab_pyr, arena->nb_pyrs, visual, arena->last_live_pyr);
+	else if (arena->dump_f != 1)
+		ft_winner_novisu(arena->tab_pyr, arena->nb_pyrs, arena->last_live_pyr);
 }

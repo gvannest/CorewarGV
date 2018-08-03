@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 18:16:43 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/02 17:56:02 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ typedef struct		s_arena
 	char			map[MEM_SIZE + 1];//l' arene de jeu
 	int				map_pyr[MEM_SIZE];// idem mais avec num pyr pour visu
 	int				map_process[MEM_SIZE];// idem mais avec process pour visu
-	unsigned int	nb_cycle; //nb de cycles depuis debut partie
-	unsigned int	nb_cycle_current;//nb cycles current period (<= cycle-to-die)
-	unsigned int	cycle_to_die;// idem op.h
+	int				nb_cycle; //nb de cycles depuis debut partie
+	int				nb_cycle_current;//nb cycles current period (<= cycle-to-die)
+	int				cycle_to_die;// idem op.h
 	unsigned int	nb_live_currt;//nb de vies dans le cycle courant
 	unsigned int	nb_live_tot;//nb de vies totales depuis debut partie
-	unsigned int	nb_live_proc;// nb processus en vie
+	int				nb_live_proc;// nb processus en vie
 	unsigned int	nb_round_no_decrease;;// nb de round (cycle to die) without decreasing CYCLE TO E
 	char			dump_f;
 	int				dump_nb;
@@ -73,6 +73,7 @@ typedef struct		s_proc
 	char			carry;
 	char			jump;
 	char			ocp;
+	char			ocp_valid;
 	t_param			tab_param[3];
 	struct s_proc	*next;
 }					t_proc;
@@ -140,7 +141,6 @@ void				ft_aff(t_arena *arena, t_proc *proc);
 unsigned long		ft_read_memory(char *map, int start, size_t k);
 void				ft_write_memory(char *map, unsigned int v, int start, size_t k);
 void				ft_update_map_pyr(int *map_pyr, int pc_act, int start, size_t k);
-int					ft_check_ocp(t_param *tab, char *p1, char *p2, char *p3);
 void				ft_calc_index(int *k, int value, int pc_act, char flag_idx);
 
 void				ft_free_listproc(t_proc *begin_list);
