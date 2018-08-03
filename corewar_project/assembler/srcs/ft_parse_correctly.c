@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:59:05 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/02 10:47:18 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/03 11:45:17 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ static void	check_word(t_asm *info, char *arg)
 			command_name_error(info, arg);
 		info->lock = 1;
 	}
-	else
-	{
-		if (arg != NULL)
-			ft_token_add(info, arg);
-	}
+	else if (arg != NULL)
+		ft_token_add(info, arg);
 }
 
 char		*retrieve_word(t_asm *info, char *line)
@@ -65,9 +62,7 @@ static int	ft_parse_it(t_asm *info, char *line)
 	if (info->quote == 1)
 		retrieve_line(&(*info), line);
 	else if (ft_is_sep(line[info->start]) || line[info->start] == '"')
-	{
 		analyse_separator(info, line);
-	}
 	else if (!ft_is_comchar(&info->comchr_f, line[info->start]))
 	{
 		arg = retrieve_word(&(*info), line);
