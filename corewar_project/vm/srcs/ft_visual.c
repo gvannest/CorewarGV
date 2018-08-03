@@ -5,94 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/26 18:18:48 by gvannest         ###   ########.fr       */
+/*   Created: 2018/08/03 09:56:58 by gvannest          #+#    #+#             */
+/*   Updated: 2018/08/03 16:55:21 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-WINDOW *create_newwin(int height, int width, int starty, int startx)
+static void	ft_cycle_per_sec(float *cycle_sec, int key)
 {
-	WINDOW *local_win;
-
-	local_win = newwin(height, width, starty, startx);
-	box(local_win, ACS_VLINE, ACS_HLINE);
-	wrefresh(local_win);
-	return (local_win);
+	if (*cycle_sec <= 990.0 && key == 'r')
+		*cycle_sec = *cycle_sec + 10.0;
+	else if (*cycle_sec <= 999.0 && key == 'e')
+		*cycle_sec = *cycle_sec + 1.0;
+	else if (*cycle_sec >= 1.0 && key == 'w')
+		*cycle_sec = (*cycle_sec > 1.0 ? *cycle_sec - 1.0 : 1.0);
+	else if (*cycle_sec >= 10.0 && key == 'q')
+		*cycle_sec = (*cycle_sec == 10.0 ? 1.0 : *cycle_sec - 10.0);
 }
 
-static void		ft_init_color()
+static void	ft_pause_vm(float *cycle_sec)
 {
-	start_color();
-	if(has_colors() == FALSE)
+	int			key;
+	static char p = 0;
+	int			timer;
+
+	key = -1;
+	timer = (int)((1.0 / *cycle_sec) * 1000.0);
+	if (p == 0)
 	{
-		endwin();
-		ft_error_vm(0, "Your terminal does not support color", "", 0);
+		timeout(-1);
+		key = getch();
+		p = (key == ' ' ? 1 : 0);
 	}
-	init_pair(1, COLOR_GREEN, COLOR_BLACK);
-	init_pair(2, COLOR_RED, COLOR_BLACK);
-	init_pair(3, COLOR_BLUE, COLOR_BLACK);
-	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
-	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(6, COLOR_CYAN, COLOR_BLACK);
-	init_pair(7, COLOR_WHITE, COLOR_BLACK);
-	init_pair(8, COLOR_BLACK, COLOR_GREEN);
-	init_pair(9, COLOR_BLACK, COLOR_RED);
-	init_pair(10, COLOR_BLACK, COLOR_BLUE);
-	init_pair(11, COLOR_BLACK, COLOR_YELLOW);
-	init_pair(12, COLOR_BLACK, COLOR_MAGENTA);
-	init_pair(13, COLOR_BLACK, COLOR_CYAN);
-	init_pair(14, COLOR_BLACK, COLOR_WHITE);
-}
-
-void		ft_init_visual(t_corvisu *visual)
-{
-	initscr();
-	cbreak();
-	noecho();
-	keypad(stdscr, TRUE);
-	ft_init_color();
-	refresh();
-	visual->win_arena = create_newwin(64 + 2, 65 * 3 + 2, 0, 0);
-	visual->win_info_game = create_newwin(15, 65 * 3 + 2, 64 + 2, 0);
-	visual->win_info_pyrs = create_newwin(64 + 2, 60, 0, 65 * 3 + 2);
-	curs_set(0);
+	else if (p == 1)
+	{
+		timeout(timer);
+		key = getch();
+		p = (key == ' ' ? 0 : 1);
+	}
+	if (key == 'r' || key == 'e' || key == 'w' || key == 'q')
+		ft_cycle_per_sec(cycle_sec, key);
 }
 
 void		ft_visual(t_arena *arena, t_corvisu *visual)
 {
 	int i;
+	static char f = 0;
 
 	i = 0;
-	ft_info_fix(arena->tab_pyr, arena->nb_pyrs, visual);
+	(f == 0 ? ft_infogame_fix(arena, visual, &f) : 0);
+	ft_info_game(arena, visual);
+	ft_info_player(arena, visual);
 	while (i < MEM_SIZE)
 	{
 		if (arena->map_process[i] != 0)
 			ft_is_proc(visual, arena->map_pyr[i], arena->map[i], i);
 		else
 			ft_is_not_proc(visual, arena->map_pyr[i], arena->map[i], i);
-		ft_info_game(arena, visual);
-		ft_info_player(arena->tab_pyr, arena->nb_pyrs, visual);
 		i++;
 	}
 	wrefresh(visual->win_arena);
 	wrefresh(visual->win_info_game);
 	wrefresh(visual->win_info_pyrs);
-	getch();
+	ft_pause_vm(&(arena->cycle_sec));
 }
-
-void		ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int winner)
-{
-	int c;
-
-	(void)winner;
-	(void)tab_pyr;
-	(void)nb_pyrs;
-	(void)visual;
-	c = getch();
-	while (c != 27)
-		c = getch();
-	endwin();
-}
-

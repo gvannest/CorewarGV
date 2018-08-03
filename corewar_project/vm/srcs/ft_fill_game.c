@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:59:44 by gvannest          #+#    #+#             */
-/*   Updated: 2018/06/29 15:18:21 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/03 13:40:11 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void		ft_fill_game(t_arena *arena)
 	ft_fill_map_pyr(arena);
 	ft_init_process(arena);
 	arena->cycle_to_die = CYCLE_TO_DIE;
+	arena->cycle_sec = 50.0;
 }

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar_visual.h                                   :+:      :+:    :+:   */
+/*   ft_visu_winner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/29 17:38:25 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 09:48:01 by gvannest         ###   ########.fr       */
+/*   Created: 2018/08/03 09:53:58 by gvannest          #+#    #+#             */
+/*   Updated: 2018/08/03 09:54:18 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_VISUAL_H
-# define COREWAR_VISUAL_H
+#include "corewar.h"
 
-# include <ncurses.h>
 
-typedef struct		s_corvisu
+void		ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int winner)
 {
-	WINDOW	*win_arena;
-	WINDOW	*win_info_game;
-	WINDOW	*win_info_pyrs;
-}					t_corvisu;
+	int c;
 
-#endif
+	(void)winner;
+	(void)tab_pyr;
+	(void)nb_pyrs;
+	(void)visual;
+	c = getch();
+	while (c != 27)
+		c = getch();
+	endwin();
+}

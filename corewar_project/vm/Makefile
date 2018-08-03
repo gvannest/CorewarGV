@@ -1,6 +1,6 @@
 # COMPILATION
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 #BINARY
 NAME = corewar
@@ -54,6 +54,9 @@ SRC_NAME = main_test.c \
 		   ft_tools.c \
 		   ft_tools2.c \
 		   ft_getparam.c \
+		   ft_init_visu.c \
+		   ft_visu_winner.c \
+		   ft_visu_info.c \
 		   ft_visual.c \
 		   ft_visual2.c \
 		   main_corewar.c \

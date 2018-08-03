@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 16:08:15 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 19:14:46 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/03 15:09:47 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void		ft_store(t_arena *arena, t_proc *proc)
 	}
 	if (proc->tab_param[1].type == T_REG)
 		proc->reg[proc->tab_param[1].value - 1] = reg_value;
-	//proc->carry = (reg_value == 0 ? 1 : 0);
+	proc->carry = (reg_value == 0 ? 1 : 0);
 }

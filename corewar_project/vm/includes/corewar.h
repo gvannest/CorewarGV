@@ -6,12 +6,13 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 17:56:02 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/03 16:55:25 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
+
 # include "op.h"
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,7 +22,6 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "corewar_visual.h"
-// ATTENTION : chaque .h dans include doit etre justifie. mettre les autres .h dans les .c ou ils sont utilises. les .h ici doivent etre utilises dans ce .h!!!!
 
 typedef struct		s_player
 {
@@ -31,27 +31,28 @@ typedef struct		s_player
 	int				color_pyr;
 	char			champ[CHAMP_MAX_SIZE + 1];
 	char			comment[COMMENT_LENGTH + 1];
-	unsigned int	pyr_nb_live;//nb de live executes sur ce joueur
+	unsigned int	pyr_nb_live;
 }					t_player;
 
 typedef struct		s_arena
 {
-	char			map[MEM_SIZE + 1];//l' arene de jeu
-	int				map_pyr[MEM_SIZE];// idem mais avec num pyr pour visu
-	int				map_process[MEM_SIZE];// idem mais avec process pour visu
-	int				nb_cycle; //nb de cycles depuis debut partie
-	int				nb_cycle_current;//nb cycles current period (<= cycle-to-die)
-	int				cycle_to_die;// idem op.h
-	unsigned int	nb_live_currt;//nb de vies dans le cycle courant
-	unsigned int	nb_live_tot;//nb de vies totales depuis debut partie
-	int				nb_live_proc;// nb processus en vie
-	unsigned int	nb_round_no_decrease;;// nb de round (cycle to die) without decreasing CYCLE TO E
+	char			map[MEM_SIZE + 1];
+	int				map_pyr[MEM_SIZE];
+	int				map_process[MEM_SIZE];
+	int				nb_cycle;
+	int				nb_cycle_current;
+	int				cycle_to_die;
+	unsigned int	nb_live_currt;
+	unsigned int	nb_live_tot;
+	int				nb_live_proc;
+	unsigned int	nb_round_no_decrease;
 	char			dump_f;
 	int				dump_nb;
 	int				nb_pyrs;
-	int				last_live_pyr;//dernier joueru a avoir dit " vie" 
-	t_player		tab_pyr[MAX_PLAYERS];// tableau des joueurs
-	struct s_proc	*list_proc;//pointeur vers debut liste chainee processus
+	int				last_live_pyr;
+	t_player		tab_pyr[MAX_PLAYERS];
+	float			cycle_sec;
+	struct s_proc	*list_proc;
 }					t_arena;
 
 typedef struct		s_param
@@ -65,10 +66,10 @@ typedef struct		s_proc
 {
 	short int		p_nbr;
 	int				reg[REG_NUMBER];
-	short int		pc_act;//adresse actuelle du processus
-	char			opcode_act; //opcode de l'operation en cours
-	char			opcode_valid; //flag pour dire si opcode valide
-	unsigned int	nb_cycle_before_op;//nb de cycles restant avant executier et bouger
+	short int		pc_act;
+	char			opcode_act;
+	char			opcode_valid;
+	unsigned int	nb_cycle_before_op;
 	char			flag_live;
 	char			carry;
 	char			jump;
@@ -87,7 +88,7 @@ typedef struct s_op
 	int		nb_cycles;
 	char	*description;
 	int 	mod_carry;
-	int		dir_oct_size; //0 = 4 octets et 1 = 2 octets
+	int		dir_oct_size;
 }				t_op;
 
 extern t_op op_tab[NB_INSTR + 1];
@@ -106,8 +107,8 @@ void				ft_init_visual(t_corvisu *visual);
 void				ft_is_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
 void				ft_is_not_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
 void				ft_info_game(t_arena *arena, t_corvisu *visual);
-void				ft_info_fix(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
-void				ft_info_player(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual);
+void				ft_infogame_fix(t_arena *arena, t_corvisu *visual, char *f);
+void				ft_info_player(t_arena *arena, t_corvisu *visual);
 void				ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int last_live_pyr);
 void				ft_game(t_arena *arena, t_corvisu *visual, char v);
 void				ft_check_cycle(t_arena *arena);
@@ -148,6 +149,3 @@ void				ft_free_listproc(t_proc *begin_list);
 void				ft_print_test(char *line);
 
 #endif
-
-
-

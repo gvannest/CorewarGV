@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 16:32:14 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 19:18:26 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/03 14:57:50 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void			ft_sti(t_arena *arena, t_proc *proc)
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return;
 	ft_loop_sti(arena->map, tab_tmp, proc);
-	printf("-----------------\n");
-	printf("param 2 : %d et param 3 : %d\n", tab_tmp[1], tab_tmp[2]);
 	ft_calc_index(&idx, tab_tmp[1] + tab_tmp[2], proc->pc_act, 1);
-	printf("Index vaut : %d\n", idx);
 	res = &(proc->reg[proc->tab_param[0].value - 1]);
 	ft_write_memory(arena->map, *res, idx, REG_SIZE);
 	ft_update_map_pyr(arena->map_pyr, proc->pc_act, idx, REG_SIZE);
