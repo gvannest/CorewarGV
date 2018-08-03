@@ -6,7 +6,7 @@
 /*   By: srossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 14:01:10 by srossi            #+#    #+#             */
-/*   Updated: 2018/08/02 16:40:30 by srossi           ###   ########.fr       */
+/*   Updated: 2018/08/03 14:02:06 by srossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void			ft_create_champ(t_asm *info)
 		ft_param_left(info, p_token);
 	while (p_token)
 	{
-		//if (index + p_token->arg_size > CHAMP_MAX_SIZE)
-		//	ft_error_param(info, p_token, 5);
+		if (index + p_token->arg_size > CHAMP_MAX_SIZE)
+			ft_error_param(info, p_token, 5);
 		if (p_token->type == T_OP)
 			index = ft_param_op(info, p_token, index);
 		else if (p_token->type == T_REG)
