@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 16:32:14 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/04 21:31:52 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/04 21:50:24 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void			ft_sti(t_arena *arena, t_proc *proc)
 	res = &(proc->reg[proc->tab_param[0].value - 1]);
 	ft_write_memory(arena->map, *res, idx, REG_SIZE);
 	ft_update_map_pyr(arena->map_pyr, proc->pc_act, idx, REG_SIZE);
-	proc->carry = (*res == 0 ? 1 : 0);
+	//proc->carry = (*res == 0 ? 1 : 0);
 }
