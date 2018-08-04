@@ -6,13 +6,13 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:56:58 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 16:55:21 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/04 21:12:08 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void	ft_cycle_per_sec(float *cycle_sec, int key)
+static void	ft_cycle_per_sec(float *cycle_sec, int key, t_corvisu *visual)
 {
 	if (*cycle_sec <= 990.0 && key == 'r')
 		*cycle_sec = *cycle_sec + 10.0;
@@ -22,9 +22,11 @@ static void	ft_cycle_per_sec(float *cycle_sec, int key)
 		*cycle_sec = (*cycle_sec > 1.0 ? *cycle_sec - 1.0 : 1.0);
 	else if (*cycle_sec >= 10.0 && key == 'q')
 		*cycle_sec = (*cycle_sec == 10.0 ? 1.0 : *cycle_sec - 10.0);
+	mvwprintw(visual->win_info_game, 1, 29,  "%4d", (int)(*cycle_sec));
+	wrefresh(visual->win_info_game);
 }
 
-static void	ft_pause_vm(float *cycle_sec)
+static void	ft_pause_vm(float *cycle_sec, t_corvisu *visual)
 {
 	int			key;
 	static char p = 0;
@@ -34,18 +36,22 @@ static void	ft_pause_vm(float *cycle_sec)
 	timer = (int)((1.0 / *cycle_sec) * 1000.0);
 	if (p == 0)
 	{
-		timeout(-1);
-		key = getch();
-		p = (key == ' ' ? 1 : 0);
+		while (key != ' ')
+		{
+			key = getch();
+			if (key == 'r' || key == 'e' || key == 'w' || key == 'q')
+				ft_cycle_per_sec(cycle_sec, key, visual);
+		}
+		p = 1;
 	}
 	else if (p == 1)
 	{
 		timeout(timer);
 		key = getch();
 		p = (key == ' ' ? 0 : 1);
+		if (key == 'r' || key == 'e' || key == 'w' || key == 'q')
+			ft_cycle_per_sec(cycle_sec, key, visual);
 	}
-	if (key == 'r' || key == 'e' || key == 'w' || key == 'q')
-		ft_cycle_per_sec(cycle_sec, key);
 }
 
 void		ft_visual(t_arena *arena, t_corvisu *visual)
@@ -68,5 +74,5 @@ void		ft_visual(t_arena *arena, t_corvisu *visual)
 	wrefresh(visual->win_arena);
 	wrefresh(visual->win_info_game);
 	wrefresh(visual->win_info_pyrs);
-	ft_pause_vm(&(arena->cycle_sec));
+	ft_pause_vm(&(arena->cycle_sec), visual);
 }

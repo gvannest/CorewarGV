@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:59:16 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 16:55:23 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/04 19:51:01 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 		{
 			if (v == 1)
 				ft_visual(arena, visual);
-			if (arena->dump_f == 1 && arena->nb_cycle == arena->dump_nb) //ne pas change de place
+			if (arena->dump_f == 1 && arena->nb_cycle == arena->dump_nb)
+			{
 				ft_dump_mem(arena);
+				exit(EXIT_SUCCESS);
+			}
 			ft_one_cycle(arena, arena->list_proc);
 			arena->nb_cycle++;
 			arena->nb_cycle_current++;

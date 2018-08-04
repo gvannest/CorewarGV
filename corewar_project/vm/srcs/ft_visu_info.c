@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 16:15:24 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 16:55:18 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/04 21:18:47 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		ft_infopyr_fix(t_arena *arena, t_corvisu *visual)
 	}
 	mvwprintw(visual->win_info_pyrs, 40, 2, "------------------------------");
 	mvwprintw(visual->win_info_pyrs, 40, 30, "---------------------------");
-	mvwprintw(visual->win_info_pyrs, 42, 2, "Current winner :");
+	mvwprintw(visual->win_info_pyrs, 42, 2, "Current winner :       ");
 }
 
 void		ft_infogame_fix(t_arena *arena, t_corvisu *visual, char *f)
@@ -37,7 +37,6 @@ void		ft_infogame_fix(t_arena *arena, t_corvisu *visual, char *f)
 	int p;
 
 	p = 0;
-	wattron(visual->win_info_game, A_BOLD);
 	mvwprintw(visual->win_info_game, 1, 2,  "Number of cycles / sec : ");
 	mvwprintw(visual->win_info_game, 3, 2, "Usage :\n");
 	mvwprintw(visual->win_info_game, 3, 12, "q   -10\n");
@@ -50,7 +49,6 @@ void		ft_infogame_fix(t_arena *arena, t_corvisu *visual, char *f)
 	mvwprintw(visual->win_info_game, 1, 132, "Number of live current period : ");
 	mvwprintw(visual->win_info_game, 3, 132, "Number of live total : ");
 	mvwprintw(visual->win_info_game, 5, 132, "Number of process alive : ");
-	wattron(visual->win_info_game, A_BOLD);
 	ft_infopyr_fix(arena, visual);
 	*f = 1;
 }
@@ -77,6 +75,13 @@ void		ft_info_player(t_arena *arena, t_corvisu *visual)
 		mvwprintw(visual->win_info_pyrs, 10 * p + 5, 20, "%6d", arena->tab_pyr[p].pyr_nb_live);
 		p++;
 	}
+	p = 0;
 	if (arena->last_live_pyr != 0)
-		mvwprintw(visual->win_info_pyrs, 42, 20,  "%6d", arena->last_live_pyr);
+	{
+		while (arena->tab_pyr[p].pyr_nbr != arena->last_live_pyr)
+			p++;
+		wattron(visual->win_info_pyrs, COLOR_PAIR(p + 1));
+		mvwprintw(visual->win_info_pyrs, 42, 20,  "Player %4d", arena->last_live_pyr);
+		wattroff(visual->win_info_pyrs, COLOR_PAIR(p + 1));
+	}
 }
