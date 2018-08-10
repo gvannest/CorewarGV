@@ -55,13 +55,6 @@ void	parsing_error(t_asm *info, char *line)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_error_syntax(t_asm *info)
-{
-	ft_printf("Syntax error\n");
-	ft_free(info);
-	exit(EXIT_FAILURE);
-}
-
 void	ft_error_param(t_asm *info, t_token *token, int nb_error)
 {
 	if (nb_error == 1)

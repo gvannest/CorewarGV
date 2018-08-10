@@ -29,7 +29,6 @@ SRC_NAME = main.c \
 		   ft_fill_labels.c \
 		   ft_is_smthg.c \
 		   ft_load_champ.c \
-		   ft_syntax.c \
 		   ft_display_cor.c \
 		   ft_token_free.c \
 		   ft_type_char.c \

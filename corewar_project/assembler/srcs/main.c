@@ -21,17 +21,11 @@ int		main(int argc, char **argv)
 	ft_init_info(&info);
 	ft_check_argv(&info, argv, argc);
 	ft_gnl(&info);
-/*	if (!ft_is_valid_syntax(&info))
-	{
-		ft_printf("error: syntax invalid\n");
-		ft_error_syntax(&info);
-	}*/
 	ft_fill_labels(info.atoken);
 	ft_create_champ(&info);
 	if (info.f_option_d)
 		ft_option_display(&info);
 	else
-//	if (info.error != 1)
 	{
 		ft_printf("Writing output program to %s%s.cor\n",
 			info.path, info.true_name);
