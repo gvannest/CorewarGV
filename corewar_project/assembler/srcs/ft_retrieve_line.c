@@ -27,7 +27,7 @@ void		parse_line(t_asm *info, char *line, char *target)
 	i = info->start;
 	while (line[i] && line[i] != '"')
 	{
-		if (ft_strlen(target) + 1 < ((info->comment_f == -1)
+		if (ft_strlen(target) /*+ 1*/ < ((info->comment_f == -1)
 					? COMMENT_LENGTH : PROG_NAME_LENGTH))
 		{
 			if (line[i])
@@ -35,6 +35,8 @@ void		parse_line(t_asm *info, char *line, char *target)
 		}
 		else
 		{
+//			printf("len target : %zu\n", ft_strlen(target));
+//			printf("probleme !!\n");
 			info->error = 1;
 			break ;
 		}
@@ -52,14 +54,22 @@ void		retrieve_line(t_asm *info, char *line)
 {
 	if (info->comment_f == -1)
 	{
-		parse_line(&(*info), line, &(*info->comment));
+//		printf("probleme ici ?\n");
+		parse_line(info, line, info->comment);
 		if (info->comment_f == -1)
 			info->comment[ft_strlen(info->comment)] = '\n';
 	}
 	else if (info->name_f == -1)
 	{
-		parse_line(&(*info), line, &(*info->name));
+		parse_line(info, line, info->name);
 		if (info->name_f == -1)
 			info->name[ft_strlen(info->name)] = '\n';
 	}
+//	printf("test1\n");
+//	printf("len comment : %zu\n", ft_strlen(info->comment));
+	if (ft_strlen(info->comment) > (COMMENT_LENGTH))
+		ft_error_length(info, 2);
+	else if (ft_strlen(info->name) > (PROG_NAME_LENGTH))
+		ft_error_length(info, 1);
+//	printf("test2\n");
 }

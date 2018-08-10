@@ -14,6 +14,13 @@
 
 static void	check_word(t_asm *info, char *arg)
 {
+	if (info->comment_f == 1 || info->name_f == 1)
+	{
+		if (info->name_f == 1 && ft_strequ(arg, ".name"))
+			ft_error_doubles(info, 1);
+		else if (info->comment_f == 1 && ft_strequ(arg, ".comment"))
+			ft_error_doubles(info, 2);
+	}
 	if (info->lock == 1)
 	{
 		info->error = 2;
@@ -42,7 +49,7 @@ char		*retrieve_word(t_asm *info, char *line)
 	while (line[i] && (ft_strchr(LABEL_CHARS, line[i]) || ft_is_nonsep(line[i],
 					info->comma_f)))
 	{
-		++i;
+		i++;
 	}
 	info->end = i;
 	if (i >= info->start)
@@ -58,15 +65,31 @@ char		*retrieve_word(t_asm *info, char *line)
 static int	ft_parse_it(t_asm *info, char *line)
 {
 	char	*arg;
-
+	int		i;
+	int		found;
+	
+	i = 0;
+	found = 0;
 	if (info->quote == 1)
 		retrieve_line(&(*info), line);
-	else if (ft_is_sep(line[info->start]) || line[info->start] == '"')
+	else if (line[info->start] == '"' || ft_is_sep(line[info->start]))
 		analyse_separator(info, line);
 	else if (!ft_is_comchar(&info->comchr_f, line[info->start]))
 	{
 		arg = retrieve_word(&(*info), line);
 		check_word(info, arg);
+		if (info->comment_f == -1 && line[ft_strlen(line) - 1] == '"'
+		&& line[0] == '.' && line[1] == 'c')
+		{
+			while (line[i])
+			{
+				if (line[i] == '"')
+					found++;
+				i++;
+			}
+			if (found == 1)
+				info->comment[0] = '\n';
+		}
 		ft_strdel(&arg);
 		ft_strdel(&info->err_log);
 	}
@@ -93,7 +116,7 @@ void		parse_correctly(t_asm *info, char *line)
 	while (line[i] != '\0' && info->error == 0 && info->stop == 0)
 	{
 		if (ft_is_space(line[i]) && info->quote != 1)
-			++i;
+			i++;
 		else
 		{
 			info->start = i;

@@ -98,3 +98,26 @@ void	ft_error_incomplete(t_asm *info, int nb_error)
 	ft_free(info);
 	exit(EXIT_FAILURE);
 }
+
+void	ft_error_length(t_asm *info, int nb_error)
+{
+	if (nb_error == 1)
+		ft_printf("Champion name too long (Max length %d)\n", PROG_NAME_LENGTH);
+	else if (nb_error == 2)
+		ft_printf("Champion comment too long (Max length %d)\n"
+		, COMMENT_LENGTH);
+	ft_free(info);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_error_doubles(t_asm *info, int nb_error)
+{
+	if (nb_error == 1)
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] COMMAND_NAME \
+\".name\"\n", info->line_nb, info->start + 1);
+	else if (nb_error == 2)
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] COMMAND_COMMENT \
+\".comment\"\n", info->line_nb, info->start + 1);
+	ft_free(info);
+	exit(EXIT_FAILURE);
+}

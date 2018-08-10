@@ -120,7 +120,9 @@ void				ft_check_options(t_asm *info, int argc, char **argv);
 ** ERRORS:
 */
 void				ft_error_syntax(t_asm *info);
+void	ft_error_doubles(t_asm *info, int nb_error);
 void				parsing_error(t_asm *info, char *line);
+void				ft_error_length(t_asm *info, int nb_error);
 void				command_name_error(t_asm *info, char *arg);
 void				ft_error_management(t_asm *info, char *arg);
 void				ft_syntax_err(t_asm *info, int i, char *line);

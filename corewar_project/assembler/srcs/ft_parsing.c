@@ -44,11 +44,9 @@ static void	ft_check_data(t_asm *info)
 	}
 }
 
-static void	check_line(t_asm *info, char *line, int len)
+static void	check_line(t_asm *info, char *line)
 {
-	int i;
 
-	i = len;
 	if (line == NULL)
 		return ;
 	reset_flags(&(*info));
@@ -64,7 +62,7 @@ void		ft_gnl(t_asm *info)
 			&& info->stop == 0)
 	{
 		++info->line_nb;
-		check_line(&(*info), line, ft_strlen(line));
+		check_line(&(*info), line);
 		if (info->error != 0)
 			parsing_error(info, line);
 		ft_strdel(&line);

@@ -5,7 +5,7 @@ rm asm
 cp ../asm .
 #Creation des fichiers de travail
 output="difference.txt"
-path="valid/basic_test/"
+path="valid/"
 origin="origin.txt"
 asm1="asm.txt"
 
@@ -29,7 +29,7 @@ do
 	if [ "$s1" == "$s2" ]; then
 		echo "$str OK\n" >> $output
 	else
-		echo "$str: ERROR\nExpected oupout:" >> $output
+		echo "$str: ERROR\nExpected output:" >> $output
 		echo "$s1" >> $output
 		echo "Your output:" >> $output
 		echo "$s2" >> $output
