@@ -84,10 +84,7 @@ static	void	ft_display_int(int nb)
 
 void			ft_display(t_asm *info)
 {
-	int magic;
-
-	magic = 0x00EA83F3;
-	ft_display_int(magic);
+	ft_display_int(COREWAR_EXEC_MAGIC);
 	ft_display_name(info->name);
 	ft_display_int(0);
 	ft_display_int(info->pos);
