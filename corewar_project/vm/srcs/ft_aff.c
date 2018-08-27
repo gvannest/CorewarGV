@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:52:55 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 17:52:38 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/27 10:29:20 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		ft_aff(t_arena *arena, t_proc *proc)
 {
-	unsigned char c;
-	char	dir_size;
+	unsigned char	c;
+	char			dir_size;
 
 	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
