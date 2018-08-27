@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 13:41:45 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/27 09:55:12 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/27 11:00:29 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			ft_create_proc(t_arena *arena, t_proc *proc, short index)
 
 	i = 0;
 	if (!(new_proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
-		ft_error_vm(0, "Error : malloc failed","Line 22 in ft_processus.c",0);
+		ft_error_vm(0, "Error : malloc failed", "Line 22 in ft_processus.c", 0);
 	ft_bzero(new_proc, sizeof(t_proc));
 	new_proc->pc_act = index;
 	while (i < 16)
@@ -41,7 +41,7 @@ static void		next_process(t_arena *arena, int p)
 	t_proc *new_proc;
 
 	if (!(new_proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
-		ft_error_vm(0, "Error : malloc failed","Line 22 in ft_processus.c",0);
+		ft_error_vm(0, "Error : malloc failed", "Line 22 in ft_processus.c", 0);
 	ft_bzero(new_proc, sizeof(t_proc));
 	new_proc->reg[0] = arena->tab_pyr[p].pyr_nbr;
 	new_proc->p_nbr = p + 1;
@@ -58,7 +58,7 @@ static void		first_process(t_arena *arena)
 	t_proc *proc;
 
 	if (!(proc = (t_proc*)ft_memalloc(sizeof(t_proc))))
-		ft_error_vm(0, "Error : malloc failed","Line 30 in ft_processus.c",0);
+		ft_error_vm(0, "Error : malloc failed", "Line 30 in ft_processus.c", 0);
 	ft_bzero(proc, sizeof(t_proc));
 	proc->reg[0] = arena->tab_pyr[0].pyr_nbr;
 	proc->p_nbr = 1;
@@ -69,7 +69,7 @@ static void		first_process(t_arena *arena)
 	arena->nb_live_proc = 1;
 }
 
-void		ft_init_process(t_arena *arena)
+void			ft_init_process(t_arena *arena)
 {
 	int p;
 
@@ -81,4 +81,3 @@ void		ft_init_process(t_arena *arena)
 		p++;
 	}
 }
-

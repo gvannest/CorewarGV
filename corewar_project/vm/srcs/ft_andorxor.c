@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:46 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 17:50:28 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/27 10:58:19 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void		ft_loop_andorxor(char *map, int *tab_tmp, int i, t_proc *proc)
 	}
 }
 
-
-static void			ft_andorxor(t_arena *arena, t_proc *proc, char ope)
+static void		ft_andorxor(t_arena *arena, t_proc *proc, char ope)
 {
 	int		*res;
 	int		i;
@@ -38,7 +37,7 @@ static void			ft_andorxor(t_arena *arena, t_proc *proc, char ope)
 	i = 0;
 	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
-		return;
+		return ;
 	while (i < 2)
 	{
 		ft_loop_andorxor(arena->map, tab_tmp, i, proc);
