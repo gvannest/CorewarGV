@@ -37,7 +37,7 @@ static void		ft_move_ocp(t_proc *proc, char ocp)
 
 void			ft_move_process(int *map_proc, t_proc *proc, char ocp)
 {
-	map_proc[proc->pc_act] = 0;
+	map_proc[proc->pc_act % MEM_SIZE] = 0;
 	if (proc->opcode_valid == 1)
 	{
 		if (ocp == -1)
@@ -47,7 +47,7 @@ void			ft_move_process(int *map_proc, t_proc *proc, char ocp)
 	}
 	else
 		proc->pc_act = (proc->pc_act + 1) % MEM_SIZE;
-	map_proc[proc->pc_act] = 1;
+	map_proc[proc->pc_act % MEM_SIZE] = 1;
 }
 
 t_proc			*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill)
