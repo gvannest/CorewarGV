@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
+static void		ft_error_vm03(char error_code, char *msg1, char *msg2, int v1)
 {
 	if (error_code == 0)
 		ft_dprintf(2, "%s\nSource : %s\n%s\n", msg1, msg2,
@@ -29,7 +29,11 @@ void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 	else if (error_code == 3)
 		ft_dprintf(2, "%s\nNumber of players must be between 1 and %d\n", msg1,
 				MAX_PLAYERS);
-	else if (error_code == 4)
+}
+
+static void		ft_error_vm45(char error_code, char *msg1, char *msg2, int v1)
+{
+	if (error_code == 4)
 	{
 		ft_dprintf(2, "%s\nFrom file : %s\n", msg1, msg2);
 		if (v1 == 1)
@@ -41,7 +45,11 @@ void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 	else if (error_code == 5)
 		ft_dprintf(2, "%s\nFrom file : %s\n%d bytes vs. [1, %d] bytes\n",
 				msg1, msg2, v1, CHAMP_MAX_SIZE);
-	else if (error_code == 6)
+}
+
+static void		ft_error_vm6(char error_code, char *msg1, char *msg2, int v1)
+{
+	if (error_code == 6)
 	{
 		ft_dprintf(2, "%s\nFrom file : %s\n", msg1, msg2);
 		if (v1 == 1)
@@ -53,5 +61,15 @@ void	ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
 		ft_dprintf(2, "%s\n%s %x\n", msg1, msg2, v1);
 	else if (error_code == 8)
 		ft_dprintf(2, "%s\n", msg1);
+}
+
+void			ft_error_vm(char error_code, char *msg1, char *msg2, int v1)
+{
+	if (error_code >= 0 && error_code <= 3)
+		ft_error_vm03(error_code, msg1, msg2, v1);
+	else if (error_code >= 4 && error_code <= 5)
+		ft_error_vm45(error_code, msg1, msg2, v1);
+	else if (error_code >= 6)
+		ft_error_vm6(error_code, msg1, msg2, v1);
 	exit(EXIT_FAILURE);
 }

@@ -102,6 +102,7 @@ int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_create_proc(t_arena *arena, t_proc *proc, short index);
+WINDOW				*create_newwin(int height, int width, int starty, int startx);
 void				ft_visual(t_arena *arena, t_corvisu *visual);
 void				ft_init_visual(t_corvisu *visual);
 void				ft_is_proc(t_corvisu *visual, int pyr_idx, char inst, int i);

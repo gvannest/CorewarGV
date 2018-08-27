@@ -37,7 +37,7 @@ void		ft_infogame_fix(t_arena *arena, t_corvisu *visual, char *f)
 	int p;
 
 	p = 0;
-	mvwprintw(visual->win_info_game, 1, 2,  "Number of cycles / sec : ");
+	mvwprintw(visual->win_info_game, 1, 2, "Number of cycles / sec : ");
 	mvwprintw(visual->win_info_game, 3, 2, "Usage :\n");
 	mvwprintw(visual->win_info_game, 3, 12, "q   -10\n");
 	mvwprintw(visual->win_info_game, 4, 12, "w   -1\n");

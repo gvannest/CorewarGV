@@ -14,9 +14,11 @@
 
 void		ft_free_listproc(t_proc *begin_list)
 {
+	t_proc *tmp;
 	while(begin_list)
 	{
+		tmp = begin_list->next;
 		free(begin_list);
-		begin_list = begin_list->next;
+		begin_list = tmp;
 	}
 }
