@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:53:58 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 09:54:18 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/27 11:01:42 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ void		ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int winn
 {
 	int c;
 
-	(void)winner;
-	(void)tab_pyr;
-	(void)nb_pyrs;
-	(void)visual;
+	visual->win_winner = create_newin(10, 10, 
 	c = getch();
 	while (c != 27)
 		c = getch();

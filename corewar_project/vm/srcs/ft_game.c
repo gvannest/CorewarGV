@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:59:16 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/04 22:06:51 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/27 10:57:08 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ void		ft_game(t_arena *arena, t_corvisu *visual, char v)
 	}
 	if (v == 1)
 		ft_winner_visu(arena->tab_pyr, arena->nb_pyrs, visual, arena->last_live_pyr);
-	else if (arena->dump_f != 1)
+	else if (v != 1)
 		ft_winner_novisu(arena->tab_pyr, arena->nb_pyrs, arena->last_live_pyr);
 }
