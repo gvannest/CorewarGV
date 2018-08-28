@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:33:38 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/27 11:01:40 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 08:49:57 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_print_champ(t_arena *arena)
 {
-	int	i;
-	t_player *tmp;
+	int			i;
+	t_player	*tmp;
 
 	i = 0;
 	while (i < arena->nb_pyrs)
@@ -57,7 +57,7 @@ int			ft_dump(t_arena *arena, char **argv, int argc, int i)
 		if (arena->dump_nb < 0)
 		{
 			ft_error_vm(8, "-d must be followed by UNSIGNED INT", NULL, 0);
-			exit(0); 
+			exit(0);
 		}
 		return (1);
 	}

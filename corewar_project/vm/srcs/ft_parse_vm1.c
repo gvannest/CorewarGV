@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 17:55:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/07/18 14:53:33 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:01:23 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ void			ft_parse_vm1(char *line, t_arena *arena, char *cor, int i)
 	ft_check_transition(line + HEADER_SIZE, cor, 2);
 	ft_parse_vm2(line, arena, cor, i);
 }
-

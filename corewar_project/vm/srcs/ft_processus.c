@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_processus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/28 09:10:01 by msicot            #+#    #+#             */
+/*   Updated: 2018/08/28 09:10:18 by msicot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-static void		ft_move_noocp(t_proc *proc)
+static void	ft_move_noocp(t_proc *proc)
 {
 	if (proc->opcode_act == 0x01)
 		proc->pc_act = (proc->pc_act + 5) % MEM_SIZE;
@@ -8,7 +20,7 @@ static void		ft_move_noocp(t_proc *proc)
 		proc->pc_act = (proc->pc_act + 3) % MEM_SIZE;
 }
 
-static void		ft_move_ocp(t_proc *proc, char ocp)
+static void	ft_move_ocp(t_proc *proc, char ocp)
 {
 	unsigned int	i;
 	short int		k;
@@ -35,7 +47,7 @@ static void		ft_move_ocp(t_proc *proc, char ocp)
 	proc->pc_act = (proc->pc_act + k + 1) % MEM_SIZE;
 }
 
-void			ft_move_process(int *map_proc, t_proc *proc, char ocp)
+void		ft_move_process(int *map_proc, t_proc *proc, char ocp)
 {
 	map_proc[proc->pc_act % MEM_SIZE] = 0;
 	if (proc->opcode_valid == 1)
@@ -50,7 +62,7 @@ void			ft_move_process(int *map_proc, t_proc *proc, char ocp)
 	map_proc[proc->pc_act % MEM_SIZE] = 1;
 }
 
-t_proc			*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill)
+t_proc		*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill)
 {
 	t_proc *ptr;
 

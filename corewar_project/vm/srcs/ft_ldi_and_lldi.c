@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ldi.c                                          :+:      :+:    :+:    */
+/*   ft_ldi_and_lldi.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/23 12:10:36 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 17:51:34 by gvannest         ###   ########.fr       */
+/*   Created: 2018/08/28 09:06:50 by msicot            #+#    #+#             */
+/*   Updated: 2018/08/28 09:06:53 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void		ft_loop_ldi(char *map, int *tab_tmp, t_proc *proc, char flag_idx)
+static void	ft_loop_ldi(char *map, int *tab_tmp, t_proc *proc, char flag_idx)
 {
 	int k;
 	int i;
@@ -26,23 +26,24 @@ static void		ft_loop_ldi(char *map, int *tab_tmp, t_proc *proc, char flag_idx)
 			tab_tmp[i] = proc->tab_param[i].value;
 		else if (proc->tab_param[i].type == T_IND)
 		{
-			ft_calc_index(&k, proc->tab_param[i].value, proc->pc_act, flag_idx);
+			ft_calc_index(&k, proc->tab_param[i].value, proc->pc_act,
+					flag_idx);
 			tab_tmp[i] = (int)ft_read_memory(map, k, REG_SIZE);
 		}
 		i++;
 	}
 }
 
-static void			ft_ldi_and_lldi(t_arena *arena, t_proc *proc, char flag_idx)
+static void	ft_ldi_and_lldi(t_arena *arena, t_proc *proc, char flag_idx)
 {
-	int *res;
-	int idx;
-	int	tab_tmp[2];
+	int		*res;
+	int		idx;
+	int		tab_tmp[2];
 	char	dir_size;
 
 	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
-		return;
+		return ;
 	ft_loop_ldi(arena->map, tab_tmp, proc, flag_idx);
 	ft_calc_index(&idx, tab_tmp[0] + tab_tmp[1], proc->pc_act, flag_idx);
 	res = &(proc->reg[proc->tab_param[2].value - 1]);
@@ -50,12 +51,12 @@ static void			ft_ldi_and_lldi(t_arena *arena, t_proc *proc, char flag_idx)
 	proc->carry = (*res == 0 ? 1 : 0);
 }
 
-void			ft_ldi(t_arena *arena, t_proc *proc)
+void		ft_ldi(t_arena *arena, t_proc *proc)
 {
 	ft_ldi_and_lldi(arena, proc, 1);
 }
 
-void			ft_lldi(t_arena *arena, t_proc *proc)
+void		ft_lldi(t_arena *arena, t_proc *proc)
 {
 	ft_ldi_and_lldi(arena, proc, 0);
 }

@@ -6,12 +6,11 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 10:59:44 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 13:40:11 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 08:50:54 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
 
 static void		ft_fill_map_pyr(t_arena *arena)
 {
@@ -44,7 +43,7 @@ static void		ft_fill_map(t_arena *arena)
 	}
 }
 
-void		ft_fill_game(t_arena *arena)
+void			ft_fill_game(t_arena *arena)
 {
 	ft_fill_map(arena);
 	ft_fill_map_pyr(arena);

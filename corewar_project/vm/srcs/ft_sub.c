@@ -6,21 +6,21 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:59:32 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 18:19:01 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:09:55 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			ft_sub(t_arena *arena, t_proc *proc)
+void	ft_sub(t_arena *arena, t_proc *proc)
 {
-	int	tab_tmp[2];
-	int *res;
+	int		tab_tmp[2];
+	int		*res;
 	char	dir_size;
 
 	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
-		return;
+		return ;
 	res = &(proc->reg[proc->tab_param[2].value - 1]);
 	tab_tmp[0] = proc->reg[proc->tab_param[0].value - 1];
 	tab_tmp[1] = proc->reg[proc->tab_param[1].value - 1];

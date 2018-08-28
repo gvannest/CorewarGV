@@ -6,7 +6,7 @@
 /*   By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:54:27 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/04 19:50:32 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:18:21 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,5 @@ int				main(int argc, char **argv)
 	ft_fill_game(&arena);
 	ft_game(&arena, &visual, v);
 	ft_free_processus(arena.list_proc);
-	//ft_assert("", &arena);
 	return (0);
 }
-

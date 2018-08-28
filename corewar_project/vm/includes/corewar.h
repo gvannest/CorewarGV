@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 16:55:25 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:23:54 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,17 @@ typedef struct		s_proc
 	struct s_proc	*next;
 }					t_proc;
 
-typedef struct s_op
-{  
-	char	*name;
-	int		nb_params;
-	char	param_type[MAX_ARG];
-	char 	opcode;
-	int		nb_cycles;
-	char	*description;
-	int 	mod_carry;
-	int		dir_oct_size;
-}				t_op;
+typedef struct		s_op
+{ 
+	char			*name;
+	int				nb_params;
+	char			param_type[MAX_ARG];
+	char			opcode;
+	int				nb_cycles;
+	char			*description;
+	int				mod_carry;
+	int				dir_oct_size;
+}					t_op;
 
 extern t_op op_tab[NB_INSTR + 1];
 

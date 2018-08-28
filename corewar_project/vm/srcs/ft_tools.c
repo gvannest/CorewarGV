@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 19:02:34 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 19:06:11 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:10:52 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ void			ft_write_memory(char *map, unsigned int v, int start, size_t k)
 		i++;
 	}
 }
-
