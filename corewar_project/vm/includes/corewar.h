@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/28 12:16:03 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:50:45 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct		s_proc
 }					t_proc;
 
 typedef struct		s_op
-{ 
+{
 	char			*name;
 	int				nb_params;
 	char			param_type[MAX_ARG];
@@ -102,15 +102,19 @@ int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_create_proc(t_arena *arena, t_proc *proc, short index);
-WINDOW				*create_newwin(int height, int width, int starty, int startx);
+WINDOW				*create_newwin(int height, int width, int starty,
+					int startx);
 void				ft_visual(t_arena *arena, t_corvisu *visual);
 void				ft_init_visual(t_corvisu *visual);
-void				ft_is_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
-void				ft_is_not_proc(t_corvisu *visual, int pyr_idx, char inst, int i);
+void				ft_is_proc(t_corvisu *visual, int pyr_idx, char inst,
+					int i);
+void				ft_is_not_proc(t_corvisu *visual, int pyr_idx, char inst,
+					int i);
 void				ft_info_game(t_arena *arena, t_corvisu *visual);
 void				ft_infogame_fix(t_arena *arena, t_corvisu *visual, char *f);
 void				ft_info_player(t_arena *arena, t_corvisu *visual);
-void				ft_winner_visu(t_player *tab_pyr, int nb_pyrs, t_corvisu *visual, int last_live_pyr);
+void				ft_winner_visu(t_player *tab_pyr, int nb_pyrs,
+					t_corvisu *visual, int last_live_pyr);
 void				ft_game(t_arena *arena, t_corvisu *visual, char v);
 void				ft_check_cycle(t_arena *arena);
 t_proc				*ft_kill_process(t_proc **begin_list, t_proc *proc_to_kill);
@@ -119,7 +123,8 @@ void				ft_reinit_param(t_proc *proc);
 void				ft_next_opcode(t_arena *arena, t_proc *proc);
 void				ft_one_cycle(t_arena *arena, t_proc *proc);
 void				ft_move_process(int *map_process, t_proc *proc, char ocp);
-int					ft_get_param(t_arena *arena, t_proc *proc, int pc, char dir_size);
+int					ft_get_param(t_arena *arena, t_proc *proc, int pc,
+					char dir_size);
 int					ft_dump(t_arena *arena, char **argv, int argc, int i);
 void				ft_dump_mem(t_arena *arena);
 
@@ -141,8 +146,10 @@ void				ft_lfork(t_arena *arena, t_proc *proc);
 void				ft_aff(t_arena *arena, t_proc *proc);
 
 unsigned long		ft_read_memory(char *map, int start, size_t k);
-void				ft_write_memory(char *map, unsigned int v, int start, size_t k);
-void				ft_update_map_pyr(int *map_pyr, int pc_act, int start, size_t k);
+void				ft_write_memory(char *map, unsigned int v, int start,
+					size_t k);
+void				ft_update_map_pyr(int *map_pyr, int pc_act, int start,
+					size_t k);
 void				ft_calc_index(int *k, int value, int pc_act, char flag_idx);
 
 void				ft_free_listproc(t_proc *begin_list);
