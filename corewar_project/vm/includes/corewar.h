@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 16:55:25 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:16:03 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,19 @@ typedef struct		s_proc
 	struct s_proc	*next;
 }					t_proc;
 
-typedef struct s_op
-{  
-	char	*name;
-	int		nb_params;
-	char	param_type[MAX_ARG];
-	char 	opcode;
-	int		nb_cycles;
-	char	*description;
-	int 	mod_carry;
-	int		dir_oct_size;
-}				t_op;
+typedef struct		s_op
+{ 
+	char			*name;
+	int				nb_params;
+	char			param_type[MAX_ARG];
+	char			opcode;
+	int				nb_cycles;
+	char			*description;
+	int				mod_carry;
+	int				dir_oct_size;
+}					t_op;
 
-extern t_op op_tab[NB_INSTR + 1];
+extern t_op g_optab[NB_INSTR + 1];
 
 void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
 void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);
@@ -102,6 +102,7 @@ int					ft_isnum(char *str);
 void				ft_fill_game(t_arena *arena);
 void				ft_init_process(t_arena *arena);
 void				ft_create_proc(t_arena *arena, t_proc *proc, short index);
+WINDOW				*create_newwin(int height, int width, int starty, int startx);
 void				ft_visual(t_arena *arena, t_corvisu *visual);
 void				ft_init_visual(t_corvisu *visual);
 void				ft_is_proc(t_corvisu *visual, int pyr_idx, char inst, int i);

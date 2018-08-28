@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:56:58 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/04 21:12:08 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:17:27 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_cycle_per_sec(float *cycle_sec, int key, t_corvisu *visual)
 		*cycle_sec = (*cycle_sec > 1.0 ? *cycle_sec - 1.0 : 1.0);
 	else if (*cycle_sec >= 10.0 && key == 'q')
 		*cycle_sec = (*cycle_sec == 10.0 ? 1.0 : *cycle_sec - 10.0);
-	mvwprintw(visual->win_info_game, 1, 29,  "%4d", (int)(*cycle_sec));
+	mvwprintw(visual->win_info_game, 1, 29, "%4d", (int)(*cycle_sec));
 	wrefresh(visual->win_info_game);
 }
 
@@ -56,9 +56,10 @@ static void	ft_pause_vm(float *cycle_sec, t_corvisu *visual)
 
 void		ft_visual(t_arena *arena, t_corvisu *visual)
 {
-	int i;
-	static char f = 0;
+	int			i;
+	static char f;
 
+	f = 0;
 	i = 0;
 	(f == 0 ? ft_infogame_fix(arena, visual, &f) : 0);
 	ft_info_game(arena, visual);

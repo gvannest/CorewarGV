@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 11:25:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 18:13:40 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:09:52 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static int	ft_verif_reg(t_param *tab)
 	return (1);
 }
 
-static int			ft_check_ocp(t_param *tp, char *ocp_valid, char opcode)
+static int	ft_check_ocp(t_param *tp, char *ocp_valid, char opcode)
 {
 	int i;
 
 	i = 0;
-	while (i < op_tab[opcode - 1].nb_params)
+	while (i < g_optab[opcode - 1].nb_params)
 	{
-		if ((op_tab[opcode - 1].param_type[i] & tp[i].type) == 0)
+		if ((g_optab[opcode - 1].param_type[i] & tp[i].type) == 0)
 			return (0);
 		i++;
 	}
@@ -43,9 +43,7 @@ static int			ft_check_ocp(t_param *tp, char *ocp_valid, char opcode)
 	return (1);
 }
 
-
-
-static int		ft_get_param_value(char *map, t_param *tab, int pc)
+static int	ft_get_param_value(char *map, t_param *tab, int pc)
 {
 	int i;
 
@@ -66,7 +64,6 @@ static int		ft_get_param_value(char *map, t_param *tab, int pc)
 
 static void	ft_fill_tabparam(t_param *tab, char ocp, char dir_size)
 {
-
 	int i;
 
 	i = 0;

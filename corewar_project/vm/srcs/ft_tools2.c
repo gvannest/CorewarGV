@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 15:12:33 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/04 22:06:42 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:11:02 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ void		ft_calc_index(int *k, int value, int pc_act, char flag_idx)
 
 	mod = (flag_idx == 1 ? IDX_MOD : MEM_SIZE);
 	*k = pc_act + (short)value % mod;
-	(*k < 0 ? *k = *k + MEM_SIZE : *k);
+	(*k < 0 ? *k = *k + MEM_SIZE : *k % MEM_SIZE);
 }
-

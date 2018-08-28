@@ -6,13 +6,14 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 17:40:04 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 17:52:40 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 08:53:59 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void			ft_fork_and_lfork(t_arena *arena, t_proc *proc, char flag_idx)
+static void			ft_fork_and_lfork(t_arena *arena, t_proc *proc,
+		char flag_idx)
 {
 	int		direct;
 	int		index;
@@ -29,12 +30,12 @@ static void			ft_fork_and_lfork(t_arena *arena, t_proc *proc, char flag_idx)
 		ft_move_process(arena->map_process, proc_fork, proc_fork->ocp);
 }
 
-void			ft_fork(t_arena *arena, t_proc *proc)
+void				ft_fork(t_arena *arena, t_proc *proc)
 {
 	ft_fork_and_lfork(arena, proc, 1);
 }
 
-void			ft_lfork(t_arena *arena, t_proc *proc)
+void				ft_lfork(t_arena *arena, t_proc *proc)
 {
 	ft_fork_and_lfork(arena, proc, 0);
 }

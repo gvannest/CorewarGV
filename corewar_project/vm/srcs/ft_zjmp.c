@@ -6,13 +6,13 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/20 14:56:38 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/02 18:20:25 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:15:44 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			ft_zjmp(t_arena *arena, t_proc *proc)
+void	ft_zjmp(t_arena *arena, t_proc *proc)
 {
 	int k;
 	int value;
@@ -28,4 +28,3 @@ void			ft_zjmp(t_arena *arena, t_proc *proc)
 		arena->map_process[proc->pc_act] = 1;
 	}
 }
-

@@ -6,13 +6,13 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 12:22:57 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/03 09:58:07 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 08:55:39 by msicot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-WINDOW *create_newwin(int height, int width, int starty, int startx)
+WINDOW			*create_newwin(int height, int width, int starty, int startx)
 {
 	WINDOW *local_win;
 
@@ -22,10 +22,10 @@ WINDOW *create_newwin(int height, int width, int starty, int startx)
 	return (local_win);
 }
 
-static void		ft_init_color()
+static void		ft_init_color(void)
 {
 	start_color();
-	if(has_colors() == FALSE)
+	if (has_colors() == FALSE)
 	{
 		endwin();
 		ft_error_vm(0, "Your terminal does not support color", "", 0);
@@ -46,7 +46,7 @@ static void		ft_init_color()
 	init_pair(14, COLOR_BLACK, COLOR_WHITE);
 }
 
-void		ft_init_visual(t_corvisu *visual)
+void			ft_init_visual(t_corvisu *visual)
 {
 	initscr();
 	cbreak();
@@ -59,4 +59,3 @@ void		ft_init_visual(t_corvisu *visual)
 	visual->win_info_pyrs = create_newwin(64 + 2, 60, 0, 65 * 3 + 2);
 	curs_set(0);
 }
-
