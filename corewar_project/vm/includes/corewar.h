@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:52:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/28 09:23:54 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 12:16:03 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct		s_op
 	int				dir_oct_size;
 }					t_op;
 
-extern t_op op_tab[NB_INSTR + 1];
+extern t_op g_optab[NB_INSTR + 1];
 
 void				ft_error_vm(char code, char *msg1, char *msg2, int v1);
 void				ft_parse_vm1(char *line, t_arena *arena, char *cor, int i);

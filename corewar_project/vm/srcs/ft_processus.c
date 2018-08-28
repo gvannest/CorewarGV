@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/28 09:10:01 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/28 09:10:18 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 12:12:28 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ft_move_ocp(t_proc *proc, char ocp)
 			if (tab[i] == 0x01)
 				k = k + 1;
 			else if (tab[i] == 0x02)
-				k = k + 4 - 2 * op_tab[proc->opcode_act - 1].dir_oct_size;
+				k = k + 4 - 2 * g_optab[proc->opcode_act - 1].dir_oct_size;
 			else if (tab[i] == 0x03)
 				k = k + 2;
 			i++;

@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 11:57:53 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/27 10:28:47 by gvannest         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:08:33 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_add(t_arena *arena, t_proc *proc)
 	int		*res;
 	char	dir_size;
 
-	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	dir_size = g_optab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return ;
 	res = &(proc->reg[proc->tab_param[2].value - 1]);

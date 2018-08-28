@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 16:32:14 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/28 09:06:11 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 12:16:48 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			ft_sti(t_arena *arena, t_proc *proc)
 	int		tab_tmp[3];
 	char	dir_size;
 
-	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	dir_size = g_optab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return ;
 	ft_loop_sti(arena->map, tab_tmp, proc);

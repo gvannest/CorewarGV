@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 17:31:06 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/28 08:54:27 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 12:10:21 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		ft_ldandlld(t_arena *arena, t_proc *proc, char flag_idx)
 	char	size_to_read;
 
 	size_to_read = (flag_idx == 1 ? REG_SIZE : IND_SIZE);
-	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	dir_size = g_optab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return ;
 	res = &(proc->reg[proc->tab_param[1].value - 1]);

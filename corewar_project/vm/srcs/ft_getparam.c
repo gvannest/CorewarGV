@@ -6,7 +6,7 @@
 /*   By: gvannest <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 11:25:30 by gvannest          #+#    #+#             */
-/*   Updated: 2018/08/28 09:02:53 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 12:09:52 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int	ft_check_ocp(t_param *tp, char *ocp_valid, char opcode)
 	int i;
 
 	i = 0;
-	while (i < op_tab[opcode - 1].nb_params)
+	while (i < g_optab[opcode - 1].nb_params)
 	{
-		if ((op_tab[opcode - 1].param_type[i] & tp[i].type) == 0)
+		if ((g_optab[opcode - 1].param_type[i] & tp[i].type) == 0)
 			return (0);
 		i++;
 	}

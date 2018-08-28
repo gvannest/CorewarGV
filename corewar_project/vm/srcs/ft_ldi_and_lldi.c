@@ -6,7 +6,7 @@
 /*   By: msicot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/28 09:06:50 by msicot            #+#    #+#             */
-/*   Updated: 2018/08/28 09:06:53 by msicot           ###   ########.fr       */
+/*   Updated: 2018/08/28 12:10:46 by gvannest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_ldi_and_lldi(t_arena *arena, t_proc *proc, char flag_idx)
 	int		tab_tmp[2];
 	char	dir_size;
 
-	dir_size = op_tab[proc->opcode_act - 1].dir_oct_size;
+	dir_size = g_optab[proc->opcode_act - 1].dir_oct_size;
 	if (!(ft_get_param(arena, proc, proc->pc_act, dir_size)))
 		return ;
 	ft_loop_ldi(arena->map, tab_tmp, proc, flag_idx);
